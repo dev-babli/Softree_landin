@@ -1,408 +1,162 @@
 "use client";
-import Link from "next/link";
 
-import { useEffect, useRef } from "react";
+import React, { useRef, useState, useEffect } from 'react';
+import {
+  SplitFlapText,
+  SplitFlapAudioProvider,
+} from "@/components/landing/split-flap-text";
+import { motion } from 'framer-motion';
 
 export default function ContactHero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const revealRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const hero = canvas.parentElement!;
-    const ctx = canvas.getContext("2d")!;
+    const handleMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    const resize = () => {
-      canvas.width = hero.offsetWidth;
-      canvas.height = hero.offsetHeight;
-    };
-    resize();
+      const setMaskVars = (el: HTMLElement | null, x: number, y: number) => {
+        if (!el) return;
+        el.style.setProperty('--mx', `${x}px`);
+        el.style.setProperty('--my', `${y + rect.height * 0.5}px`);
+      };
 
-    const pts = Array.from({ length: 48 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.6 + 0.4,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      o: Math.random() * 0.35 + 0.08,
-    }));
+      setMaskVars(revealRef.current, x, y);
 
-    let raf: number;
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      pts.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(165,243,252,${p.o})`;
-        ctx.fill();
-      });
-
-      for (let i = 0; i < pts.length; i++) {
-        for (let j = i + 1; j < pts.length; j++) {
-          const dx = pts[i].x - pts[j].x;
-          const dy = pts[i].y - pts[j].y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 110) {
-            ctx.beginPath();
-            ctx.moveTo(pts[i].x, pts[i].y);
-            ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(165,243,252,${0.09 * (1 - d / 110)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
+      const fog = containerRef.current.querySelector('.atm-fog') as HTMLElement;
+      if (fog) {
+        fog.style.setProperty('--mx', `${x}px`);
+        fog.style.setProperty('--my', `${y}px`); 
       }
-
-      raf = requestAnimationFrame(draw);
     };
 
-    draw();
-    window.addEventListener("resize", resize);
+    const handleLeave = () => {
+      const reset = (el: HTMLElement | null) => {
+        if (!el) return;
+        el.style.setProperty('--mx', `-9999px`);
+        el.style.setProperty('--my', `-9999px`);
+      };
+      reset(revealRef.current);
+      reset(containerRef.current?.querySelector('.atm-fog') as HTMLElement);
+    };
+
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseleave', handleLeave);
     return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mouseleave', handleLeave);
     };
   }, []);
 
-  const chips = [
-    {
-      label: "AI & Machine Learning",
-      icon: (
-        <svg
-          viewBox="0 0 14 14"
-          fill="none"
-          style={{ width: 14, height: 14, flexShrink: 0 }}
-        >
-          <rect width="14" height="14" rx="3" fill="#67e8f9" opacity=".7" />
-          <path
-            d="M4 7h6M7 4v6"
-            stroke="#0b3ea8"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-        </svg>
-      ),
-    },
-    {
-      label: "SharePoint",
-      icon: (
-        <svg
-          viewBox="0 0 14 14"
-          fill="none"
-          style={{ width: 14, height: 14, flexShrink: 0 }}
-        >
-          <rect width="14" height="14" rx="3" fill="#818cf8" opacity=".7" />
-          <path
-            d="M3 5h8M3 7h8M3 9h5"
-            stroke="#fff"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-          />
-        </svg>
-      ),
-    },
-    {
-      label: "Power Platform",
-      icon: (
-        <svg
-          viewBox="0 0 14 14"
-          fill="none"
-          style={{ width: 14, height: 14, flexShrink: 0 }}
-        >
-          <rect width="14" height="14" rx="3" fill="#34d399" opacity=".7" />
-          <path
-            d="M4 10V7l3-3 3 3v3"
-            stroke="#fff"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      ),
-    },
-    {
-      label: "Modern Apps",
-      icon: (
-        <svg
-          viewBox="0 0 14 14"
-          fill="none"
-          style={{ width: 14, height: 14, flexShrink: 0 }}
-        >
-          <rect width="14" height="14" rx="3" fill="#fbbf24" opacity=".7" />
-          <circle cx="7" cy="7" r="2.5" stroke="#fff" strokeWidth="1.2" />
-        </svg>
-      ),
-    },
-  ];
-
-  const stats = [
-    { num: "150+", label: "Projects delivered" },
-    { num: "98%", label: "Client satisfaction" },
-    { num: "12+", label: "Years experience" },
-  ];
-
   return (
     <section
-      className="relative overflow-hidden text-white"
-      style={{
-        background: "#0b3ea8",
-        borderRadius: "1rem",
-        minHeight: 520,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "3rem 1.5rem 7rem",
-      }}
+      ref={containerRef}
+      className="relative w-full h-[150vh] md:h-[180vh] bg-[#000000] overflow-hidden flex flex-col items-start justify-start pt-32"
     >
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+      <style>{`
+        .atm-fog {
+          position: absolute;
+          inset: 0;
+          z-index: 20;
+          pointer-events: none;
+          --mx: -9999px;
+          --my: -9999px;
+          mask-image: radial-gradient(circle 400px at var(--mx) var(--my), transparent 0%, black 100%);
+          -webkit-mask-image: radial-gradient(circle 400px at var(--mx) var(--my), transparent 0%, black 100%);
+          transition: mask-image 0.2s ease-out;
+        }
 
-      {/* Glow orbs */}
-      <div
-        className="absolute pointer-events-none rounded-full"
-        style={{
-          width: 420,
-          height: 420,
-          top: -120,
-          left: -120,
-          background:
-            "radial-gradient(circle,rgba(99,179,237,0.22) 0%,transparent 65%)",
-        }}
-      />
-      <div
-        className="absolute pointer-events-none rounded-full"
-        style={{
-          width: 360,
-          height: 360,
-          top: -60,
-          right: -80,
-          background:
-            "radial-gradient(circle,rgba(6,182,212,0.18) 0%,transparent 65%)",
-        }}
-      />
-      <div
-        className="absolute pointer-events-none rounded-full"
-        style={{
-          width: 280,
-          height: 280,
-          bottom: 60,
-          left: "33%",
-          background:
-            "radial-gradient(circle,rgba(139,92,246,0.12) 0%,transparent 65%)",
-        }}
-      />
+        .fog-bank-1 {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          bottom: -20%;
+          left: -10%;
+          background: radial-gradient(circle 800px at 20% 100%, rgba(132, 152, 230, 0.35) 0%, transparent 70%);
+          animation: billow 20s infinite alternate ease-in-out;
+          filter: blur(100px);
+        }
 
-      {/* Particle canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 pointer-events-none"
-      />
+        .fog-bank-2 {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: -15%;
+          right: -5%;
+          background: radial-gradient(circle 900px at 80% 10%, rgba(92, 106, 196, 0.25) 0%, transparent 70%);
+          animation: billow 25s infinite alternate-reverse ease-in-out;
+          filter: blur(120px);
+        }
 
-      {/* ── Content ── */}
-      <div className="relative z-10 text-center" style={{ maxWidth: 680 }}>
-        {/* Badge */}
-        <div
-          className="mt-10 inline-flex items-center gap-2 mb-2"
-          style={{
-            padding: "6px 16px",
-            borderRadius: 999,
-            background: "rgba(255,255,255,0.10)",
-            border: "0.5px solid rgba(255,255,255,0.20)",
-            fontSize: 11,
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.85)",
-          }}
+        @keyframes billow {
+          0% { transform: translate(-2%, -2%) scale(1); opacity: 0.5; }
+          100% { transform: translate(2%, 2%) scale(1.05); opacity: 0.8; }
+        }
+      `}</style>
+
+      {/* Volumetric Atmospherics */}
+      <div className="atm-fog">
+        <div className="fog-bank-1" />
+        <div className="fog-bank-2" />
+      </div>
+
+      {/* Video Background */}
+      <div className="absolute inset-x-0 top-0 h-full z-0 mix-blend-lighten pointer-events-none overflow-hidden before:absolute before:top-0 before:z-10 before:h-40 before:w-full before:bg-gradient-to-b before:from-black before:to-transparent">
+        <video
+          className="w-full h-full object-cover object-top scale-[1.2] translate-x-[8%] -translate-y-[5%]"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ opacity: 1 }}
         >
-          <span
-            className="animate-pulse"
-            style={{
-              display: "inline-block",
-              width: 6,
-              height: 6,
-              borderRadius: "50%",
-              background: "#67e8f9",
-            }}
-          />
-          Get in touch
-        </div>
+          <source src="/Hero/hero.webm" type="video/webm" />
+          <source src="/Hero/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-        {/* Heading */}
-        <h1
-          className="font-semibold text-white mb-5"
-          style={{ fontSize: "clamp(28px,5.5vw,52px)", lineHeight: 1.15 }}
-        >
-          Start Your Next
-          <br />
-          <span
-            style={{
-              background:
-                "linear-gradient(100deg,#67e8f9 0%,#a5f3fc 40%,#fff 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
+      <div className="relative z-50 w-full flex flex-col justify-center px-6 md:px-24 mt-[10vh] md:mt-[20vh] max-w-[1400px] mx-auto text-center md:text-left">
+        <div className="transform-gpu huly-reveal-content">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex items-center justify-center md:justify-start gap-3 mb-6"
           >
-            Digital Transformation
-          </span>
-        </h1>
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+            </span>
+            <span className="text-[12px] md:text-[14px] font-semibold uppercase tracking-[0.2em] text-blue-400">
+              Transform Your Capabilities
+            </span>
+          </motion.div>
 
-        {/* Description */}
-        <p
-          className="mx-auto mb-8"
-          style={{
-            fontSize: 15,
-            color: "rgba(255,255,255,0.70)",
-            lineHeight: 1.75,
-            maxWidth: 520,
-          }}
-        >
-          Partner with Softree to build intelligent solutions across AI,
-          SharePoint, Power Platform, and modern applications — turning ideas
-          into scalable, high-impact products.
-        </p>
+          <SplitFlapAudioProvider>
+             <div className="relative mb-6 -ml-1 origin-center md:origin-left scale-[0.6] sm:scale-[0.8] md:scale-100 uppercase overflow-hidden">
+               {/* Use text sizing appropriate for split flap */}
+               <SplitFlapText text="GLOBAL TECH" speed={70} tileTheme="dark" fontSize="clamp(3rem, 6vw, 6rem)" />
+               <div className="mt-2" />
+               <SplitFlapText text="PARTNER" speed={70} tileTheme="dark" fontSize="clamp(3rem, 6vw, 6rem)" />
+             </div>
+          </SplitFlapAudioProvider>
 
-        {/* CTA Buttons */}
-        <div
-          className="flex items-center justify-center flex-wrap mb-4"
-          style={{ gap: 12 }}
-        >
-          <Link href="/services">
-            <button
-              className="inline-flex items-center transition-transform hover:-translate-y-0.5 active:scale-95"
-              style={{
-                gap: 8,
-                padding: "11px 24px",
-                borderRadius: 999,
-                background: "rgba(255,255,255,0.08)",
-                color: "rgba(255,255,255,0.88)",
-                fontSize: 14,
-                fontWeight: 400,
-                border: "0.5px solid rgba(255,255,255,0.22)",
-                cursor: "pointer",
-              }}
-            >
-              Explore services
-              <svg
-                viewBox="0 0 16 16"
-                fill="none"
-                style={{ width: 16, height: 16 }}
-              >
-                <path
-                  d="M4 12L12 4M12 4H7M12 4v5"
-                  stroke="rgba(255,255,255,0.8)"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </Link>
-        </div>
-
-        {/* Tech chips */}
-        <div
-          className="flex items-center justify-center flex-wrap mb-5"
-          style={{ gap: 8 }}
-        >
-          {chips.map((chip) => (
-            <div
-              key={chip.label}
-              className="inline-flex items-center"
-              style={{
-                gap: 6,
-                padding: "5px 14px",
-                borderRadius: 999,
-                background: "rgba(255,255,255,0.07)",
-                border: "0.5px solid rgba(255,255,255,0.15)",
-                fontSize: 12,
-                color: "rgba(255,255,255,0.65)",
-              }}
-            >
-              {chip.icon}
-              {chip.label}
-            </div>
-          ))}
-        </div>
-
-        {/* Stats row */}
-        <div className="flex items-center justify-center flex-wrap">
-          {stats.map((s, i) => (
-            <div
-              key={s.label}
-              className="text-center"
-              style={{
-                padding: "0 2rem",
-                borderRight:
-                  i < stats.length - 1
-                    ? "0.5px solid rgba(255,255,255,0.15)"
-                    : "none",
-              }}
-            >
-              <div style={{ fontSize: 24, fontWeight: 500, color: "#fff" }}>
-                {s.num}
-              </div>
-              <div
-                style={{
-                  fontSize: 11,
-                  color: "rgba(255,255,255,0.50)",
-                  marginTop: 2,
-                  letterSpacing: "0.04em",
-                }}
-              >
-                {s.label}
-              </div>
-            </div>
-          ))}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="mt-8 text-lg md:text-2xl text-white/50 font-medium leading-relaxed max-w-2xl mx-auto md:mx-0 font-sans tracking-wide"
+          >
+            Let's build something extraordinary together. Our team will review your requirements and respond within 24 hours.
+          </motion.p>
         </div>
       </div>
 
-      {/* Double-layer wave */}
-      <div
-        className="absolute bottom-0 left-0 w-full overflow-hidden"
-        style={{ lineHeight: 0 }}
-      >
-        <svg
-          viewBox="0 0 1440 110"
-          className="w-full block"
-          style={{ height: 80 }}
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.10" />
-              <stop offset="100%" stopColor="#ffffff" stopOpacity="1" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M0,50 C200,90 400,20 600,55 C800,90 1000,20 1200,55 C1320,75 1400,65 1440,58 L1440,110 L0,110 Z"
-            fill="url(#waveGrad)"
-          />
-          <path
-            d="M0,70 C240,40 480,95 720,65 C960,35 1200,90 1440,60 L1440,110 L0,110 Z"
-            fill="#ffffff"
-            opacity="0.5"
-          />
-        </svg>
-      </div>
+      {/* Background Foundation */}
+      <div className="absolute inset-0 bg-black z-[-1]" />
     </section>
   );
 }

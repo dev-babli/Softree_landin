@@ -1,0 +1,267 @@
+{
+  "nodes": [
+    {
+      "id": "web_slider_centre_image_freshify_slider_ui_mockup",
+      "label": "Freshify Slider Centre Image - Glassmorphism UI Mockup",
+      "file_type": "image",
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "A glassmorphism-style UI mockup displayed on a dark navy circuit board background. Features multiple frosted glass app panels: a Weather Forecasts app (22°C, 12 km/h, cloud+sun icon, 'Get Start' CTA), a grid of weather icons, a Sales Report widget ($1,024, net volume 3.2%), a Startup App panel with a hot air balloon illustration and 'Your Business Starts Here' tagline, a business onboarding form with calendar and social media sections, and a roadmap view. Three red/yellow/green window control dots visible at top-left. Circuit trace lines and neon accent lines decorate the background.",
+      "ui_style": "glassmorphism",
+      "purpose": "hero_slider_promotional_image",
+      "brand": "Freshify",
+      "tags": ["glassmorphism", "UI mockup", "weather app", "dashboard", "startup app", "sales report", "roadmap", "promotional slider"]
+    },
+    {
+      "id": "freshify_slider_brand",
+      "label": "Freshify Brand",
+      "file_type": "concept",
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "Freshify is a product/service brand associated with fruit-related imagery and modern UI design. Slider assets include fruit product images (blackberry, blueberry, strawberry, chocolate) and UI mockup promotional images.",
+      "tags": ["Freshify", "brand", "fruit", "product", "web slider"]
+    },
+    {
+      "id": "freshify_slider_weather_app_panel",
+      "label": "Weather Forecasts App Panel",
+      "file_type": "ui_component",
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "A mobile app UI panel showing weather forecast: 22°C temperature, 12 km/h wind speed, partly cloudy icon, label 'Weather Forecasts', and 'Get Start' button. Frosted glass card style.",
+      "tags": ["weather app", "mobile UI", "glassmorphism", "forecast", "CTA"]
+    },
+    {
+      "id": "freshify_slider_sales_report_widget",
+      "label": "Sales Report Widget",
+      "file_type": "ui_component",
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "A frosted glass widget showing 'SALES REPORT' with value $1,024 and 'Net volume · 3.2%' with a green indicator. Features a line chart graphic.",
+      "tags": ["sales report", "dashboard widget", "KPI", "chart", "glassmorphism"]
+    },
+    {
+      "id": "freshify_slider_startup_app_panel",
+      "label": "Startup App Onboarding Panel",
+      "file_type": "ui_component",
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "Mobile app panel labeled 'STARTUP APP' with a colorful hot air balloon illustration, text 'YOUR BUSINESS STARTS HERE', and a 'let's go!' CTA button in orange. Frosted glass style.",
+      "tags": ["startup app", "onboarding", "CTA", "hot air balloon", "illustration", "glassmorphism"]
+    },
+    {
+      "id": "freshify_slider_business_form_panel",
+      "label": "Business Info & Roadmap Form Panel",
+      "file_type": "ui_component",
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "Multi-panel frosted glass UI showing 'YOUR BUSINESS INFO', 'TARGET', 'CALENDAR' (Jan-Oct months), 'YOUR SOCIAL MEDIA' (social icons), and a 'YOUR ROADMAP' panel with colorful step indicators.",
+      "tags": ["business form", "roadmap", "calendar", "social media", "onboarding", "glassmorphism"]
+    },
+    {
+      "id": "freshify_slider_circuit_background",
+      "label": "Dark Circuit Board Background",
+      "file_type": "background_asset",
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "Dark navy blue background with circuit board trace lines and neon colored accent lines (cyan, purple, pink) emanating from sides. A white 4-pointed star appears at bottom-right corner. Creates a tech/futuristic aesthetic.",
+      "tags": ["background", "circuit board", "neon", "dark theme", "tech aesthetic", "futuristic"]
+    },
+    {
+      "id": "capsule_smoke_animation",
+      "label": "Capsule Smoke Animation (Video)",
+      "file_type": "video",
+      "source_file": "public/capsule/smoke_final.mp4",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "A smoke animation video (smoke_final.mp4) located in the capsule directory. Referenced in chunk as individual PNG frames (smoke_final_frame0001.png through smoke_final_frame0017.png) but these frame files do not exist on disk — only the compiled MP4 video exists. The animation likely depicts a smoke/vapor effect associated with a capsule product visual, suggesting pharmaceutical, supplement, or vaporizer product imagery.",
+      "tags": ["smoke animation", "capsule", "MP4", "visual effect", "product animation", "vapor"]
+    },
+    {
+      "id": "capsule_product_concept",
+      "label": "Capsule Product Visual Concept",
+      "file_type": "concept",
+      "source_file": "public/capsule/smoke_final.mp4",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "The capsule directory and smoke animation suggest a product that is capsule-shaped or capsule-themed, with dramatic smoke/vapor visual effects used for promotional or hero section presentation. Could relate to supplement, pharmaceutical, or tech product branding.",
+      "tags": ["capsule", "product concept", "smoke effect", "promotional", "hero animation"]
+    }
+  ],
+  "edges": [
+    {
+      "source": "web_slider_centre_image_freshify_slider_ui_mockup",
+      "target": "freshify_slider_brand",
+      "relation": "belongs_to_brand",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "freshify_slider_weather_app_panel",
+      "target": "web_slider_centre_image_freshify_slider_ui_mockup",
+      "relation": "is_part_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "freshify_slider_sales_report_widget",
+      "target": "web_slider_centre_image_freshify_slider_ui_mockup",
+      "relation": "is_part_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "freshify_slider_startup_app_panel",
+      "target": "web_slider_centre_image_freshify_slider_ui_mockup",
+      "relation": "is_part_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "freshify_slider_business_form_panel",
+      "target": "web_slider_centre_image_freshify_slider_ui_mockup",
+      "relation": "is_part_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "freshify_slider_circuit_background",
+      "target": "web_slider_centre_image_freshify_slider_ui_mockup",
+      "relation": "is_background_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "capsule_smoke_animation",
+      "target": "capsule_product_concept",
+      "relation": "visualizes",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/capsule/smoke_final.mp4",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "web_slider_centre_image_freshify_slider_ui_mockup",
+      "target": "capsule_smoke_animation",
+      "relation": "conceptually_related_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.2,
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "weight": 0.3
+    },
+    {
+      "source": "freshify_slider_startup_app_panel",
+      "target": "freshify_slider_business_form_panel",
+      "relation": "sequentially_leads_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "source_location": null,
+      "weight": 0.8
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "freshify_slider_ui_components_group",
+      "label": "Freshify Slider UI Component Group",
+      "members": [
+        "freshify_slider_weather_app_panel",
+        "freshify_slider_sales_report_widget",
+        "freshify_slider_startup_app_panel",
+        "freshify_slider_business_form_panel"
+      ],
+      "relation": "collectively_form_ui_mockup",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "public/Freshify_Slider (1)/web_slider_centre_image.webp",
+      "note": "All UI panels are rendered together in a single glassmorphism mockup composition for the Freshify web slider"
+    }
+  ],
+  "input_tokens": 1850,
+  "output_tokens": 920,
+  "_meta": {
+    "chunk": 24,
+    "total_chunks": 48,
+    "files_processed": [
+      "public/Freshify_Slider (1)/web_slider_centre_image.webp"
+    ],
+    "files_not_found": [
+      "public/Freshify_Slider (1)/web_slider_left_image.webp",
+      "public/Freshify_Slider (1)/web_slider_right_image.webp",
+      "public/capsule/smoke_final_frame0001.png",
+      "public/capsule/smoke_final_frame0002.png",
+      "public/capsule/smoke_final_frame0003.png",
+      "public/capsule/smoke_final_frame0004.png",
+      "public/capsule/smoke_final_frame0005.png",
+      "public/capsule/smoke_final_frame0006.png",
+      "public/capsule/smoke_final_frame0007.png",
+      "public/capsule/smoke_final_frame0008.png",
+      "public/capsule/smoke_final_frame0009.png",
+      "public/capsule/smoke_final_frame0010.png",
+      "public/capsule/smoke_final_frame0011.png",
+      "public/capsule/smoke_final_frame0012.png",
+      "public/capsule/smoke_final_frame0013.png",
+      "public/capsule/smoke_final_frame0014.png",
+      "public/capsule/smoke_final_frame0015.png",
+      "public/capsule/smoke_final_frame0016.png",
+      "public/capsule/smoke_final_frame0017.png"
+    ],
+    "files_found_instead": [
+      "public/capsule/smoke_final.mp4"
+    ],
+    "notes": "web_slider_left_image.webp and web_slider_right_image.webp do not exist at the specified paths. The Freshify_Slider (1) folder contains only web_slider_centre_image.webp plus product fruit images in a subfolder. The smoke frame PNGs do not exist; only smoke_final.mp4 is present in the capsule directory."
+  }
+}

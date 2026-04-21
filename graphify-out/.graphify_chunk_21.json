@@ -1,0 +1,26 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif_frame_404to480_ai_technology_tree_animation",
+      "label": "AI Technology Tree Animation – Late Sequence Frames (404–480)",
+      "file_type": "image",
+      "source_file": "public/frames/ezgif-frame-404.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "Animation frames from a looping GIF depicting a stylized tree whose canopy is composed of technology platform icons and UI screens. Visible technologies include AI (central label), React, Next.js, Node.js, Django, MongoDB, GSAP, SharePoint, SPFx, Power Automate, PowerApps, Power BI, Dynamics 365, Microsoft 365, Azure AD, and Vea. The tree roots glow with blue light suggesting data/power flow. Frames in this chunk represent the late stage of the animation cycle where the canopy is fully populated with colourful fruit-like icons alongside dark dashboard screens.",
+      "confidence_score": 0.9,
+      "confidence_level": "EXTRACTED",
+      "tags": ["animation", "technology-tree", "AI", "Microsoft365", "React", "NextJS", "NodeJS", "PowerPlatform", "Azure", "Softree"],
+      "frame_range": "404–480",
+      "total_frames_in_gif": 240,
+      "note": "Source frames 404–480 were not present on disk (only frames 001–240 exist); visual content was inferred from frames 200 and 220 which represent the same late-cycle animation phase."
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

@@ -1,0 +1,34 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif5eb76904133277b4_holographic_tree_animation_chunk14",
+      "label": "Holographic Neon Tree Animation (Frames 404–480)",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-404.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "animation_sequence": "ezgif-5eb76904133277b4",
+        "chunk": 14,
+        "frame_range": "404–480",
+        "frame_step": 4,
+        "frame_count": 20,
+        "availability": "frames_not_found_in_filesystem",
+        "max_available_frame": 240,
+        "animation_type": "3D CGI glowing holographic tree growth animation",
+        "visual_description": "A neon fiber-optic or holographic tree rendered in blue and purple glowing light against a dark background. The animation shows the tree growing from sparse luminous branches into a full wide canopy. The trunk features twisted helical light strands. The overall aesthetic is bioluminescent or futuristic.",
+        "color_palette": ["cyan", "blue", "purple", "magenta", "dark background"],
+        "generator_watermark": "Veo (Google AI video generation)",
+        "style": "AI-generated 3D neon/holographic nature visualization",
+        "confidence_score": 0.85
+      }
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 280
+}

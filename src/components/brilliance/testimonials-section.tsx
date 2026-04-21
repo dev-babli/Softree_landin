@@ -1,162 +1,325 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import type React from "react"
-import BorderGlow from "@/components/ui/BorderGlow"
+import { useState, useEffect, useRef, useCallback } from "react"
+import { FiArrowLeft, FiArrowRight } from "react-icons/fi"
 
-// Badge component for consistency
-function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <div className="px-[14px] py-[6px] bg-white shadow-[0px_0px_0px_4px_rgba(55,50,47,0.05)] overflow-hidden rounded-[90px] flex justify-start items-center gap-[8px] border border-[rgba(2,6,23,0.08)] shadow-xs liquid-glass">
-      <div className="w-[14px] h-[14px] relative overflow-hidden flex items-center justify-center">{icon}</div>
-      <div className="text-center flex justify-center flex-col text-[#37322F] text-xs font-medium leading-3 font-sans">
-        {text}
-      </div>
-    </div>
-  )
-}
+const TESTIMONIALS = [
+  {
+    company: "TechFlow",
+    quote:
+      "Softree has revolutionized how we handle enterprise workflows. The automation saves us hours every week and eliminates errors completely.",
+    name: "Sarah Chen",
+    role: "VP Operations at TechFlow",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face&q=85",
+    readMoreHref: "/case-studies",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&h=800&fit=crop&q=85",
+    altText: "Modern enterprise team at work",
+  },
+  {
+    company: "Exponent",
+    quote:
+      "In just a few weeks, Softree transformed our fragmented data into actionable insights. The agentic AI layer is unlike anything else we've seen.",
+    name: "Jamie Marshall",
+    role: "Co-founder at Exponent",
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face&q=85",
+    readMoreHref: "/case-studies",
+    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1400&h=800&fit=crop&q=85",
+    altText: "AI data visualization",
+  },
+  {
+    company: "InnovateCorp",
+    quote:
+      "The AI-driven billing automation is a game-changer. What used to take our team three days now happens automatically with perfect accuracy.",
+    name: "Marcus Rodriguez",
+    role: "Finance Director at InnovateCorp",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face&q=85",
+    readMoreHref: "/case-studies",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&h=800&fit=crop&q=85",
+    altText: "Financial technology dashboard",
+  },
+]
+
+// ─── RESTING shapes — seam runs from 45% at top to 55% at bottom ──────────────
+// Left card fills the left half; right card fills the right half.
+const L_CLIP        = "polygon(45% 0%, 0% 0%, 0% 100%, 55% 100%)"
+const R_CLIP        = "polygon(100% 0%, 45% 0%, 55% 100%, 100% 100%)"
+
+// ─── CLOSED shapes — thin rectangles at each edge ─────────────────────────────
+// Right card collapses to a rectangle on the far-right.
+// Top-left corner starts at 92%, bottom-left at 92% → perfectly vertical edge.
+// On open: top-left swings to 45% (long arc), bottom-left to 55% (shorter) = compass.
+const R_CLIP_CLOSED = "polygon(100% 0%, 92% 0%, 92% 100%, 100% 100%)"
+// Left card collapses to a rectangle on the far-left.
+// Bottom-right at 8%, top-right at 8% → vertical edge.
+// On open: bottom-right swings to 55% (long), top-right to 45% (shorter) = mirror compass.
+const L_CLIP_CLOSED = "polygon(8%  0%, 0% 0%, 0% 100%, 8%  100%)"
+
+// ─── Easing ───────────────────────────────────────────────────────────────────
+const ENTER_EASE = "cubic-bezier(0.16, 1, 0.3, 1)"
+const OUT_EASE   = "cubic-bezier(0.55, 0, 0.85, 0.05)"
+
+const EXIT_MS = 480
+const SETTLE  = 30
+const WIPE_MS = 1150
 
 export default function TestimonialsSection() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(false)
+  const n = TESTIMONIALS.length
+  const [active, setActive] = useState(0)
+  const [phase,  setPhase]  = useState<"in" | "out">("in")
+  const activeRef           = useRef(0)
 
-  const testimonials = [
-    {
-      quote:
-        "In just a few minutes, we transformed our data into actionable insights. The process was seamless and incredibly efficient!",
-      name: "Jamie Marshall",
-      company: "Co-founder, Exponent",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Sep%2011%2C%202025%2C%2011_35_19%20AM-z4zSRLsbOQDp7MJS1t8EXmGNB6Al9Z.png",
-    },
-    {
-      quote:
-        "Softree has revolutionized how we handle custom contracts. The automation saves us hours every week and eliminates errors completely.",
-      name: "Sarah Chen",
-      company: "VP Operations, TechFlow",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Sep%2011%2C%202025%2C%2010_54_18%20AM-nbiecp92QNdTudmCrHr97uekrIPzCP.png",
-    },
-    {
-      quote:
-        "The billing automation is a game-changer. What used to take our team days now happens automatically with perfect accuracy.",
-      name: "Marcus Rodriguez",
-      company: "Finance Director, InnovateCorp",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Sep%2011%2C%202025%2C%2011_01_05%20AM-TBOe92trRxKn4G5So1m9D2h7LRH4PG.png",
-    },
-  ]
+  const navigate = useCallback((index: number) => {
+    setPhase("out")
+    setTimeout(() => {
+      activeRef.current = index
+      setActive(index)
+      setTimeout(() => setPhase("in"), SETTLE)
+    }, EXIT_MS)
+  }, [])
+
+  const prev = () => navigate((activeRef.current - 1 + n) % n)
+  const next = () => navigate((activeRef.current + 1) % n)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTransitioning(true)
-      setTimeout(() => {
-        setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
-        setTimeout(() => {
-          setIsTransitioning(false)
-        }, 100)
-      }, 300)
-    }, 12000) // increased from 6000ms to 12000ms for longer testimonial display
+    const id = setInterval(() => navigate((activeRef.current + 1) % n), 11000)
+    return () => clearInterval(id)
+  }, [n, navigate])
 
-    return () => clearInterval(interval)
-  }, [testimonials.length])
+  const t    = TESTIMONIALS[active]
+  const isIn = phase === "in"
 
-  const handleNavigationClick = (index: number) => {
-    setIsTransitioning(true)
-    setTimeout(() => {
-      setActiveTestimonial(index)
-      setTimeout(() => {
-        setIsTransitioning(false)
-      }, 100)
-    }, 300)
-  }
+  const leftClip = (enterDelay = "0ms"): React.CSSProperties => ({
+    clipPath: isIn ? L_CLIP : L_CLIP_CLOSED,
+    transition: isIn
+      ? `clip-path ${WIPE_MS}ms ${ENTER_EASE} ${enterDelay}`
+      : `clip-path ${EXIT_MS}ms ${OUT_EASE}`,
+  })
+
+  const rightClip = (enterDelay = "100ms"): React.CSSProperties => ({
+    clipPath: isIn ? R_CLIP : R_CLIP_CLOSED,
+    transition: isIn
+      ? `clip-path ${WIPE_MS}ms ${ENTER_EASE} ${enterDelay}`
+      : `clip-path ${EXIT_MS}ms ${OUT_EASE}`,
+  })
+
+  const row = (enterDelay: string): React.CSSProperties => ({
+    opacity  : isIn ? 1 : 0,
+    transform: isIn ? "translateY(0px)" : "translateY(14px)",
+    transition: isIn
+      ? `opacity 700ms ease-out ${enterDelay}, transform 800ms ${ENTER_EASE} ${enterDelay}`
+      : `opacity 100ms ease-in, transform 100ms ease-in`,
+  })
 
   return (
-    <div className="w-full border-b wf-border flex flex-col justify-center items-center wf-surface">
-      {/* Header Section */}
+    <section className="relative w-full px-4 lg:px-10 pt-16 md:pt-24 pb-12 md:pb-20 text-black bg-white">
 
-      {/* Testimonial Content */}
-      <div className="self-stretch px-4 md:px-12 overflow-hidden flex justify-center items-center bg-background border border-b border-l-0 border-r-0 border-t-0">
-        <div className="w-full max-w-[1280px] xl:max-w-[1440px] py-16 md:py-24 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="w-full md:flex-1 justify-start items-start gap-8 md:gap-16 flex flex-col md:flex-row">
-            <img
-              className="w-48 h-50 md:w-48 md:h-50 rounded-lg object-cover transition-all duration-700 ease-in-out"
-              style={{
-                opacity: isTransitioning ? 0.6 : 1,
-                transform: isTransitioning ? "scale(0.95)" : "scale(1)",
-                transition: "opacity 0.7s ease-in-out, transform 0.7s ease-in-out",
-              }}
-              src={testimonials[activeTestimonial].image || "/placeholder.svg"}
-              alt={testimonials[activeTestimonial].name}
-            />
-            <div className="flex-1 px-6 py-6 shadow-[0px_0px_0px_0.75px_rgba(50,45,43,0.12)] overflow-hidden flex flex-col justify-start items-start gap-6 shadow-none pb-0 pt-0">
-              <div
-                className="self-stretch justify-start flex flex-col wf-text-primary text-2xl md:text-[32px] font-medium leading-10 md:leading-[42px] font-sans h-[200px] md:h-[210px] overflow-hidden line-clamp-5 transition-all duration-700 ease-in-out tracking-tight"
-                style={{
-                  filter: isTransitioning ? "blur(4px)" : "blur(0px)",
-                  transition: "filter 0.7s ease-in-out",
-                }}
-              >
-                "{testimonials[activeTestimonial].quote}"
-              </div>
-              <div
-                className="self-stretch flex flex-col justify-start items-start gap-1 transition-all duration-700 ease-in-out"
-                style={{
-                  filter: isTransitioning ? "blur(4px)" : "blur(0px)",
-                  transition: "filter 0.7s ease-in-out",
-                }}
-              >
-                <div className="self-stretch justify-center flex flex-col wf-text-primary text-lg font-medium leading-[26px] font-sans">
-                  {testimonials[activeTestimonial].name}
+      <svg tabIndex={-1} aria-hidden className="pointer-events-none invisible absolute" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="softree-rounded" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="rounded" />
+            <feComposite in="SourceGraphic" in2="rounded" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+
+      <div className="relative mx-auto w-full max-w-[1240px]">
+        <div className="flex-col items-center block">
+
+          {/* ── Header ── */}
+          <div className="flex w-full items-end justify-between pb-10">
+            <h2 className="text-2xl lg:text-[32px] font-sans font-medium max-w-72 sm:max-w-[550px] text-[#0f0f0f] leading-tight">
+              Why leading teams trust Softree
+            </h2>
+            <div className="mb-2 flex gap-x-5">
+              <button aria-label="Previous" type="button" onClick={prev}
+                className="group inline-block rounded-sm focus-visible:outline-1 focus-visible:outline focus-visible:outline-orange-500">
+                <span className="flex items-center text-[#1a1a1a]"><FiArrowLeft className="text-xl sm:text-2xl" /></span>
+              </button>
+              <button aria-label="Next" type="button" onClick={next}
+                className="group inline-block rounded-sm focus-visible:outline-1 focus-visible:outline focus-visible:outline-orange-500">
+                <span className="flex items-center text-[#1a1a1a]"><FiArrowRight className="text-xl sm:text-2xl" /></span>
+              </button>
+            </div>
+          </div>
+
+          {/* ── Cards ── */}
+          <div className="mb-5 flex-grow justify-center lg:mb-10 block">
+            <div className="w-full">
+              <div className="flex h-full w-full flex-col gap-y-4">
+
+                {/* ══════════ DESKTOP ══════════ */}
+                {/* No h-full here — let aspect-ratio define the height intrinsically */}
+                <div className="relative hidden w-full lg:block lg:max-h-[750px] xl:max-h-[540px] aspect-[2274/1120]">
+
+                  {/* RIGHT — behind the left card */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ filter: "url(#softree-rounded)" }}
+                  >
+                    <div
+                      className="absolute inset-0 overflow-hidden rounded-xl bg-[#111]"
+                      style={rightClip("100ms")}
+                    >
+                      <img
+                        key={t.image}
+                        alt={t.altText}
+                        src={t.image}
+                        className="absolute inset-0 h-full w-full object-cover object-center"
+                      />
+                    </div>
+                  </div>
+
+                  {/* LEFT — dark 1px border */}
+                  <div
+                    className="absolute inset-0"
+                    style={{ filter: "url(#softree-rounded)" }}
+                  >
+                    <div
+                      className="absolute inset-0 rounded-xl bg-[#0f0f0f]"
+                      style={leftClip("0ms")}
+                    />
+                  </div>
+
+                  {/* LEFT — white content */}
+                  <div
+                    className="absolute top-[1px] left-[1px] right-[1px] bottom-[1px]"
+                    style={{ filter: "url(#softree-rounded)" }}
+                  >
+                    <div
+                      className="absolute inset-0 rounded-xl p-8 overflow-hidden bg-white text-[#0f0f0f]"
+                      style={leftClip("0ms")}
+                    >
+                      <div className="w-5/12 h-full flex flex-col">
+
+                        <div style={row("0.50s")} className="mb-7">
+                          <span className="text-2xl font-bold font-sans tracking-tight text-[#0f0f0f]">
+                            {t.company}
+                          </span>
+                        </div>
+
+                        <div style={row("0.68s")} className="mb-7 lg:mb-12">
+                          <h3 className="text-xl lg:text-[22px] font-sans font-medium leading-relaxed text-[#0f0f0f]">
+                            &ldquo;{t.quote}&rdquo;
+                          </h3>
+                        </div>
+
+                        <div style={row("0.84s")} className="flex items-center gap-3">
+                          <img
+                            src={t.avatar}
+                            alt={t.name}
+                            className="w-10 h-10 rounded-full object-cover shrink-0"
+                          />
+                          <div>
+                            <p className="text-base font-sans font-medium text-[#0f0f0f]">{t.name}</p>
+                            <p className="text-sm font-sans text-[#3d3d3d]">{t.role}</p>
+                          </div>
+                        </div>
+
+                        <div style={row("0.98s")} className="mt-auto pt-8">
+                          <a
+                            href={t.readMoreHref}
+                            className="group inline-flex items-center gap-1 text-[#1a1a1a] hover:text-orange-600 transition-colors duration-200 rounded-sm"
+                          >
+                            <span className="text-base lg:text-lg font-sans">Read more</span>
+                            <span className="flex items-center transition-all duration-300 ease-in-out group-hover:translate-x-1">
+                              <FiArrowRight />
+                            </span>
+                          </a>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
-                <div className="self-stretch justify-center flex flex-col wf-text-muted text-lg font-medium leading-[26px] font-sans">
-                  {testimonials[activeTestimonial].company}
+
+                {/* ══════════ MOBILE ══════════ */}
+                <div className="relative flex h-full w-full lg:hidden aspect-[989/4500] max-h-[2300px]">
+
+                  {/* Dark border */}
+                  <div
+                    className="h-[78%] w-full rounded-[20px] absolute left-0 top-0"
+                    style={{ filter: "url(#softree-rounded)" }}
+                  >
+                    <div className="w-full rounded-xl h-full bg-[#0f0f0f] [clip-path:polygon(100%_0,0%_0,0%_100%,100%_100%)]" />
+                  </div>
+
+                  {/* White content */}
+                  <div
+                    className="h-[78%] w-full rounded-[20px] absolute top-[1px] left-[1px]"
+                    style={{
+                      filter: "url(#softree-rounded)",
+                      opacity: isIn ? 1 : 0,
+                      transition: isIn ? "opacity 500ms ease-out 100ms" : `opacity ${EXIT_MS}ms ease-in`,
+                    }}
+                  >
+                    <div className="rounded-xl p-6 h-[calc(100%-2px)] w-[calc(100%-2px)] overflow-hidden bg-white text-[#0f0f0f] [clip-path:polygon(100%_0,0%_0,0%_100%,100%_100%)]">
+                      <div className="flex h-full flex-col">
+                        <div style={row("0.12s")} className="mb-5">
+                          <span className="text-xl font-bold font-sans tracking-tight">{t.company}</span>
+                        </div>
+                        <div style={row("0.26s")} className="mb-5">
+                          <h3 className="text-lg font-sans font-medium leading-relaxed">&ldquo;{t.quote}&rdquo;</h3>
+                        </div>
+                        <div style={row("0.38s")} className="flex items-center gap-2">
+                          <img src={t.avatar} alt={t.name} className="w-8 h-8 rounded-full object-cover shrink-0" />
+                          <div>
+                            <p className="text-sm font-sans font-medium text-[#0f0f0f]">{t.name}</p>
+                            <p className="text-xs font-sans text-[#3d3d3d]">{t.role}</p>
+                          </div>
+                        </div>
+                        <div style={row("0.48s")} className="mt-auto pt-8">
+                          <a href={t.readMoreHref} className="group inline-flex items-center gap-1 text-[#1a1a1a] hover:text-orange-600 transition-colors">
+                            <span className="text-sm font-sans">Read more</span>
+                            <span className="flex items-center transition-all duration-300 ease-in-out group-hover:translate-x-1"><FiArrowRight /></span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Image */}
+                  <div
+                    className="absolute bottom-0 h-[20%] w-full rounded-[20px] pointer-events-none"
+                    style={{
+                      filter: "url(#softree-rounded)",
+                      opacity: isIn ? 1 : 0,
+                      transition: isIn ? "opacity 500ms ease-out 200ms" : `opacity ${EXIT_MS}ms ease-in`,
+                    }}
+                  >
+                    <div className="h-full w-full overflow-hidden rounded-xl bg-[#111] [clip-path:polygon(100%_0,0%_0,0%_100%,100%_100%)]">
+                      <img key={t.image} alt={t.altText} src={t.image} className="h-full w-full object-cover object-center" />
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="flex justify-end items-end gap-[14px]">
-            <BorderGlow borderRadius={50} backgroundColor="white" glowColor="25 100 50">
-              <button
-                onClick={() => handleNavigationClick((activeTestimonial - 1 + testimonials.length) % testimonials.length)}
-                className="w-10 h-10 shadow-[0px_1px_2px_rgba(0,0,0,0.08)] overflow-hidden rounded-full border border-[rgba(0,0,0,0.15)] justify-center items-center gap-2 flex hover:bg-gray-50 transition-all duration-150 ease-out active:scale-95 cursor-pointer"
-              >
-                <div className="w-6 h-6 relative overflow-hidden">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M15 18L9 12L15 6"
-                      stroke="#46413E"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </BorderGlow>
-            <BorderGlow borderRadius={50} backgroundColor="white" glowColor="25 100 50">
-              <button
-                onClick={() => handleNavigationClick((activeTestimonial + 1) % testimonials.length)}
-                className="w-10 h-10 shadow-[0px_1px_2px_rgba(0,0,0,0.08)] overflow-hidden rounded-full border border-[rgba(0,0,0,0.15)] justify-center items-center gap-2 flex hover:bg-gray-50 transition-all duration-150 ease-out active:scale-95 cursor-pointer"
-              >
-                <div className="w-6 h-6 relative overflow-hidden">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M9 18L15 12L9 6"
-                      stroke="#46413E"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </button>
-            </BorderGlow>
+          {/* ── Progress bar ── */}
+          <div className="flex items-center justify-center mt-2">
+            <div className="relative w-[320px] sm:w-[550px]">
+              <div className="relative h-[3px]">
+                <div
+                  className="absolute h-full opacity-[0.15] rounded-full bg-[#0f0f0f] transition-all duration-500 ease-in-out"
+                  style={{ left: 0, width: `${(active / n) * 100}%` }}
+                />
+                <div
+                  className="absolute h-full opacity-[0.15] rounded-full bg-[#0f0f0f] transition-all duration-500 ease-in-out"
+                  style={{ left: `${((active + 1) / n) * 100}%`, right: 0 }}
+                />
+                <div
+                  className="absolute h-full rounded-full bg-gradient-to-r from-orange-500 via-violet-500 to-blue-500 transition-all duration-500 ease-in-out"
+                  style={{ left: `${(active / n) * 100}%`, width: `${(1 / n) * 100}%` }}
+                />
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
-    </div>
+    </section>
   )
 }

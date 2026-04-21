@@ -1,0 +1,20 @@
+public\images\case-study\power-apps\emp.jpg
+public\images\case-study\power-apps\Generated image.jpeg
+public\images\case-study\power-apps\Generated image.png
+public\images\case-study\power-apps\health.jpg
+public\images\case-study\power-apps\hr.png
+public\images\case-study\power-apps\Interview Management System.jpeg
+public\images\case-study\power-apps\interview.jpeg
+public\images\case-study\power-apps\invoice.jpg
+public\images\case-study\power-apps\list.png
+public\images\case-study\power-apps\Mastering Sharepoint List relationship with PowerApps.png
+public\images\case-study\power-apps\model.png
+public\images\case-study\power-apps\multiple.jpeg
+public\images\case-study\power-apps\multiple.png
+public\images\case-study\power-apps\Project Management CanvasApp.png
+public\images\case-study\power-apps\Reservation Booking System.png
+public\images\case-study\power-apps\reservation.jpg
+public\images\case-study\power-apps\Sales Invoice Canvas app.png
+public\images\case-study\power-apps\Shopping Cart Canvas app.png
+public\images\case-study\power-apps\shopping.jpg
+public\images\case-study\power-apps\shopping1.jpg

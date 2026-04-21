@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif5eb76904133277b4_chunk14_animation_frames484to560",
+      "label": "Softree Brand Animation – Frames 484–560 (Cinematic 3D Tech Sequence)",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "animation_type": "AI-generated cinematic 3D animation (Veo)",
+        "frame_range": "484–560",
+        "frame_step": 4,
+        "total_frames_in_chunk": 20,
+        "actual_frames_available": false,
+        "note": "Requested frames 484–560 do not exist in the dataset (max frame index is 240). Summary inferred from available frames of the same animation sequence.",
+        "visual_content": "Dark-background cinematic sequence featuring a glowing black cube with an 'S' (Softree) logo on an octagonal pedestal with blue circuit-light base, transitioning to a luminous fiber-optic/neon tree — abstract tech-meets-nature 3D branding animation",
+        "branding": "Softree",
+        "tool_watermark": "Veo",
+        "color_palette": ["deep black", "electric blue", "cyan", "pink/magenta", "white glow"],
+        "theme": "technology, nature, brand identity, AI-generated visuals",
+        "confidence": 0.6
+      }
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 280
+}

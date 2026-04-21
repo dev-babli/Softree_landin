@@ -1,0 +1,390 @@
+{
+  "nodes": [
+    {
+      "id": "cta-illustration_huly_cta",
+      "label": "Huly CTA Illustration",
+      "file_type": "image",
+      "source_file": "public/huly_assets/cta-illustration.8178f665.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "cta-illustration_huly_platform",
+      "label": "Huly Platform",
+      "file_type": "image",
+      "source_file": "public/huly_assets/cta-illustration.8178f665.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "hr-hero_huly_hr_feature",
+      "label": "Huly HR Feature Hero",
+      "file_type": "image",
+      "source_file": "public/huly_assets/hr-hero.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "members-hero_huly_members_feature",
+      "label": "Huly Members Feature Hero",
+      "file_type": "image",
+      "source_file": "public/huly_assets/members-hero.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "office-hero_huly_office_feature",
+      "label": "Huly Office Feature Hero",
+      "file_type": "image",
+      "source_file": "public/huly_assets/office-hero.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "planner-hero_huly_planner_feature",
+      "label": "Huly Planner Feature Hero",
+      "file_type": "image",
+      "source_file": "public/huly_assets/planner-hero.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chunter-hero_huly_chunter_feature",
+      "label": "Huly Chunter (Messaging) Feature Hero",
+      "file_type": "image",
+      "source_file": "public/huly_assets/chunter-hero.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "tracker-hero_huly_tracker_feature",
+      "label": "Huly Tracker Feature Hero",
+      "file_type": "image",
+      "source_file": "public/huly_assets/tracker-hero.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "love-huly-hero_huly_testimonial",
+      "label": "Huly Love/Testimonial Hero",
+      "file_type": "image",
+      "source_file": "public/huly_assets/love-huly-hero.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "github-hero_huly_github_integration",
+      "label": "Huly GitHub Integration Hero",
+      "file_type": "image",
+      "source_file": "public/huly_assets/github-hero.jpg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs-hero_huly_docs_feature",
+      "label": "Huly Docs Feature Hero",
+      "file_type": "image",
+      "source_file": "public/huly_assets/docs-hero.webp",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "skitbit-white_skitbit_brand_white",
+      "label": "Skitbit Brand Logo (White)",
+      "file_type": "image",
+      "source_file": "public/icons/skitbit-white.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "skitbit_skitbit_brand",
+      "label": "Skitbit Brand Logo",
+      "file_type": "image",
+      "source_file": "public/icons/skitbit.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "hovercraft-media-icon_hovercraft_media_brand",
+      "label": "Hovercraft Media Brand Icon",
+      "file_type": "image",
+      "source_file": "public/icons/hovercraft-media-icon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "freshify-icon_freshify_brand",
+      "label": "Freshify Brand Icon",
+      "file_type": "image",
+      "source_file": "public/icons/freshify-icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "konpo-icon_konpo_brand",
+      "label": "Konpo Brand Icon",
+      "file_type": "image",
+      "source_file": "public/icons/konpo-icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "bionova-icon_bionova_brand",
+      "label": "Bionova Brand Icon",
+      "file_type": "image",
+      "source_file": "public/icons/bionova-icon.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "horizon-icon_horizon_brand",
+      "label": "Horizon Brand Icon",
+      "file_type": "image",
+      "source_file": "public/icons/horizon-icon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "nexus-icon_nexus_brand",
+      "label": "Nexus Brand Icon",
+      "file_type": "image",
+      "source_file": "public/icons/nexus-icon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "wellkies-icon_wellkies_brand",
+      "label": "Wellkies Brand Icon",
+      "file_type": "image",
+      "source_file": "public/icons/wellkies-icon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "capsule-icon_capsule_brand",
+      "label": "Capsule Brand Icon",
+      "file_type": "image",
+      "source_file": "public/icons/capsule-icon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "cta-illustration_huly_cta",
+      "target": "cta-illustration_huly_platform",
+      "relation": "promotes",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/huly_assets/cta-illustration.8178f665.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "hr-hero_huly_hr_feature",
+      "target": "cta-illustration_huly_platform",
+      "relation": "is_feature_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/huly_assets/hr-hero.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "members-hero_huly_members_feature",
+      "target": "cta-illustration_huly_platform",
+      "relation": "is_feature_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/huly_assets/members-hero.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "office-hero_huly_office_feature",
+      "target": "cta-illustration_huly_platform",
+      "relation": "is_feature_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/huly_assets/office-hero.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "planner-hero_huly_planner_feature",
+      "target": "cta-illustration_huly_platform",
+      "relation": "is_feature_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/huly_assets/planner-hero.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chunter-hero_huly_chunter_feature",
+      "target": "cta-illustration_huly_platform",
+      "relation": "is_feature_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/huly_assets/chunter-hero.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "tracker-hero_huly_tracker_feature",
+      "target": "cta-illustration_huly_platform",
+      "relation": "is_feature_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/huly_assets/tracker-hero.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs-hero_huly_docs_feature",
+      "target": "cta-illustration_huly_platform",
+      "relation": "is_feature_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/huly_assets/docs-hero.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github-hero_huly_github_integration",
+      "target": "cta-illustration_huly_platform",
+      "relation": "is_integration_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/huly_assets/github-hero.jpg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "love-huly-hero_huly_testimonial",
+      "target": "cta-illustration_huly_platform",
+      "relation": "promotes",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/huly_assets/love-huly-hero.webp",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "skitbit-white_skitbit_brand_white",
+      "target": "skitbit_skitbit_brand",
+      "relation": "is_variant_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/icons/skitbit-white.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "freshify-icon_freshify_brand",
+      "target": "konpo-icon_konpo_brand",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "public/icons/freshify-icon.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "bionova-icon_bionova_brand",
+      "target": "wellkies-icon_wellkies_brand",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "public/icons/bionova-icon.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "horizon-icon_horizon_brand",
+      "target": "nexus-icon_nexus_brand",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "public/icons/horizon-icon.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "capsule-icon_capsule_brand",
+      "target": "hovercraft-media-icon_hovercraft_media_brand",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "public/icons/capsule-icon.svg",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 850
+}

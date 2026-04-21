@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif5eb76904133277b4_chunk15_animationframes564to640",
+      "label": "Softree Brand Hero Animation Frames 564-640 (Veo AI Cinematic Sequence)",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "animation_id": "ezgif-5eb76904133277b4",
+        "chunk": 16,
+        "total_chunks": 48,
+        "frames_requested": ["ezgif-frame-564.png", "ezgif-frame-568.png", "ezgif-frame-572.png", "ezgif-frame-576.png", "ezgif-frame-580.png", "ezgif-frame-584.png", "ezgif-frame-588.png", "ezgif-frame-592.png", "ezgif-frame-596.png", "ezgif-frame-600.png", "ezgif-frame-604.png", "ezgif-frame-608.png", "ezgif-frame-612.png", "ezgif-frame-616.png", "ezgif-frame-620.png", "ezgif-frame-624.png", "ezgif-frame-628.png", "ezgif-frame-632.png", "ezgif-frame-636.png", "ezgif-frame-640.png"],
+        "frames_available": false,
+        "note": "Frames 564-640 do not exist in the split folder (max frame index is 240). Animation is a Veo AI-generated cinematic brand sequence for Softree featuring a glowing dark tech cube with the Softree 'S' logo and a luminous fiber-optic tree on a dark background, used as hero/brand animation on the Softree website.",
+        "inferred_from": ["ezgif-frame-001.png", "ezgif-frame-120.png"],
+        "content_description": "AI-generated (Veo) cinematic 3D animation; dark background; subjects include a translucent black cube with blue circuit-trace glows and the Softree 'S' brand mark, and a glowing fiber-optic/bioluminescent tree; used as hero visual branding for Softree",
+        "brand": "Softree",
+        "visual_style": "dark cinematic, bioluminescent, 3D render",
+        "tool_watermark": "Veo",
+        "confidence": 0.75
+      }
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 280
+}

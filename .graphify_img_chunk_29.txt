@@ -1,0 +1,20 @@
+public\huly_assets\cta-illustration.8178f665.jpg
+public\huly_assets\notes-mobile.2bf5fcba.jpg
+public\huly_assets\plan-work.26bcf442.jpg
+public\huly_assets\pm.57044e5b.jpg
+public\huly_assets\tasks-notes.69743ddd (1).png
+public\huly_assets\tasks-notes.69743ddd.png
+public\huly_assets\teammates-mobile.8dc948be.jpg
+public\icons\favicon-dark.svg
+public\icons\FLICK.png
+public\icons\HFFB.png
+public\icons\Kami.png
+public\icons\KEJBYKEJ.png
+public\icons\NEEMANS.png
+public\icons\Palladio.png
+public\icons\Persona.png
+public\icons\Poedagarr.png
+public\icons\RICO.png
+public\icons\Shakeup.png
+public\icons\SHKUP.png
+public\icons\Skinny.png

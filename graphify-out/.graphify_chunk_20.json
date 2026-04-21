@@ -1,0 +1,25 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif_frame_324to400_animation_tree_tech_stack",
+      "label": "AI Technology Tree Animation - Frames 324-400 (Out of Range)",
+      "file_type": "image",
+      "source_file": "public/frames/ezgif-frame-324.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "note": "Requested frames 324-400 do not exist in the dataset (only 240 frames available). Based on available frames 200 and 220, the animation depicts a stylized tree with technology brand logos (React, Next.js, Django, Node.js, MongoDB, GSAP, SharePoint, SPFx, Power BI, PowerApps, Power Automate, Dynamics 365, Microsoft 365, Azure AD) arranged as fruit/leaves on its branches, with glowing blue circuit-like roots, labeled 'AI' at the top canopy, rendered in a dark cinematic style using Veo.",
+      "confidence": 0.6,
+      "confidence_type": "INFERRED",
+      "entities_visible": ["AI", "React", "Next.js", "Django", "Node.js", "MongoDB", "GSAP", "SharePoint", "SPFx", "Power BI", "PowerApps", "Power Automate", "Dynamics 365", "Microsoft 365", "Azure AD", "Veo"],
+      "visual_theme": "Technology tree / knowledge tree animation",
+      "animation_context": "Chunk 21 of 48 — late-sequence frames (324-400) exceeding dataset size of 240 frames"
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 280
+}

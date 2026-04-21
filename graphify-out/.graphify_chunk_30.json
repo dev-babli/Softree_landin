@@ -1,0 +1,671 @@
+{
+  "nodes": [
+    {
+      "id": "intercom_logo",
+      "label": "Intercom Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/intercom.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Intercom",
+        "category": "Customer Messaging Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "linear_logo",
+      "label": "Linear Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/linear.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Linear",
+        "category": "Project Management / Issue Tracking SaaS",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "netlify_logo",
+      "label": "Netlify Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/netlify.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Netlify",
+        "category": "Web Hosting / Deployment Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "notion_logo",
+      "label": "Notion Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/notion.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Notion",
+        "category": "Productivity / Collaboration SaaS",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "openai_logo",
+      "label": "OpenAI Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/openai.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "OpenAI",
+        "category": "Artificial Intelligence Research and API Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "slack_logo",
+      "label": "Slack Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/slack.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Slack",
+        "category": "Team Communication Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "spotify_logo",
+      "label": "Spotify Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/spotify.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Spotify",
+        "category": "Music Streaming Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "stripe2_logo",
+      "label": "Stripe Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/stripe2.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Stripe",
+        "category": "Online Payment Processing Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "twitter_logo",
+      "label": "Twitter (X) Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/twitter.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Twitter / X",
+        "category": "Social Media Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "vercel_logo",
+      "label": "Vercel Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/vercel.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Vercel",
+        "category": "Frontend Cloud / Deployment Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "youtube_logo",
+      "label": "YouTube Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/youtube.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "YouTube",
+        "category": "Video Sharing Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "zoom_logo",
+      "label": "Zoom Logo",
+      "file_type": "image",
+      "source_file": "public/images/logo/zoom.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "company": "Zoom",
+        "category": "Video Conferencing Platform",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "note": "File not found on disk; node derived from filename convention"
+      }
+    },
+    {
+      "id": "powerapps_1_multi_device_dashboard",
+      "label": "Power Apps Multi-Device Dashboard Overview",
+      "file_type": "image",
+      "source_file": "public/images/power-apps/1.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Illustrative graphic showing Power Apps running on desktop, laptop, and mobile devices. Screens show a Sales Dashboard with bar charts, an Expense Report form, and an Inventory Management table.",
+        "features_visible": ["Sales Dashboard", "Expense Report", "Inventory Management", "Multi-device support"],
+        "platform": "Microsoft Power Apps",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      }
+    },
+    {
+      "id": "powerapps_2_accelerate_app_development",
+      "label": "Power Apps Accelerate App Development Promotional Banner",
+      "file_type": "image",
+      "source_file": "public/images/power-apps/2.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Promotional banner: 'Accelerate App Development With Microsoft Power Apps - Create secure, scalable business applications quickly.' Shows Power Apps + Muchio logos. Features Fast Development, Secure & Compliant, Scalable Solutions icons. CTA button: 'Power Apps >>'. Microsoft branding.",
+        "features_visible": ["Fast Development", "Secure & Compliant", "Scalable Solutions", "Sales Dashboard", "Expense Report", "Inventory Management"],
+        "platform": "Microsoft Power Apps",
+        "branding": ["Microsoft", "Muchio"],
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      }
+    },
+    {
+      "id": "powerapps_3_model_driven_apps",
+      "label": "Power Apps Model-Driven Apps Screen",
+      "file_type": "image",
+      "source_file": "public/images/power-apps/3.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Shows 'Model-Driven Apps' label with Power Apps logo. Multi-device mockup displaying a CRM-style Safety/Contact management interface with data tables, KPIs, and a donut chart.",
+        "features_visible": ["Model-Driven Apps", "CRM interface", "Safety/Contact management", "Data tables", "KPI cards", "Donut chart"],
+        "platform": "Microsoft Power Apps",
+        "app_type": "Model-Driven",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      }
+    },
+    {
+      "id": "powerapps_4_power_pages",
+      "label": "Power Pages Customer Support Portal",
+      "file_type": "image",
+      "source_file": "public/images/power-apps/4.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Shows 'Power Pages' label. Multi-device mockup of a Customer Support Portal with navigation, resource sections, and data tables visible on desktop and mobile.",
+        "features_visible": ["Power Pages", "Customer Support Portal", "External portal", "Responsive design"],
+        "platform": "Microsoft Power Pages",
+        "app_type": "Power Pages (External Portal)",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      }
+    },
+    {
+      "id": "powerapps_5_custom_apis_ai_builder",
+      "label": "Power Apps Custom APIs and AI Builder",
+      "file_type": "image",
+      "source_file": "public/images/power-apps/5.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Shows 'Custom APIs' and 'AI Builder' labels. Multi-device mockup displaying an AI-Enhanced Workflow dashboard with Key Metrics. Bottom icons: Custom APIs, AI-Powered Logic, Automated Processes. CTA: 'Power Apps >>'.",
+        "features_visible": ["Custom APIs", "AI Builder", "AI-Enhanced Workflow", "Key Metrics dashboard", "AI-Powered Logic", "Automated Processes"],
+        "platform": "Microsoft Power Apps",
+        "app_type": "Custom API / AI Builder",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      }
+    },
+    {
+      "id": "powerapps_ai_copilot_automation",
+      "label": "Power Apps AI Copilot Automation Workflow",
+      "file_type": "image",
+      "source_file": "public/images/power-apps/ai.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Shows a developer at a laptop using Power Apps with an AI Copilot assistant. Workflow steps: Trigger (New Request) -> Automate (Approve, Notify, Update) -> Complete (Task Done). Copilot chat panel shows prompts: 'Create a task approval flow', 'Summarize pending tasks', 'Send reminders to the team'.",
+        "features_visible": ["Power Apps", "AI Copilot", "Workflow automation", "Task approval flow", "Automated notifications", "Copilot chat"],
+        "platform": "Microsoft Power Apps",
+        "app_type": "AI / Copilot",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0
+      }
+    },
+    {
+      "id": "powerapps_business_process_automation",
+      "label": "Power Apps Business Process Automation Illustration",
+      "file_type": "image",
+      "source_file": "public/images/power-apps/business.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Illustration showing a robot (AI/automation) alongside a laptop with charts, a funnel with coins (data/finance processing), gears, and dual monitors with dashboards. Represents business process automation and AI-driven workflows.",
+        "features_visible": ["Business process automation", "AI robot", "Financial analytics", "Data processing", "Dual-monitor dashboard"],
+        "platform": "Microsoft Power Apps",
+        "app_type": "Business Process Automation",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85
+      }
+    },
+    {
+      "id": "powerapps_custom_solutions_illustration",
+      "label": "Power Apps Custom Solutions Cloud Dashboard Illustration",
+      "file_type": "image",
+      "source_file": "public/images/power-apps/custom.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Illustration of a laptop and desktop monitor with dashboards/bar charts, cloud database icons, gears, pie chart, and a Power Apps diamond logo gem. Represents custom cloud-connected solution building.",
+        "features_visible": ["Cloud connectivity", "Custom dashboards", "Data visualization", "Power Apps branding", "Multi-device"],
+        "platform": "Microsoft Power Apps",
+        "app_type": "Custom Solutions",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85
+      }
+    },
+    {
+      "id": "logo_group_saas_integrations",
+      "label": "SaaS Integration Partners Logo Group",
+      "file_type": "concept",
+      "source_file": "public/images/logo/",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Collection of well-known SaaS and platform logos used as integration or partner references on the website.",
+        "companies": ["Intercom", "Linear", "Netlify", "Notion", "OpenAI", "Slack", "Spotify", "Stripe", "Twitter/X", "Vercel", "YouTube", "Zoom"],
+        "confidence": "INFERRED",
+        "confidence_score": 0.8
+      }
+    },
+    {
+      "id": "powerapps_feature_section",
+      "label": "Microsoft Power Apps Feature Section",
+      "file_type": "concept",
+      "source_file": "public/images/power-apps/",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "description": "Group of images used in the Power Apps service/feature section of the Softree website, covering app types and capabilities.",
+        "app_types": ["Canvas Apps", "Model-Driven Apps", "Power Pages", "Custom APIs", "AI Builder", "Copilot Automation"],
+        "platform": "Microsoft Power Apps",
+        "confidence": "INFERRED",
+        "confidence_score": 0.9
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "intercom_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/intercom.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "linear_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/linear.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "netlify_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/netlify.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "notion_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/notion.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "openai_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/openai.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "slack_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/slack.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "spotify_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/spotify.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "stripe2_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/stripe2.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "twitter_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/twitter.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "vercel_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/vercel.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "youtube_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/youtube.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "zoom_logo",
+      "target": "logo_group_saas_integrations",
+      "relation": "member_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/zoom.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "powerapps_1_multi_device_dashboard",
+      "target": "powerapps_feature_section",
+      "relation": "part_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/power-apps/1.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "powerapps_2_accelerate_app_development",
+      "target": "powerapps_feature_section",
+      "relation": "part_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/power-apps/2.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "powerapps_3_model_driven_apps",
+      "target": "powerapps_feature_section",
+      "relation": "part_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/power-apps/3.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "powerapps_4_power_pages",
+      "target": "powerapps_feature_section",
+      "relation": "part_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/power-apps/4.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "powerapps_5_custom_apis_ai_builder",
+      "target": "powerapps_feature_section",
+      "relation": "part_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/power-apps/5.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "powerapps_ai_copilot_automation",
+      "target": "powerapps_feature_section",
+      "relation": "part_of",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/images/power-apps/ai.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "powerapps_business_process_automation",
+      "target": "powerapps_feature_section",
+      "relation": "part_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/power-apps/business.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "powerapps_custom_solutions_illustration",
+      "target": "powerapps_feature_section",
+      "relation": "part_of",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/power-apps/custom.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "powerapps_3_model_driven_apps",
+      "target": "powerapps_1_multi_device_dashboard",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/images/power-apps/3.png",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "powerapps_5_custom_apis_ai_builder",
+      "target": "powerapps_ai_copilot_automation",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/power-apps/5.png",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "openai_logo",
+      "target": "powerapps_5_custom_apis_ai_builder",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/images/logo/openai.svg",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "slack_logo",
+      "target": "powerapps_ai_copilot_automation",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "public/images/logo/slack.svg",
+      "source_location": null,
+      "weight": 0.6
+    },
+    {
+      "source": "netlify_logo",
+      "target": "vercel_logo",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/images/logo/netlify.svg",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "stripe2_logo",
+      "target": "powerapps_business_process_automation",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "public/images/logo/stripe2.svg",
+      "source_location": null,
+      "weight": 0.6
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

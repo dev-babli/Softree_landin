@@ -1,0 +1,389 @@
+{
+  "nodes": [
+    {
+      "id": "bayer_bayer",
+      "label": "Bayer",
+      "file_type": "image",
+      "source_file": "public/images/logo/bayer.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "google_google",
+      "label": "Google",
+      "file_type": "image",
+      "source_file": "public/images/logo/google.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "microsoft_microsoft",
+      "label": "Microsoft",
+      "file_type": "image",
+      "source_file": "public/images/logo/microsoft.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "meta_meta",
+      "label": "Meta",
+      "file_type": "image",
+      "source_file": "public/images/logo/meta.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "nike_nike",
+      "label": "Nike",
+      "file_type": "image",
+      "source_file": "public/images/logo/nike.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "paypal_paypal",
+      "label": "PayPal",
+      "file_type": "image",
+      "source_file": "public/images/logo/paypal.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "samsung_samsung",
+      "label": "Samsung",
+      "file_type": "image",
+      "source_file": "public/images/logo/samsung.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "shopify_shopify",
+      "label": "Shopify",
+      "file_type": "image",
+      "source_file": "public/images/logo/shopify.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "stripe_stripe",
+      "label": "Stripe",
+      "file_type": "image",
+      "source_file": "public/images/logo/stripe.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "tesla_tesla",
+      "label": "Tesla",
+      "file_type": "image",
+      "source_file": "public/images/logo/tesla.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "uber_uber",
+      "label": "Uber",
+      "file_type": "image",
+      "source_file": "public/images/logo/uber.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "adobe_adobe",
+      "label": "Adobe",
+      "file_type": "image",
+      "source_file": "public/images/logo/adobe.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "amazon_amazon",
+      "label": "Amazon",
+      "file_type": "image",
+      "source_file": "public/images/logo/amazon.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "apple_apple",
+      "label": "Apple",
+      "file_type": "image",
+      "source_file": "public/images/logo/apple.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "coinbase_coinbase",
+      "label": "Coinbase",
+      "file_type": "image",
+      "source_file": "public/images/logo/coinbase.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "discord_discord",
+      "label": "Discord",
+      "file_type": "image",
+      "source_file": "public/images/logo/discord.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dropbox_dropbox",
+      "label": "Dropbox",
+      "file_type": "image",
+      "source_file": "public/images/logo/dropbox.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "github_github",
+      "label": "GitHub",
+      "file_type": "image",
+      "source_file": "public/images/logo/github.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "gitlab_gitlab",
+      "label": "GitLab",
+      "file_type": "image",
+      "source_file": "public/images/logo/gitlab.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "hubspot_hubspot",
+      "label": "HubSpot",
+      "file_type": "image",
+      "source_file": "public/images/logo/hubspot.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "google_google",
+      "target": "microsoft_microsoft",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/logo/google.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "google_google",
+      "target": "meta_meta",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/logo/google.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "google_google",
+      "target": "amazon_amazon",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/logo/google.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "google_google",
+      "target": "apple_apple",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/logo/google.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "microsoft_microsoft",
+      "target": "adobe_adobe",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/images/logo/microsoft.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "stripe_stripe",
+      "target": "paypal_paypal",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/logo/stripe.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "stripe_stripe",
+      "target": "coinbase_coinbase",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/images/logo/stripe.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_github",
+      "target": "gitlab_gitlab",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/images/logo/github.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "github_github",
+      "target": "microsoft_microsoft",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/images/logo/github.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "discord_discord",
+      "target": "meta_meta",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/images/logo/discord.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dropbox_dropbox",
+      "target": "google_google",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/images/logo/dropbox.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "shopify_shopify",
+      "target": "amazon_amazon",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "public/images/logo/shopify.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "hubspot_hubspot",
+      "target": "shopify_shopify",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/images/logo/hubspot.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "samsung_samsung",
+      "target": "apple_apple",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "public/images/logo/samsung.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "tesla_tesla",
+      "target": "uber_uber",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "public/images/logo/tesla.svg",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "bayer_bayer",
+      "target": "nike_nike",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.6,
+      "source_file": "public/images/logo/bayer.svg",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 420
+}

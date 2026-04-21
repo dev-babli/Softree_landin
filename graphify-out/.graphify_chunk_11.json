@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif5eb76904133277b4_animation_frames_244_320",
+      "label": "Softree Brand Animation – Fiber Optic Tree Bloom (Frames 244–320)",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "Animation sequence (frames 244–320, chunk 12 of 48) from a Veo-generated brand video for Softree. The animation depicts a glowing fiber optic tree form with blue and pink/magenta light strands rising and blooming outward on a dark background. The trunk follows a sinuous S-shaped path (echoing the Softree 'S' logo), and the canopy fans into a wide arc of shimmering particle-like filaments. This segment represents the mid-to-late phase of the bloom animation. NOTE: Source frame files 244–320 were not present in the repository (frames only go up to 240); this node was inferred from adjacent frames 230 and 240 and the overall animation context.",
+      "animation_sequence": {
+        "frame_range_requested": "244–320",
+        "frame_range_available": "001–240",
+        "frames_missing": true,
+        "inferred_from_frames": [
+          "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-230.png",
+          "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-240.png"
+        ]
+      },
+      "visual_content": {
+        "subject": "fiber optic / particle tree form",
+        "color_palette": ["deep black background", "electric blue", "cyan", "magenta/pink", "white highlights"],
+        "shape_motif": "S-curve trunk with broad mushroom/umbrella canopy of light filaments",
+        "watermark": "Veo",
+        "brand_element": "Softree S-logo silhouette in trunk curve"
+      },
+      "confidence": 0.75
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 320
+}

@@ -1,0 +1,20 @@
+public\images\sharepoint\business-p.png
+public\images\sharepoint\content.png
+public\images\sharepoint\document.png
+public\images\sharepoint\security.png
+public\images\sharepoint\sp.png
+public\images\sharepoint\team.png
+public\images\spfx\3.jpg
+public\images\spfx\5.jpg
+public\images\spfx\6.jpg
+public\images\spfx\7.jpg
+public\images\spfx\browse.png
+public\images\spfx\copy.png
+public\images\spfx\list.png
+public\images\startup\ai.jpg
+public\images\startup\data.jpg
+public\images\startup\engineering.jpg
+public\images\Thumbnail\Automated Request Submission and Approval flow.png
+public\images\Thumbnail\Automated Request Submission and Approval flow2.png
+public\images\Thumbnail\Car Rental.png
+public\images\Thumbnail\Generated image.jpeg

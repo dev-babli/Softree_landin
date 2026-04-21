@@ -1,0 +1,20 @@
+public\images\Thumbnail\Generated image.png
+public\images\Thumbnail\Interview Management System.jpeg
+public\images\Thumbnail\Mastering Sharepoint List relationship with PowerApps.png
+public\images\Thumbnail\Multiple Signeture Approval Process.jpeg
+public\images\Thumbnail\Project Management CanvasApp.png
+public\images\Thumbnail\Request Claim Management.png
+public\images\Thumbnail\Reservation Booking System.png
+public\images\Thumbnail\Sales Invoice Canvas app.png
+public\images\Thumbnail\Shopping Cart Canvas app.png
+public\images\Thumbnail\Time Sheet Management App.png
+public\images\Thumbnail\Travel Agency Multiple Authentication System Canvas App Generated.jpeg
+public\images\Thumbnail\Travel Agency Multiple Authentication System Canvas App.jpeg
+public\images\Thumbnail\Working with Sharepoint List Relationship.png
+public\images\web\herow.png
+public\images\web\manufacturing.jpg
+public\labels\cherry.png
+public\labels\grape.png
+public\labels\lemon-lime.png
+public\labels\strawberry.png
+public\labels\watermelon.png

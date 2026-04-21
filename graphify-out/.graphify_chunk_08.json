@@ -1,0 +1,215 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif5eb76904133277b4_animation_sequence",
+      "label": "Softree Logo Cube Explode Animation (GIF)",
+      "file_type": "image_sequence",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "An 80-frame animation sequence generated with Veo showing a 3D dark cube bearing the Softree 'S' logo on a hexagonal base, which progressively morphs and explodes. The cube starts intact with glowing blue circuit-trace details, transitions through a faceted gem-like form with neon purple/blue internal light stacking, then fully disassembles into flat panels that fan outward from a central hexagonal plinth, culminating in a burst of bright white/blue energy tendrils and particle sparks rising from the center.",
+      "properties": {
+        "frame_count": 80,
+        "frame_range": "004-080",
+        "frame_step": 4,
+        "total_frames_in_chunk": 20,
+        "tool": "Veo (Google AI video generation)",
+        "phases": [
+          "intact cube with circuit glow (frames 004-020)",
+          "faceted morphing gem form with layered neon colors (frames 020-060)",
+          "panel explosion and energy burst (frames 060-080)"
+        ]
+      }
+    },
+    {
+      "id": "softree_logo_cube_object",
+      "label": "Softree 3D Logo Cube",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-004.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "A glossy dark cube with the Softree 'S' logo embossed/glowing on two visible faces, mounted on a black hexagonal base with blue LED accent lighting underneath. Blue circuit-trace or data-flow lines glow on the faces of the cube."
+    },
+    {
+      "id": "softree_logo_gem_morph",
+      "label": "Softree Logo Cube — Faceted Gem Morph Phase",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-060.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "Mid-animation state where the cube has transformed into a multi-faceted gem/diamond shape. Internal layered planes glow with neon purple, blue, and teal, creating a chevron/stack visual. The 'S' logo remains on the top face."
+    },
+    {
+      "id": "softree_logo_explode_panels",
+      "label": "Softree Logo — Exploded Panel Energy Burst",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-080.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "Final animation state showing the cube fully disassembled into flat dark panels arranged radially around a central hexagonal base plinth. Bright white-blue energy tendrils and particle sparks erupt upward from the center, suggesting a release of power or data."
+    },
+    {
+      "id": "softree_brand_identity",
+      "label": "Softree Brand Identity",
+      "file_type": null,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-004.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "The 'S' stylized logo mark representing the Softree brand, visible throughout the animation on the cube faces."
+    },
+    {
+      "id": "veo_ai_video_tool",
+      "label": "Veo (Google AI Video Generation Tool)",
+      "file_type": null,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-004.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "Google's Veo AI video generation model, watermarked in the bottom-right corner of each animation frame, indicating the animation was AI-generated."
+    },
+    {
+      "id": "hexagonal_base_plinth",
+      "label": "Hexagonal Base Plinth",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-004.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "A matte black hexagonal pedestal/plinth on which the Softree logo cube rests throughout the animation. Features blue LED underglow and acts as the anchor point during the explosion phase."
+    }
+  ],
+  "edges": [
+    {
+      "source": "ezgif5eb76904133277b4_animation_sequence",
+      "target": "softree_logo_cube_object",
+      "relation": "contains_frame_depicting",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-004.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ezgif5eb76904133277b4_animation_sequence",
+      "target": "softree_logo_gem_morph",
+      "relation": "contains_frame_depicting",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-060.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ezgif5eb76904133277b4_animation_sequence",
+      "target": "softree_logo_explode_panels",
+      "relation": "contains_frame_depicting",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-080.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "softree_logo_cube_object",
+      "target": "softree_logo_gem_morph",
+      "relation": "transitions_into",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "softree_logo_gem_morph",
+      "target": "softree_logo_explode_panels",
+      "relation": "transitions_into",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "softree_logo_cube_object",
+      "target": "softree_brand_identity",
+      "relation": "displays",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-004.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "softree_logo_gem_morph",
+      "target": "softree_brand_identity",
+      "relation": "displays",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-060.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "softree_logo_cube_object",
+      "target": "hexagonal_base_plinth",
+      "relation": "mounted_on",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-004.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "softree_logo_explode_panels",
+      "target": "hexagonal_base_plinth",
+      "relation": "anchored_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-080.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ezgif5eb76904133277b4_animation_sequence",
+      "target": "veo_ai_video_tool",
+      "relation": "generated_by",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-004.png",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "ezgif5eb76904133277b4_animation_sequence",
+      "target": "softree_brand_identity",
+      "relation": "promotes",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/",
+      "source_location": null,
+      "weight": 0.9
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

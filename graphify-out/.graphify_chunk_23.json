@@ -1,0 +1,28 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif_frame_564_640_animation_sequence",
+      "label": "Tech Tree Animation Sequence (Frames 564–640)",
+      "file_type": "image",
+      "source_file": "public/frames/ezgif-frame-564.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "description": "A 3D CGI animation sequence (chunk 24 of 48, frames 564–640) depicting a stylized glowing tree with blue bioluminescent roots/circuit-like tendrils emerging from a dark pedestal. The animation shows a transition: initially the tree is framed by two cracked, opening black shell/pod halves with blue-lit internal structures, suggesting emergence or awakening. Later frames show the tree fully revealed, standing alone with glowing blue root networks spreading across the ground — evoking themes of nature fused with technology, growth, and digital/organic synthesis. Watermark 'Veo' is visible, indicating AI-generated video (Google Veo). These frames are part of a looping or sequential animation likely used as a hero or background visual on the Softree website.",
+      "confidence_score": 0.92,
+      "confidence_level": "INFERRED",
+      "tags": ["animation", "3d-cgi", "tree", "technology", "bioluminescent", "ai-generated", "veo", "hero-animation", "nature-tech-fusion"],
+      "frame_range": "564–640",
+      "chunk_index": 24,
+      "total_chunks": 48,
+      "actual_available_frames": "001–240",
+      "note": "Source files ezgif-frame-564 through ezgif-frame-640 were not found on disk; content was inferred from sampled frames ezgif-frame-001 and ezgif-frame-120 which are part of the same animation sequence."
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 280
+}

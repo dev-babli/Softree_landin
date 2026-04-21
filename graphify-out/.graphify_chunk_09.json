@@ -1,0 +1,37 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif_frame084to160_glowing_tree_growth_animation",
+      "label": "Glowing Fiber-Optic Tree Growth Animation (Frames 084–160)",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-084.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "animation_type": "EXTRACTED: sequential GIF frames showing a 3D animated tree growing",
+        "frame_range": "EXTRACTED: frames 084 to 160 (every 4th frame sampled)",
+        "frame_count": 20,
+        "visual_subject": "EXTRACTED: glowing neon / fiber-optic tree on a dark background",
+        "color_palette": "EXTRACTED: cyan (light blue), pink/magenta, purple on dark/black background",
+        "animation_progression": "EXTRACTED: tree starts as a small glowing sprout with outstretched branch clusters, grows into a full luminous tree with a twisted trunk and expansive canopy",
+        "trunk_style": "EXTRACTED: twisted/braided glowing trunk with cyan light",
+        "canopy_style": "EXTRACTED: multi-cluster branching canopy with pink/purple glowing fiber-optic tips",
+        "base": "EXTRACTED: dark hexagonal or circular base platform (visible in early frames)",
+        "watermark": "EXTRACTED: 'Veo' logo in bottom-right corner",
+        "generation_tool": "INFERRED: Google Veo AI video generation model (based on 'Veo' watermark)",
+        "render_style": "EXTRACTED: 3D CGI / AI-generated photorealistic render",
+        "mood": "INFERRED: futuristic, magical, technological nature motif",
+        "usage_context": "INFERRED: likely a hero animation or background visual for Softree website branding",
+        "symbolic_meaning": "INFERRED: represents 'Softree' brand identity — fusion of technology (fiber optics, neon glow) and nature (tree form)",
+        "confidence": "EXTRACTED=1.0 for visual observations, INFERRED=0.7 for usage context and symbolic meaning"
+      }
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

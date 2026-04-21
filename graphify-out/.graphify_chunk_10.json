@@ -1,0 +1,29 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif_frame164to240_glowing_tree_animation",
+      "label": "Glowing Neon Tree Animation (Frames 164–240)",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/ezgif-frame-164.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "animation_type": "3D rendered glowing tree morphing sequence",
+        "description": "A sequence of 20 animation frames (164–240, every 4th frame) depicting a neon/fiber-optic style glowing tree on a dark background. The tree transitions from a full, structured tree shape with twisted trunk and expansive luminous canopy (blue, cyan, purple hues) in early frames, to a more dynamic, flowing, wispy form with an undulating S-curve trunk and dispersed particle-like canopy in later frames. The animation conveys organic growth, transformation, and dissolution of the tree structure. Watermark 'Veo' visible in bottom-right corner, indicating AI-generated video content.",
+        "visual_style": "Dark background, neon bioluminescent / fiber-optic aesthetic, blue-cyan-purple color palette",
+        "content_type": "AI-generated animation (Veo)",
+        "frame_range": "164–240",
+        "frame_step": 4,
+        "total_frames_in_chunk": 20,
+        "confidence": 1.0
+      }
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

@@ -1,0 +1,709 @@
+{
+  "nodes": [
+    {
+      "id": "barcode_scanner_app_barcode_scanner_app",
+      "label": "Barcode Scanner App for Audio Equipment Management",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_2026_winter_olympics",
+      "label": "2026 Winter Olympics",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 1-3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_audio_company_client",
+      "label": "Audio Company Client (Lithuania, Europe)",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_equipment_traceability_problem",
+      "label": "Equipment Traceability Problem (Zero Traceability for Missing Stock)",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_off_system_management",
+      "label": "Off-System Equipment Management",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_fo_app",
+      "label": "F&O (Finance & Operations) App",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_wms_app",
+      "label": "WMS (Warehouse Management System) App",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_power_apps_canvas",
+      "label": "Power Apps Canvas",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_power_automate",
+      "label": "Power Automate",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_dataverse",
+      "label": "Dataverse",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_d365_fo",
+      "label": "Dynamics 365 Finance & Operations (D365 F&O)",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4, 7, 10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_transfer_journal_mobile_app",
+      "label": "Transfer Journal Mobile App",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 5",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_outbound_transfer_journal",
+      "label": "Outbound Transfer Journal",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 5, 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_inbound_transfer_journal",
+      "label": "Inbound Transfer Journal",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 5, 9",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_parameter_configuration",
+      "label": "Parameter Configuration",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 5, 6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_warehouse_defaults",
+      "label": "Warehouse Defaults (From/To Warehouse Configuration)",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_scanning_method",
+      "label": "Scanning Method (Camera vs Physical Barcode Scanner)",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 6",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_smart_inventory_validation",
+      "label": "Smart Inventory Validation",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_serialized_items",
+      "label": "Serialized Items Handling",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_non_serialized_items",
+      "label": "Non-Serialized Items Handling",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_location_independence",
+      "label": "Location Independence (No Need to Know Exact Item Location Before Scanning)",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_real_time_integration",
+      "label": "Real-Time Integration with D365 F&O",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_mobile_flexibility",
+      "label": "Mobile Flexibility (Android, Camera or Physical Scanner)",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_ski_jumping_event",
+      "label": "Ski Jumping Event",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_ice_skating_event",
+      "label": "Ice Skating Event",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_bobsleigh_event",
+      "label": "Bobsleigh Event",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_rationale_location_independence",
+      "label": "Rationale: Eliminate Location Pre-Knowledge Requirement to Enable Field Operations",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2, 5, 10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_rationale_power_platform",
+      "label": "Rationale: Power Platform Stack Chosen for Mobile-to-ERP Integration",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_virtual_tables_http_connectors",
+      "label": "Virtual Tables and HTTP Connectors",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "barcode_scanner_app_journal_posting",
+      "label": "Journal Posting to D365 F&O",
+      "file_type": "paper",
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 7",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "barcode_scanner_app_barcode_scanner_app",
+      "target": "barcode_scanner_app_2026_winter_olympics",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 1",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_barcode_scanner_app",
+      "target": "barcode_scanner_app_audio_company_client",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 3",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_audio_company_client",
+      "target": "barcode_scanner_app_2026_winter_olympics",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 3",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_equipment_traceability_problem",
+      "target": "barcode_scanner_app_off_system_management",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_equipment_traceability_problem",
+      "target": "barcode_scanner_app_fo_app",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_equipment_traceability_problem",
+      "target": "barcode_scanner_app_wms_app",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_2026_winter_olympics",
+      "target": "barcode_scanner_app_ski_jumping_event",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "weight": 0.8
+    },
+    {
+      "source": "barcode_scanner_app_2026_winter_olympics",
+      "target": "barcode_scanner_app_ice_skating_event",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "weight": 0.8
+    },
+    {
+      "source": "barcode_scanner_app_2026_winter_olympics",
+      "target": "barcode_scanner_app_bobsleigh_event",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "weight": 0.8
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_power_apps_canvas",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_power_automate",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_dataverse",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_d365_fo",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4, 7",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_dataverse",
+      "target": "barcode_scanner_app_virtual_tables_http_connectors",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_outbound_transfer_journal",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 5",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_inbound_transfer_journal",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 5",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_parameter_configuration",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 5",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_parameter_configuration",
+      "target": "barcode_scanner_app_warehouse_defaults",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 6",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_parameter_configuration",
+      "target": "barcode_scanner_app_scanning_method",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 6",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_outbound_transfer_journal",
+      "target": "barcode_scanner_app_smart_inventory_validation",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 7, 8",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_inbound_transfer_journal",
+      "target": "barcode_scanner_app_smart_inventory_validation",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 9",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_smart_inventory_validation",
+      "target": "barcode_scanner_app_serialized_items",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 8",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_smart_inventory_validation",
+      "target": "barcode_scanner_app_non_serialized_items",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 8",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_outbound_transfer_journal",
+      "target": "barcode_scanner_app_journal_posting",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 7",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_journal_posting",
+      "target": "barcode_scanner_app_d365_fo",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 7",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_location_independence",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 5, 10",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_real_time_integration",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 10",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_transfer_journal_mobile_app",
+      "target": "barcode_scanner_app_mobile_flexibility",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 10",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_barcode_scanner_app",
+      "target": "barcode_scanner_app_equipment_traceability_problem",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_barcode_scanner_app",
+      "target": "barcode_scanner_app_transfer_journal_mobile_app",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 5",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_rationale_location_independence",
+      "target": "barcode_scanner_app_location_independence",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2, 5, 10",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_rationale_location_independence",
+      "target": "barcode_scanner_app_equipment_traceability_problem",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 2",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_rationale_power_platform",
+      "target": "barcode_scanner_app_power_apps_canvas",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "weight": 0.8
+    },
+    {
+      "source": "barcode_scanner_app_rationale_power_platform",
+      "target": "barcode_scanner_app_power_automate",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "weight": 0.8
+    },
+    {
+      "source": "barcode_scanner_app_rationale_power_platform",
+      "target": "barcode_scanner_app_dataverse",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 4",
+      "weight": 0.8
+    },
+    {
+      "source": "barcode_scanner_app_real_time_integration",
+      "target": "barcode_scanner_app_d365_fo",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 10",
+      "weight": 1.0
+    },
+    {
+      "source": "barcode_scanner_app_mobile_flexibility",
+      "target": "barcode_scanner_app_scanning_method",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "public/pdf/Barcode Scanner App.pdf",
+      "source_location": "page 6, 10",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 3200,
+  "output_tokens": 1800
+}

@@ -1,0 +1,20 @@
+public\images\case-study\power-apps\store.png
+public\images\case-study\power-apps\Time Sheet Management App.png
+public\images\case-study\power-apps\time.jpg
+public\images\case-study\power-apps\Travel Agency Multiple Authentication System Canvas App Generated.jpeg
+public\images\case-study\power-apps\Travel Agency Multiple Authentication System Canvas App.jpeg
+public\images\case-study\power-apps\travel.jpeg
+public\images\case-study\power-apps\travel.jpg
+public\images\case-study\power-apps\travel.png
+public\images\case-study\power-apps\Working with Sharepoint List Relationship.png
+public\images\case-study\sharepoint\browse.png
+public\images\case-study\sharepoint\copy.png
+public\images\case-study\sharepoint\custom.png
+public\images\case-study\sharepoint\dynamic.png
+public\images\case-study\sharepoint\fetch.png
+public\images\case-study\sharepoint\folders.png
+public\images\case-study\sharepoint\footer.png
+public\images\case-study\sharepoint\global.png
+public\images\case-study\sharepoint\mfa.png
+public\images\case-study\sharepoint\panel.png
+public\images\case-study\sharepoint\pnp.png

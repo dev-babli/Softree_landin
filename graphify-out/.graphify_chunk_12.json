@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "ezgif5eb76904133277b4_animation_chunk13",
+      "label": "Softree Brand Animation – Chunk 13 (Frames 324–400, Non-Existent)",
+      "file_type": "image",
+      "source_file": "public/ezgif-5eb76904133277b4-png-split/",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "properties": {
+        "chunk": 13,
+        "total_chunks": 48,
+        "requested_frames": ["ezgif-frame-324.png", "ezgif-frame-328.png", "ezgif-frame-332.png", "ezgif-frame-336.png", "ezgif-frame-340.png", "ezgif-frame-344.png", "ezgif-frame-348.png", "ezgif-frame-352.png", "ezgif-frame-356.png", "ezgif-frame-360.png", "ezgif-frame-364.png", "ezgif-frame-368.png", "ezgif-frame-372.png", "ezgif-frame-376.png", "ezgif-frame-380.png", "ezgif-frame-384.png", "ezgif-frame-388.png", "ezgif-frame-392.png", "ezgif-frame-396.png", "ezgif-frame-400.png"],
+        "frames_exist": false,
+        "max_available_frame": 240,
+        "note": "Requested frames 324–400 do not exist; animation sequence only contains frames 001–240. Summary inferred from full animation content.",
+        "animation_summary": "AI-generated brand animation (Veo) for Softree. Begins with a dark 3D cube displaying the Softree 'S' logo with blue circuit-board/data-stream overlays on a glowing octagonal pedestal, transitioning into a luminous fiber-optic neon tree (cyan/purple/pink) that grows and expands against a black background. The animation conveys digital growth, technology, and nature merged — consistent with the Softree brand identity.",
+        "visual_themes": ["brand identity", "3D animation", "tech-nature fusion", "neon/fiber-optic aesthetic", "Softree logo", "glowing tree", "dark background"],
+        "ai_generator": "Veo",
+        "confidence": 0.85
+      }
+    }
+  ],
+  "edges": [],
+  "hyperedges": [],
+  "input_tokens": 1850,
+  "output_tokens": 320
+}
