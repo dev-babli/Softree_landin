@@ -163,6 +163,15 @@ const SoftreeStackTabsLazy = dynamic(
   { loading: () => <div className="min-h-[60vh] w-full bg-[#fcfcfc]" aria-hidden /> }
 )
 
+const SoftreeComposioSectionLazy = dynamic(
+  () =>
+    import("@/components/homepage/SoftreeComposioSection").then((m) => ({
+      default: m.SoftreeComposioSection,
+    })),
+  { loading: () => <div className="min-h-[80vh] w-full bg-[#f6f6f6]" aria-hidden /> }
+)
+
+
 const SoftreeIndustriesSectionLazy = dynamic(
   () =>
     import("@/components/homepage/SoftreeIndustriesSection").then((m) => ({
@@ -256,9 +265,7 @@ function HomepageContent() {
         {/* --- DARK THEME: PRODUCT & HERO SHOWCASE --- */}
         <TrueHulyHero />
 
-        <DeferUntilInView placeholderClassName="min-h-[300vh] bg-[#0a0a0a]">
-          <RigLandingSectionsLazy />
-        </DeferUntilInView>
+
 
         <DeferUntilInView placeholderClassName="min-h-[85vh] bg-black">
           <VirtualOfficeSectionLazy />
@@ -268,11 +275,7 @@ function HomepageContent() {
           <ProductPreviewLazy />
         </DeferUntilInView>
 
-        <DeferUntilInView placeholderClassName="min-h-[100vh] bg-[#0a0a0a]">
-          <div className="w-full">
-            <FeatureProgressSectionLazy />
-          </div>
-        </DeferUntilInView>
+
 
         <DeferUntilInView placeholderClassName="min-h-[620px] bg-[#0e0e0e]">
           <IntroDiagram />
@@ -291,14 +294,7 @@ function HomepageContent() {
           <PerformanceSectionLazy />
         </DeferUntilInView>
 
-        {/* --- LIGHT THEME: FEATURES & ENTERPRISE --- */}
-        <DeferUntilInView placeholderClassName="min-h-[90vh] bg-white">
-          <FeaturesSectionLazy />
-        </DeferUntilInView>
 
-        <DeferUntilInView placeholderClassName="min-h-[90vh] bg-white">
-          <InfrastructureSectionLazy />
-        </DeferUntilInView>
 
         <DeferUntilInView placeholderClassName="min-h-[60vh] bg-white">
           <SoftreeIndustriesSectionLazy />
@@ -309,28 +305,20 @@ function HomepageContent() {
           <WhySoftreeSectionLazy />
         </DeferUntilInView>
 
-        <DeferUntilInView placeholderClassName="min-h-[80vh] bg-neutral-950">
-          <MetricsSectionLazy />
-        </DeferUntilInView>
 
-        <DeferUntilInView placeholderClassName="min-h-[90vh] bg-neutral-950">
-          <IntegrationsSectionLazy />
-        </DeferUntilInView>
 
         <DeferUntilInView placeholderClassName="min-h-[90vh] bg-neutral-950">
           <SecuritySectionLazy />
         </DeferUntilInView>
 
-        <DeferUntilInView placeholderClassName="min-h-[90vh] bg-neutral-950">
-          <DevelopersSectionLazy />
+
+
+        <DeferUntilInView placeholderClassName="min-h-[60vh] bg-[#070707]">
+          <SoftreeMidCTALazy />
         </DeferUntilInView>
 
         <DeferUntilInView placeholderClassName="min-h-[90vh] bg-[#070707]">
           <ForDevelopersSectionLazy />
-        </DeferUntilInView>
-
-        <DeferUntilInView placeholderClassName="min-h-[60vh] bg-[#070707]">
-          <SoftreeMidCTALazy />
         </DeferUntilInView>
 
         {/* --- LIGHT THEME: ECOSYSTEM & BLOG --- */}
@@ -338,14 +326,15 @@ function HomepageContent() {
           <SoftreeStackTabsLazy />
         </DeferUntilInView>
 
+        <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#f6f6f6]">
+          <SoftreeComposioSectionLazy />
+        </DeferUntilInView>
+
         <DeferUntilInView placeholderClassName="min-h-[60vh] bg-white">
           <SoftreeBlogSectionLazy />
         </DeferUntilInView>
 
-        {/* --- DARK THEME: TRUST & FINAL CTAS --- */}
-        <DeferUntilInView placeholderClassName="min-h-[70vh] bg-neutral-950">
-          <OptimusTestimonialsSectionLazy />
-        </DeferUntilInView>
+
 
         <DeferUntilInView placeholderClassName="min-h-[70vh] bg-black">
           <TestimonialsSectionLazy />

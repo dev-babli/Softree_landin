@@ -176,8 +176,8 @@ function WorkflowCanvas() {
           </svg>
         </div>
         <p className="text-[14px] leading-[1.4] tracking-tight">
-          <span className="font-semibold text-[#28381c]">AI-powered call simulation, </span>
-          <span className="text-[#6c7860]">designed for real-world nuance.</span>
+          <span className="font-semibold text-[#28381c]">Enterprise-scale architecture, </span>
+          <span className="text-[#6c7860]">designed for global resilience.</span>
         </p>
       </div>
 
@@ -233,7 +233,7 @@ export default function StatShowcaseSection() {
           style={{ fontSize: "clamp(2.4rem, 5.5vw, 4.25rem)" }}
         >
           {/* Word 1 */}
-          <span className="inline-block">Roleplay</span>
+          <span className="inline-block">Software</span>
 
           {/* Inline: circular image + rolling stat pill */}
           <span className="inline-flex items-center gap-2 pl-[0.05em] align-middle">
@@ -259,10 +259,10 @@ export default function StatShowcaseSection() {
           </span>{" "}
 
           {/* Word 2 */}
-          <span className="inline-block">and QA</span>
+          <span className="inline-block">and Systems</span>
 
           {/* Bottom line */}
-          <span className="block">that&apos;s real-world ready</span>
+          <span className="block">that scale globally</span>
         </h2>
 
         {/* ── Canvas ── */}

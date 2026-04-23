@@ -134,7 +134,7 @@ export function SoftreeBlogSection() {
 
           {/* Card 2 */}
           <motion.a
-            href="/blog/introducing-truehuly"
+            href="/blog/introducing-softree-os"
             className="group/calloutCard bg-transparent relative flex h-full w-full max-w-[617px] flex-col overflow-hidden rounded-lg lg:rounded-xl"
             target="_self"
             initial="unhovered"
@@ -172,7 +172,7 @@ export function SoftreeBlogSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
                 >
-                  Introducing TrueHuly: Our most powerful integrated suite yet
+                  Introducing Softree OS: Our most powerful integrated suite yet
                 </motion.h3>
               </div>
             </div>

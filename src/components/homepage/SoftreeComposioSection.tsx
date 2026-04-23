@@ -1,425 +1,372 @@
 "use client"
 
-import { useRef, useEffect, useState, useCallback } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const INTEGRATION_CARDS = [
-  { id: 1, top: "30px", left: "20px", label: "Draft replies to this week's emails", icons: ["gmail"] },
-  { id: 2, top: "80px", left: "250px", label: "Schedule a standup recap", icons: ["slack", "linear"] },
-  { id: 3, top: "120px", left: "60px", label: "Triage new support tickets", icons: ["zendesk", "linear"] },
-  { id: 4, top: "170px", left: "320px", label: "Monitor uptime and alert on Slack", icons: ["sentry", "slack"] },
-  { id: 5, top: "210px", left: "140px", label: "Create a PR and post to #engineering", icons: ["github", "slack"] },
-  { id: 6, top: "260px", left: "30px", label: "Update dependencies and run tests", icons: ["github"] },
-  { id: 7, top: "300px", left: "240px", label: "Check errors and create tickets", icons: ["sentry", "linear"] },
+const FLOATING_CARDS = [
+  { id: 1, top: "25px", left: "15px", label: "Sync CRM contacts to spreadsheet", icons: ["hubspot"] },
+  { id: 2, top: "70px", left: "215px", label: "Create a PR and post to #engineering", icons: ["github", "slack"] },
+  { id: 3, top: "125px", left: "45px", label: "File a ticket for this bug", icons: ["linear"] }, // The blue striated circle is mapped as a single icon representing Linear for this context
+  { id: 4, top: "185px", left: "240px", label: "Check errors and create tickets", icons: ["sentry", "linear"] },
+  { id: 5, top: "230px", left: "25px", label: "Deploy to staging", icons: ["vercel"] }, // Black triangle mapped to vercel
+  { id: 6, top: "285px", left: "200px", label: "Triage new support tickets", icons: ["zendesk", "linear"] },
+  { id: 7, top: "330px", left: "55px", label: "Schedule a standup recap", icons: ["slack", "linear"] },
 ]
 
+interface AgentLog {
+  mode: "prompt" | "cmd" | "success"
+  text: string
+}
+
 interface AgentData {
-  name: string
-  status: string
+  title: string
   icons: string[]
-  terminalLines: string[]
+  action: string
+  logs: AgentLog[]
 }
 
 const AGENTS: AgentData[] = [
-  {
-    name: "Email Agent",
-    status: "Labeled 3 emails",
-    icons: ["gmail", "googlecalendar"],
-    terminalLines: [
-      "$ softree.execute(GMAIL_LABEL_EMAILS,",
-      "  {filter: 'is:unread category:primary'})",
-      "→ labeled 3 emails as 'Action Required'",
-      "$ softree.execute(GCAL_CREATE_EVENT,",
-      "  {title: 'Follow-up: Q3 Budget'})",
-      "→ event created for tomorrow 10:00 AM",
-    ],
+  { 
+    title: "Support Agent", icons: ["notion", "github", "slack"], action: "Escalated to #ops",
+    logs: [
+      { mode: "prompt", text: "$" },
+      { mode: "cmd", text: "softree.execute(GITHUB_GET_LINEAR_ISSUE," },
+      { mode: "cmd", text: "  {id: 'GH-482'})" },
+      { mode: "success", text: "→ ✓ status: \"open\", assignee: null" },
+      { mode: "prompt", text: "$" },
+      { mode: "cmd", text: "softree.execute(GITHUB_ADD_LABELS_TO_AN_ISSUE," },
+      { mode: "cmd", text: "  {labels: ['bug']})" }
+    ]
   },
-  {
-    name: "Slack Agent",
-    status: "Posted digest",
-    icons: ["slack", "googledocs"],
-    terminalLines: [
-      "$ softree.execute(SLACK_SEND_MESSAGE,",
-      "  {channel: '#ops'})",
-      "→ posted daily digest to #ops",
-      '$ softree.execute(GDOCS_APPEND,',
-      '  {doc: "Meeting Notes"})',
-      "→ synced 4 highlights from #standup",
-    ],
+  { 
+    title: "Email Agent", icons: ["gmail", "googlecalendar"], action: "Scheduled follow-up",
+    logs: [
+      { mode: "prompt", text: "$" },
+      { mode: "cmd", text: "softree.execute(GOOGLECALENDAR_CREATE_EVENT," },
+      { mode: "cmd", text: "  {title: 'Follow-up'})" },
+      { mode: "success", text: "→ ✓ event created: Mar 3, 2pm" },
+      { mode: "prompt", text: "$" },
+      { mode: "cmd", text: "softree.execute(GMAIL_BATCH_MODIFY_MESSAGES," },
+      { mode: "cmd", text: "  {archive: true})" },
+      { mode: "success", text: "→ ✓ archived 12 threads" }
+    ]
   },
-  {
-    name: "SQL Agent",
-    status: "Optimized slow query",
-    icons: ["supabase", "googlesheets"],
-    terminalLines: [
-      "$ softree.execute(SUPABASE_RUN_QUERY,",
-      '  {query: "EXPLAIN ANALYZE SELECT..."})',
-      "→ identified 2 sequential scans",
-      "$ softree.execute(SHEETS_EXPORT,",
-      '  {sheet: "Performance Log"})',
-      "→ exported optimization report",
-    ],
+  { 
+    title: "Slack Agent", icons: ["slack", "googledocs"], action: "Synced channel topic",
+    logs: [
+      { mode: "prompt", text: "$" },
+      { mode: "cmd", text: "softree.execute(SLACK_SEND_MESSAGE," },
+      { mode: "cmd", text: "  {channel: '#engineering'})" },
+      { mode: "success", text: "→ ✓ posted daily digest" }
+    ]
   },
-  {
-    name: "Code Review Agent",
-    status: "Reviewed PR #127",
-    icons: ["github", "linear"],
-    terminalLines: [
-      "$ softree.execute(GITHUB_REVIEW_PR,",
-      "  {repo: 'main', pr: 127})",
-      "→ approved with 2 suggestions",
-      "$ softree.execute(LINEAR_UPDATE_ISSUE,",
-      '  {id: "ENG-482", status: "Done"})',
-      "→ moved issue to Done column",
-    ],
+  { 
+    title: "SQL Agent", icons: ["supabase", "googlesheets"], action: "Optimized slow query",
+    logs: [
+      { mode: "prompt", text: "$" },
+      { mode: "cmd", text: "softree.execute(SUPABASE_RUN_QUERY," },
+      { mode: "cmd", text: "  {query: \"EXPLAIN ANALYZE...\"})" },
+      { mode: "success", text: "→ ✓ exported sequence scan" }
+    ]
   },
-  {
-    name: "Research Agent",
-    status: "Saved to workspace",
-    icons: ["firecrawl", "notion"],
-    terminalLines: [
-      "$ softree.execute(FIRECRAWL_SCRAPE,",
-      '  {url: "arxiv.org/abs/2406.1234"})',
-      "→ extracted paper summary",
-      "$ softree.execute(NOTION_ADD_PAGE_CONTENT,",
-      '  {page: "Research DB"})',
-      "→ saved findings to workspace",
-    ],
+  { 
+    title: "Code Review Agent", icons: ["github", "linear"], action: "Added comments",
+    logs: [
+      { mode: "prompt", text: "$" },
+      { mode: "cmd", text: "softree.execute(GITHUB_REVIEW_PR," },
+      { mode: "cmd", text: "  {repo: 'main', pr: 127})" },
+      { mode: "success", text: "→ ✓ approved with 2 suggestions" }
+    ]
+  },
+  { 
+    title: "Research Agent", icons: ["firecrawl", "notion"], action: "Saved to workspace",
+    logs: [
+      { mode: "prompt", text: "$" },
+      { mode: "cmd", text: "softree.execute(FIRECRAWL_SCRAPE," },
+      { mode: "cmd", text: "  {url: \"arxiv.org/abs/2406\"})" },
+      { mode: "success", text: "→ ✓ extracted summary to workspace" }
+    ]
   },
 ]
 
-const LOGO_MAP: Record<string, string> = {
-  gmail: "https://logos.composio.dev/api/gmail",
-  slack: "https://logos.composio.dev/api/slack",
-  linear: "https://logos.composio.dev/api/linear",
-  zendesk: "https://logos.composio.dev/api/zendesk",
-  sentry: "https://logos.composio.dev/api/sentry",
-  github: "https://logos.composio.dev/api/github",
-  notion: "https://logos.composio.dev/api/notion",
-  googlecalendar: "https://logos.composio.dev/api/googlecalendar",
-  googledocs: "https://logos.composio.dev/api/googledocs",
-  supabase: "https://logos.composio.dev/api/supabase",
-  googlesheets: "https://logos.composio.dev/api/googlesheets",
-  firecrawl: "https://logos.composio.dev/api/firecrawl",
+function Typewriter({ logs }: { logs: AgentLog[] }) {
+  const [typedChars, setTypedChars] = useState(0);
+
+  useEffect(() => {
+    let current = 0;
+    const interval = setInterval(() => {
+      current += 3; // Typing speed (chars per tick)
+      setTypedChars(current);
+    }, 15);
+    return () => clearInterval(interval);
+  }, [logs]);
+
+  let charsProcessed = 0;
+
+  return (
+    <div className="flex flex-col gap-0.5 mt-2 overflow-hidden flex-1 select-none">
+      {logs.map((log, index) => {
+        const start = charsProcessed;
+        const lineLen = log.text.length;
+        charsProcessed += lineLen;
+
+        if (typedChars < start) return null;
+
+        const visibleCount = Math.min(typedChars - start, lineLen);
+        const text = log.text.substring(0, visibleCount);
+
+        let colorStyle = "text-white/60";
+        if (log.mode === "prompt") colorStyle = "text-emerald-400/50";
+        if (log.mode === "cmd") colorStyle = "text-emerald-300";
+        if (log.mode === "success") colorStyle = "text-emerald-400 font-medium";
+
+        return (
+          <div key={index} className={`font-mono text-[9px] leading-[1.6] ${colorStyle}`}>
+            {text}
+            {index === logs.length - 1 && typedChars >= charsProcessed && (
+               <motion.span
+                 animate={{ opacity: [1, 0, 1] }}
+                 transition={{ repeat: Infinity, duration: 0.8 }}
+                 className="inline-block w-[5px] h-[10px] bg-emerald-400 ml-1 translate-y-[2px]"
+               />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
-const DEFAULT_TERMINAL_LINES = [
-  "$",
-  "",
-  "softree.execute(NOTION_ADD_PAGE_CONTENT,",
-  "  {page: 'runbook'})",
-  "→ appended 3 blocks to \"Incident",
-  '  Runbook"',
-  "$ softree.execute(SLACK_SEND_MESSAGE,",
-  "  {channel: '#ops'})",
-]
+function HoverableAgentCard({ agent }: { agent: AgentData }) {
+  const [hovered, setHovered] = useState(false);
 
-function LiveTerminalCard({ lines, isDefault }: { lines: string[]; isDefault: boolean }) {
   return (
-    <div className="relative flex h-full flex-col overflow-hidden rounded-lg border border-white/10 bg-[#0d1a14] p-4">
-      {/* Header */}
-      <div className="mb-3 flex items-center gap-2">
-        <motion.span
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="size-[6px] rounded-full bg-[#3fffdd] shadow-[0_0_6px_rgba(63,255,221,0.6)]"
-        />
-        <span className="font-mono text-[10px] text-[#3fffdd]/80 tracking-wider uppercase">
-          live terminal
-        </span>
-      </div>
-
-      {/* Terminal Content */}
-      <div className="flex-1 overflow-hidden font-mono text-[11px] leading-[1.7]">
-        <AnimatePresence mode="wait">
+    <div 
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative flex h-[150px] flex-col"
+    >
+      <AnimatePresence mode="wait">
+        {hovered ? (
           <motion.div
-            key={isDefault ? "default" : lines.join("")}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
+            key="terminal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="absolute inset-0 flex flex-col rounded-[2px] border border-emerald-400/30 bg-[#0d1511] p-3 overflow-hidden z-10"
           >
-            {lines.map((line, i) => (
-              <div key={i} className={
-                line.startsWith("$") 
-                  ? "text-white/90" 
-                  : line.startsWith("→") 
-                    ? "text-[#3fffdd]/80" 
-                    : "text-white/50"
-              }>
-                {line || "\u00A0"}
-              </div>
-            ))}
+            <div className="flex items-center gap-1.5 mb-1 shrink-0">
+              <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="uppercase text-emerald-400/80 font-mono text-[9px] tracking-widest">live terminal</span>
+            </div>
+            <Typewriter logs={agent.logs} />
           </motion.div>
-        </AnimatePresence>
-      </div>
+        ) : (
+          <motion.div
+            key="card"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="absolute inset-0 flex flex-col justify-between rounded-[2px] border border-white/10 bg-white/5 p-3 overflow-hidden"
+          >
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-white text-xs tracking-[-0.24px]">
+                {agent.title}
+              </span>
+              <span className="size-1.5 rounded-full bg-emerald-400/50" />
+            </div>
+            
+            <div className="mt-3 flex items-center gap-2">
+              {agent.icons.map((icon) => (
+                <img 
+                  key={icon} 
+                  alt={icon} 
+                  className="size-5 rounded-[4px]" 
+                  src={`https://logos.composio.dev/api/${icon}`} 
+                  draggable="false"
+                />
+              ))}
+            </div>
+
+            <div className="mt-auto pt-3">
+              <p className="truncate font-mono text-[10px] text-white/40 tracking-[-0.22px]">
+                {agent.action}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
 
-function AgentCard({
-  agent,
-  isHovered,
-  onHover,
-  onLeave,
-}: {
-  agent: AgentData
-  isHovered: boolean
-  onHover: () => void
-  onLeave: () => void
-}) {
-  return (
-    <motion.div
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      animate={{
-        borderColor: isHovered ? "rgba(63, 255, 221, 0.3)" : "rgba(255, 255, 255, 0.08)",
-        backgroundColor: isHovered ? "rgba(255, 255, 255, 0.07)" : "rgba(255, 255, 255, 0.03)",
-      }}
-      transition={{ duration: 0.25 }}
-      className="relative flex h-full cursor-pointer flex-col justify-between rounded-lg border p-4"
-    >
-      {/* Agent Name + Active Dot */}
-      <div className="flex items-center justify-between">
-        <span className="font-mono text-[12px] text-neutral-200 tracking-tight">{agent.name}</span>
-        <motion.span
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="size-[6px] rounded-full bg-[#3fffdd] shadow-[0_0_6px_rgba(63,255,221,0.5)]"
-        />
-      </div>
-
-      {/* Integration Icons */}
-      <div className="mt-3 flex items-center gap-1.5">
-        {agent.icons.map((icon) => (
-          <motion.img
-            key={icon}
-            src={LOGO_MAP[icon]}
-            animate={{ opacity: isHovered ? 1 : 0.6 }}
-            transition={{ duration: 0.2 }}
-            className="size-[22px] rounded-[4px]"
-            alt={icon}
-          />
-        ))}
-      </div>
-
-      {/* Status Text (slides up on hover) */}
-      <div className="mt-auto pt-6 overflow-hidden h-[20px]">
-        <motion.p
-          animate={{ y: isHovered ? 0 : 6, opacity: isHovered ? 0.9 : 0.4 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className="truncate font-mono text-[10px] text-neutral-400 tracking-tight"
-        >
-          {agent.status}
-        </motion.p>
-      </div>
-    </motion.div>
-  )
-}
-
 export function SoftreeComposioSection() {
-  const [hoveredAgent, setHoveredAgent] = useState<number | null>(null)
-
-  const terminalLines = hoveredAgent !== null ? AGENTS[hoveredAgent].terminalLines : DEFAULT_TERMINAL_LINES
-
   return (
     <section className="flex w-full justify-center bg-[#F6F6F6] pt-16 pb-0 lg:pb-16 font-sans">
       <div className="w-full max-w-[1240px] lg:px-0">
         
-        {/* Header Section */}
+        {/* Header Elements */}
         <div className="flex flex-col gap-8 px-4 lg:px-0">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="flex h-6 items-center gap-2 px-2 py-1.5"
-          >
+          <div className="flex h-6 items-center gap-2 px-2 py-1.5">
             <div className="size-[5.82px] bg-black"></div>
-            <span className="font-mono text-black text-sm leading-normal tracking-[-0.28px]">ZERO CODE TO FULL CONTROL</span>
-          </motion.div>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="max-w-[474px] text-3xl text-black leading-[0.9] md:text-4xl lg:text-[48px] font-medium"
-          >
+            <span className="font-mono text-black text-sm leading-normal tracking-[-0.28px] uppercase">
+              Zero code to full control
+            </span>
+          </div>
+          <h2 className="max-w-[474px] text-3xl text-black leading-[0.9] md:text-4xl lg:text-[48px]">
             One product, every workflow
-          </motion.h2>
+          </h2>
         </div>
 
-        <div className="relative mt-16 flex flex-col gap-8 lg:gap-12 px-4 lg:px-0">
+        <div className="relative mt-16">
           
-          {/* Card A: Softree For You (Light) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex h-auto w-full flex-col overflow-hidden bg-white p-6 md:p-8 lg:h-[450px] lg:flex-row lg:p-12 shadow-sm border border-neutral-200/50"
-          >
-            <div className="flex w-full flex-col justify-between gap-6 pr-0 lg:w-[340px] lg:shrink-0 lg:gap-0 lg:pr-10">
+          {/* Light Theme: Softree FOR YOU */}
+          <div className="flex h-auto w-full flex-col overflow-hidden bg-white p-6 md:p-8 lg:h-[450px] lg:flex-row lg:p-12 mb-0">
+            <div className="flex w-full flex-col justify-between gap-6 pr-0 lg:w-[340px] lg:shrink-0 lg:gap-0 lg:pr-10 z-10">
               <div className="flex flex-col gap-[18px]">
                 <div className="flex items-center gap-2.5">
-                  <span className="font-semibold text-2xl text-neutral-900 leading-[1.2]">Softree</span>
-                  <span className="rounded-[4px] border border-[#ff715b] px-1.5 py-0.5 font-mono text-[#ff715b] text-sm leading-normal">FOR YOU</span>
+                  <span className="font-medium text-2xl text-black leading-[1.2]">Softree</span>
+                  <span className="rounded-[4px] border border-blue-600 px-1.5 py-0.5 font-mono text-blue-600 text-xs leading-normal uppercase">
+                    For You
+                  </span>
                 </div>
-                <p className="text-base text-neutral-600 leading-[1.5]">
-                  Turn VS Code, Cursor, or any MCP client into an agent that executes across all your apps. Go from asking questions to doing work.
+                <p className="text-[15px] text-black leading-[1.4] opacity-80 max-w-[280px]">
+                  Turn Claude Code, Cursor, or any MCP client into an agent that executes across all your apps. Go from asking questions to doing work.
                 </p>
-                <p className="text-base text-neutral-600 leading-[1.5]">
+                <p className="text-[15px] text-black leading-[1.4] opacity-80 max-w-[280px]">
                   Every tool comes production-ready — authenticated, optimized, and reliable. No setup required.
                 </p>
               </div>
-              <a href="#" className="inline-flex w-fit items-center justify-center bg-black px-4 py-2 font-mono text-sm text-white leading-normal tracking-[-0.28px] hover:bg-neutral-800 transition-colors">
-                LEARN MORE
+              <a 
+                className="inline-flex w-fit items-center justify-center bg-black px-3 py-1.5 font-mono text-xs text-white leading-normal tracking-[-0.28px] hover:bg-neutral-800 transition-colors uppercase" 
+                href="#"
+              >
+                Learn More
               </a>
             </div>
 
-            {/* Terminal Multi-Layer Graphics */}
-            <div className="relative mt-6 h-[380px] overflow-hidden p-2 lg:-m-2 lg:mt-0 lg:h-auto lg:flex-1 bg-neutral-50 rounded-xl border border-neutral-100">
-              {/* Terminal Window (Background) */}
-              <div className="absolute top-8 right-0 h-[85%] w-[65%] shadow-2xl rounded-lg overflow-hidden border border-[#e0e0e0] flex flex-col">
-                <div className="flex items-center gap-2 bg-[#E8E8E8] px-3 py-2 shrink-0">
+            <div className="relative mt-6 lg:mt-0 h-[400px] lg:h-auto lg:flex-1 w-full right-0">
+              
+              {/* Background Faux Terminal Window */}
+              <div className="absolute top-0 right-0 h-[90%] w-[60%] z-0 rounded-t-lg overflow-hidden border border-[#e0e0e0] opacity-80 translate-y-[5%]">
+                <div className="flex items-center gap-2 bg-[#E8E8E8] px-3 py-2 border-b border-[#ddd]">
                   <div className="flex items-center gap-1.5">
-                    <div className="h-[11px] w-[11px] rounded-full bg-[#ff5f57]"></div>
-                    <div className="h-[11px] w-[11px] rounded-full bg-[#febc2e]"></div>
-                    <div className="h-[11px] w-[11px] rounded-full bg-[#28c840]"></div>
+                    <div className="h-[10px] w-[10px] rounded-full bg-[#ff5f57]"></div>
+                    <div className="h-[10px] w-[10px] rounded-full bg-[#febc2e]"></div>
+                    <div className="h-[10px] w-[10px] rounded-full bg-[#28c840]"></div>
                   </div>
-                  <span className="flex-1 text-left font-mono text-[#999] text-[10px] ml-2 tracking-tight">user — ✻ Softree AI — softree</span>
+                  <span className="flex-1 text-left font-mono text-[#999] text-[9px] tracking-tight ml-2">
+                    user — ✻ Claude Code — claude
+                  </span>
                 </div>
-                <div className="flex-1 bg-[#F6F6F6] p-4 font-mono text-[9px] leading-[1.6] overflow-hidden">
-                  <div className="select-none text-[#D87756] whitespace-pre opacity-90" style={{ fontSize: '5px', lineHeight: '1.2' }}>
-{` ███████╗  ██████╗  ███████╗ ████████╗ ██████╗  ███████╗ ███████╗
- ██╔════╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔══██╗ ██╔════╝ ██╔════╝
- ███████╗ ██║   ██║ █████╗      ██║    ██████╔╝ █████╗   █████╗  
- ╚════██║ ██║   ██║ ██╔══╝      ██║    ██╔══██╗ ██╔══╝   ██╔══╝  
- ███████║ ╚██████╔╝ ██║         ██║    ██║  ██║ ███████╗ ███████╗
- ╚══════╝  ╚═════╝  ╚═╝         ╚═╝    ╚═╝  ╚═╝ ╚══════╝ ╚══════╝`}
+                <div className="h-full bg-[#F6F6F6] p-4 font-mono text-[9px] leading-[1.7]">
+                  <div 
+                    className="select-none overflow-hidden text-[#D87756]" 
+                    style={{ fontSize: "5px", lineHeight: "1.2", fontFamily: "monospace", whiteSpace: "pre" }}
+                  >
+{`  ██████╗██╗      █████╗ ██╗   ██╗██████╗ ███████╗
+ ██╔════╝██║     ██╔══██╗██║   ██║██╔══██╗██╔════╝
+ ██║     ██║     ███████║██║   ██║██║  ██║█████╗
+ ██║     ██║     ██╔══██║██║   ██║██║  ██║██╔══╝
+ ╚██████╗███████╗██║  ██║╚██████╔╝██████╔╝███████╗
+  ╚═════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝`}
                   </div>
-                  <div className="mt-4 flex flex-col gap-0.5 text-[#999]">
-                    <div>v1.0.42</div>
-                    <div>Softree Engine 2.0 · Pro Max</div>
-                    <div>/Users/softree/workspace</div>
+                  <div className="mt-4 flex flex-col gap-0.5">
+                    <div className="text-[#999]">v2.1.50</div>
+                    <div className="text-[#999]">Opus 4.6 · Claude Max</div>
+                    <div className="text-[#999]">/Users/dev/projects/app</div>
                   </div>
-                  <div className="mt-8 flex items-center gap-2 border-[#ddd] border-t pt-4">
-                    <span className="text-[#333] font-bold">❯</span>
-                    <motion.span 
-                      animate={{ opacity: [1, 0] }}
-                      transition={{ repeat: Infinity, duration: 0.8 }}
-                      className="inline-block h-[13px] w-1 bg-[#333]"
-                    />
-                    <span className="text-[#bbb]">try &quot;optimize my cloud budget&quot;</span>
+                  <div className="mt-8 flex items-center gap-1.5 border-[#ddd] border-t pt-4">
+                    <span className="text-[#333]">❯</span>
+                    <span className="text-[#bbb]">try &quot;fix lint errors&quot;</span>
                   </div>
-                  <div className="mt-4 flex justify-between text-[#bbb] text-[9px] opacity-80">
+                  <div className="mt-2 flex justify-between text-[#bbb] text-[8px]">
                     <span>? for shortcuts</span>
                     <span>/ide for <span className="text-[#8B5CF6]">Cursor</span></span>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Cards (Foreground) */}
-              {INTEGRATION_CARDS.map((card, idx) => (
-                <motion.div
-                  key={card.id}
-                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ 
-                    delay: 0.3 + idx * 0.1, 
-                    duration: 0.5,
-                    ease: "easeOut"
-                  }}
-                  whileHover={{ 
-                    y: -5, 
-                    scale: 1.02,
-                    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                  }}
-                  className="absolute bg-white border border-[#e0e0e0] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.08)] rounded-lg p-3 z-20 cursor-default"
-                  style={{ 
-                    top: card.top, 
-                    left: card.left,
-                    maxWidth: '280px'
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex shrink-0 items-center -space-x-1.5">
+              {/* Scattered Integration Cards overlaying the terminal */}
+              <div className="absolute inset-0 z-10 pointer-events-none">
+                {FLOATING_CARDS.map((card, idx) => (
+                  <motion.div
+                    key={card.id}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 + 0.3, duration: 0.5, ease: "easeOut" }}
+                    animate={{ y: [0, -3, 0] }}
+                    className="absolute border border-[#e0e0e0] bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.06)] hover:shadow-[4px_6px_0px_0px_rgba(0,0,0,0.1)] transition-shadow duration-300 pointer-events-auto cursor-default flex items-center"
+                    style={{ 
+                      top: card.top, 
+                      left: card.left, 
+                      padding: "6px 12px",
+                      borderRadius: "2px"
+                    }}
+                  >
+                    <div className="flex shrink-0 items-center justify-center -space-x-1 mr-2 opacity-90">
                       {card.icons.map((icon) => (
                         <img 
-                          key={icon}
+                          key={icon} 
                           alt={icon} 
-                          className="h-5 w-5 rounded-[4px] border border-white shadow-sm" 
-                          src={LOGO_MAP[icon]} 
+                          className="h-4 w-4 object-cover z-10" 
+                          src={`https://logos.composio.dev/api/${icon}`} 
+                          draggable="false"
                         />
                       ))}
                     </div>
-                    <span className="whitespace-nowrap font-medium text-neutral-700 text-[12px] pr-2">
+                    <span className="whitespace-nowrap font-medium text-[#444] text-[11px] tracking-tight">
                       {card.label}
                     </span>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Card B: Softree Platform (Dark) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex h-auto w-full flex-col overflow-hidden bg-black px-6 py-8 md:p-8 lg:h-[450px] lg:flex-row lg:p-12 text-white"
-          >
-            {/* Left: Text + Code */}
+          {/* Dark Theme: Softree PLATFORM */}
+          <div className="flex h-auto w-full flex-col overflow-hidden bg-[#151515] px-6 py-10 md:p-10 lg:h-[450px] lg:flex-row lg:p-12">
+            
             <div className="flex w-full flex-col justify-between gap-6 pr-0 lg:w-[340px] lg:shrink-0 lg:gap-0 lg:pr-10">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-2.5">
-                  <span className="font-semibold text-2xl text-white leading-[1.2]">Softree</span>
-                  <span className="rounded-[4px] border border-[#3fffdd]/70 px-1.5 py-0.5 font-mono text-[#3fffdd] text-sm leading-normal">PLATFORM</span>
+                  <span className="font-medium text-2xl text-white leading-[1.2]">Softree</span>
+                  <span className="rounded-[4px] border border-[rgba(63,255,221,0.5)] px-1.5 py-0.5 font-mono text-emerald-400 text-xs leading-normal uppercase">
+                    Platform
+                  </span>
                 </div>
-                <p className="text-base text-neutral-400 leading-[1.5]">
+                <p className="text-[15px] text-white leading-[1.4] opacity-80 max-w-[280px]">
                   Your agent has the intelligence. Now let it execute. Go from chatbot to general-purpose agent in five lines of code.
                 </p>
               </div>
-
-              {/* Code Snippet */}
-              <div className="rounded-md border border-white/10 bg-white/5 p-4 font-mono text-[11px] text-white/80 leading-[1.6] my-4 lg:my-0">
-                <code className="block">
-                  <span className="text-[#3fffdd]">tools</span> = session.tools()<br />
-                  <span className="text-[#5b9cf4]">agent</span> = Agent(<br />
-                  &nbsp;&nbsp;name=<span className="text-[#f0a46c]">&quot;Assistant&quot;</span>,<br />
-                  &nbsp;&nbsp;tools=tools,<br />
-                  )
+              <pre className="rounded-[2px] border border-white/10 bg-white/5 p-4 font-mono text-[10px] text-white/70 leading-[1.7] mt-4 lg:mt-0 max-w-[300px]">
+                <code>
+tools = session.tools()
+agent = Agent(
+  name=&quot;Assistant&quot;,
+  tools=tools,
+)
                 </code>
-              </div>
-
-              <a href="#" className="inline-flex w-fit items-center justify-center bg-white px-4 py-2 font-mono text-sm text-black leading-normal tracking-[-0.28px] hover:bg-neutral-200 transition-colors">
-                LEARN MORE
+              </pre>
+              <a 
+                className="inline-flex w-fit items-center justify-center bg-white px-3 py-1.5 font-mono text-black text-xs leading-normal tracking-[-0.28px] hover:bg-neutral-200 transition-colors uppercase mt-4 lg:mt-0" 
+                href="#"
+              >
+                Learn More
               </a>
             </div>
 
-            {/* Right: Agent Grid (2 rows x 3 cols) */}
-            {/* First card is the live terminal, rest are agent cards */}
-            <div className="mt-6 grid flex-1 grid-cols-2 gap-3 lg:mt-0 lg:grid-cols-3">
-              {/* Live Terminal Card (Top-Left) */}
-              <LiveTerminalCard 
-                lines={terminalLines} 
-                isDefault={hoveredAgent === null} 
-              />
-
-              {/* Agent Cards */}
-              {AGENTS.map((agent, idx) => (
-                <AgentCard
-                  key={agent.name}
-                  agent={agent}
-                  isHovered={hoveredAgent === idx}
-                  onHover={() => setHoveredAgent(idx)}
-                  onLeave={() => setHoveredAgent(null)}
-                />
+            {/* Agent Grid */}
+            <div className="mt-8 grid flex-1 grid-cols-2 gap-3 lg:mt-0 lg:grid-cols-3 content-start">
+              {AGENTS.map((agent) => (
+                <HoverableAgentCard key={agent.title} agent={agent} />
               ))}
             </div>
-          </motion.div>
-          
+          </div>
+
         </div>
       </div>
     </section>
