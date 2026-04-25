@@ -1,49 +1,18 @@
-import NavigationClient from "@/components/sections/navigation-client";
-import Footer from "@/components/sections/footer";
-import Certifications from "../../business-applications/power-apps/certification";
-import FullStackTeams from "./full-stack";
-import ThreePillars from "./three-pillar";
-import CollaborationTabs from "./collab-tab";
-import WebDevelopmentHero from "./process";
-import QualityBenchmark from "./quality";
-import WhyChooseSoftreeWebDevelopment from "./why-chose";
-import WebDevelopmentCaseStudies from "./case-studies";
-import WebDevHero from "./hero";
-import CtaWeb from "./cta";
-import TrustedBrandsMarquee from "../../business-applications/power-apps/trust";
-import { WebFaq } from "./faq";
+import type { Metadata } from "next"
+import NavigationClient from "@/components/sections/navigation-client"
+import WebDevelopmentStoryExperience from "./WebDevelopmentStoryExperience"
 
-/* ------------------------------------------------------------------ */
-/* Shared Layout Config                                                */
-/* ------------------------------------------------------------------ */
-const SECTION_WRAPPER = "mx-auto max-w-full px-8 sm:px-10 md:px-14 lg:px-20";
-const SECTION_GAP = "space-y-24";
+export const metadata: Metadata = {
+  title: "Web Application Development | Softree Technology",
+  description:
+    "Softree builds fast, secure, production-ready web applications with strategy, UX, engineering, integrations, and launch systems.",
+}
 
-export default function Home() {
+export default function WebAppDevelopmentPage() {
   return (
-    <main className="relative min-h-screen bg-black">
+    <main className="relative min-h-screen bg-black text-white">
       <NavigationClient />
-
-      {/* HERO */}
-      <WebDevHero />
-
-      {/* MAIN CONTENT — COMPONENT BACKGROUND */}
-      <section className="bg-gradient-to-b from-zinc-50 via-white to-zinc-50">
-        <TrustedBrandsMarquee />
-        <WebDevelopmentCaseStudies />
-        <WebDevelopmentHero />
-        <FullStackTeams />
-        <ThreePillars />
-        <CollaborationTabs />
-        <QualityBenchmark />
-        <WhyChooseSoftreeWebDevelopment />
-        {/* <Certifications /> */}
-      </section>
-
-      <CtaWeb />
-      <WebFaq />
-
-      <Footer />
+      <WebDevelopmentStoryExperience />
     </main>
-  );
+  )
 }

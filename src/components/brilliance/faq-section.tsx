@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface FAQItem {
   question: string
@@ -9,34 +10,29 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What is Softree and who is it for?",
+    question: "What does Softree do?",
     answer:
-      "Softree is a comprehensive billing automation platform designed for businesses that need custom contract management. It's perfect for SaaS companies, service providers, and enterprises looking to streamline their billing processes.",
+      "Softree is an advanced digital engineering and AI delivery partner. We help enterprise teams modernize their legacy systems, implement generative AI solutions, and build resilient cloud infrastructures optimized for global scale.",
   },
   {
-    question: "How does the custom contract billing work?",
+    question: "How do your AI agent implementations work?",
     answer:
-      "Our platform automatically processes your custom contracts, calculates billing amounts based on your specific terms, and generates invoices. You can set up complex pricing structures, usage-based billing, and custom billing cycles.",
+      "We design and deploy custom autonomous agents that integrate directly into your existing enterprise workflows. Our agents can automate complex operational tasks—from data analysis to customer success—while strictly adhering to your security and compliance protocols.",
   },
   {
-    question: "Can I integrate Softree with my existing tools?",
+    question: "What technologies do you specialize in?",
     answer:
-      "Yes! Softree integrates seamlessly with popular CRM systems, accounting software, and payment processors. We support APIs and webhooks for custom integrations with your existing workflow.",
+      "We specialize in the Microsoft ecosystem (Azure, .NET, Power Platform), advanced data engineering, and modern web platforms (React, Next.js). Our AI stack leverages state-of-the-art LLMs, custom RAG pipelines, and fine-tuned inference models.",
   },
   {
-    question: "What kind of support do you provide?",
+    question: "Can you modernize our legacy applications?",
     answer:
-      "We offer 24/7 customer support, dedicated account managers for enterprise clients, comprehensive documentation, and onboarding assistance to help you get started quickly.",
+      "Yes. We specialize in digital transformation, migrating monolithic architectures to scalable microservices, containerizing legacy apps, and refactoring codebases to reduce technical debt and accelerate release cycles.",
   },
   {
-    question: "Is my data secure with Softree?",
+    question: "How do you ensure data security and compliance?",
     answer:
-      "Absolutely. We use enterprise-grade security measures including end-to-end encryption, SOC 2 compliance, and regular security audits. Your data is stored in secure, redundant data centers.",
-  },
-  {
-    question: "How do I get started with Softree?",
-    answer:
-      "Getting started is simple! Sign up for our free trial, connect your existing systems, and our onboarding team will help you set up your first custom billing workflow within 24 hours.",
+      "Security is foundational to our engineering process. We implement zero-trust architectures, end-to-end encryption, and role-based access controls. Our solutions are designed to meet stringent industry standards and enterprise compliance requirements.",
   },
 ]
 
@@ -63,60 +59,88 @@ export default function FAQSection() {
   }
 
   return (
-    <div className="w-full flex justify-center items-start wf-surface">
-      <div className="w-full max-w-[1280px] xl:max-w-[1440px] px-4 md:px-12 py-16 md:py-20 flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-20">
+    <section className="relative w-full bg-[#0a0a0a] text-white py-24 md:py-32 z-10 border-t border-white/5 font-sans">
+      {/* Subtle Background Glow */}
+      <div className="absolute top-0 inset-x-0 h-[500px] bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
+
+      <div className="relative mx-auto w-full max-w-[1240px] px-4 xl:px-10 flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-24">
         {/* Left Column - Header */}
-        <div className="w-full lg:flex-1 flex flex-col justify-center items-start gap-4 lg:py-5">
-          <div className="w-full flex flex-col justify-center wf-text-primary font-semibold leading-tight md:leading-[44px] font-sans text-4xl tracking-tight">
+        <div className="w-full lg:flex-1 flex flex-col justify-start items-start gap-4 sticky top-32">
+          <motion.h2 
+            className="text-3xl lg:text-[40px] font-medium tracking-tight text-white leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             Frequently Asked Questions
-          </div>
-          <div className="w-full wf-text-muted text-base font-normal leading-7 font-sans">
-            Explore your data, build your dashboard,
-            <br className="hidden md:block" />
-            bring your team together.
-          </div>
+          </motion.h2>
+          <motion.p 
+            className="text-neutral-400 text-base lg:text-lg font-normal leading-relaxed max-w-[400px]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            Everything you need to know about partnering with Softree to modernize your enterprise.
+          </motion.p>
         </div>
 
         {/* Right Column - FAQ Items */}
-        <div className="w-full lg:flex-1 flex flex-col justify-center items-center">
+        <div className="w-full lg:flex-[1.2] flex flex-col justify-center items-center">
           <div className="w-full flex flex-col">
             {faqData.map((item, index) => {
               const isOpen = openItems.includes(index)
 
               return (
-                <div key={index} className="w-full border-b wf-border overflow-hidden">
+                <motion.div 
+                  key={index} 
+                  className="w-full border-b border-white/10 overflow-hidden"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                >
                   <button
                     onClick={() => toggleItem(index)}
-                    className="w-full px-5 py-[18px] flex justify-between items-center gap-5 text-left hover:bg-black/[0.02] transition-all duration-200 ease-out active:scale-[0.98]"
+                    className="w-full py-6 lg:py-8 flex justify-between items-center gap-5 text-left group focus:outline-none"
                     aria-expanded={isOpen}
                   >
-                    <div className="flex-1 wf-text-primary text-base font-medium leading-6 font-sans">
+                    <div className={`flex-1 text-base lg:text-xl font-medium leading-relaxed transition-colors duration-300 ${isOpen ? "text-white" : "text-neutral-300 group-hover:text-white"}`}>
                       {item.question}
                     </div>
-                    <div className="flex justify-center items-center">
-                      <ChevronDownIcon
-                        className={`w-6 h-6 wf-text-muted transition-transform duration-300 ease-in-out ${
-                          isOpen ? "rotate-180" : "rotate-0"
-                        }`}
-                      />
+                    <div className="flex justify-center items-center ml-4 shrink-0">
+                      <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${isOpen ? "bg-white/10 border-white/20" : "border-white/10 group-hover:bg-white/5"}`}>
+                        <ChevronDownIcon
+                          className={`w-4 h-4 transition-transform duration-300 ease-in-out ${
+                            isOpen ? "rotate-180 text-white" : "rotate-0 text-neutral-400 group-hover:text-white"
+                          }`}
+                        />
+                      </div>
                     </div>
                   </button>
 
-                  <div
-                    className={`overflow-hidden transition-all duration-[400ms] cubic-bezier(0.23,1,0.32,1) origin-top ${
-                      isOpen ? "max-h-96 opacity-100 scale-y-100" : "max-h-0 opacity-0 scale-y-95 blur-[2px]"
-                    }`}
-                  >
-                    <div className="px-5 pb-[18px] wf-text-muted text-sm font-normal leading-6 font-sans">
-                      {item.answer}
-                    </div>
-                  </div>
-                </div>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-8 text-neutral-400 text-sm lg:text-base font-normal leading-relaxed pr-8 lg:pr-16">
+                          {item.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               )
             })}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

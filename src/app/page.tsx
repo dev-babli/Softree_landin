@@ -1,10 +1,10 @@
 import Homepage from "@/components/homepage/Homepage"
-import CohereNavClient from "@/components/CohereNavClient"
+import SoftreeCohereNav from "@/components/homepage/SoftreeCohereNav"
 
 export default function HomePage() {
   return (
     <main className="relative min-h-screen">
-      <CohereNavClient />
+      <SoftreeCohereNav />
       <Homepage />
     </main>
   )

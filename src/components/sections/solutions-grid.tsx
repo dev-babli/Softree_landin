@@ -1,9 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const CARD_WIDTH = 340;
 const GAP = 28;
+const WEB_SLIDES = [
+  "/productpreview_images/webslideshow1.webp",
+  "/productpreview_images/2.webp",
+  "/productpreview_images/still-06607eaae7cc7819ac85a01c693f4722.webp",
+  "/productpreview_images/still-8fba34a4fe44b9a978139b2280c6ce47.webp",
+  "/productpreview_images/still-d32f64752588b0367e11bbed58868c12.webp",
+];
 
 const SolutionsDeck = () => {
   const solutions = [
@@ -60,6 +67,15 @@ const SolutionsDeck = () => {
   ];
 
   const [active, setActive] = useState(2);
+  const [webSlideIndex, setWebSlideIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setWebSlideIndex((prev) => (prev + 1) % WEB_SLIDES.length);
+    }, 2800);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="relative py-32 overflow-hidden bg-gradient-to-b from-black via-[#020d1a] to-black">
@@ -135,19 +151,23 @@ const SolutionsDeck = () => {
           {solutions.map((item, index) => {
             const offset = index - active;
             const isActive = offset === 0;
+            const isWebCard = item.id === "web";
 
             return (
               <div
                 key={item.id}
                 onClick={() => setActive(index)}
-                className="absolute cursor-pointer transition-all duration-500 ease-out"
+                className="absolute cursor-pointer transition-all duration-700 ease-out"
                 style={{
                   width: CARD_WIDTH,
                   transform: `
                     translateX(${offset * (CARD_WIDTH + GAP)}px)
-                    scale(${isActive ? 1 : 0.85})
+                    translateY(${isActive ? "0px" : "20px"})
+                    scale(${isActive ? 1 : 0.84})
+                    rotate(${isActive ? "0deg" : offset > 0 ? "1.6deg" : "-1.6deg"})
                   `,
-                  opacity: isActive ? 1 : 0.45,
+                  opacity: isActive ? 1 : 0.58,
+                  filter: isActive ? "blur(0px)" : "blur(1px)",
                   zIndex: isActive ? 30 : 10,
                 }}
               >
@@ -155,32 +175,55 @@ const SolutionsDeck = () => {
                 <div
                   className="
                     rounded-2xl overflow-hidden
-                    border border-white/10
-                    bg-gradient-to-b
-                    from-[#0B0F14]
-                    via-[#161B22]
-                    to-[#1F2933]
+                    border border-white/80
+                    bg-white
                   "
+                  style={{
+                    boxShadow: isActive
+                      ? "0 22px 60px rgba(4, 14, 33, 0.35)"
+                      : "0 14px 36px rgba(8, 17, 33, 0.2)",
+                  }}
                 >
                   {/* Image */}
-                  <div className="relative h-[320px]">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="relative h-[320px] overflow-hidden bg-slate-200">
+                    {isWebCard ? (
+                      <>
+                        {WEB_SLIDES.map((slide, slideIndex) => {
+                          const isCurrent = slideIndex === webSlideIndex;
+                          return (
+                            <img
+                              key={slide}
+                              src={slide}
+                              alt={`${item.title} showcase ${slideIndex + 1}`}
+                              className="absolute inset-0 w-full h-full object-cover object-center transition-all duration-[1500ms] ease-out"
+                              style={{
+                                opacity: isCurrent ? 1 : 0,
+                                transform: isCurrent ? "scale(1.06)" : "scale(1.15)",
+                              }}
+                            />
+                          );
+                        })}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/20 to-transparent" />
+                        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/35 to-transparent" />
+                      </>
+                    ) : (
+                      <>
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover transition-transform duration-700 ease-out"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      </>
+                    )}
                   </div>
 
                   {/* Content */}
                   <div
                     className="
     relative p-7
-    border-t border-white/10
-    bg-gradient-to-br
-    from-[#0A0F14]
-    via-[#111827]
-    to-[#1F2937]
+    border-t border-slate-100
+    bg-white
   "
                   >
                     {/* Mirror highlight strip */}
@@ -188,7 +231,7 @@ const SolutionsDeck = () => {
                       className="
       absolute inset-x-0 top-0 h-[1px]
       bg-gradient-to-r
-      from-transparent via-white/25 to-transparent
+      from-transparent via-slate-200 to-transparent
     "
                     />
 
@@ -197,7 +240,7 @@ const SolutionsDeck = () => {
                       className="
       absolute left-0 top-6
       h-14 w-[3px]
-      bg-gradient-to-b from-gray-300 to-gray-500
+      bg-gradient-to-b from-slate-300 to-slate-500
       rounded-full
       opacity-70
     "
@@ -208,7 +251,7 @@ const SolutionsDeck = () => {
                       className="
     relative
     text-lg font-semibold
-    text-slate-50
+    text-slate-900
     tracking-tight
     mb-5 pl-4
   "
@@ -221,7 +264,7 @@ const SolutionsDeck = () => {
       absolute left-4 -bottom-2
       h-[2px] w-12
       bg-gradient-to-r
-      from-slate-400
+      from-slate-500
       via-slate-300
       to-transparent
     "
@@ -235,11 +278,11 @@ const SolutionsDeck = () => {
                           key={`${item.id}-${i}`}
                           className="
           flex items-start gap-3
-          text-sm text-slate-300
+          text-sm text-slate-600
           leading-relaxed
         "
                         >
-                          <span className="mt-1 text-slate-400">
+                          <span className="mt-1 text-slate-500">
                             <CheckBullet />
                           </span>
                           <span>{p}</span>

@@ -216,18 +216,6 @@ export default function TestimonialsSection() {
                           </div>
                         </div>
 
-                        <div style={row("0.98s")} className="mt-auto pt-8">
-                          <a
-                            href={t.readMoreHref}
-                            className="group inline-flex items-center gap-1 text-[#1a1a1a] hover:text-orange-600 transition-colors duration-200 rounded-sm"
-                          >
-                            <span className="text-base lg:text-lg font-sans">Read more</span>
-                            <span className="flex items-center transition-all duration-300 ease-in-out group-hover:translate-x-1">
-                              <FiArrowRight />
-                            </span>
-                          </a>
-                        </div>
-
                       </div>
                     </div>
                   </div>
@@ -262,18 +250,12 @@ export default function TestimonialsSection() {
                         <div style={row("0.26s")} className="mb-5">
                           <h3 className="text-lg font-sans font-medium leading-relaxed">&ldquo;{t.quote}&rdquo;</h3>
                         </div>
-                        <div style={row("0.38s")} className="flex items-center gap-2">
+                        <div style={row("0.38s")} className="flex items-center gap-2 mt-auto pt-2">
                           <img src={t.avatar} alt={t.name} className="w-8 h-8 rounded-full object-cover shrink-0" />
                           <div>
                             <p className="text-sm font-sans font-medium text-[#0f0f0f]">{t.name}</p>
                             <p className="text-xs font-sans text-[#3d3d3d]">{t.role}</p>
                           </div>
-                        </div>
-                        <div style={row("0.48s")} className="mt-auto pt-8">
-                          <a href={t.readMoreHref} className="group inline-flex items-center gap-1 text-[#1a1a1a] hover:text-orange-600 transition-colors">
-                            <span className="text-sm font-sans">Read more</span>
-                            <span className="flex items-center transition-all duration-300 ease-in-out group-hover:translate-x-1"><FiArrowRight /></span>
-                          </a>
                         </div>
                       </div>
                     </div>

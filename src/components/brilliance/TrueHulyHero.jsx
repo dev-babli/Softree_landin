@@ -90,7 +90,7 @@ export default function TrueHulyHero() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[220vh] bg-[#000000] overflow-hidden flex flex-col items-start justify-start"
+      className="relative w-full h-[240vh] xl:h-[220vh] bg-[#000000] overflow-hidden flex flex-col items-start justify-start"
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
@@ -187,7 +187,7 @@ export default function TrueHulyHero() {
         <div className="mist-overlay" />
       </div>
 
-      <div className="absolute inset-x-0 top-0 h-[220vh] z-0 mix-blend-lighten pointer-events-none overflow-hidden before:absolute before:top-0 before:z-10 before:h-40 before:w-full before:bg-gradient-to-b before:from-black before:to-transparent">
+      <div className="absolute inset-x-0 top-0 h-[240vh] xl:h-[220vh] z-0 mix-blend-lighten pointer-events-none overflow-hidden before:absolute before:top-0 before:z-10 before:h-40 before:w-full before:bg-gradient-to-b before:from-black before:to-transparent">
         <video
           className="w-full h-full object-cover object-top scale-[1.2] translate-x-[8%] -translate-y-[5%]"
           autoPlay
@@ -202,8 +202,8 @@ export default function TrueHulyHero() {
       </div>
 
       {/* Precise Monolith Container - Restored to previous Narrower Width */}
-      <div className="absolute inset-x-0 top-0 h-[220vh] pointer-events-none overflow-visible z-[60]">
-        <div className="absolute top-[46%] left-1/2 -translate-x-1/2 w-[90%] z-[60] pointer-events-auto flex flex-col items-center min-h-[800px]">
+      <div className="absolute inset-x-0 top-0 h-[240vh] xl:h-[220vh] pointer-events-none overflow-visible z-[60]">
+        <div className="absolute top-[42%] xl:top-[46%] left-1/2 -translate-x-1/2 w-[90%] z-[60] pointer-events-auto flex flex-col items-center min-h-[800px]">
           {/* High-density dark glass layer to block the background details while looking premium */}
           <div className="absolute inset-0 bg-[#000000]/95 backdrop-blur-[100px] z-[-1] rounded-[24px] border border-white/5" />
 

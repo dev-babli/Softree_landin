@@ -1,9 +1,58 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { Layers3, PhoneCall, ShieldCheck } from "lucide-react"
 
-// ─── Rolling digit ────────────────────────────────────────────────────────────
+type ShowcaseItem = {
+  id: number
+  title: string
+  subtitle: string
+  Icon: typeof ShieldCheck
+  accent: string
+}
+
+const SHOWCASE_ITEMS: ShowcaseItem[] = [
+  {
+    id: 1,
+    title: "Security-first design",
+    subtitle: "Audit-ready simulation workflows",
+    Icon: ShieldCheck,
+    accent: "#6ED96B",
+  },
+  {
+    id: 2,
+    title: "AI-powered call simulation",
+    subtitle: "Nuanced conversation practice",
+    Icon: PhoneCall,
+    accent: "#7AE26F",
+  },
+  {
+    id: 3,
+    title: "Training and QA together",
+    subtitle: "One loop from coaching to review",
+    Icon: Layers3,
+    accent: "#67D471",
+  },
+]
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value))
+}
+
+function wrap01(value: number) {
+  const wrapped = value % 1
+  return wrapped < 0 ? wrapped + 1 : wrapped
+}
+
+function easeInOut(value: number) {
+  return value < 0.5 ? 4 * value * value * value : 1 - Math.pow(-2 * value + 2, 3) / 2
+}
+
+function smoothstep(edge0: number, edge1: number, value: number) {
+  const t = clamp((value - edge0) / (edge1 - edge0), 0, 1)
+  return t * t * (3 - 2 * t)
+}
+
 function RollingDigit({
   final,
   between,
@@ -19,17 +68,12 @@ function RollingDigit({
 }) {
   const n = between.length + 1
   const pct = (n - 1) * 100
-
   const startY = dir === "from-below" ? `${pct}%` : "0%"
   const endY = dir === "from-below" ? "0%" : `-${pct}%`
-
   const items = [...between, final]
 
   return (
-    <span
-      className="rolling-number relative inline-flex items-center overflow-y-clip"
-      style={{ verticalAlign: "baseline" }}
-    >
+    <span className="relative inline-flex items-center overflow-y-clip align-baseline">
       <div className="absolute inset-0 flex items-center">
         <div
           className={`absolute inset-0 flex will-change-transform ${
@@ -42,12 +86,12 @@ function RollingDigit({
               : "none",
           }}
         >
-          {items.map((d, i) => (
+          {items.map((digit, index) => (
             <span
-              key={i}
+              key={index}
               className="flex h-[1em] items-center justify-center font-[550] leading-[1]"
             >
-              {d}
+              {digit}
             </span>
           ))}
         </div>
@@ -57,61 +101,178 @@ function RollingDigit({
   )
 }
 
-function WaveformCanvas() {
-  const bars = Array.from({ length: 48 })
+function OrbitalPill({
+  item,
+  transform,
+  opacity,
+  zIndex,
+}: {
+  item: ShowcaseItem
+  transform: string
+  opacity: number
+  zIndex: number
+}) {
+  const Icon = item.Icon
+
   return (
-    <div className="absolute inset-0 flex h-full w-full items-center justify-center pt-8">
-      <svg
-        viewBox="0 0 1200 400"
-        className="h-full w-full opacity-60"
-        preserveAspectRatio="none"
-      >
+    <div
+      className="absolute left-0 top-0 will-change-transform"
+      style={{ transform, opacity, zIndex }}
+    >
+      <div className="flex min-w-[186px] max-w-[238px] items-start gap-2.5 rounded-[10px] border border-[#e9e7df] bg-white px-2.5 py-2 shadow-[0_12px_28px_-18px_rgba(28,38,20,0.28)] sm:min-w-[210px] sm:px-3">
+        <div
+          className="mt-0.5 flex h-5.5 w-5.5 shrink-0 items-center justify-center rounded-[5px]"
+          style={{ backgroundColor: item.accent }}
+        >
+          <Icon className="h-3.5 w-3.5 text-[#123112]" strokeWidth={2.2} />
+        </div>
+
+        <div className="min-w-0 text-left">
+          <div className="truncate text-[10px] font-medium leading-[1.15] text-[#11170d] sm:text-[10.5px]">
+            {item.title}
+          </div>
+          <div className="mt-0.5 truncate text-[9px] leading-[1.1] text-[#7a8172] sm:text-[9.5px]">
+            {item.subtitle}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function OrbitCanvas() {
+  const canvasRef = useRef<HTMLDivElement>(null)
+  const [size, setSize] = useState({ width: 0, height: 0 })
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    const node = canvasRef.current
+    if (!node) return
+
+    const update = () => {
+      setSize({
+        width: node.offsetWidth,
+        height: node.offsetHeight,
+      })
+    }
+
+    update()
+    const observer = new ResizeObserver(update)
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    let frame = 0
+    let start = 0
+    const duration = 6200
+
+    const tick = (timestamp: number) => {
+      if (!start) start = timestamp
+      const elapsed = timestamp - start
+      setProgress((elapsed % duration) / duration)
+      frame = window.requestAnimationFrame(tick)
+    }
+
+    frame = window.requestAnimationFrame(tick)
+    return () => window.cancelAnimationFrame(frame)
+  }, [])
+
+  const width = size.width || 1290
+  const height = size.height || 582
+  const centerX = width / 2
+  const centerY = height * 0.93
+  const arcRadii = [width * 0.145, width * 0.175, width * 0.205, width * 0.232]
+
+  const pills = SHOWCASE_ITEMS.map((item, index) => {
+    const raw = wrap01(progress + index / SHOWCASE_ITEMS.length)
+    const travel = easeInOut(raw)
+    const angle = 167 - 154 * travel
+    const radians = (angle * Math.PI) / 180
+    const radius = arcRadii[index + 1]
+    const x = centerX + radius * Math.cos(radians)
+    const y = centerY - radius * Math.sin(radians)
+    const tangentRotation = clamp(90 - angle, -52, 52)
+    const entry = smoothstep(0.02, 0.12, raw)
+    const exit = 1 - smoothstep(0.78, 0.92, raw)
+    const opacity = entry * exit
+    const scale = 0.88 + Math.sin(radians) * 0.18
+
+    return {
+      item,
+      opacity,
+      zIndex: Math.round(scale * 100),
+      transform: `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotate(${tangentRotation}deg) scale(${scale})`,
+    }
+  }).filter((pill) => pill.opacity > 0.02)
+    .sort((a, b) => a.zIndex - b.zIndex)
+
+  return (
+    <div ref={canvasRef} className="relative h-full w-full overflow-hidden">
+      <svg className="absolute inset-0 h-full w-full" aria-hidden="true">
         <defs>
-          <linearGradient id="waveGradient" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#819c63" stopOpacity="0" />
-            <stop offset="20%" stopColor="#819c63" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="#4bc449" stopOpacity="1" />
-            <stop offset="80%" stopColor="#819c63" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#819c63" stopOpacity="0" />
+          <linearGradient id="orbit-fade" x1="0%" x2="100%" y1="0%" y2="0%">
+            <stop offset="0%" stopColor="#b7b39f" stopOpacity="0" />
+            <stop offset="17%" stopColor="#b7b39f" stopOpacity="0.55" />
+            <stop offset="50%" stopColor="#b7b39f" stopOpacity="0.58" />
+            <stop offset="83%" stopColor="#b7b39f" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#b7b39f" stopOpacity="0" />
           </linearGradient>
         </defs>
-        <g fill="url(#waveGradient)">
-          {bars.map((_, i) => {
-            const xCenter = 25 * i + 12.5;
-            const dur = 1 + Math.random() * 1.5;
-            const delay = Math.random() * -2;
-            const maxH = 40 + Math.sin(i * 0.4) * 120 + Math.random() * 80;
-            return (
-              <rect
-                key={i}
-                x={Math.max(0, xCenter - 4)}
-                y={200 - maxH / 2}
-                width="8"
-                height={maxH}
-                rx="4"
-                className="origin-center animate-[wave_infinite_ease-in-out]"
-                style={{
-                  transformBox: "fill-box",
-                  transformOrigin: "center",
-                  animationDuration: `${dur}s`,
-                  animationDelay: `${delay}s`,
-                  animationName: i % 2 === 0 ? "wave-pulse" : "wave-pulse-alt"
-                }}
-              />
-            )
-          })}
-        </g>
+
+        {arcRadii.map((radius, index) => (
+          <path
+            key={radius}
+            d={`M ${centerX - radius} ${centerY} A ${radius} ${radius} 0 0 1 ${centerX + radius} ${centerY}`}
+            fill="none"
+            stroke="url(#orbit-fade)"
+            strokeWidth={index === 1 ? 1.15 : 1}
+            strokeLinecap="round"
+            strokeDasharray={index % 2 === 0 ? "2.4 8.8" : "3.2 10"}
+            opacity={0.7 - index * 0.08}
+          />
+        ))}
+
+        <path
+          d={[
+            `M ${centerX - width * 0.15} ${height * 0.88}`,
+            `L ${centerX - width * 0.105} ${height * 0.48}`,
+            `L ${centerX - width * 0.022} ${height * 0.31}`,
+            `L ${centerX + width * 0.02} ${height * 0.22}`,
+            `L ${centerX + width * 0.105} ${height * 0.47}`,
+            `L ${centerX + width * 0.15} ${height * 0.88}`,
+            "Z",
+          ].join(" ")}
+          fill="#ddd9cb"
+          opacity="0.82"
+        />
+        <path
+          d={[
+            `M ${centerX - width * 0.095} ${height * 0.83}`,
+            `L ${centerX - width * 0.055} ${height * 0.55}`,
+            `L ${centerX + width * 0.002} ${height * 0.41}`,
+            `L ${centerX + width * 0.055} ${height * 0.55}`,
+            `L ${centerX + width * 0.094} ${height * 0.83}`,
+            "Z",
+          ].join(" ")}
+          fill="#ebe8de"
+          opacity="0.96"
+        />
       </svg>
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes wave-pulse {
-          0%, 100% { transform: scaleY(0.7); opacity: 0.6; }
-          50% { transform: scaleY(1.3); opacity: 1; }
-        }
-        @keyframes wave-pulse-alt {
-          0%, 100% { transform: scaleY(1.2); opacity: 1; }
-          50% { transform: scaleY(0.6); opacity: 0.5; }
-        }
-      `}} />
+
+      <div className="absolute inset-0">
+        {pills.map((pill) => (
+          <OrbitalPill
+            key={pill.item.id}
+            item={pill.item}
+            transform={pill.transform}
+            opacity={pill.opacity}
+            zIndex={pill.zIndex}
+          />
+        ))}
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[#f2f1e8] via-[#f2f1e8]/80 to-transparent" />
     </div>
   )
 }
@@ -121,27 +282,29 @@ export default function ReflexRoleplaySection() {
   const [triggered, setTriggered] = useState(false)
 
   useEffect(() => {
-    const el = sectionRef.current
-    if (!el) return
-    const obs = new IntersectionObserver(
+    const node = sectionRef.current
+    if (!node) return
+
+    const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setTriggered(true)
-          obs.disconnect()
+          observer.disconnect()
         }
       },
       { threshold: 0.3 }
     )
-    obs.observe(el)
-    return () => obs.disconnect()
+
+    observer.observe(node)
+    return () => observer.disconnect()
   }, [])
 
   return (
     <section
       ref={sectionRef}
-      className="bg-[#f2f1e8] relative overflow-hidden pt-16 md:pt-36 w-full"
+      className="relative w-full overflow-hidden bg-[#f2f1e8] pb-24 pt-16 md:pb-32 md:pt-36"
     >
-      <div className="absolute top-0 left-0 w-full max-w-[1280px] mx-auto px-6">
+      <div className="absolute left-0 top-0 mx-auto w-full max-w-[1280px] px-6">
         <svg
           className="h-6 w-12 text-white lg:ml-5"
           viewBox="0 0 48 24"
@@ -154,22 +317,22 @@ export default function ReflexRoleplaySection() {
           />
         </svg>
       </div>
-      
+
       <div className="mx-auto w-full max-w-[1280px] px-6 text-center">
-        <h2 className="text-[clamp(42px,6vw,68px)] font-medium leading-[1.05] tracking-tight text-[#0d1a0d] max-w-[847px] mx-auto">
-          <span className="inline-block relative">Roleplay</span>
-          <span className="pl-[0.05em] inline-flex items-center align-middle mx-1.5 pb-2">
-            <div className="bg-[#3f4728] relative size-[0.7em] overflow-hidden rounded-full sm:size-[0.625em] -mr-1 z-10 border-2 border-[#f2f1e8]">
+        <h2 className="mx-auto max-w-[847px] text-[clamp(42px,6vw,68px)] font-medium leading-[1.05] tracking-tight text-[#0d1a0d]">
+          <span className="inline-block">Roleplay</span>
+          <span className="mx-1.5 inline-flex items-center align-middle pb-2 pl-[0.05em]">
+            <div className="relative z-10 -mr-1 size-[0.7em] overflow-hidden rounded-full border-2 border-[#f2f1e8] bg-[#3f4728] sm:size-[0.625em]">
               <img
                 src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=85&w=132&h=132&fit=crop"
                 alt="Avatar"
                 className="h-full w-full object-cover"
               />
             </div>
-            
-            <div className="bg-[#1a3020] flex items-center gap-1.5 rounded-full pr-3 pl-4 md:pr-[0.9375rem] md:pl-5 py-1.5 relative z-0">
+
+            <div className="relative z-0 flex items-center gap-1.5 rounded-full bg-[#1a3020] py-1.5 pl-4 pr-3 md:pl-5 md:pr-[0.9375rem]">
               <div
-                className="rolling-stat whitespace-nowrap leading-[1] font-[550] tracking-[0em] text-white"
+                className="whitespace-nowrap font-[550] leading-[1] tracking-[0em] text-white"
                 style={{ fontSize: "clamp(1rem, 1.125vw, 1.125rem)" }}
               >
                 <RollingDigit
@@ -186,40 +349,32 @@ export default function ReflexRoleplaySection() {
                   delay={80}
                   triggered={triggered}
                 />
-                <span className="-mb-[0.1em] inline-flex items-center overflow-y-clip pb-[0.1em] ml-0.5">
+                <span className="ml-0.5 inline-flex items-center overflow-y-clip pb-[0.1em]">
                   %
                 </span>
               </div>
-              
-              <div className="flex items-center gap-px ml-1 border-l border-[#2e4734] pl-2 -py-1">
-                {[0, 1, 2, 3, 4].map((i) => (
+
+              <div className="ml-1 flex items-center gap-px border-l border-[#2e4734] pl-2">
+                {[0, 1, 2, 3, 4].map((index) => (
                   <div
-                    key={i}
-                    className="relative size-[6px] md:size-[8px] rounded-full mx-px"
+                    key={index}
+                    className="relative mx-px size-[6px] rounded-full md:size-[8px]"
                     style={{ backgroundColor: "#5cb85c" }}
                   >
-                    {i === 4 && (
-                      <div className="absolute inset-x-[1px] inset-y-[1px] md:inset-[2px] rounded-full bg-[#1a3020]"></div>
-                    )}
+                    {index === 4 ? (
+                      <div className="absolute inset-[1px] rounded-full bg-[#1a3020] md:inset-[2px]" />
+                    ) : null}
                   </div>
                 ))}
               </div>
             </div>
           </span>{" "}
-          <span className="inline-block relative">and QA</span>
-          <span className="block mt-1">that's real-world ready</span>
+          <span className="inline-block">and QA</span>
+          <span className="mt-1 block">that&apos;s real-world ready</span>
         </h2>
-        
-        <div className="relative mx-auto mt-12 aspect-[1290/530] w-full max-w-[1290px] md:mt-26 overflow-visible pointer-events-none">
-          <div className="absolute inset-0 h-full w-full opacity-100 transition-opacity duration-200">
-            <div className="h-full w-full">
-              {/* Animated waveform mimicking the .riv audio file */}
-              <WaveformCanvas />
-            </div>
-          </div>
-          
-          {/* Faded overlay gradient to anchor the waveform in space */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#f2f1e8] via-transparent to-transparent pointer-events-none opacity-90 h-full w-full"></div>
+
+        <div className="relative mx-auto mt-12 aspect-[1290/582] w-full max-w-[1290px] md:mt-26">
+          <OrbitCanvas />
         </div>
       </div>
     </section>

@@ -1206,3 +1206,434 @@
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+
+/* ─── ScrollRevealSection (GSAP scroll-direction reveals — exact CodePen CSS) ─── */
+
+.scroll-reveal-root {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.scroll-reveal-root .content__hero {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-reveal-root .content__heading {
+  text-align: center;
+}
+
+.scroll-reveal-root .features {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.scroll-reveal-root .features__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  height: 100vh;
+  border-top: dashed 2px grey;
+}
+
+.scroll-reveal-root .features__item--left {
+  flex-direction: row;
+  text-align: right;
+}
+
+.scroll-reveal-root .features__item--right {
+  flex-direction: row-reverse;
+}
+
+.scroll-reveal-root .features__image {
+  flex: 1 1 40%;
+  position: relative;
+}
+
+.scroll-reveal-root .features__card {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+
+.scroll-reveal-root .features__img {
+  max-width: 100%;
+  position: absolute;
+  object-fit: cover;
+  display: block;
+}
+
+.scroll-reveal-root .features__content {
+  flex: 1 1 55%;
+}
+
+.scroll-reveal-root .features__title {
+  font-size: 1.8em;
+  margin-block-end: 1rem;
+}
+
+.scroll-reveal-root .features__description {
+  line-height: 1.6;
+}
+
+/* GSAP animation reveal styles */
+.scroll-reveal-root .gs_reveal {
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+
+/* ─── PinnedShowcaseSection (GSAP pinned list + image carousel) ─── */
+/* Design language: matches HeroEnterpriseCards — glassmorphic, Outfit font, */
+/* #FF6B00 / #A1C4FF dual accent, radial spotlight glow, pill badges.       */
+
+.pin-showcase {
+  width: 100%;
+  font-family: "Outfit", sans-serif;
+  background-color: #050505; /* Deep background to match hero */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cinematic background atmosphere */
+.pin-showcase::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(132, 152, 230, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pin-showcase * {
+  box-sizing: border-box;
+}
+
+/* ── Spacer / Intro ── */
+
+.pin-spacer-section {
+  width: 100%;
+  height: 30vh; /* Reduced from 80vh to minimize blank space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.pin-spacer-inner {
+  max-width: 800px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pin-label-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.pin-label-line {
+  height: 1px;
+  width: 40px;
+  background: linear-gradient(to right, #FF6B00, transparent);
+  opacity: 0.6;
+}
+
+.pin-label-tag {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: #FF6B00;
+  opacity: 0.9;
+}
+
+.pin-hero-heading {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.pin-hero-dim {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.pin-hero-sub {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+/* ── Pinned Section ── */
+
+.pin-section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.pin-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  position: relative;
+}
+
+/* ── Left column (list) ── */
+
+.pin-left-col {
+  flex: 0 0 40%;
+  padding-right: 2rem;
+}
+
+.pin-list {
+  font-size: 56px;
+  font-weight: 900;
+  color: rgba(255, 252, 225, 0.85);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.pin-list li {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: default;
+  will-change: color, transform, opacity;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  opacity: 0.3;
+}
+
+.pin-list li[style*="color: rgb(10, 228, 72)"] {
+  opacity: 1;
+  transform: translateX(10px);
+}
+
+.pin-list-number {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  opacity: 0.5;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Progress fill ── */
+
+.pin-fill {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 2rem;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.pin-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0ae448;
+  box-shadow: 0 0 15px rgba(10, 228, 72, 0.4);
+  transform-origin: top;
+  will-change: transform;
+}
+
+/* ── Right column (slides) ── */
+
+.pin-right {
+  flex: 0 0 50%;
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pin-slide {
+  position: absolute;
+  width: 100%;
+  max-width: 520px;
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* ── Enterprise Card (matches HeroEnterpriseCards design DNA) ── */
+
+.pin-card {
+  position: relative;
+  border-radius: 24px;
+  background: rgba(10, 10, 12, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  overflow: hidden;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 
+    0 40px 100px -20px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.pin-card__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.pin-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.pin-card__pill {
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pin-card__pill span {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.pin-card__icon {
+  display: flex;
+  height: 56px;
+  width: 56px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.pin-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pin-card__title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.pin-card__desc {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .pin-content {
+    padding: 0 2rem;
+  }
+  .pin-list {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pin-spacer-section {
+    height: 20vh;
+  }
+
+  .pin-section {
+    height: auto;
+    padding: 4rem 0;
+  }
+
+  .pin-content {
+    flex-direction: column;
+    padding: 0 1.5rem;
+    gap: 3rem;
+  }
+
+  .pin-left-col {
+    flex: 0 0 100%;
+    padding-right: 0;
+  }
+
+  .pin-list {
+    font-size: 32px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .pin-list li {
+    justify-content: center;
+  }
+
+  .pin-right {
+    flex: 0 0 100%;
+    min-height: 400px;
+  }
+
+  .pin-slide {
+    width: 100%;
+    max-width: none;
+    position: relative;
+    top: auto;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .pin-card {
+    padding: 2rem 1.5rem;
+  }
+}
+

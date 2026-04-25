@@ -1,0 +1,33 @@
+<svg width="1200" height="820" viewBox="0 0 1200 820" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="820" rx="34" fill="#06120C"/>
+  <defs>
+    <radialGradient id="launchGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(918 208) scale(620 480)">
+      <stop stop-color="#0AE448" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#06120C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="820" rx="34" fill="url(#launchGlow)"/>
+  <rect x="86" y="86" width="1028" height="648" rx="30" fill="#081A10" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <rect x="130" y="132" width="274" height="176" rx="26" fill="#FFFFFF" fill-opacity="0.06"/>
+  <rect x="442" y="132" width="274" height="176" rx="26" fill="#FFFFFF" fill-opacity="0.06"/>
+  <rect x="754" y="132" width="274" height="176" rx="26" fill="#FFFFFF" fill-opacity="0.06"/>
+  <rect x="172" y="180" width="128" height="16" rx="8" fill="#0AE448"/>
+  <rect x="484" y="180" width="116" height="16" rx="8" fill="#38BDF8"/>
+  <rect x="796" y="180" width="138" height="16" rx="8" fill="#FF6B00"/>
+  <rect x="172" y="226" width="188" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.16"/>
+  <rect x="484" y="226" width="188" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.16"/>
+  <rect x="796" y="226" width="188" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.16"/>
+  <rect x="130" y="372" width="898" height="250" rx="28" fill="#050A07" stroke="#FFFFFF" stroke-opacity="0.08"/>
+  <path d="M180 554C258 490 320 500 382 526C444 552 492 566 546 486C600 406 672 398 760 446C848 494 916 480 988 398" stroke="#0AE448" stroke-width="8" stroke-linecap="round"/>
+  <path d="M180 590H988" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <path d="M180 530H988" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <path d="M180 470H988" stroke="#FFFFFF" stroke-opacity="0.1"/>
+  <g>
+    <circle cx="180" cy="554" r="8" fill="#0AE448"/>
+    <circle cx="546" cy="486" r="8" fill="#0AE448"/>
+    <circle cx="988" cy="398" r="8" fill="#0AE448"/>
+  </g>
+  <rect x="130" y="650" width="176" height="26" rx="13" fill="#0AE448" fill-opacity="0.18" stroke="#0AE448" stroke-opacity="0.42"/>
+  <rect x="330" y="650" width="176" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.06"/>
+  <rect x="530" y="650" width="176" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.06"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg width="1200" height="820" viewBox="0 0 1200 820" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="820" rx="34" fill="#F8FAFC"/>
+  <rect x="72" y="78" width="1056" height="664" rx="30" fill="#0B0D13"/>
+  <rect x="72" y="78" width="1056" height="64" rx="30" fill="#161A24"/>
+  <circle cx="118" cy="110" r="8" fill="#FF6B00"/>
+  <circle cx="148" cy="110" r="8" fill="#FACC15"/>
+  <circle cx="178" cy="110" r="8" fill="#22C55E"/>
+  <rect x="112" y="184" width="426" height="510" rx="22" fill="#05070B" stroke="#FFFFFF" stroke-opacity="0.08"/>
+  <g font-family="monospace" font-size="20" fill="#DDE7F4">
+    <text x="150" y="240">const product = await build();</text>
+    <text x="150" y="292" fill="#38BDF8">app.route("/dashboard");</text>
+    <text x="150" y="344" fill="#FF6B00">deploy({ zeroDowntime: true });</text>
+    <text x="150" y="396" fill="#0AE448">monitor.status = "healthy";</text>
+  </g>
+  <rect x="620" y="184" width="432" height="510" rx="28" fill="#FFFFFF"/>
+  <rect x="654" y="228" width="164" height="18" rx="9" fill="#111827"/>
+  <rect x="654" y="270" width="328" height="10" rx="5" fill="#111827" fill-opacity="0.14"/>
+  <rect x="654" y="296" width="248" height="10" rx="5" fill="#111827" fill-opacity="0.1"/>
+  <rect x="654" y="354" width="154" height="112" rx="20" fill="#EEF2FF"/>
+  <rect x="834" y="354" width="154" height="112" rx="20" fill="#ECFEFF"/>
+  <rect x="654" y="500" width="334" height="104" rx="20" fill="#111827"/>
+  <path d="M688 562C728 530 766 526 802 548C838 570 878 548 922 516" stroke="#0AE448" stroke-width="7" stroke-linecap="round"/>
+  <rect x="688" y="632" width="146" height="18" rx="9" fill="#FF6B00"/>
+  <rect x="864" y="632" width="90" height="18" rx="9" fill="#111827" fill-opacity="0.14"/>
+</svg>

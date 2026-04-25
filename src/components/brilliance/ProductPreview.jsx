@@ -5,24 +5,32 @@ import { cn } from "@/lib/utils";
 import { FaSlack, FaGithub, FaGoogle, FaAws, FaDocker, FaReact, FaNodeJs, FaPython, FaDatabase, FaBolt, FaStripe, FaCloud } from 'react-icons/fa';
 import { BrainCircuit, Database, Smartphone, Layout, Workflow, Sparkles, ChartBar, Terminal, Activity, Zap, Server, Globe, Clock, Mail } from 'lucide-react';
 
+const WEB_SLIDES = [
+  "/productpreview_images/webslideshow1.webp",
+  "/productpreview_images/2.webp",
+  "/productpreview_images/still-06607eaae7cc7819ac85a01c693f4722.webp",
+  "/productpreview_images/still-8fba34a4fe44b9a978139b2280c6ce47.webp",
+  "/productpreview_images/still-d32f64752588b0367e11bbed58868c12.webp",
+];
+
 const N8nNode = ({ icon: Icon, title, subtitle, colorClass, x, y, hasIn=true, hasOut=true, className, style, absolute=true }) => (
   <div 
     className={cn(
       absolute ? "absolute" : "relative",
-      "w-[140px] md:w-[150px] bg-[#0c0d12]/95 backdrop-blur-xl border border-white/[0.08] rounded-[10px] p-2.5 flex items-center gap-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_20px_40px_rgba(0,0,0,0.6)] z-20 pointer-events-auto",
+        "w-[140px] md:w-[150px] bg-white/95 backdrop-blur-xl border border-slate-200 rounded-[10px] p-2.5 flex items-center gap-3 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_20px_40px_rgba(15,23,42,0.18)] z-20 pointer-events-auto",
       className
     )}
     style={absolute ? { left: `${x}%`, top: `${y}%`, ...style } : style}
   >
-    {hasIn && <div className="absolute -left-1.5 w-3 h-3 bg-[#111113] rounded-full border-[2px] border-[#444]" />}
-    <div className={`w-8 h-8 rounded-md shrink-0 flex items-center justify-center bg-black/50 ${colorClass}`}>
+    {hasIn && <div className="absolute -left-1.5 w-3 h-3 bg-white rounded-full border-[2px] border-slate-300" />}
+    <div className={`w-8 h-8 rounded-md shrink-0 flex items-center justify-center bg-slate-100 ${colorClass}`}>
       <Icon size={16} />
     </div>
     <div className="flex flex-col overflow-hidden">
-      <span className="text-[11px] text-zinc-100 font-semibold truncate leading-tight tracking-wide">{title}</span>
-      <span className="text-[9px] text-zinc-500 truncate leading-none mt-0.5">{subtitle}</span>
+      <span className="text-[11px] text-slate-900 font-semibold truncate leading-tight tracking-wide">{title}</span>
+      <span className="text-[9px] text-slate-500 truncate leading-none mt-0.5">{subtitle}</span>
     </div>
-    {hasOut && <div className="absolute -right-1.5 w-3 h-3 bg-[#111113] rounded-full border-[2px] border-[#444]" />}
+    {hasOut && <div className="absolute -right-1.5 w-3 h-3 bg-white rounded-full border-[2px] border-slate-300" />}
   </div>
 );
 
@@ -30,12 +38,12 @@ const BentoCard = ({ title, description, background, primaryForeground, secondar
   return (
     <div
       className={cn(
-        "group relative flex flex-col rounded-[24px] md:rounded-[32px] overflow-hidden bg-[#09090b] border border-white/[0.08] shadow-[0_30px_60px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.05)] cursor-default transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.3)]",
+        "group relative flex flex-col rounded-[24px] md:rounded-[32px] overflow-hidden bg-white border border-slate-200 shadow-[0_30px_60px_rgba(2,6,23,0.14),inset_0_1px_1px_rgba(255,255,255,0.95)] cursor-default transition-all duration-500 hover:shadow-[0_40px_80px_rgba(2,6,23,0.2)]",
         className
       )}
     >
       {/* High-end cinematic noise filter */}
-      <div className="absolute inset-0 z-0 mix-blend-overlay opacity-[0.08] pointer-events-none" style={{backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`}} />
+      <div className="absolute inset-0 z-0 mix-blend-multiply opacity-[0.05] pointer-events-none" style={{backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`}} />
       
       {/* Static Background Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -64,11 +72,11 @@ const BentoCard = ({ title, description, background, primaryForeground, secondar
       
       {/* Bottom Text Area */}
       <div className="relative z-20 mt-auto p-6 md:p-8 flex flex-col justify-end pt-24 pointer-events-none">
-        <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/90 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-white via-white/95 to-transparent pointer-events-none" />
         
         <div className="relative z-20 flex flex-col gap-2">
-           <p className="text-[14px] md:text-[15.5px] leading-relaxed text-zinc-400 max-w-[90%] tracking-wide">
-             <strong className="text-white font-medium mr-1.5 border-b border-white/20 pb-0.5 shadow-[0_1px_0_rgba(255,255,255,0.05)] text-[16px] md:text-[17px]">
+           <p className="text-[14px] md:text-[15.5px] leading-relaxed text-slate-600 max-w-[90%] tracking-wide">
+             <strong className="text-slate-900 font-semibold mr-1.5 border-b border-slate-300 pb-0.5 text-[16px] md:text-[17px]">
                {title}.
              </strong>
              {description}
@@ -80,6 +88,15 @@ const BentoCard = ({ title, description, background, primaryForeground, secondar
 };
 
 export function ProductPreview() {
+  const [webSlideIndex, setWebSlideIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = window.setInterval(() => {
+      setWebSlideIndex((prev) => (prev + 1) % WEB_SLIDES.length);
+    }, 2600);
+    return () => window.clearInterval(timer);
+  }, []);
+
   const floatingIcons = [
     { Icon: FaAws, color: "text-orange-400" },
     { Icon: FaReact, color: "text-cyan-400" },
@@ -118,6 +135,12 @@ export function ProductPreview() {
         50% { opacity: 0; }
       }
       .animate-blink { animation: blink 1s step-end infinite; }
+
+      @keyframes cinematicZoom {
+        0% { transform: scale(1.03); }
+        100% { transform: scale(1.12); }
+      }
+      .animate-cinematic-zoom { animation: cinematicZoom 4.8s ease-out forwards; }
     `}} />
     <section className="relative w-full bg-[#FAFAFC] py-20 px-4 md:px-6 flex justify-center z-20 overflow-hidden">
       
@@ -187,53 +210,59 @@ export function ProductPreview() {
             className="md:col-span-6 lg:col-span-7 h-[400px] md:h-[460px] group/card2"
             background={
               <>
-                <div className="absolute top-[-20%] left-[10%] w-[400px] h-[400px] bg-blue-600/20 blur-[100px] rounded-full transition-all duration-[1200ms] group-hover:-translate-x-10 group-hover:bg-emerald-600/20" />
-                <div className="absolute top-[30%] right-[-10%] w-[300px] h-[300px] bg-indigo-500/20 blur-[90px] rounded-full group-hover:bg-teal-500/20 transition-all duration-[1200ms]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_22%,rgba(56,189,248,0.2),transparent_45%),radial-gradient(circle_at_86%_78%,rgba(14,165,233,0.2),transparent_42%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(148,163,184,0.08),rgba(15,23,42,0)_50%)]" />
               </>
             }
             primaryForeground={
-               <div className="relative w-full h-[260px] perspective-1000 flex items-center justify-center">
-                  {/* Mock Code window (Back Left) */}
-                  <div className="absolute top-0 left-0 w-[55%] h-[240px] bg-[#14151a] rounded-[10px] border border-white/[0.08] shadow-[0_30px_60px_rgba(0,0,0,0.8)] overflow-hidden -rotate-2 -translate-y-2 pointer-events-auto">
-                    <div className="absolute inset-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] pointer-events-none rounded-[10px]" />
-                    <div className="h-8 bg-[#1a1b21] border-b border-white/[0.05] flex items-center px-4 gap-1.5 shadow-sm">
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
-                      <span className="text-[10px] text-zinc-500 font-mono ml-4">app.tsx</span>
+               <div className="relative w-full h-[260px] flex items-center justify-center">
+                  <div className="absolute left-[5%] right-[5%] top-[8%] bottom-[2%] rounded-[20px] border border-slate-200 shadow-[0_26px_60px_rgba(2,6,23,0.18)] overflow-hidden pointer-events-auto bg-slate-950">
+                    {WEB_SLIDES.map((slide, index) => {
+                      const isCurrent = index === webSlideIndex;
+                      return (
+                        <img
+                          key={slide}
+                          src={slide}
+                          alt={`Web showcase ${index + 1}`}
+                          className={cn(
+                            "absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[1200ms] ease-out",
+                            isCurrent ? "opacity-100" : "opacity-0"
+                          )}
+                        />
+                      );
+                    })}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+                    <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/40 to-transparent" />
+                    <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
+                      <div className="inline-flex items-center gap-2 rounded-full bg-black/40 border border-white/20 px-3 py-1 text-[10px] tracking-[0.16em] uppercase text-white/90">
+                        <Globe size={12} />
+                        Live Production UI
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2 h-2 rounded-full bg-rose-400/80" />
+                        <div className="w-2 h-2 rounded-full bg-amber-300/80" />
+                        <div className="w-2 h-2 rounded-full bg-emerald-400/80" />
+                      </div>
                     </div>
-                    <div className="p-4 font-mono text-[10px] md:text-[11px] text-white/70 flex flex-col gap-1.5 overflow-hidden">
-                       <div><span className="text-pink-400">import</span> {'{'} motion {'}'} <span className="text-pink-400">from</span> <span className="text-emerald-300">'framer-motion'</span>;</div>
-                       <div><span className="text-pink-400">import</span> {'{'} cn {'}'} <span className="text-pink-400">from</span> <span className="text-emerald-300">'@/lib/utils'</span>;</div>
-                       <div className="h-2" />
-                       <div><span className="text-blue-400 font-semibold">export default function</span> <span className="text-yellow-200">Hero</span>() {'{'}</div>
-                       <div className="pl-4"><span className="text-pink-400">return</span> (</div>
-                       <div className="pl-8"><span className="text-zinc-500">&lt;</span><span className="text-blue-300">motion.div</span></div>
-                       <div className="pl-12"><span className="text-sky-300">initial</span>=<span className="text-blue-400">{'{'}</span><span className="text-white">opacity: 0</span><span className="text-blue-400">{'}'}</span></div>
-                       <div className="pl-12"><span className="text-sky-300">animate</span>=<span className="text-blue-400">{'{'}</span><span className="text-white">opacity: 1</span><span className="text-blue-400">{'}'}</span><span className="text-zinc-500">&gt;</span></div>
-                       <div className="pl-12"><span className="text-zinc-500">&lt;</span><span className="text-yellow-200">Header</span> <span className="text-zinc-500">/&gt;</span><span className="inline-block w-1.5 h-3.5 bg-white/50 ml-1 translate-y-0.5 animate-blink" /></div>
-                       <div className="pl-8"><span className="text-zinc-500">&lt;/</span><span className="text-blue-300">motion.div</span><span className="text-zinc-500">&gt;</span></div>
-                       <div className="pl-4">);</div>
-                       <div>{'}'}</div>
+                    <div className="absolute inset-x-4 bottom-4 flex gap-1.5">
+                      {WEB_SLIDES.map((_, index) => (
+                        <div
+                          key={`progress-${index}`}
+                          className="h-1 flex-1 rounded-full overflow-hidden bg-white/25"
+                        >
+                          <div
+                            className={cn(
+                              "h-full rounded-full bg-white transition-all duration-[2200ms] ease-linear",
+                              index === webSlideIndex ? "w-full opacity-100" : "w-0 opacity-60"
+                            )}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
-
-                  {/* React Native / Mobile UI App (Front Right) */}
-                  <div className="absolute top-[10%] right-[5%] w-[35%] max-w-[160px] h-[260px] bg-[#0c0d12]/95 backdrop-blur-xl border border-white/[0.08] rounded-[24px] shadow-[inset_0_2px_4px_rgba(255,255,255,0.1),0_40px_80px_rgba(0,0,0,0.9)] flex flex-col items-center pt-3 z-30 pointer-events-auto rotate-[3deg] translate-y-2">
-                    <div className="w-[30%] h-[5px] bg-black border border-white/[0.05] rounded-full mb-4 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"></div>
-                    <div className="w-full px-4 flex flex-col gap-3">
-                      <div className="flex justify-between items-center mb-1">
-                         <div className="w-6 h-6 rounded-full bg-white/10" />
-                         <div className="w-12 h-2 bg-white/10 rounded-full" />
-                      </div>
-                      <div className="w-full h-[60px] bg-indigo-500/20 rounded-[12px] border border-indigo-500/30 flex items-center justify-center shadow-[inset_0_1px_1px_rgba(99,102,241,0.3)]">
-                         <FaReact className="text-indigo-400 text-3xl animate-[spin_10s_linear_infinite]" />
-                      </div>
-                      <div className="w-full pl-0 pt-2 flex flex-col gap-2">
-                        <div className="w-full h-[40px] bg-black/40 rounded-[8px] border border-white/[0.05] shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]" />
-                        <div className="w-full h-[40px] bg-black/40 rounded-[8px] border border-white/[0.05] shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]" />
-                      </div>
-                    </div>
+                  <div className="absolute right-[6%] top-[16%] w-[120px] h-[220px] rounded-[24px] border border-white/40 bg-white/20 backdrop-blur-lg shadow-[0_18px_40px_rgba(2,6,23,0.3)] rotate-[6deg] animate-cinematic-zoom">
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-white/70" />
+                    <div className="absolute inset-x-3 bottom-4 h-14 rounded-[12px] bg-white/25 border border-white/40" />
                   </div>
                </div>
             }

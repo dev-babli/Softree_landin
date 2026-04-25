@@ -72,6 +72,67 @@ const TrueHulyHero = dynamic(() => import("@/components/brilliance/TrueHulyHero"
   loading: () => <div className="min-h-screen w-full shrink-0 bg-black" aria-hidden />,
 })
 
+const SoftreeGridHeroLazy = dynamic(
+  () => import("@/components/brilliance/SoftreeGridHero").then((m) => ({ default: m.SoftreeGridHero })),
+  { loading: () => <div className="min-h-screen w-full bg-black" aria-hidden /> }
+)
+
+const VirtualOfficeSectionLazy = dynamic(
+  () =>
+    import("@/components/brilliance/VirtualOfficeSection").then((m) => ({
+      default: m.VirtualOfficeSection,
+    })),
+  { loading: () => <div className="min-h-[85vh] w-full bg-black" aria-hidden /> }
+)
+
+const SoftreeGlobalShowcaseLazy = dynamic(
+  () =>
+    import("@/components/homepage/SoftreeGlobalShowcase").then((m) => ({
+      default: m.SoftreeGlobalShowcase,
+    })),
+  { loading: () => <div className="min-h-[80vh] w-full bg-[#070707]" aria-hidden /> }
+)
+
+const MirrorContentOpsSectionLazy = dynamic(
+  () =>
+    import("@/components/homepage/MirrorContentOpsSection").then((m) => ({
+      default: m.MirrorContentOpsSection,
+    })),
+  { loading: () => <div className="min-h-[80vh] w-full bg-[#080808]" aria-hidden /> }
+)
+
+const SoftreeServicePickerLazy = dynamic(
+  () =>
+    import("@/components/homepage/SoftreeServicePicker").then((m) => ({
+      default: m.SoftreeServicePicker,
+    })),
+  { loading: () => <div className="min-h-[100vh] w-full bg-[#080808]" aria-hidden /> }
+)
+
+const ServicesParallaxShowcaseLazy = dynamic(
+  () =>
+    import("@/components/homepage/ServicesParallaxShowcase").then((m) => ({
+      default: m.ServicesParallaxShowcase,
+    })),
+  { loading: () => <div className="min-h-[500vh] w-full bg-black" aria-hidden /> }
+)
+
+const ServicesStackedSlidesLazy = dynamic(
+  () =>
+    import("@/components/homepage/ServicesStackedSlides").then((m) => ({
+      default: m.ServicesStackedSlides,
+    })),
+  { loading: () => <div className="min-h-[420vh] w-full bg-black" aria-hidden /> }
+)
+
+const CubeScrollGalleryLazy = dynamic(
+  () =>
+    import("@/components/homepage/CubeScrollGallery").then((m) => ({
+      default: m.CubeScrollGallery,
+    })),
+  { loading: () => <div className="min-h-[600vh] w-full bg-black" aria-hidden /> }
+)
+
 const ProductPreviewLazy = dynamic(
   () =>
     import("@/components/brilliance/ProductPreview").then((m) => ({
@@ -102,6 +163,22 @@ const HowItWorksSectionLazy = dynamic(
       default: m.HowItWorksSection,
     })),
   { loading: () => <div className="min-h-[90vh] w-full bg-neutral-950" aria-hidden /> }
+)
+
+const ScrollRevealSectionLazy = dynamic(
+  () =>
+    import("@/components/homepage/ScrollRevealSection").then((m) => ({
+      default: m.ScrollRevealSection,
+    })),
+  { loading: () => <div className="min-h-[100vh] w-full bg-[#0a0a0a]" aria-hidden /> }
+)
+
+const PinnedShowcaseSectionLazy = dynamic(
+  () =>
+    import("@/components/homepage/PinnedShowcaseSection").then((m) => ({
+      default: m.PinnedShowcaseSection,
+    })),
+  { loading: () => <div className="min-h-[300vh] w-full bg-[#0a0a0a]" aria-hidden /> }
 )
 
 const InfrastructureSectionLazy = dynamic(
@@ -212,14 +289,6 @@ const FeatureProgressSectionLazy = dynamic(
   { loading: () => <div className="min-h-[100vh] w-full bg-[#0a0a0a]" aria-hidden /> }
 )
 
-const VirtualOfficeSectionLazy = dynamic(
-  () =>
-    import("@/components/brilliance/VirtualOfficeSection").then((m) => ({
-      default: m.VirtualOfficeSection,
-    })),
-  { loading: () => <div className="min-h-[85vh] w-full bg-black" aria-hidden /> }
-)
-
 const TestimonialsSectionLazy = dynamic(
   () => import("@/components/brilliance/testimonials-section"),
   { loading: () => <div className="min-h-[70vh] w-full bg-black" aria-hidden /> }
@@ -262,66 +331,96 @@ function HomepageContent() {
   return (
     <div className="w-full min-h-screen relative bg-[#000000] flex flex-col justify-start items-center" style={{ overflowX: "clip" }}>
       <div className="relative flex flex-col justify-start items-center w-full mt-0">
-        {/* --- DARK THEME: PRODUCT & HERO SHOWCASE --- */}
+
+        {/* 01a — HERO (video) */}
         <TrueHulyHero />
 
+        {/* 01a.5 — SERVICES PARALLAX SHOWCASE (dark→light cinematic hook) */}
+        <DeferUntilInView placeholderClassName="min-h-[500vh] bg-black">
+          <ServicesParallaxShowcaseLazy />
+        </DeferUntilInView>
 
+        {/* 01b — GRID HERO (no video — ForDevelopers style reference) */}
+        <DeferUntilInView placeholderClassName="min-h-screen bg-black">
+          <SoftreeGridHeroLazy />
+        </DeferUntilInView>
 
+        {/* 02a — BRAND SHOWCASE (Hero-matched) */}
         <DeferUntilInView placeholderClassName="min-h-[85vh] bg-black">
           <VirtualOfficeSectionLazy />
         </DeferUntilInView>
 
-        <DeferUntilInView placeholderClassName="min-h-[100vh] bg-black">
-          <ProductPreviewLazy />
+        {/* 02b — GLOBAL SHOWCASE (Grid style — reference) */}
+        <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#070707]">
+          <SoftreeGlobalShowcaseLazy />
         </DeferUntilInView>
 
-
-
-        <DeferUntilInView placeholderClassName="min-h-[620px] bg-[#0e0e0e]">
-          <IntroDiagram />
+        {/* 03 — WHAT WE DO (Services Grid) */}
+        <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#080808]">
+          <MirrorContentOpsSectionLazy />
         </DeferUntilInView>
 
+        {/* 03b — SERVICE PICKER (GSAP Flip route preview cards) */}
+        <DeferUntilInView placeholderClassName="min-h-[100vh] bg-[#080808]">
+          <SoftreeServicePickerLazy />
+        </DeferUntilInView>
+
+        {/* 03c — SCROLL REVEAL (GSAP scroll-direction animations) */}
+        <DeferUntilInView placeholderClassName="min-h-[100vh] bg-[#0a0a0a]">
+          <ScrollRevealSectionLazy />
+        </DeferUntilInView>
+
+        {/* 04 — HOW WE WORK */}
         <DeferUntilInView placeholderClassName="min-h-[90vh] bg-neutral-950">
           <HowItWorksSectionLazy />
         </DeferUntilInView>
 
-        {/* --- AGENTIC AI METRICS & PERFORMANCE --- */}
-        <DeferUntilInView placeholderClassName="min-h-[90vh] bg-[#f5f2ec]">
-          <StatShowcaseSectionLazy />
+        {/* 04b — SERVICES STACKED SLIDES */}
+        <DeferUntilInView placeholderClassName="min-h-[420vh] bg-black">
+          <ServicesStackedSlidesLazy />
         </DeferUntilInView>
 
-        <DeferUntilInView placeholderClassName="min-h-[150vh] bg-[#112817]">
-          <PerformanceSectionLazy />
+        {/* 04c — CUBE SCROLL GALLERY */}
+        <DeferUntilInView placeholderClassName="min-h-[600vh] bg-black">
+          <CubeScrollGalleryLazy />
         </DeferUntilInView>
 
-
-
-        <DeferUntilInView placeholderClassName="min-h-[60vh] bg-white">
-          <SoftreeIndustriesSectionLazy />
+        {/* 05 — PINNED SHOWCASE (scroll-driven delivery process) */}
+        <DeferUntilInView placeholderClassName="min-h-[300vh] bg-[#0a0a0a]">
+          <PinnedShowcaseSectionLazy />
         </DeferUntilInView>
 
-        {/* --- DARK THEME: DEEP DIVE & DEVELOPERS --- */}
+        {/* 06 — WHY SOFTREE */}
         <DeferUntilInView placeholderClassName="min-h-[100vh] bg-[#1a1a1a]">
           <WhySoftreeSectionLazy />
         </DeferUntilInView>
 
+        {/* 07 — SOCIAL PROOF: TESTIMONIALS (moved up from position 17) */}
+        <DeferUntilInView placeholderClassName="min-h-[70vh] bg-black">
+          <TestimonialsSectionLazy />
+        </DeferUntilInView>
 
+        {/* 08 — INDUSTRIES WE SERVE */}
+        <DeferUntilInView placeholderClassName="min-h-[60vh] bg-white">
+          <SoftreeIndustriesSectionLazy />
+        </DeferUntilInView>
 
+        {/* 11 — SECURITY & COMPLIANCE */}
         <DeferUntilInView placeholderClassName="min-h-[90vh] bg-neutral-950">
           <SecuritySectionLazy />
         </DeferUntilInView>
 
-
-
+        {/* 12 — MID-PAGE LEAD CAPTURE */}
         <DeferUntilInView placeholderClassName="min-h-[60vh] bg-[#070707]">
           <SoftreeMidCTALazy />
         </DeferUntilInView>
 
+        {/* 13 — FOR ENTERPRISE TEAMS */}
         <DeferUntilInView placeholderClassName="min-h-[90vh] bg-[#070707]">
           <ForDevelopersSectionLazy />
         </DeferUntilInView>
 
-        {/* --- LIGHT THEME: ECOSYSTEM & BLOG --- */}
+        {/* 14 — TECHNOLOGY ECOSYSTEM */}
         <DeferUntilInView placeholderClassName="min-h-[60vh] bg-[#fcfcfc]">
           <SoftreeStackTabsLazy />
         </DeferUntilInView>
@@ -330,28 +429,26 @@ function HomepageContent() {
           <SoftreeComposioSectionLazy />
         </DeferUntilInView>
 
+        {/* 15 — INSIGHTS */}
         <DeferUntilInView placeholderClassName="min-h-[60vh] bg-white">
           <SoftreeBlogSectionLazy />
         </DeferUntilInView>
 
-
-
-        <DeferUntilInView placeholderClassName="min-h-[70vh] bg-black">
-          <TestimonialsSectionLazy />
-        </DeferUntilInView>
-
+        {/* 16 — FAQ */}
         <DeferUntilInView placeholderClassName="min-h-[60vh] bg-black">
           <FAQSectionLazy />
         </DeferUntilInView>
 
+        {/* 17 — FINAL CTA */}
         <DeferUntilInView placeholderClassName="min-h-[50vh] bg-neutral-950">
           <SoftreeCTASectionLazy />
         </DeferUntilInView>
 
-        {/* --- FOOTER --- */}
+        {/* 18 — FOOTER */}
         <DeferUntilInView placeholderClassName="min-h-[40vh] bg-[#fbfbfb]">
           <SoftreeFooterLazy />
         </DeferUntilInView>
+
       </div>
     </div>
   )

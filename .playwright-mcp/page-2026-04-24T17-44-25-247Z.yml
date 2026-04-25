@@ -1,0 +1,715 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Softree Logo" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Softree Logo" [ref=e6]
+      - list [ref=e7]:
+        - listitem [ref=e8]:
+          - button "Services" [ref=e9] [cursor=pointer]:
+            - paragraph [ref=e10]: Services
+          - generic:
+            - generic:
+              - link "Services":
+                - /url: /services
+                - paragraph: Services
+                - img
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: AI Intelligence
+                  - list:
+                    - listitem:
+                      - link "Agentic AI NEW":
+                        - /url: /services/ai-intelligence/agentic-ai
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: Agentic AI
+                              - generic:
+                                - generic: NEW
+                    - listitem:
+                      - link "Generative AI":
+                        - /url: /services/ai-intelligence/generative-ai
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: Generative AI
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: Business Applications
+                  - list:
+                    - listitem:
+                      - link "MVP Development":
+                        - /url: /services/business-applications/mvp
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: MVP Development
+                    - listitem:
+                      - link "Power Apps":
+                        - /url: /services/business-applications/power-apps
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: Power Apps
+                    - listitem:
+                      - link "For Startups":
+                        - /url: /services/business-applications/softree-for-startups
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: For Startups
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: Data & Analytics
+                  - list:
+                    - listitem:
+                      - link "Microsoft Fabric":
+                        - /url: /services/data-analytics/microsoft-fabric
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: Microsoft Fabric
+                    - listitem:
+                      - link "Power BI":
+                        - /url: /services/data-analytics/power-bi
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: Power BI
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: Digital Workspace
+                  - list:
+                    - listitem:
+                      - link "Web Apps":
+                        - /url: /services/digital-workspace/web-app-development
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: Web Apps
+                    - listitem:
+                      - link "Mobile Apps":
+                        - /url: /services/digital-workspace/mobile-app-development
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: Mobile Apps
+                    - listitem:
+                      - link "SharePoint":
+                        - /url: /services/digital-workspace/sharepoint
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: SharePoint
+                    - listitem:
+                      - link "SPFx":
+                        - /url: /services/digital-workspace/spfx-developments
+                        - generic:
+                          - generic:
+                            - generic:
+                              - img
+                            - generic:
+                              - paragraph: SPFx
+              - generic:
+                - link "All Services":
+                  - /url: /services
+                  - paragraph: All Services
+                  - img
+                - link "Get a Quote":
+                  - /url: /contact
+                  - paragraph: Get a Quote
+                  - img
+        - listitem [ref=e11]:
+          - button "Industries" [ref=e12] [cursor=pointer]:
+            - paragraph [ref=e13]: Industries
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - paragraph: Industries
+                  - list:
+                    - listitem:
+                      - link "Technology":
+                        - /url: /solutions/technology
+                        - generic:
+                          - paragraph: Technology
+                    - listitem:
+                      - link "Financial Services":
+                        - /url: /solutions/financial-services
+                        - generic:
+                          - paragraph: Financial Services
+                    - listitem:
+                      - link "Healthcare and Life Sciences":
+                        - /url: /solutions/healthcare-and-life-sciences
+                        - generic:
+                          - paragraph: Healthcare and Life Sciences
+                    - listitem:
+                      - link "Manufacturing":
+                        - /url: /solutions/manufacturing
+                        - generic:
+                          - paragraph: Manufacturing
+                    - listitem:
+                      - link "Energy and Utilities":
+                        - /url: /solutions/energy-and-utilities
+                        - generic:
+                          - paragraph: Energy and Utilities
+                    - listitem:
+                      - link "Public Sector":
+                        - /url: /solutions/public-sector
+                        - generic:
+                          - paragraph: Public Sector
+                    - listitem:
+                      - link "Telecommunications":
+                        - /url: /solutions/telecommunications
+                        - generic:
+                          - paragraph: Telecommunications
+                - link "Model Vault Your dedicated, secure model inference platform — managed by Cohere":
+                  - /url: /solutions/model-vault
+                  - generic:
+                    - generic:
+                      - paragraph: Model Vault
+                      - img
+                    - paragraph: Your dedicated, secure model inference platform — managed by Cohere
+              - generic:
+                - link "Security":
+                  - /url: /security
+                  - paragraph: Security
+                  - img
+                - link "Private Deployments":
+                  - /url: /private-deployments
+                  - paragraph: Private Deployments
+                  - img
+        - listitem [ref=e14]:
+          - button "Research" [ref=e15] [cursor=pointer]:
+            - paragraph [ref=e16]: Research
+          - generic:
+            - generic:
+              - generic:
+                - link "Cohere Labs Cohere's research lab that seeks to solve complex ML problems":
+                  - /url: /research
+                  - generic:
+                    - generic:
+                      - paragraph: Cohere Labs
+                      - img
+                    - paragraph: Cohere's research lab that seeks to solve complex ML problems
+                - generic:
+                  - paragraph: Model
+                  - list:
+                    - listitem:
+                      - link "Aya":
+                        - /url: /research/aya
+                        - generic:
+                          - paragraph: Aya
+                    - listitem: RESOURCES
+                    - listitem:
+                      - link "Papers":
+                        - /url: /research/papers
+                        - generic:
+                          - paragraph: Papers
+                    - listitem:
+                      - link "Videos":
+                        - /url: https://www.youtube.com/playlist?list=PLLalUvky4CLJKDaiWCumhsJpHNDhZeVll
+                        - generic:
+                          - paragraph: Videos
+                    - listitem:
+                      - link "Blog":
+                        - /url: /blog?tag=research
+                        - generic:
+                          - paragraph: Blog
+                - generic:
+                  - paragraph: Initiatives
+                  - list:
+                    - listitem:
+                      - link "Open Science Community":
+                        - /url: /research/open-science
+                        - generic:
+                          - paragraph: Open Science Community
+                    - listitem:
+                      - link "Scholars Program":
+                        - /url: /research/scholars-program
+                        - generic:
+                          - paragraph: Scholars Program
+                    - listitem:
+                      - link "Catalyst Grant Program":
+                        - /url: /research/grants
+                        - generic:
+                          - paragraph: Catalyst Grant Program
+                    - listitem:
+                      - link "The Leaderboard Illusion":
+                        - /url: /research/lmarena
+                        - generic:
+                          - paragraph: The Leaderboard Illusion
+                    - listitem:
+                      - link "Events":
+                        - /url: /events?eventTypes=research
+                        - generic:
+                          - paragraph: Events
+        - listitem [ref=e17]:
+          - button "Resources" [ref=e18] [cursor=pointer]:
+            - paragraph [ref=e19]: Resources
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - paragraph: Resources
+                  - list:
+                    - listitem:
+                      - link "Blog":
+                        - /url: /blog
+                        - generic:
+                          - paragraph: Blog
+                    - listitem:
+                      - link "Developers":
+                        - /url: /developers
+                        - generic:
+                          - paragraph: Developers
+                    - listitem:
+                      - link "Docs":
+                        - /url: https://docs.cohere.com/
+                        - generic:
+                          - paragraph: Docs
+                    - listitem:
+                      - link "LLM University":
+                        - /url: /llmu
+                        - generic:
+                          - paragraph: LLM University
+                    - listitem:
+                      - link "Cookbooks":
+                        - /url: https://docs.cohere.com/page/cookbooks
+                        - generic:
+                          - paragraph: Cookbooks
+                - generic:
+                  - paragraph: Community
+                  - list:
+                    - listitem:
+                      - link "Discord":
+                        - /url: https://discord.com/invite/co-mmunity
+                        - generic:
+                          - paragraph: Discord
+                    - listitem:
+                      - link "Events":
+                        - /url: /events
+                        - generic:
+                          - paragraph: Events
+                    - listitem:
+                      - link "On-Demand Events":
+                        - /url: https://events.cohere.com/on-demand/
+                        - generic:
+                          - paragraph: On-Demand Events
+                - link "Customer Stories Explore enterprise AI case studies and success stories":
+                  - /url: /customer-stories
+                  - generic:
+                    - generic:
+                      - paragraph: Customer Stories
+                      - img
+                    - paragraph: Explore enterprise AI case studies and success stories
+        - listitem [ref=e20]:
+          - button "Company" [ref=e21] [cursor=pointer]:
+            - paragraph [ref=e22]: Company
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - paragraph: Company
+                  - list:
+                    - listitem:
+                      - link "About":
+                        - /url: /about
+                        - generic:
+                          - paragraph: About
+                    - listitem:
+                      - link "Careers":
+                        - /url: /careers
+                        - generic:
+                          - paragraph: Careers
+                    - listitem:
+                      - link "Newsroom":
+                        - /url: /newsroom
+                        - generic:
+                          - paragraph: Newsroom
+                    - listitem:
+                      - link "Partners":
+                        - /url: /partners
+                        - generic:
+                          - paragraph: Partners
+      - generic [ref=e24]:
+        - link "Sign in" [ref=e26] [cursor=pointer]:
+          - /url: https://dashboard.cohere.com/welcome/login
+          - paragraph [ref=e27]: Sign in
+        - link "Request a demo" [ref=e30] [cursor=pointer]:
+          - /url: /contact-sales
+    - generic [ref=e34]:
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e42]: Enterprise Solutions
+          - heading "Core Engineering Services" [level=2] [ref=e43]
+        - generic [ref=e44]:
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e49]: ELITE AI
+              - img [ref=e51]
+            - generic [ref=e54]:
+              - heading "AGENTIC AI & AUTOMATION" [level=3] [ref=e55]
+              - paragraph [ref=e56]: Deploy autonomous AI agents that handle complex workflows, fine-tuned to your proprietary data for unmatched precision.
+            - link "EXPLORE SOLUTION" [ref=e60] [cursor=pointer]:
+              - /url: /services/ai-intelligence
+              - text: EXPLORE SOLUTION
+              - img [ref=e61]
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - generic [ref=e67]: NEXT-GEN
+              - img [ref=e69]
+            - generic [ref=e71]:
+              - heading "PREMIUM WEB SYSTEMS" [level=3] [ref=e72]
+              - paragraph [ref=e73]: Cinematic, high-conversion web applications built with Next.js and React 19, engineered for speed and enterprise reliability.
+            - link "EXPLORE SOLUTION" [ref=e77] [cursor=pointer]:
+              - /url: /services/digital-workspace
+              - text: EXPLORE SOLUTION
+              - img [ref=e78]
+          - generic [ref=e82]:
+            - generic [ref=e83]:
+              - generic [ref=e84]: STRATEGIC
+              - img [ref=e86]
+            - generic [ref=e89]:
+              - heading "ENTERPRISE TRANSFORMATION" [level=3] [ref=e90]
+              - paragraph [ref=e91]: Strategic engineering partners for global digital dominance, migrating legacy complexity into lean, modern architectures.
+            - link "EXPLORE SOLUTION" [ref=e95] [cursor=pointer]:
+              - /url: /services/business-applications
+              - text: EXPLORE SOLUTION
+              - img [ref=e96]
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]: SOVEREIGN
+              - img [ref=e104]
+            - generic [ref=e108]:
+              - heading "DATA SOVEREIGNTY" [level=3] [ref=e109]
+              - paragraph [ref=e110]: Robust data engineering pipelines and real-time analytics that turn massive datasets into actionable competitive advantages.
+            - link "EXPLORE SOLUTION" [ref=e114] [cursor=pointer]:
+              - /url: /services/data-analytics
+              - text: EXPLORE SOLUTION
+              - img [ref=e115]
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic:
+              - img
+      - generic [ref=e118]:
+        - generic "SOFTREE" [ref=e120] [cursor=pointer]:
+          - generic [ref=e121]:
+            - generic [ref=e123]: "6"
+            - generic [ref=e125]: "6"
+            - generic:
+              - generic:
+                - generic: "6"
+          - generic [ref=e126]:
+            - generic [ref=e128]: K
+            - generic [ref=e130]: K
+            - generic:
+              - generic:
+                - generic: K
+          - generic [ref=e131]:
+            - generic [ref=e133]: "8"
+            - generic [ref=e135]: "8"
+            - generic:
+              - generic:
+                - generic: "8"
+          - generic [ref=e136]:
+            - generic [ref=e138]: "0"
+            - generic [ref=e140]: "0"
+            - generic:
+              - generic:
+                - generic: "0"
+          - generic [ref=e141]:
+            - generic [ref=e143]: W
+            - generic [ref=e145]: W
+            - generic:
+              - generic:
+                - generic: W
+          - generic [ref=e146]:
+            - generic [ref=e148]: T
+            - generic [ref=e150]: T
+            - generic:
+              - generic:
+                - generic: T
+          - generic [ref=e151]:
+            - generic [ref=e153]: E
+            - generic [ref=e155]: E
+            - generic:
+              - generic:
+                - generic: E
+        - heading "Where Vision Meets Execution" [level=2] [ref=e156]
+        - paragraph [ref=e157]: From Agentic AI to enterprise web apps — Softree turns your boldest ideas into production-grade software, faster.
+        - generic [ref=e158]:
+          - link "Start a project" [ref=e161] [cursor=pointer]:
+            - /url: /contact
+            - text: Start a project
+            - img [ref=e162]
+          - link "Our services" [ref=e166] [cursor=pointer]:
+            - /url: /services
+  - text: /* ✅ Tidio Chatbot */
+  - button "Open Next.js Dev Tools" [ref=e213] [cursor=pointer]:
+    - img [ref=e214]
+  - alert [ref=e217]

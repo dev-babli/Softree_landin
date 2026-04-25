@@ -24,7 +24,8 @@ import Link from "next/link"
    - mouseleave on dropdown → schedules close
    ═══════════════════════════════════════════════════════════════════════ */
 
-type MenuKey = "products" | "solutions" | "research" | "resources" | "company" | null
+type MenuKey = "services" | "industries" | "research" | "resources" | "company" | null
+type DesktopMenuKey = Exclude<MenuKey, null>
 
 /* ── Image URLs (Cohere Sanity CDN — preserved exactly) ──────── */
 const SRCSET = {
@@ -71,12 +72,77 @@ function ChevronDown({ className = "" }: { className?: string }) {
   )
 }
 
+/* ── Animated service icons — animations play on parent hover via group ── */
+const NAV_ICON_STYLES = `
+  @keyframes nav-spin { to { transform: rotate(360deg); } }
+  @keyframes nav-pulse { 0%,100%{opacity:1;} 50%{opacity:.4;} }
+  @keyframes nav-bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-3px);} }
+  @keyframes nav-scan { 0%{stroke-dashoffset:56;} 100%{stroke-dashoffset:0;} }
+  @keyframes nav-float { 0%,100%{transform:translateY(0) rotate(0deg);} 50%{transform:translateY(-2px) rotate(3deg);} }
+  .group\/image-list:hover .nav-icon-spin { animation: nav-spin 1.2s linear infinite; transform-origin: center; transform-box: fill-box; }
+  .group\/image-list:hover .nav-icon-pulse { animation: nav-pulse 1s ease-in-out infinite; }
+  .group\/image-list:hover .nav-icon-bounce { animation: nav-bounce .7s ease-in-out infinite; }
+  .group\/image-list:hover .nav-icon-scan { stroke-dasharray:56; stroke-dashoffset:56; animation: nav-scan .8s ease forwards; }
+  .group\/image-list:hover .nav-icon-float { animation: nav-float 1.2s ease-in-out infinite; }
+`
+
+function NavIconStyles() {
+  return <style dangerouslySetInnerHTML={{ __html: NAV_ICON_STYLES }} />
+}
+
+/* AI Intelligence — animated brain/circuit icon */
+function IconAI({ color = "#A855F7" }: { color?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path className="nav-icon-float" d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5V12" />
+      <circle cx="12" cy="16" r="4" className="nav-icon-pulse" />
+      <path d="M8 6a4 4 0 0 0-4 4c0 1.5.8 2.8 2 3.5" />
+      <path d="M16 6a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.5" />
+    </svg>
+  )
+}
+
+/* Business Applications — rocket */
+function IconBusiness({ color = "#FF7759" }: { color?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path className="nav-icon-bounce" d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path className="nav-icon-pulse" d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+      <path className="nav-icon-pulse" d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    </svg>
+  )
+}
+
+/* Data Analytics — bar chart with animated fill */
+function IconData({ color = "#3B82F6" }: { color?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="20" x2="18" y2="10" className="nav-icon-bounce" style={{ animationDelay: "0s" }} />
+      <line x1="12" y1="20" x2="12" y2="4" className="nav-icon-bounce" style={{ animationDelay: "0.15s" }} />
+      <line x1="6" y1="20" x2="6" y2="14" className="nav-icon-bounce" style={{ animationDelay: "0.3s" }} />
+      <line x1="2" y1="20" x2="22" y2="20" />
+    </svg>
+  )
+}
+
+/* Digital Workspace — monitor with spinning gear */
+function IconWorkspace({ color = "#10B981" }: { color?: string }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <path d="M8 21h8" /><path d="M12 17v4" />
+      <circle cx="12" cy="10" r="2" className="nav-icon-spin" />
+    </svg>
+  )
+}
+
 /* ═══════════════════════════════════════════════════════════════════════
    REUSABLE SUB-COMPONENTS
    ═══════════════════════════════════════════════════════════════════════ */
 
-function ProductItem({ href, color, name, desc, badge }: {
-  href: string; color: string; name: string; desc: string; badge?: string
+function ProductItem({ href, icon, name, desc, badge }: {
+  href: string; icon?: React.ReactNode; name: string; desc: string; badge?: string
 }) {
   return (
     <li className="group/image-list relative">
@@ -84,7 +150,7 @@ function ProductItem({ href, color, name, desc, badge }: {
         <div className="relative px-2">
           <div tabIndex={-1} className="absolute -left-2 -top-4 h-[calc(100%+32px)] w-[calc(100%+16px)] rounded opacity-0 transition-opacity duration-300 ease-in-out group-hover/image-list:opacity-100 bg-[#e6e6e6]/90" />
           <span className="relative mt-8 flex items-center lg:mt-10">
-            <div tabIndex={-1} className="mr-[10px] h-[10px] w-[10px] rounded-full" style={{ backgroundColor: color }} />
+            <span className="mr-[10px] flex-shrink-0">{icon}</span>
             <div className="flex items-center gap-1">
               <p className="text-base lg:text-lg font-normal">{name}</p>
               {badge && (
@@ -94,7 +160,7 @@ function ProductItem({ href, color, name, desc, badge }: {
               )}
             </div>
           </span>
-          <p className="text-sm font-normal relative mt-3 min-h-[2lh] text-[#787878]">{desc}</p>
+
         </div>
       </Link>
     </li>
@@ -149,67 +215,84 @@ function BottomLink({ href, label }: { href: string; label: string }) {
    DROPDOWN PANELS — Desktop
    ═══════════════════════════════════════════════════════════════════════ */
 
-function ProductsPanel() {
+function ServicesPanel() {
   return (
     <div className="relative px-6 pt-4">
-      <Link href="/products" className="group/drawer-title -mb-2 flex items-center gap-x-2 lg:mb-auto">
-        <p className="text-xl lg:text-2xl font-normal">Products </p>
+      <NavIconStyles />
+      <Link href="/services" className="group/drawer-title -mb-2 flex items-center gap-x-2 lg:mb-auto">
+        <p className="text-xl lg:text-2xl font-normal">Services</p>
         <ArrowRight className="mt-0.5 transition-transform group-hover/drawer-title:translate-x-1" />
       </Link>
       <div className="mb-10 flex gap-x-6 mt-4">
-        {/* Col 1 — Workplace Systems */}
-        <div className="xl:w-[284px]">
+        {/* Col 1 — AI Intelligence */}
+        <div className="xl:w-[240px]">
           <div className="relative group/image">
-            <div className="relative h-[100px] lg:w-[284px]" tabIndex={-1} aria-hidden="true" />
-            <img alt="" className="absolute top-0 h-[100px] w-full rounded-lg object-cover object-center transition-all duration-300 ease-in-out lg:w-[284px]" width={284} height={100} srcSet={SRCSET.workplace.srcSet} src={SRCSET.workplace.src} />
+            <div className="relative h-[100px] lg:w-[240px]" tabIndex={-1} aria-hidden="true" />
+            <img alt="" className="absolute top-0 h-[100px] w-full rounded-lg object-cover object-center transition-all duration-300 ease-in-out lg:w-[240px]" width={240} height={100} srcSet={SRCSET.generative.srcSet} src={SRCSET.generative.src} />
             <div className="px-4">
-              <p className="text-xs font-semibold uppercase tracking-wider relative mb-3 mt-5 text-[#787878]">Workplace Systems</p>
+              <p className="text-xs font-semibold uppercase tracking-wider relative mb-3 mt-5 text-[#787878]">AI Intelligence</p>
             </div>
           </div>
           <ul className="list-none px-2">
-            <ProductItem href="/north" color="#3B82F6" name="North" desc="An enterprise-ready AI platform that powers modern workplace productivity" />
-            <ProductItem href="/compass" color="#3B82F6" name="Compass" desc="An intelligent search and discovery system to surface business insights" />
+            <ProductItem href="/services/ai-intelligence/agentic-ai" icon={<IconAI />} name="Agentic AI" desc="Autonomous AI agents that act, decide, and complete complex tasks end-to-end" badge="NEW" />
+            <ProductItem href="/services/ai-intelligence/generative-ai" icon={<IconAI color="#C084FC" />} name="Generative AI" desc="Custom LLM solutions fine-tuned on your enterprise data and workflows" />
           </ul>
         </div>
-        {/* Col 2 — Generative Models */}
-        <div className="xl:w-[284px]">
+        {/* Col 2 — Business Applications */}
+        <div className="xl:w-[240px]">
           <div className="relative group/image">
-            <div className="relative h-[100px] lg:w-[284px]" tabIndex={-1} aria-hidden="true" />
-            <img alt="" className="absolute top-0 h-[100px] w-full rounded-lg object-cover object-center transition-all duration-300 ease-in-out lg:w-[284px]" width={284} height={100} srcSet={SRCSET.generative.srcSet} src={SRCSET.generative.src} />
+            <div className="relative h-[100px] lg:w-[240px]" tabIndex={-1} aria-hidden="true" />
+            <img alt="" className="absolute top-0 h-[100px] w-full rounded-lg object-cover object-center transition-all duration-300 ease-in-out lg:w-[240px]" width={240} height={100} srcSet={SRCSET.workplace.srcSet} src={SRCSET.workplace.src} />
             <div className="px-4">
-              <p className="text-xs font-semibold uppercase tracking-wider relative mb-3 mt-5 text-[#787878]">Generative Models</p>
+              <p className="text-xs font-semibold uppercase tracking-wider relative mb-3 mt-5 text-[#787878]">Business Applications</p>
             </div>
           </div>
           <ul className="list-none px-2">
-            <ProductItem href="/command" color="#A855F7" name="Command" desc="A family of high-performance, scalable language models" />
-            <ProductItem href="/transcribe" color="#A855F7" name="Transcribe" desc="A speech recognition model for generating highly accurate audio transcripts" badge="NEW" />
-            <ProductItem href="/research/aya" color="#A855F7" name="Aya" desc="A family of multilingual research models covering 70+ languages" />
+            <ProductItem href="/services/business-applications/mvp" icon={<IconBusiness />} name="MVP Development" desc="Go from idea to market-ready product with rapid, agile MVP delivery" />
+            <ProductItem href="/services/business-applications/power-apps" icon={<IconBusiness color="#FB923C" />} name="Power Apps" desc="Low-code Microsoft Power Apps solutions for enterprise-grade automation" />
+            <ProductItem href="/services/business-applications/softree-for-startups" icon={<IconBusiness color="#FBBF24" />} name="For Startups" desc="Tailored packages to help startups scale with enterprise-level tech" />
           </ul>
         </div>
-        {/* Col 3 — Advanced Retrieval */}
-        <div className="xl:w-[284px]">
+        {/* Col 3 — Data Analytics */}
+        <div className="xl:w-[240px]">
           <div className="relative group/image">
-            <div className="relative h-[100px] lg:w-[284px]" tabIndex={-1} aria-hidden="true" />
-            <img alt="" className="absolute top-0 h-[100px] w-full rounded-lg object-cover object-center transition-all duration-300 ease-in-out lg:w-[284px]" width={284} height={100} srcSet={SRCSET.retrieval.srcSet} src={SRCSET.retrieval.src} />
+            <div className="relative h-[100px] lg:w-[240px]" tabIndex={-1} aria-hidden="true" />
+            <img alt="" className="absolute top-0 h-[100px] w-full rounded-lg object-cover object-center transition-all duration-300 ease-in-out lg:w-[240px]" width={240} height={100} srcSet={SRCSET.retrieval.srcSet} src={SRCSET.retrieval.src} />
             <div className="px-4">
-              <p className="text-xs font-semibold uppercase tracking-wider relative mb-3 mt-5 text-[#787878]">Advanced Retrieval Models</p>
+              <p className="text-xs font-semibold uppercase tracking-wider relative mb-3 mt-5 text-[#787878]">Data & Analytics</p>
             </div>
           </div>
           <ul className="list-none px-2">
-            <ProductItem href="/embed" color="#FF7759" name="Embed" desc="A leading multimodal search and retrieval tool" />
-            <ProductItem href="/rerank" color="#FF7759" name="Rerank" desc="A powerful model that provides a semantic boost to search quality" />
+            <ProductItem href="/services/data-analytics/microsoft-fabric" icon={<IconData />} name="Microsoft Fabric" desc="Unified analytics platform for data engineering, warehousing, and BI" />
+            <ProductItem href="/services/data-analytics/power-bi" icon={<IconData color="#60A5FA" />} name="Power BI" desc="Interactive dashboards and real-time business intelligence reports" />
+          </ul>
+        </div>
+        {/* Col 4 — Digital Workspace */}
+        <div className="xl:w-[240px]">
+          <div className="relative group/image">
+            <div className="relative h-[100px] lg:w-[240px]" tabIndex={-1} aria-hidden="true" />
+            <img alt="" className="absolute top-0 h-[100px] w-full rounded-lg object-cover object-center transition-all duration-300 ease-in-out lg:w-[240px]" width={240} height={100} srcSet={SRCSET.modelVault.srcSet} src={SRCSET.modelVault.src} />
+            <div className="px-4">
+              <p className="text-xs font-semibold uppercase tracking-wider relative mb-3 mt-5 text-[#787878]">Digital Workspace</p>
+            </div>
+          </div>
+          <ul className="list-none px-2">
+            <ProductItem href="/services/digital-workspace/web-app-development" icon={<IconWorkspace />} name="Web Apps" desc="Scalable, performant web applications built for enterprise environments" />
+            <ProductItem href="/services/digital-workspace/mobile-app-development" icon={<IconWorkspace color="#34D399" />} name="Mobile Apps" desc="Cross-platform iOS and Android apps with native-grade performance" />
+            <ProductItem href="/services/digital-workspace/sharepoint" icon={<IconWorkspace color="#6EE7B7" />} name="SharePoint" desc="Intranet portals and document management built on Microsoft SharePoint" />
+            <ProductItem href="/services/digital-workspace/spfx-developments" icon={<IconWorkspace color="#A7F3D0" />} name="SPFx" desc="Custom SharePoint Framework web parts and extensions for M365" />
           </ul>
         </div>
       </div>
       <div className="mt-[60px] flex w-full justify-end gap-x-10 border-t border-[#e0e0e0] py-4 pr-1">
-        <BottomLink href="/customization" label="Customization" />
-        <BottomLink href="/pricing" label="Pricing" />
+        <BottomLink href="/services" label="All Services" />
+        <BottomLink href="/contact" label="Get a Quote" />
       </div>
     </div>
   )
 }
 
-function SolutionsPanel() {
+function IndustriesPanel() {
   return (
     <div className="relative px-6 pt-4">
       <div className="mb-10 flex gap-x-6">
@@ -391,10 +474,10 @@ function MobCompany() {
    NAV ITEM — Desktop (with JS-controlled dropdown)
    ═══════════════════════════════════════════════════════════════════════ */
 
-const MENU_KEYS: MenuKey[] = ["products", "solutions", "research", "resources", "company"]
-const MENU_LABELS: Record<string, string> = {
-  products: "Products",
-  solutions: "Solutions",
+const MENU_KEYS: DesktopMenuKey[] = ["services", "industries", "research", "resources", "company"]
+const MENU_LABELS: Record<DesktopMenuKey, string> = {
+  services: "Services",
+  industries: "Industries",
   research: "Research",
   resources: "Resources",
   company: "Company",
@@ -402,8 +485,8 @@ const MENU_LABELS: Record<string, string> = {
 
 function DropdownPanel({ menu }: { menu: MenuKey }) {
   switch (menu) {
-    case "products": return <ProductsPanel />
-    case "solutions": return <SolutionsPanel />
+    case "services": return <ServicesPanel />
+    case "industries": return <IndustriesPanel />
     case "research": return <ResearchPanel />
     case "resources": return <ResourcesPanel />
     case "company": return <CompanyPanel />
@@ -419,8 +502,24 @@ export function CohereNav() {
   const [activeMenu, setActiveMenu] = useState<MenuKey>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const navRef = useRef<HTMLElement>(null)
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const isOpen = activeMenu !== null
+
+  const clearCloseTimer = useCallback(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current)
+      closeTimerRef.current = null
+    }
+  }, [])
+
+  const scheduleCloseMenu = useCallback(() => {
+    clearCloseTimer()
+    closeTimerRef.current = setTimeout(() => {
+      setActiveMenu(null)
+      closeTimerRef.current = null
+    }, 150)
+  }, [clearCloseTimer])
 
   /* Toggle menu on click — click same item again to close */
   const toggleMenu = useCallback((key: MenuKey) => {
@@ -445,8 +544,9 @@ export function CohereNav() {
     return () => {
       window.removeEventListener("keydown", onKey)
       document.removeEventListener("mousedown", onClick)
+      clearCloseTimer()
     }
-  }, [])
+  }, [clearCloseTimer])
 
   /* Lock body scroll on mobile menu */
   useEffect(() => {
@@ -478,17 +578,17 @@ export function CohereNav() {
         {/* ── Logo ── */}
         <Link href="/" className="mr-auto flex flex-1 justify-start">
           <span className="hidden items-center gap-1.5 md:flex">
-            <img 
-              src="/Softree Technology Final Logo Files/Softree Technology Final Logo Files/Softree Technology Final Logo Dark BG/Softree-Technology-Final-Logo-Dark-BG.png" 
-              alt="Softree Logo" 
-              className="h-7 w-auto object-contain" 
+            <img
+              src="/Softree Technology Final Logo Files/Softree Technology Final Logo Files/Softree Technology Final Logo Dark BG/Softree-Technology-Final-Logo-Dark-BG.png"
+              alt="Softree Logo"
+              className="h-7 w-auto object-contain"
             />
           </span>
           <span className="flex items-center gap-1 md:hidden">
-            <img 
-              src="/Softree Technology Final Logo Files/Softree Technology Final Logo Files/Softree Technology Final Logo Dark BG/Softree-Technology-Final-Logo-Dark-BG.png" 
-              alt="Softree Logo" 
-              className="h-6 w-auto object-contain" 
+            <img
+              src="/Softree Technology Final Logo Files/Softree Technology Final Logo Files/Softree Technology Final Logo Dark BG/Softree-Technology-Final-Logo-Dark-BG.png"
+              alt="Softree Logo"
+              className="h-6 w-auto object-contain"
             />
           </span>
         </Link>
@@ -506,6 +606,11 @@ export function CohereNav() {
               <li
                 key={key}
                 className="pointer-events-auto"
+                onMouseEnter={() => {
+                  clearCloseTimer()
+                  setActiveMenu(key)
+                }}
+                onMouseLeave={scheduleCloseMenu}
               >
                 {/* Nav button + gradient underline */}
                 <button
@@ -528,11 +633,12 @@ export function CohereNav() {
 
                 {/* Dropdown panel — positioned relative to <nav> (no relative on <li>) */}
                 <div
-                  className={`absolute left-1/2 top-[calc(100%+5px)] -translate-x-1/2 transform transition-all duration-300 ease-in-out rounded-[16px] border border-[#e6e6e6] bg-white text-[#1a1a1a] ${
-                    isActive
-                      ? "opacity-100 translate-y-0 pointer-events-auto"
-                      : "opacity-0 -translate-y-2 pointer-events-none"
-                  }`}
+                  className={`absolute left-1/2 top-[calc(100%+5px)] -translate-x-1/2 transform transition-all duration-300 ease-in-out rounded-[16px] border border-[#e6e6e6] bg-white text-[#1a1a1a] ${isActive
+                    ? "opacity-100 translate-y-0 pointer-events-auto"
+                    : "opacity-0 -translate-y-2 pointer-events-none"
+                    }`}
+                  onMouseEnter={clearCloseTimer}
+                  onMouseLeave={scheduleCloseMenu}
                 >
                   <DropdownPanel menu={key} />
                 </div>
@@ -579,13 +685,12 @@ export function CohereNav() {
         {/* ═══════════════════════════════════════════════════════════════
            MOBILE MENU
            ═══════════════════════════════════════════════════════════════ */}
-        <div className={`absolute overflow-y-scroll right-4 top-[calc(100%+10px)] px-4 pb-9 pt-5 rounded-[16px] border lg:hidden w-[calc(100%-32px)] sm:max-h-[80vh] sm:w-full sm:max-w-[358px] border-[#e6e6e6] bg-white text-[#1a1a1a] max-h-[90vh] transition-all duration-300 ${
-          mobileOpen ? "block opacity-100 translate-y-0" : "hidden opacity-0 -translate-y-3"
-        }`}>
+        <div className={`absolute overflow-y-scroll right-4 top-[calc(100%+10px)] px-4 pb-9 pt-5 rounded-[16px] border lg:hidden w-[calc(100%-32px)] sm:max-h-[80vh] sm:w-full sm:max-w-[358px] border-[#e6e6e6] bg-white text-[#1a1a1a] max-h-[90vh] transition-all duration-300 ${mobileOpen ? "block opacity-100 translate-y-0" : "hidden opacity-0 -translate-y-3"
+          }`}>
           <div className="relative mb-10 h-full min-[918px]:mb-0">
             <ul className="w-full relative bg-white list-none">
-              <MobileSection label="Products"><MobProducts /></MobileSection>
-              <MobileSection label="Solutions"><MobSolutions /></MobileSection>
+              <MobileSection label="Services"><MobProducts /></MobileSection>
+              <MobileSection label="Industries"><MobSolutions /></MobileSection>
               <MobileSection label="Research"><MobResearch /></MobileSection>
               <MobileSection label="Resources"><MobResources /></MobileSection>
               <MobileSection label="Company"><MobCompany /></MobileSection>

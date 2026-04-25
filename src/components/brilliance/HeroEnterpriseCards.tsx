@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { ArrowRight, Cpu, Layout, Globe, Database } from "lucide-react"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import Link from "next/link"
 import BorderGlow from "./BorderGlow"
 
 /* ─── Animated Card Wrapper — ORIGINAL layout, unchanged ─────────── */
@@ -287,6 +288,7 @@ export function HeroEnterpriseCards() {
       accentColor: "text-[#FF6B00]",
       pill: "ELITE AI",
       bgGradient: "from-[#FF6B00]/20",
+      href: "/services/ai-intelligence",
     },
     {
       title: "PREMIUM WEB SYSTEMS",
@@ -297,6 +299,7 @@ export function HeroEnterpriseCards() {
       accentColor: "text-[#A1C4FF]",
       pill: "NEXT-GEN",
       bgGradient: "from-[#A1C4FF]/20",
+      href: "/services/digital-workspace",
     },
     {
       title: "ENTERPRISE TRANSFORMATION",
@@ -307,6 +310,7 @@ export function HeroEnterpriseCards() {
       accentColor: "text-[#FF6B00]",
       pill: "STRATEGIC",
       bgGradient: "from-[#FF6B00]/20",
+      href: "/services/business-applications",
     },
     {
       title: "DATA SOVEREIGNTY",
@@ -317,6 +321,7 @@ export function HeroEnterpriseCards() {
       accentColor: "text-[#A1C4FF]",
       pill: "SOVEREIGN",
       bgGradient: "from-[#A1C4FF]/20",
+      href: "/services/data-analytics",
     },
   ]
 
@@ -408,10 +413,13 @@ export function HeroEnterpriseCards() {
                   colors={["#ffffff", "#8498e6", "#38bdf8"]}
                   className="transition-all duration-300 ease-out hover:scale-105 active:scale-95 rounded-full w-max"
                 >
-                  <div className="hyper-glass-pill flex items-center justify-center h-12 px-8 text-[13px] font-black text-white group cursor-pointer tracking-widest uppercase">
+                  <Link
+                    href={service.href}
+                    className="hyper-glass-pill flex items-center justify-center h-12 px-8 text-[13px] font-black text-white group cursor-pointer tracking-widest uppercase"
+                  >
                     EXPLORE SOLUTION
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-500 group-hover:translate-x-2" />
-                  </div>
+                  </Link>
                 </BorderGlow>
               </div>
             </div>

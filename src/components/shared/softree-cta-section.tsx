@@ -58,7 +58,7 @@ export function SoftreeCTASection({
                 Deploy production-grade enterprise software with confidence. From Agentic AI to legacy modernization.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a href="/contact" className="h-14 px-8 bg-foreground text-background rounded-full font-semibold inline-flex items-center gap-2 hover:opacity-90 transition-opacity">
+                <a href="/contact" className="h-14 px-8 bg-white text-black rounded-sm font-semibold inline-flex items-center gap-2 hover:opacity-90 transition-opacity font-sans">
                   Initiate Project
                   <ArrowRight className="w-4 h-4" />
                 </a>
