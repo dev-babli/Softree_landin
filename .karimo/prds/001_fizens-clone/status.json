@@ -1,0 +1,18 @@
+{
+  "feature_slug": "fizens-clone",
+  "status": "ready",
+  "created_at": "2026-05-02T00:00:00Z",
+  "tasks": {
+    "1a": { "status": "pending" },
+    "1b": { "status": "pending" },
+    "2a": { "status": "pending" },
+    "2b": { "status": "pending" },
+    "2c": { "status": "pending" },
+    "3a": { "status": "pending" },
+    "3b": { "status": "pending" },
+    "3c": { "status": "pending" },
+    "4a": { "status": "pending" },
+    "5a": { "status": "pending" },
+    "5b": { "status": "pending" }
+  }
+}

@@ -1,0 +1,45 @@
+feature_slug: fizens-clone
+total_tasks: 11
+total_complexity: 42
+longest_chain: "1a → 2a → 5a → 5b"
+
+waves:
+  - wave: 1
+    label: "Foundation"
+    tasks: [1a]
+    notes: "Route scaffold, Lenis wrapper, design tokens. Must complete before any section work."
+
+  - wave: 2
+    label: "Navbar + Hero + Bento (batch 1)"
+    tasks: [1b, 2a, 2b]
+    notes: "Three independent section components. Run in parallel (max_parallel_tasks: 3)."
+    depends_on_wave: 1
+
+  - wave: 3
+    label: "Middle sections (batch 2)"
+    tasks: [2c, 3a, 3b]
+    notes: "More Features+Benefit, Stats+HowItWorks, Pricing. Run in parallel."
+    depends_on_wave: 1
+
+  - wave: 4
+    label: "Final sections (batch 3)"
+    tasks: [3c, 4a]
+    notes: "Blog+FAQ and CTA+Footer. Run in parallel."
+    depends_on_wave: 1
+
+  - wave: 5
+    label: "Animations"
+    tasks: [5a]
+    notes: "Wire Lenis+GSAP ScrollTrigger reveals across all sections. Depends on all section tasks."
+    depends_on_wave: [2, 3, 4]
+
+  - wave: 6
+    label: "Responsive QA"
+    tasks: [5b]
+    notes: "Final responsive polish and build verification."
+    depends_on_wave: 5
+
+pre_pr_checks:
+  - "npm run build"
+  - "npx tsc --noEmit"
+  - "npm run lint"

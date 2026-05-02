@@ -1,0 +1,256 @@
+feature_slug: fizens-clone
+tasks:
+  - id: 1a
+    title: "Route setup, Lenis wrapper, design tokens"
+    description: >
+      Create the /fizens route scaffold: src/app/fizens/page.tsx,
+      src/app/fizens/layout.tsx with a client-side Lenis smooth scroll wrapper,
+      and src/app/fizens/fizens.css with all fizens design tokens (CSS variables
+      for colors, fonts, spacing). Import Geist and Poppins via next/font/google.
+    acceptance_criteria:
+      - "`npm run build` succeeds with the new route"
+      - "Navigating to /fizens renders without errors"
+      - "Lenis is initialized on mount and destroyed on unmount in layout.tsx"
+      - "CSS variables defined: --fizens-blue-primary, --fizens-blue-accent, --fizens-text-dark, etc."
+      - "Geist and Poppins fonts loaded via next/font"
+    files_to_create:
+      - src/app/fizens/page.tsx
+      - src/app/fizens/layout.tsx
+      - src/app/fizens/fizens.css
+    files_to_reference:
+      - src/app/layout.tsx
+      - src/app/globals.css
+    complexity: 3
+    priority: must
+    depends_on: []
+
+  - id: 1b
+    title: "Fizens Navbar component"
+    description: >
+      Build the sticky fizens navbar: logo on the left, navigation links in center
+      (Features, Pricing, Blog, FAQ), CTA button ("Get Started") on the right.
+      Navbar gains a white/blur background on scroll. Mobile: hamburger menu that
+      opens a full nav overlay. Match fizens reference exactly.
+    acceptance_criteria:
+      - "Navbar sticks to top on scroll"
+      - "Background becomes opaque/blurred when scrolled past hero"
+      - "Desktop layout: logo | links | CTA"
+      - "Mobile (≤768px): logo | hamburger; hamburger opens overlay nav"
+      - "Matches fizens color and font reference"
+    files_to_create:
+      - src/app/fizens/FizensNavbar.tsx
+    files_to_reference:
+      - src/components/sections/navigation.tsx
+      - src/app/fizens/fizens.css
+    complexity: 3
+    priority: must
+    depends_on: [1a]
+
+  - id: 2a
+    title: "Hero section"
+    description: >
+      Build the fizens hero section. Content: pill badge ("Finance Management"),
+      large headline ("Start Managing Your Finance With Our Tool"), subtext paragraph,
+      two CTA buttons ("Get Started" primary + "Learn More" ghost), and a dashboard
+      preview image/mockup below. Background: subtle gradient or light blue tint.
+      Match fizens layout exactly.
+    acceptance_criteria:
+      - "Pill badge, headline, subtext, two CTAs, dashboard image all present"
+      - "Layout matches fizens reference at 1440px"
+      - "Mobile: stacks vertically, image scales down"
+      - "Fonts: headline in Poppins bold, subtext in Geist"
+    files_to_create:
+      - src/app/fizens/FizensHero.tsx
+    files_to_reference:
+      - src/app/fizens/fizens.css
+      - src/app/fizens/fizens.html
+    complexity: 4
+    priority: must
+    depends_on: [1a]
+
+  - id: 2b
+    title: "Features Bento Grid section"
+    description: >
+      Build the fizens features bento grid section. Content: pill badge ("Key Features"),
+      H2 heading ("Explore Our Standout Features"), subtext. Layout: asymmetric CSS Grid
+      with 2 large feature cards and 4 smaller cards. Each card has an icon, title,
+      and short description. Cards have subtle border, rounded corners, and light
+      background. Match fizens bento layout precisely using CSS Grid.
+    acceptance_criteria:
+      - "Pill badge, heading, subtext present"
+      - "6 feature cards in asymmetric bento grid at 1440px"
+      - "Grid collapses to 2-col then 1-col on tablet/mobile"
+      - "Card styling (border, radius, bg, icon) matches fizens reference"
+    files_to_create:
+      - src/app/fizens/FeaturesBento.tsx
+    files_to_reference:
+      - src/app/fizens/fizens.css
+      - src/app/fizens/fizens.html
+    complexity: 5
+    priority: must
+    depends_on: [1a]
+
+  - id: 2c
+    title: "More Features + Benefit sections"
+    description: >
+      Build two sections:
+      1. More Features: "...and more additional features" — 3-column grid of icon + title + description feature cards.
+      2. Benefit: "Experience The Future of Finance" — 2-column layout, left side has heading + bullet points + CTA, right side shows a product illustration/mockup image.
+    acceptance_criteria:
+      - "More Features: 3-col grid at desktop, single-col at mobile"
+      - "Benefit: 2-col at desktop, stacked at mobile"
+      - "Both sections match fizens layout and typography"
+      - "Bullet points in Benefit section use fizens check-icon style"
+    files_to_create:
+      - src/app/fizens/MoreFeatures.tsx
+      - src/app/fizens/FizensBenefit.tsx
+    files_to_reference:
+      - src/app/fizens/fizens.css
+    complexity: 4
+    priority: must
+    depends_on: [1a]
+
+  - id: 3a
+    title: "Statistics + How It Works sections"
+    description: >
+      Build two sections:
+      1. Statistics: "See Your Wealth Grow" — dark/gradient background, 4 large stat
+         counters (e.g., "10K+ Users", "99% Uptime") that animate from 0 to final value
+         using IntersectionObserver + requestAnimationFrame count-up.
+      2. How It Works: numbered 3-step process — each step has number, icon, title,
+         and description. Horizontal layout at desktop, vertical at mobile.
+    acceptance_criteria:
+      - "Stats section: 4 counters, dark bg, heading and subtext present"
+      - "Count-up animation triggers when section enters viewport"
+      - "How It Works: 3 numbered steps, horizontal at 1440px, vertical at 375px"
+      - "Both sections match fizens reference"
+    files_to_create:
+      - src/app/fizens/FizensStats.tsx
+      - src/app/fizens/FizensHowItWorks.tsx
+    files_to_reference:
+      - src/app/fizens/fizens.css
+    complexity: 4
+    priority: must
+    depends_on: [1a]
+
+  - id: 3b
+    title: "Pricing section"
+    description: >
+      Build the fizens pricing section. Content: pill badge ("Pricing"), H2 heading
+      ("Try For Free And Start Controlling Your Finances"), 3 pricing tier cards
+      (Free / Pro / Enterprise). Each card: tier name, price, description, feature
+      checklist, CTA button. Highlight the recommended/middle tier with blue accent.
+      Toggle between monthly/annual billing optional (static for now).
+    acceptance_criteria:
+      - "3 pricing cards with tier name, price, feature list, CTA"
+      - "Middle/Pro tier visually highlighted (blue bg or border)"
+      - "Feature checklist uses check icons"
+      - "Cards stack vertically on mobile"
+      - "Matches fizens reference layout"
+    files_to_create:
+      - src/app/fizens/FizensPricing.tsx
+    files_to_reference:
+      - src/app/fizens/fizens.css
+    complexity: 4
+    priority: must
+    depends_on: [1a]
+
+  - id: 3c
+    title: "Blog + FAQ sections"
+    description: >
+      Build two sections:
+      1. Blog: "Read the Articles" — 3 article cards, each with category pill,
+         title, date, excerpt, and "Read More" link. Cards in a 3-column grid.
+      2. FAQ: "Frequently Asked Questions" — accordion with 6 Q&A pairs.
+         Reuse existing src/components/ui/accordion.tsx (Radix-based).
+    acceptance_criteria:
+      - "Blog: 3 cards in 3-col grid at desktop, stacked at mobile"
+      - "FAQ: accordion opens/closes on click, one open at a time"
+      - "FAQ reuses existing accordion.tsx component"
+      - "Both sections match fizens layout and typography"
+    files_to_create:
+      - src/app/fizens/FizensBlog.tsx
+      - src/app/fizens/FizensFAQ.tsx
+    files_to_reference:
+      - src/components/ui/accordion.tsx
+      - src/app/fizens/fizens.css
+    complexity: 3
+    priority: must
+    depends_on: [1a]
+
+  - id: 4a
+    title: "CTA Card + Footer"
+    description: >
+      Build two components:
+      1. CTA Card: full-width card with gradient/image background, headline
+         ("Your First Step To Financial Freedom Begins Here"), two buttons
+         ("Get Started" + "Download App"), app store badge images.
+      2. Footer: logo, 4 navigation columns (Product, Company, Resources, Legal),
+         social media icons, copyright line. Dark background.
+    acceptance_criteria:
+      - "CTA Card: heading, two buttons, background image/gradient all present"
+      - "Footer: 4 nav columns, social icons, copyright"
+      - "Footer dark background matches fizens reference"
+      - "Both components responsive at 375px"
+    files_to_create:
+      - src/app/fizens/FizensCTA.tsx
+      - src/app/fizens/FizensFooter.tsx
+    files_to_reference:
+      - src/components/footer.tsx
+      - src/app/fizens/fizens.css
+    complexity: 3
+    priority: must
+    depends_on: [1a]
+
+  - id: 5a
+    title: "Scroll animations — Lenis + per-section reveals"
+    description: >
+      Wire up scroll-triggered entrance animations for all sections. Each section
+      component should fade in (opacity 0→1) and slide up (translateY 32px→0) when
+      it enters the viewport. Use GSAP ScrollTrigger with the existing Lenis instance
+      (gsap.registerPlugin(ScrollTrigger) + ScrollTrigger.scrollerProxy for Lenis).
+      Stagger child elements where fizens does (e.g., bento cards, stat counters,
+      pricing cards). Match fizens animation timing and feel.
+    acceptance_criteria:
+      - "All 12 sections animate in on scroll (opacity + translateY)"
+      - "Lenis smooth scroll working — no jank"
+      - "GSAP ScrollTrigger integrated with Lenis (scrollerProxy set)"
+      - "Card stagger animations on Bento, Pricing, Blog sections"
+      - "No animation runs on page load — only on scroll enter"
+      - "Animations do not conflict with other SOFTREE routes"
+    files_to_modify:
+      - src/app/fizens/layout.tsx
+      - src/app/fizens/FizensHero.tsx
+      - src/app/fizens/FeaturesBento.tsx
+      - src/app/fizens/MoreFeatures.tsx
+      - src/app/fizens/FizensBenefit.tsx
+      - src/app/fizens/FizensStats.tsx
+      - src/app/fizens/FizensHowItWorks.tsx
+      - src/app/fizens/FizensPricing.tsx
+      - src/app/fizens/FizensBlog.tsx
+      - src/app/fizens/FizensFAQ.tsx
+      - src/app/fizens/FizensCTA.tsx
+    complexity: 5
+    priority: must
+    depends_on: [1b, 2a, 2b, 2c, 3a, 3b, 3c, 4a]
+
+  - id: 5b
+    title: "Responsive polish + visual QA"
+    description: >
+      Final polish pass. Test every section at 375px (mobile), 768px (tablet),
+      and 1440px (desktop). Fix any layout breaks, overflow issues, or font size
+      issues. Run side-by-side QA against fizens.framer.ai reference. Verify
+      build, typecheck, and lint all pass.
+    acceptance_criteria:
+      - "`npm run build` exits 0"
+      - "`npx tsc --noEmit` exits 0"
+      - "`npm run lint` exits 0"
+      - "No horizontal scroll at 375px"
+      - "All sections readable and correctly laid out at 375px, 768px, 1440px"
+      - "Visual comparison against fizens.framer.ai shows no major divergence"
+    files_to_modify:
+      - src/app/fizens/fizens.css
+      - Any section component with responsive issues
+    complexity: 4
+    priority: must
+    depends_on: [5a]
