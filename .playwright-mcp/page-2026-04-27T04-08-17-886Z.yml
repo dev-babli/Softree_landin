@@ -1,0 +1,50 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - region "Banking and Beyond — your salary, reimagined" [ref=e4]:
+      - generic [ref=e5]:
+        - generic:
+          - img
+        - navigation "Site" [ref=e6]:
+          - link "Revolut" [ref=e7] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e8]
+            - generic [ref=e10]: Revolut
+          - generic [ref=e12]: Sign up
+        - generic [ref=e14]:
+          - heading "Banking & Beyond" [level=1] [ref=e15]
+          - paragraph [ref=e16]: This is your bank, redefined. Get powerful daily banking and global freedom. Sign up for free in a tap.
+          - link "Download the app" [ref=e17] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e19]:
+          - heading "Your salary, reimagined" [level=2] [ref=e20]
+          - paragraph [ref=e21]: Spend smartly, send quickly, sort your salary automatically, and watch your savings grow — all with a Revolut bank account.
+          - link "Move your salary" [ref=e22] [cursor=pointer]:
+            - /url: "#"
+        - generic:
+          - generic:
+            - generic:
+              - img
+            - generic:
+              - generic: Personal
+              - generic: £6,012
+              - generic: Accounts
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                - generic:
+                  - text: FSCS
+                  - text: PROTECTED
+              - generic:
+                - generic:
+                  - text: CURRENT ACCOUNT
+                  - text: SWITCH GUARANTEE
+                - generic:
+                  - img
+    - generic [ref=e28]:
+      - heading "Join 70+ million customers worldwide and 13 million in the UK" [level=2] [ref=e29]
+      - paragraph [ref=e30]: (Next section placeholder — proves the pinned animation releases cleanly and the page continues to scroll.)
+  - text: /* ✅ Tidio Chatbot */
+  - button "Open Next.js Dev Tools" [ref=e36] [cursor=pointer]:
+    - img [ref=e37]
+  - alert [ref=e40]

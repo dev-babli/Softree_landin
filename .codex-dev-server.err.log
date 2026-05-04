@@ -1,0 +1,1148 @@
+⚠ Port 3000 is in use by process 12584, using available port 3001 instead.
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+⨯ ReferenceError: TrueHulyHero is not defined
+    at HomepageContent (src\components\homepage\Homepage.tsx:309:10)
+  307 |         {/* 01a — HERO (video) */}
+  308 |         <TransferredSoftreeHero />
+> 309 |         <TrueHulyHero />
+      |          ^
+  310 |
+  311 |         {/* 01a.5 — SERVICES PARALLAX SHOWCASE (dark→light cinematic hook) */}
+  312 |         <DeferUntilInView placeholderClassName="min-h-[500vh] bg-black"> {
+  digest: '2420750271'
+}
+⨯ ReferenceError: TrueHulyHero is not defined
+    at HomepageContent (src\components\homepage\Homepage.tsx:321:10)
+  319 |         {/* 01a — HERO (video) */}
+  320 |         <TransferredSoftreeHero />
+> 321 |         <TrueHulyHero />
+      |          ^
+  322 |
+  323 |         {/* 01a.5 — SERVICES PARALLAX SHOWCASE (dark→light cinematic hook) */}
+  324 |         <DeferUntilInView placeholderClassName="min-h-[500vh] bg-black"> {
+  digest: '3522192402'
+}
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ ReferenceError: ServicesParallaxShowcaseLazy is not defined
+    at HomepageContent (src\components\homepage\Homepage.tsx:316:12)
+  314 |         {/* 01a.5 — SERVICES PARALLAX SHOWCASE (dark→light cinematic hook) */}
+  315 |         <DeferUntilInView placeholderClassName="min-h-[500vh] bg-black">
+> 316 |           <ServicesParallaxShowcaseLazy />
+      |            ^
+  317 |         </DeferUntilInView>
+  318 |
+  319 |         {/* 01b — GRID HERO (no video — ForDevelopers style reference) */} {
+  digest: '2366580095'
+}
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ ReferenceError: SoftreeGridHeroLazy is not defined
+    at HomepageContent (src\components\homepage\Homepage.tsx:312:12)
+  310 |         {/* 01b — GRID HERO (no video — ForDevelopers style reference) */}
+  311 |         <DeferUntilInView placeholderClassName="min-h-screen bg-black">
+> 312 |           <SoftreeGridHeroLazy />
+      |            ^
+  313 |         </DeferUntilInView>
+  314 |
+  315 |         {/* 02a — BRAND SHOWCASE (Hero-matched) */} {
+  digest: '1851910955'
+}
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+
+./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/components/homepage/Homepage.tsx:188:5
+Module not found: Can't resolve '@/components/homepage/HorizontalCodeCanvasSection'
+[0m [90m 186 |[39m [36mconst[39m [33mHorizontalCodeCanvasSectionLazy[39m [33m=[39m dynamic(
+ [90m 187 |[39m   () [33m=>[39m
+[31m[1m>[22m[39m[90m 188 |[39m     [36mimport[39m([32m"@/components/homepage/HorizontalCodeCanvasSection"[39m)[33m.[39mthen((m) [33m=>[39m ({
+ [90m     |[39m     [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 189 |[39m       [36mdefault[39m[33m:[39m m[33m.[39m[33mHorizontalCodeCanvasSection[39m[33m,[39m
+ [90m 190 |[39m     }))[33m,[39m
+ [90m 191 |[39m   { loading[33m:[39m () [33m=>[39m [33m<[39m[33mdiv[39m className[33m=[39m[32m"min-h-[70vh] w-full bg-[#0a0c10]"[39m aria[33m-[39mhidden [33m/[39m[33m>[39m }[0m
+
+Import map: aliased to relative './src/components/homepage/HorizontalCodeCanvasSection' inside of [project]/
+
+
+Import trace:
+  Server Component:
+    ./src/components/homepage/Homepage.tsx
+    ./src/app/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⚠ Fast Refresh had to perform a full reload due to a runtime error.

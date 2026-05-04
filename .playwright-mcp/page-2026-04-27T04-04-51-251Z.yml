@@ -1,0 +1,57 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - region "Banking and Beyond — your salary, reimagined" [ref=e4]:
+      - generic [ref=e5]:
+        - generic:
+          - img
+        - navigation "Site" [ref=e6]:
+          - link "Revolut" [ref=e7] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e8]
+            - generic [ref=e10]: Revolut
+          - list [ref=e11]:
+            - listitem [ref=e12]: Personal
+            - listitem [ref=e13]: Business
+            - listitem [ref=e14]: Kids & Teens
+            - listitem [ref=e15]: Company
+          - generic [ref=e16]:
+            - generic [ref=e17]: Log in
+            - generic [ref=e18]: Sign up
+        - generic [ref=e20]:
+          - heading "Banking & Beyond" [level=1] [ref=e21]
+          - paragraph [ref=e22]: This is your bank, redefined. Get powerful daily banking and global freedom. Sign up for free in a tap.
+          - link "Download the app" [ref=e23] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e25]:
+          - heading "Your salary, reimagined" [level=2] [ref=e26]
+          - paragraph [ref=e27]: Spend smartly, send quickly, sort your salary automatically, and watch your savings grow — all with a Revolut bank account.
+          - link "Move your salary" [ref=e28] [cursor=pointer]:
+            - /url: "#"
+        - generic:
+          - generic:
+            - generic:
+              - img
+            - generic:
+              - generic: Personal
+              - generic: £6,012
+              - generic: Accounts
+            - generic:
+              - generic:
+                - generic:
+                  - img
+                - generic:
+                  - text: FSCS
+                  - text: PROTECTED
+              - generic:
+                - generic:
+                  - text: CURRENT ACCOUNT
+                  - text: SWITCH GUARANTEE
+                - generic:
+                  - img
+    - generic [ref=e34]:
+      - heading "Join 70+ million customers worldwide and 13 million in the UK" [level=2] [ref=e35]
+      - paragraph [ref=e36]: (Next section placeholder — proves the pinned animation releases cleanly and the page continues to scroll.)
+  - text: /* ✅ Tidio Chatbot */
+  - button "Open Next.js Dev Tools" [ref=e42] [cursor=pointer]:
+    - img [ref=e43]
+  - alert [ref=e46]

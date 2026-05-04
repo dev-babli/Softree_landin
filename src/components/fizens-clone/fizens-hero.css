@@ -1,0 +1,878 @@
+/* ═══════════════════════════════════════════════════════════════
+   FIZENS HERO — Original Framer CSS (verbatim)
+   Scoped under .fz-root to avoid collisions
+   ═══════════════════════════════════════════════════════════════ */
+
+.fz-root {
+  --framer-text-color-h1: #171717;
+  --framer-text-color-muted: rgb(75, 85, 99);
+  --framer-text-color-body: rgb(10, 10, 10);
+  --framer-text-color-trust: rgb(107, 114, 128);
+  --framer-blue: rgb(0, 64, 193);
+  --framer-blue-bg: rgb(239, 244, 255);
+  --framer-blue-light: rgb(209, 224, 255);
+  font-family: "Poppins", "Poppins Placeholder", sans-serif;
+  color: #171717;
+  width: 100%;
+}
+
+/* ── H1 Headings (preset i0f6z9) ── */
+.fz-root h1.fz-h1 {
+  font-family: "Poppins", "Poppins Placeholder", sans-serif;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.125em;
+  color: var(--framer-text-color-h1);
+  margin: 0;
+  white-space: pre;
+}
+.fz-root h1.fz-h1.fz-muted {
+  color: var(--framer-text-color-muted);
+}
+
+/* ── Hero Section Layout ── */
+.fz-section {
+  flex-flow: column;
+  flex: none;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  height: min-content;
+  padding: 184px 32px 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.fz-container {
+  flex-flow: column;
+  flex: none;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 70px;
+  width: 100%;
+  max-width: 1296px;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: visible;
+}
+
+.fz-content {
+  flex-flow: row;
+  flex: none;
+  place-content: flex-start space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: visible;
+}
+
+.fz-header {
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start;
+  align-items: flex-start;
+  gap: 64px;
+  width: min-content;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: visible;
+}
+
+.fz-heading-wrap {
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start;
+  align-items: flex-start;
+  gap: 0;
+  width: min-content;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: visible;
+}
+
+.fz-highlight {
+  flex-flow: row;
+  flex: none;
+  place-content: center flex-start;
+  align-items: center;
+  gap: 24px;
+  width: min-content;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: visible;
+}
+
+.fz-line {
+  background-color: #d1d5db;
+  flex: none;
+  width: 86px;
+  height: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fz-action {
+  z-index: 1;
+  flex-flow: row;
+  flex: none;
+  place-content: center flex-start;
+  align-self: stretch;
+  align-items: center;
+  gap: 40px;
+  width: auto;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Decorative Patterns ── */
+.fz-pattern1 {
+  z-index: 1;
+  flex: none;
+  width: 197px;
+  height: 193px;
+  position: absolute;
+  top: -60px;
+  right: -190px;
+  overflow: hidden;
+}
+
+.fz-pattern2 {
+  z-index: 0;
+  flex: none;
+  width: 197px;
+  height: 193px;
+  position: absolute;
+  bottom: -53px;
+  left: 0;
+  overflow: hidden;
+}
+
+.fz-pattern3 {
+  z-index: 0;
+  flex: none;
+  width: 197px;
+  height: 193px;
+  position: absolute;
+  top: 162px;
+  right: 286px;
+  overflow: hidden;
+}
+
+/* ── Description (right column) ── */
+.fz-description {
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start space-between;
+  align-self: stretch;
+  align-items: flex-start;
+  width: 23%;
+  max-width: 306px;
+  height: auto;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.fz-top-wrap {
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.fz-crosshair {
+  flex: none;
+  width: 45px;
+  height: 45px;
+  position: relative;
+}
+
+.fz-desc-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+  flex: none;
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin: 0;
+  font-family: "Poppins", "Poppins Placeholder", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.55556em;
+  color: var(--framer-text-color-body);
+}
+
+.fz-bottom-wrap {
+  flex-flow: column;
+  flex: none;
+  place-content: flex-start center;
+  align-items: flex-start;
+  gap: 8px;
+  width: min-content;
+  max-width: 210px;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.fz-avatars {
+  flex-flow: row;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 12px;
+  width: min-content;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.fz-avatar-group {
+  flex: none;
+  gap: 0;
+  width: 76px;
+  height: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fz-avatar {
+  border-radius: 50%;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.fz-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.fz-avatar-1 {
+  left: 40px;
+}
+.fz-avatar-2 {
+  left: 20px;
+}
+.fz-avatar-3 {
+  left: 0;
+}
+
+.fz-counter {
+  position: relative;
+  margin: 0;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.3em;
+  letter-spacing: -0.02em;
+  color: rgb(0, 0, 0);
+}
+
+.fz-trust {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.55556em;
+  color: var(--framer-text-color-trust);
+  align-self: stretch;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Rolling Text Button ── */
+.fz-cta {
+  cursor: pointer;
+  flex-flow: row;
+  place-content: center;
+  align-items: center;
+  gap: 0;
+  width: min-content;
+  height: min-content;
+  padding: 0;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1000px;
+}
+
+.fz-cta-content {
+  cursor: pointer;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 10px;
+  width: min-content;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--framer-blue-bg);
+  border-radius: 1000px;
+}
+
+.fz-cta-text-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 16px 76px 16px 32px;
+  box-sizing: border-box;
+}
+
+.fz-rolling-text {
+  --font-size: 18px;
+  --text: var(--framer-blue);
+  --line-height-abs: 23.85px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  display: flex;
+  overflow: hidden;
+  width: max-content;
+  font-family: "Poppins", "Poppins Placeholder", sans-serif;
+  font-size: 18px;
+  text-transform: none;
+  user-select: none;
+  text-shadow: 0 var(--line-height-abs) 0 var(--text);
+}
+
+.fz-rolling-text span {
+  display: block;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  white-space: pre;
+  flex-shrink: 0;
+  font-family: inherit;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 1.325em;
+  color: var(--text);
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.fz-cta:hover .fz-rolling-text span {
+  transform: translateY(calc(-1 * var(--line-height-abs)));
+}
+
+/* Stagger each char */
+.fz-rolling-text span:nth-child(1) {
+  transition-delay: 0s;
+}
+.fz-rolling-text span:nth-child(2) {
+  transition-delay: 0.02s;
+}
+.fz-rolling-text span:nth-child(3) {
+  transition-delay: 0.04s;
+}
+.fz-rolling-text span:nth-child(4) {
+  transition-delay: 0.06s;
+}
+.fz-rolling-text span:nth-child(5) {
+  transition-delay: 0.08s;
+}
+.fz-rolling-text span:nth-child(6) {
+  transition-delay: 0.1s;
+}
+.fz-rolling-text span:nth-child(7) {
+  transition-delay: 0.12s;
+}
+.fz-rolling-text span:nth-child(8) {
+  transition-delay: 0.14s;
+}
+.fz-rolling-text span:nth-child(9) {
+  transition-delay: 0.16s;
+}
+.fz-rolling-text span:nth-child(10) {
+  transition-delay: 0.18s;
+}
+.fz-rolling-text span:nth-child(11) {
+  transition-delay: 0.2s;
+}
+.fz-rolling-text span:nth-child(12) {
+  transition-delay: 0.22s;
+}
+.fz-rolling-text span:nth-child(13) {
+  transition-delay: 0.24s;
+}
+.fz-rolling-text span:nth-child(14) {
+  transition-delay: 0.26s;
+}
+.fz-rolling-text span:nth-child(15) {
+  transition-delay: 0.28s;
+}
+.fz-rolling-text span:nth-child(16) {
+  transition-delay: 0.3s;
+}
+
+.fz-cta-icon {
+  z-index: 1;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  position: absolute;
+  top: calc(50% - 28px);
+  right: 0;
+  overflow: hidden;
+  background-color: var(--framer-blue);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.fz-cta:hover .fz-cta-icon {
+  transform: translateX(-4px);
+}
+.fz-cta-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+/* ── Phone Parallax Container (wraps blue card + phone) ── */
+.fz-phone-parallax {
+  width: 100%;
+  position: relative;
+}
+
+/* ── Phone Wrapper ── */
+.fz-phone-wrapper {
+  aspect-ratio: 0.894915;
+  z-index: 2;
+  flex-flow: row;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 50%;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  top: -110px;
+  left: 50%;
+  overflow: visible;
+  transform: translate(-50%);
+  pointer-events: none;
+}
+
+.fz-phone {
+  filter: drop-shadow(0 16px 22px #d9e5ff4d);
+  z-index: 1;
+  flex: none;
+  gap: 40px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible;
+}
+.fz-phone img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ── Desktop image (background card) ── */
+.fz-desktop-card {
+  flex-flow: column;
+  place-content: center;
+  align-items: center;
+  gap: 80px;
+  width: 100%;
+  height: min-content;
+  padding: 80px 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-radius: 40px;
+}
+.fz-desktop-card-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+}
+.fz-desktop-card-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-position: center bottom;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.fz-desktop-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Ticker ── */
+.fz-ticker-container {
+  flex: none;
+  width: 100%;
+  height: 106px;
+  position: relative;
+}
+.fz-ticker {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 37.5%,
+    rgb(0, 0, 0) 62.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 37.5%,
+    rgb(0, 0, 0) 62.5%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  overflow: hidden;
+}
+.fz-ticker-track {
+  display: flex;
+  height: 100%;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  gap: 20px;
+  position: relative;
+  flex-direction: row;
+  width: max-content;
+  animation: fz-ticker-scroll 30s linear infinite;
+}
+@keyframes fz-ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.fz-ticker-text {
+  white-space: pre;
+  flex: none;
+  margin: 0;
+  font-family: "Poppins", "Poppins Placeholder", sans-serif;
+  font-size: 128px;
+  font-weight: 600;
+  line-height: 1em;
+  color: var(--framer-blue-light);
+}
+.fz-ticker-dot {
+  aspect-ratio: 1;
+  width: 16px;
+  height: 16px;
+  background-color: var(--framer-blue-light);
+  border-radius: 1000px;
+  flex-shrink: 0;
+}
+
+/* ── Divider ── */
+.fz-divider {
+  flex: none;
+  width: 70%;
+  height: 1px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--framer-blue-light);
+  mask: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 50.4084%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 50.4084%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* ── Client Wrap ── */
+.fz-client-wrap {
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.fz-client-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  flex: none;
+  width: auto;
+  max-width: 750px;
+  margin: 0;
+  font-family: "Poppins", "Poppins Placeholder", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4em;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+.fz-logo-wrap {
+  flex-flow: row;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 32px;
+  width: min-content;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  opacity: 0.7;
+  flex-wrap: wrap;
+}
+.fz-logo {
+  flex-shrink: 0;
+  color: white;
+  fill: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* ── Animation Trigger ── */
+.fz-trigger {
+  pointer-events: none;
+  z-index: 0;
+  flex-flow: column;
+  flex: none;
+  place-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  height: min-content;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  overflow: hidden;
+  transform: translate(-50%);
+}
+
+/* ── Entrance Animations (framer-appear) ── */
+@keyframes fz-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fz-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fz-appear {
+  opacity: 0;
+  animation: fz-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.fz-appear.fz-d1 {
+  animation-delay: 0.05s;
+}
+.fz-appear.fz-d2 {
+  animation-delay: 0.15s;
+}
+.fz-appear.fz-d3 {
+  animation-delay: 0.25s;
+}
+.fz-appear.fz-d4 {
+  animation-delay: 0.35s;
+}
+.fz-appear.fz-d5 {
+  animation-delay: 0.45s;
+}
+.fz-appear.fz-d6 {
+  animation-delay: 0.55s;
+}
+
+/* ── Phone parallax floating ── */
+@keyframes fz-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.fz-phone-float {
+  animation: fz-float 6s ease-in-out infinite;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1199px) {
+  .fz-root h1.fz-h1 {
+    font-size: 52px;
+  }
+  .fz-section {
+    padding: 120px 32px 0;
+  }
+  .fz-container {
+    gap: 420px;
+  }
+  .fz-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .fz-header {
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+  }
+  .fz-heading-wrap {
+    align-items: center;
+  }
+  .fz-action {
+    flex-direction: column;
+    width: 100%;
+  }
+  .fz-pattern1 {
+    right: -32px;
+  }
+  .fz-description {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    height: min-content;
+  }
+  .fz-top-wrap {
+    align-items: center;
+  }
+  .fz-bottom-wrap {
+    max-width: unset;
+    align-items: center;
+    width: 100%;
+  }
+  .fz-trust {
+    text-align: center;
+  }
+  .fz-phone-wrapper {
+    width: 70%;
+  }
+  .fz-ticker-text {
+    font-size: 96px;
+  }
+}
+@media (max-width: 809px) {
+  .fz-root h1.fz-h1 {
+    font-size: 40px;
+  }
+  .fz-section {
+    padding: 100px 16px 0;
+  }
+  .fz-container {
+    gap: 280px;
+  }
+  .fz-pattern1,
+  .fz-pattern2,
+  .fz-pattern3 {
+    display: none;
+  }
+  .fz-line {
+    display: none;
+  }
+  .fz-phone-wrapper {
+    width: 90%;
+    top: -80px;
+  }
+  .fz-ticker-text {
+    font-size: 64px;
+  }
+  .fz-ticker-container {
+    height: 70px;
+  }
+  .fz-desktop-card {
+    padding: 50px 0;
+  }
+  .fz-client-text {
+    font-size: 14px;
+  }
+  .fz-logo-wrap {
+    gap: 16px;
+  }
+}

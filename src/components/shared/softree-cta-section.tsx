@@ -24,74 +24,188 @@ export function SoftreeCTASection({
   variant = "brilliance",
   appearance = "dark",
 }: SoftreeCTASectionProps) {
-  // --- OPTIMUS (Industrial Dark) ---
+  // --- OPTIMUS (Homepage CTA — gradient-heavy, aligned to page design language) ---
   if (variant === "optimus") {
     return (
-      <section
-        className={cn(
-          "relative py-24 px-6 bg-background border-t border-foreground/10 overflow-hidden font-sans",
-          designSystemSurfaceClass(appearance)
-        )}
-      >
-        {/* Technical Grid Background */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-          {[...Array(20)].map((_, i) => (
-            <div key={i} className="absolute h-px w-full bg-foreground" style={{ top: `${i * 5}%` }} />
-          ))}
-          {[...Array(20)].map((_, i) => (
-            <div key={i} className="absolute w-px h-full bg-foreground" style={{ left: `${i * 5}%` }} />
-          ))}
-        </div>
+      <section className="relative overflow-hidden bg-[#050505] py-24 md:py-32">
+        {/* Ambient gradient mesh */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(1400px circle at 15% 20%, rgba(255,107,0,0.22), transparent 50%), radial-gradient(1100px circle at 85% 80%, rgba(161,196,255,0.18), transparent 50%), radial-gradient(800px circle at 50% 120%, rgba(255,88,18,0.18), transparent 45%)",
+          }}
+        />
+        {/* Noise grain */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E\")",
+          }}
+        />
 
-        <div className="relative max-w-[1400px] mx-auto py-20 border-x border-foreground/10 px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="inline-block font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground border border-foreground/20 px-3 py-1 mb-8">
-                SOFTREE // SYSTEMS ADVISORY
-              </span>
-              <h2 className="text-5xl lg:text-7xl font-display tracking-tight leading-[0.9] mb-8">
-                Engineering
-                <br />
-                the future.
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-md leading-relaxed mb-12">
-                Deploy production-grade enterprise software with confidence. From Agentic AI to legacy modernization.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="/contact" className="h-14 px-8 bg-white text-black rounded-sm font-semibold inline-flex items-center gap-2 hover:opacity-90 transition-opacity font-sans">
-                  Initiate Project
-                  <ArrowRight className="w-4 h-4" />
-                </a>
+        <div className="relative mx-auto w-full max-w-[1280px] px-4 md:px-8">
+          {/* Gradient card frame */}
+          <div
+            className="relative overflow-hidden rounded-[32px] border border-white/10 backdrop-blur-xl"
+            style={{
+              background:
+                "radial-gradient(900px circle at 0% 0%, rgba(255,107,0,0.18), transparent 45%), radial-gradient(900px circle at 100% 100%, rgba(161,196,255,0.14), transparent 45%), linear-gradient(180deg, rgba(18,18,22,0.95), rgba(8,8,10,0.95))",
+            }}
+          >
+            {/* Gradient border glow */}
+            <div
+              className="pointer-events-none absolute inset-0 rounded-[32px] opacity-40"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(255,107,0,0.3), transparent 30%, transparent 70%, rgba(161,196,255,0.3))",
+                padding: 1,
+                WebkitMask:
+                  "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+                WebkitMaskComposite: "xor",
+                maskComposite: "exclude",
+              }}
+            />
+
+            {/* Corner orbs */}
+            <div className="pointer-events-none absolute -left-40 -top-40 h-96 w-96 rounded-full bg-[#FF6B00] opacity-30 blur-[120px]" />
+            <div className="pointer-events-none absolute -right-40 -bottom-40 h-96 w-96 rounded-full bg-[#A1C4FF] opacity-30 blur-[120px]" />
+
+            <div className="relative grid gap-12 p-8 md:p-14 lg:grid-cols-[1.2fr_1fr] lg:gap-16 lg:p-20">
+              {/* Left: headline + CTA */}
+              <div className="flex flex-col gap-8">
+                <div className="flex items-center gap-3">
+                  <div className="h-px w-10 bg-gradient-to-r from-[#FF6B00] to-transparent opacity-80" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#FF6B00]">
+                    Build with Softree
+                  </span>
+                </div>
+
+                <h2
+                  className="text-[42px] font-black leading-[0.95] tracking-tight text-white md:text-[64px] lg:text-[76px]"
+                  style={{ fontFamily: "Outfit, sans-serif" }}
+                >
+                  Let&apos;s engineer
+                  <br />
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(120deg, #FF6B00 0%, #FF5812 40%, #A1C4FF 100%)",
+                    }}
+                  >
+                    the next chapter.
+                  </span>
+                </h2>
+
+                <p className="max-w-[480px] text-base leading-relaxed text-white/65 md:text-lg">
+                  Deploy production-grade software with a partner who ships. From agentic AI
+                  to legacy modernization — scoped, scaled, and delivered.
+                </p>
+
+                <div className="mt-2 flex flex-wrap items-center gap-4">
+                  <a
+                    href="/contact"
+                    className="group/btn relative inline-flex h-14 items-center gap-2.5 overflow-hidden rounded-full px-8 text-sm font-black uppercase tracking-[0.15em] text-white shadow-[0_20px_50px_-10px_rgba(255,107,0,0.55)] transition-transform hover:scale-[1.02]"
+                    style={{
+                      background:
+                        "linear-gradient(120deg, #FF6B00 0%, #FF4500 60%, #FF5812 100%)",
+                    }}
+                  >
+                    <span className="relative z-10">Initiate Project</span>
+                    <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    <span
+                      className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover/btn:opacity-100"
+                      style={{
+                        background:
+                          "linear-gradient(120deg, #FF5812 0%, #FF6B00 100%)",
+                      }}
+                    />
+                  </a>
+                  <a
+                    href="/showcase"
+                    className="inline-flex h-14 items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-7 text-sm font-bold text-white backdrop-blur-xl transition-colors hover:border-white/30 hover:bg-white/[0.08]"
+                  >
+                    <MessageSquare className="h-4 w-4 text-[#A1C4FF]" />
+                    See our work
+                  </a>
+                </div>
+
+                <div className="mt-2 flex flex-wrap items-center gap-5 text-xs text-white/50">
+                  <span className="flex items-center gap-2">
+                    <Mail className="h-3.5 w-3.5 text-[#FF6B00]" />
+                    hello@softree.tech
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <Phone className="h-3.5 w-3.5 text-[#A1C4FF]" />
+                    Response under 4h
+                  </span>
+                </div>
+              </div>
+
+              {/* Right: service grid */}
+              <div className="grid grid-cols-2 gap-3">
+                {services.map(({ icon: Icon, label, desc }, i) => {
+                  const isOrange = i % 2 === 0
+                  const hex = isOrange ? "#FF6B00" : "#A1C4FF"
+                  return (
+                    <div
+                      key={label}
+                      className="group relative flex flex-col justify-between gap-5 overflow-hidden rounded-2xl border border-white/10 p-5 backdrop-blur-xl transition-all hover:border-white/25"
+                      style={{
+                        background: `radial-gradient(400px circle at 0% 0%, ${hex}1f, transparent 60%), rgba(10,10,12,0.6)`,
+                      }}
+                    >
+                      <div
+                        className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full opacity-30 blur-2xl transition-opacity duration-500 group-hover:opacity-60"
+                        style={{ background: hex }}
+                      />
+                      <div className="relative flex flex-col gap-4">
+                        <div
+                          className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#0A0A0C]/60 backdrop-blur-xl"
+                          style={{ color: hex }}
+                        >
+                          <Icon className="h-4 w-4" />
+                        </div>
+                        <h3
+                          className="text-sm font-black uppercase tracking-[0.12em] text-white"
+                          style={{ fontFamily: "Outfit, sans-serif" }}
+                        >
+                          {label}
+                        </h3>
+                      </div>
+                      <p className="relative text-[12.5px] leading-relaxed text-white/55">
+                        {desc}
+                      </p>
+                    </div>
+                  )
+                })}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-foreground/10 border border-foreground/10">
-              {services.map(({ icon: Icon, label, desc }) => (
-                <div key={label} className="bg-background p-8 group hover:bg-foreground/[0.02] transition-colors">
-                  <div className="w-10 h-10 border border-foreground/20 flex items-center justify-center mb-6 group-hover:border-foreground/40 transition-colors">
-                    <Icon className="w-5 h-5" />
+            {/* Bottom marquee */}
+            <div className="relative border-t border-white/10 px-8 py-5">
+              <div className="flex animate-marquee items-center gap-12 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="flex items-center gap-12">
+                    <span>Softree / Systems Advisory v2026</span>
+                    <span className="text-[#FF6B00]">●</span>
+                    <span>Agentic AI pipeline active</span>
+                    <span className="text-[#A1C4FF]">●</span>
+                    <span>Multi-tenant architecture validated</span>
+                    <span className="text-[#FF6B00]">●</span>
+                    <span>Status: deploying vision → execution</span>
+                    <span className="text-[#A1C4FF]">●</span>
                   </div>
-                  <h3 className="font-mono text-xs uppercase tracking-widest mb-3">{label}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Technical Marquee */}
-          <div className="mt-20 pt-10 border-t border-foreground/10 overflow-hidden">
-            <div className="flex gap-16 whitespace-nowrap animate-marquee opacity-30 grayscale pointer-events-none">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="flex gap-16 font-mono text-[10px] uppercase tracking-[0.2em]">
-                  <span>Status: Deploying Vision -&gt; Execution</span>
-                  <span>Softree IT & Enterprise Solutions v2025</span>
-                  <span>Agentic AI Pipeline Active</span>
-                  <span>Multi-Tenant Architecture Validated</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
+        {/* hide unused props warning for appearance */}
+        <span className="hidden">{designSystemSurfaceClass(appearance)}</span>
       </section>
     );
   }
@@ -132,7 +246,7 @@ export function SoftreeCTASection({
           <div className="mt-32 grid grid-cols-2 md:grid-cols-4 border-t border-zinc-800">
             {services.map((s, i) => (
               <div key={s.label} className={cn("p-10 border-zinc-800", i > 0 && "border-l")}>
-                <h3 className="font-mono text-xs uppercase tracking-widest mb-4 opacity-50">[{i+1}] {s.label}</h3>
+                <h3 className="font-mono text-xs uppercase tracking-widest mb-4 opacity-50">[{i + 1}] {s.label}</h3>
                 <p className="text-sm font-mono lowercase opacity-80">{s.desc}</p>
               </div>
             ))}
@@ -189,7 +303,7 @@ export function SoftreeCTASection({
     return (
       <section className="relative py-40 px-6 bg-[#0a0a09] text-white">
         <div className="absolute inset-0 pointer-events-none opacity-40">
-           <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-amber-900/20 blur-[140px] rounded-full" />
+          <div className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-amber-900/20 blur-[140px] rounded-full" />
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -244,7 +358,7 @@ export function SoftreeCTASection({
             Partner with Softree
           </div>
           <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-10 leading-[0.85] bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
-            Let's create
+            Let&apos;s create
             <br />
             the next big thing.
           </h2>
@@ -258,21 +372,21 @@ export function SoftreeCTASection({
               <ArrowRight className="ml-3 w-5 h-5" />
             </a>
             <div className="flex items-center gap-4 px-8 text-zinc-400 font-mono text-xs uppercase tracking-widest border border-white/5 rounded-2xl bg-white/[0.02]">
-               <MessageSquare className="w-4 h-4 text-emerald-500" />
-               Average Response &lt; 4 Hours
+              <MessageSquare className="w-4 h-4 text-emerald-500" />
+              Average Response &lt; 4 Hours
             </div>
           </div>
         </div>
 
         {/* Feature Grid - Liquid Style */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden mb-20 shadow-2xl">
-           {services.map(s => (
-             <div key={s.label} className="p-10 bg-black/40 backdrop-blur-3xl hover:bg-white/[0.03] transition-colors">
-               <s.icon className="w-8 h-8 text-emerald-400 mb-6" />
-               <h4 className="font-bold text-lg mb-3">{s.label}</h4>
-               <p className="text-sm text-zinc-500 leading-relaxed">{s.desc}</p>
-             </div>
-           ))}
+          {services.map(s => (
+            <div key={s.label} className="p-10 bg-black/40 backdrop-blur-3xl hover:bg-white/[0.03] transition-colors">
+              <s.icon className="w-8 h-8 text-emerald-400 mb-6" />
+              <h4 className="font-bold text-lg mb-3">{s.label}</h4>
+              <p className="text-sm text-zinc-500 leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
     );

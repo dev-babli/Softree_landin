@@ -1,395 +1,481 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import {
+  ArrowUpRight,
+  HeadphonesIcon,
+  BarChart3,
+  GitBranch,
+  Shield,
+  Mail,
+  FileSearch,
+  Bot,
+  Sparkles,
+  Zap,
+  Cpu,
+} from "lucide-react"
+import type { LucideIcon } from "lucide-react"
+import Link from "next/link"
 
-const FLOATING_CARDS = [
-  { id: 1, top: "25px", left: "15px", label: "Sync CRM contacts to spreadsheet", icons: ["hubspot"] },
-  { id: 2, top: "70px", left: "215px", label: "Create a PR and post to #engineering", icons: ["github", "slack"] },
-  { id: 3, top: "125px", left: "45px", label: "File a ticket for this bug", icons: ["linear"] }, // The blue striated circle is mapped as a single icon representing Linear for this context
-  { id: 4, top: "185px", left: "240px", label: "Check errors and create tickets", icons: ["sentry", "linear"] },
-  { id: 5, top: "230px", left: "25px", label: "Deploy to staging", icons: ["vercel"] }, // Black triangle mapped to vercel
-  { id: 6, top: "285px", left: "200px", label: "Triage new support tickets", icons: ["zendesk", "linear"] },
-  { id: 7, top: "330px", left: "55px", label: "Schedule a standup recap", icons: ["slack", "linear"] },
-]
+/* ========================================================= */
+/*  AGENT DATA                                               */
+/* ========================================================= */
 
-interface AgentLog {
-  mode: "prompt" | "cmd" | "success"
-  text: string
+type LogLine = { mode: "prompt" | "cmd" | "ok" | "info"; text: string }
+
+interface Agent {
+  id: string
+  name: string
+  role: string
+  icon: LucideIcon
+  accent: "orange" | "blue"
+  stack: string[]
+  metric: { label: string; value: string }
+  logs: LogLine[]
+  href: string
 }
 
-interface AgentData {
-  title: string
-  icons: string[]
-  action: string
-  link: string
-  logs: AgentLog[]
-}
-
-const AGENTS: AgentData[] = [
-  { 
-    title: "Customer Success Agent", icons: ["notion", "slack", "zendesk"], action: "Resolved L1 Ticket", link: "/case-studies/customer-success-agent",
+const AGENTS: Agent[] = [
+  {
+    id: "cs",
+    name: "Customer Success Agent",
+    role: "Resolves L1 tickets end-to-end",
+    icon: HeadphonesIcon,
+    accent: "orange",
+    stack: ["Zendesk", "Notion", "Slack"],
+    metric: { label: "Avg. resolution", value: "42s" },
+    href: "/case-studies/customer-success-agent",
     logs: [
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(ZENDESK_UPDATE_TICKET," },
-      { mode: "cmd", text: "  {id: 'ZD-892', status: 'solved'})" },
-      { mode: "success", text: "→ ✓ user confirmed resolution" },
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(SLACK_SEND_MESSAGE," },
-      { mode: "cmd", text: "  {channel: '#cs-logs'})" },
-      { mode: "success", text: "→ ✓ logged resolution summary" }
-    ]
+      { mode: "prompt", text: "$ softree.agent(cs).run()" },
+      { mode: "cmd", text: "→ fetch_ticket(id: ZD-892)" },
+      { mode: "cmd", text: "→ classify(intent: 'refund')" },
+      { mode: "ok", text: "✓ resolution drafted" },
+      { mode: "cmd", text: "→ update_ticket(status: solved)" },
+      { mode: "ok", text: "✓ user confirmed resolution" },
+      { mode: "info", text: "handled in 41.8s" },
+    ],
   },
-  { 
-    title: "Data Analyst Agent", icons: ["supabase", "googlesheets", "slack"], action: "Generated Revenue Report", link: "/case-studies/data-analyst-agent",
+  {
+    id: "analyst",
+    name: "Revenue Analyst",
+    role: "Builds live exec dashboards from raw data",
+    icon: BarChart3,
+    accent: "blue",
+    stack: ["Supabase", "Power BI", "Sheets"],
+    metric: { label: "Reports / week", value: "180+" },
+    href: "/case-studies/data-analyst-agent",
     logs: [
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(SUPABASE_RUN_QUERY," },
-      { mode: "cmd", text: "  {query: \"SELECT SUM(revenue)...\"})" },
-      { mode: "success", text: "→ ✓ fetched Q3 metrics" },
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(GOOGLESHEETS_UPDATE," },
-      { mode: "cmd", text: "  {range: 'A1:D10'})" },
-      { mode: "success", text: "→ ✓ dashboard synced" }
-    ]
+      { mode: "prompt", text: "$ softree.agent(analyst).run()" },
+      { mode: "cmd", text: "→ query(db: prod, range: Q3)" },
+      { mode: "ok", text: "✓ fetched 12.4M rows" },
+      { mode: "cmd", text: "→ forecast(model: arima)" },
+      { mode: "cmd", text: "→ push(sheet: exec_kpi)" },
+      { mode: "ok", text: "✓ dashboard synced" },
+      { mode: "info", text: "2.1M rows · 3.4s" },
+    ],
   },
-  { 
-    title: "DevOps Copilot", icons: ["github", "vercel", "linear"], action: "Deployed Hotfix", link: "/case-studies/devops-copilot",
+  {
+    id: "devops",
+    name: "DevOps Copilot",
+    role: "Ships hotfixes from PR to production",
+    icon: GitBranch,
+    accent: "orange",
+    stack: ["GitHub", "Vercel", "Sentry"],
+    metric: { label: "Deploys / day", value: "24" },
+    href: "/case-studies/devops-copilot",
     logs: [
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(GITHUB_MERGE_PR," },
-      { mode: "cmd", text: "  {repo: 'api-core', pr: 442})" },
-      { mode: "success", text: "→ ✓ merge successful" },
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(VERCEL_DEPLOY," },
-      { mode: "cmd", text: "  {target: 'production'})" },
-      { mode: "success", text: "→ ✓ deployment active" }
-    ]
+      { mode: "prompt", text: "$ softree.agent(devops).run()" },
+      { mode: "cmd", text: "→ sentry.diagnose(issue: SIGTERM)" },
+      { mode: "ok", text: "✓ root-cause located" },
+      { mode: "cmd", text: "→ github.open_pr(branch: fix/rate-limit)" },
+      { mode: "cmd", text: "→ vercel.deploy(env: prod)" },
+      { mode: "ok", text: "✓ shipped in 2m 14s" },
+    ],
   },
-  { 
-    title: "Financial Auditor", icons: ["googledocs", "linear"], action: "Scanned Invoices", link: "/case-studies/financial-auditor",
+  {
+    id: "compliance",
+    name: "Compliance Sentinel",
+    role: "Monitors SOC 2 / GDPR posture 24×7",
+    icon: Shield,
+    accent: "blue",
+    stack: ["Okta", "Azure AD", "Jira"],
+    metric: { label: "Controls tracked", value: "312" },
+    href: "/case-studies/compliance-sentinel",
     logs: [
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(DRIVE_SCAN_FOLDER," },
-      { mode: "cmd", text: "  {folder: 'Invoices_Q3'})" },
-      { mode: "success", text: "→ ✓ 42 documents processed" },
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(LINEAR_CREATE_ISSUE," },
-      { mode: "cmd", text: "  {title: 'Discrepancy Found'})" },
-      { mode: "success", text: "→ ✓ flagged 2 anomalies" }
-    ]
+      { mode: "prompt", text: "$ softree.agent(compliance).run()" },
+      { mode: "cmd", text: "→ scan(policies: 312)" },
+      { mode: "ok", text: "✓ 3 drift events detected" },
+      { mode: "cmd", text: "→ open_jira(priority: high)" },
+      { mode: "ok", text: "✓ remediation assigned" },
+    ],
   },
-  { 
-    title: "HR Onboarding Agent", icons: ["googlecalendar", "slack", "notion"], action: "Provisioned New Hire", link: "/case-studies/hr-onboarding-agent",
+  {
+    id: "outreach",
+    name: "Outbound SDR",
+    role: "Warm-enriches leads & books meetings",
+    icon: Mail,
+    accent: "orange",
+    stack: ["HubSpot", "LinkedIn", "Gmail"],
+    metric: { label: "Meetings / month", value: "240" },
+    href: "/case-studies/outbound-sdr",
     logs: [
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(NOTION_DUPLICATE_PAGE," },
-      { mode: "cmd", text: "  {template: 'Onboarding'})" },
-      { mode: "success", text: "→ ✓ workspace created" },
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(GOOGLECALENDAR_CREATE_EVENT," },
-      { mode: "cmd", text: "  {title: 'IT Orientation'})" },
-      { mode: "success", text: "→ ✓ scheduled for Mon 9am" }
-    ]
+      { mode: "prompt", text: "$ softree.agent(outreach).run()" },
+      { mode: "cmd", text: "→ enrich(icp: enterprise_saas)" },
+      { mode: "ok", text: "✓ 482 contacts found" },
+      { mode: "cmd", text: "→ personalize(tone: executive)" },
+      { mode: "cmd", text: "→ send(batch: 120)" },
+      { mode: "ok", text: "✓ 31% reply rate" },
+    ],
   },
-  { 
-    title: "Research Assistant", icons: ["firecrawl", "notion"], action: "Summarized Competitors", link: "/case-studies/research-assistant",
+  {
+    id: "research",
+    name: "Research Navigator",
+    role: "Surfaces evidence from 10k+ documents",
+    icon: FileSearch,
+    accent: "blue",
+    stack: ["Vector DB", "Azure OpenAI", "SharePoint"],
+    metric: { label: "Docs indexed", value: "10.2M" },
+    href: "/case-studies/research-navigator",
     logs: [
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(FIRECRAWL_SCRAPE," },
-      { mode: "cmd", text: "  {url: \"competitor.com/pricing\"})" },
-      { mode: "success", text: "→ ✓ extracted pricing tiers" },
-      { mode: "prompt", text: "$" },
-      { mode: "cmd", text: "softree.execute(NOTION_APPEND_BLOCK," },
-      { mode: "cmd", text: "  {page: 'Market Intel'})" },
-      { mode: "success", text: "→ ✓ intelligence updated" }
-    ]
+      { mode: "prompt", text: "$ softree.agent(research).run()" },
+      { mode: "cmd", text: "→ embed(corpus: sharepoint)" },
+      { mode: "ok", text: "✓ 10.2M docs indexed" },
+      { mode: "cmd", text: "→ answer(q: 'risk posture FY24')" },
+      { mode: "ok", text: "✓ 12 citations returned" },
+    ],
   },
 ]
 
-function Typewriter({ logs }: { logs: AgentLog[] }) {
-  const [typedChars, setTypedChars] = useState(0);
+/* ========================================================= */
+/*  LOG TERMINAL                                             */
+/* ========================================================= */
+
+function AgentTerminal({ agent }: { agent: Agent }) {
+  const [visibleCount, setVisibleCount] = useState(0)
 
   useEffect(() => {
-    let current = 0;
-    const interval = setInterval(() => {
-      current += 3; // Typing speed (chars per tick)
-      setTypedChars(current);
-    }, 15);
-    return () => clearInterval(interval);
-  }, [logs]);
+    const id = setInterval(() => {
+      setVisibleCount((c) => {
+        if (c >= agent.logs.length) {
+          clearInterval(id)
+          return c
+        }
+        return c + 1
+      })
+    }, 380)
+    return () => clearInterval(id)
+  }, [agent.logs.length])
 
-  let charsProcessed = 0;
-
-  return (
-    <div className="flex flex-col gap-0.5 mt-2 overflow-hidden flex-1 select-none">
-      {logs.map((log, index) => {
-        const start = charsProcessed;
-        const lineLen = log.text.length;
-        charsProcessed += lineLen;
-
-        if (typedChars < start) return null;
-
-        const visibleCount = Math.min(typedChars - start, lineLen);
-        const text = log.text.substring(0, visibleCount);
-
-        let colorStyle = "text-white/60";
-        if (log.mode === "prompt") colorStyle = "text-emerald-400/50";
-        if (log.mode === "cmd") colorStyle = "text-emerald-300";
-        if (log.mode === "success") colorStyle = "text-emerald-400 font-medium";
-
-        return (
-          <div key={index} className={`font-mono text-[9px] leading-[1.6] ${colorStyle}`}>
-            {text}
-            {index === logs.length - 1 && typedChars >= charsProcessed && (
-               <motion.span
-                 animate={{ opacity: [1, 0, 1] }}
-                 transition={{ repeat: Infinity, duration: 0.8 }}
-                 className="inline-block w-[5px] h-[10px] bg-emerald-400 ml-1 translate-y-[2px]"
-               />
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function HoverableAgentCard({ agent }: { agent: AgentData }) {
-  const [hovered, setHovered] = useState(false);
+  const accentHex = agent.accent === "orange" ? "#FF6B00" : "#A1C4FF"
 
   return (
-    <a 
-      href={agent.link}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="relative flex h-[150px] flex-col cursor-pointer group"
-    >
-      <AnimatePresence mode="wait">
-        {hovered ? (
-          <motion.div
-            key="terminal"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="absolute inset-0 flex flex-col rounded-sm border border-emerald-400/30 bg-[#0d1511] p-3 overflow-hidden z-10"
-          >
-            <div className="flex items-center gap-1.5 mb-1 shrink-0">
-              <span className="size-1.5 rounded-sm bg-emerald-400 animate-pulse"></span>
-              <span className="uppercase text-emerald-400/80 font-mono text-[9px] tracking-widest">live terminal</span>
-            </div>
-            <Typewriter logs={agent.logs} />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="card"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="absolute inset-0 flex flex-col justify-between rounded-sm border border-white/10 bg-white/5 p-3 overflow-hidden hover:border-white/20 transition-colors"
-          >
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-white text-xs tracking-[-0.24px]">
-                {agent.title}
-              </span>
-              <span className="size-1.5 rounded-sm bg-emerald-400/50" />
-            </div>
-            
-            <div className="mt-3 flex items-center gap-2">
-              {agent.icons.map((icon) => (
-                <img 
-                  key={icon} 
-                  alt={icon} 
-                  className="size-5 rounded-sm" 
-                  src={`https://logos.composio.dev/api/${icon}`} 
-                  draggable="false"
-                />
-              ))}
-            </div>
+    <div className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/60 backdrop-blur-xl">
+      {/* Terminal chrome */}
+      <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5">
+        <div className="flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F56]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#27C93F]" />
+        </div>
+        <span className="font-mono text-[10px] text-white/40">
+          softree · {agent.id}.agent
+        </span>
+        <div className="flex items-center gap-1.5">
+          <span
+            className="h-1.5 w-1.5 animate-pulse rounded-full"
+            style={{ background: accentHex }}
+          />
+          <span className="font-mono text-[10px] text-white/50">LIVE</span>
+        </div>
+      </div>
 
-            <div className="mt-auto pt-3 flex items-center justify-between">
-              <p className="truncate font-mono text-[10px] text-white/40 tracking-[-0.22px]">
-                {agent.action}
-              </p>
-              <span className="font-mono text-[9px] text-emerald-400/80 tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
-                Case Study ↗
-              </span>
-            </div>
-          </motion.div>
+      {/* Log body */}
+      <div className="flex flex-1 flex-col gap-1.5 p-5 font-mono text-[12.5px] leading-relaxed">
+        {agent.logs.slice(0, visibleCount).map((line, i) => {
+          let color = "text-white/75"
+          if (line.mode === "prompt") color = "text-white/50"
+          if (line.mode === "cmd") color = "text-white/85"
+          if (line.mode === "ok")
+            color = agent.accent === "orange" ? "text-[#FF6B00]" : "text-[#A1C4FF]"
+          if (line.mode === "info") color = "text-white/40 italic"
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -6 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.2 }}
+              className={color}
+            >
+              {line.text}
+            </motion.div>
+          )
+        })}
+        {visibleCount < agent.logs.length && (
+          <span className="inline-block h-4 w-1.5 animate-pulse bg-white/60" />
         )}
-      </AnimatePresence>
-    </a>
+      </div>
+    </div>
   )
 }
 
+/* ========================================================= */
+/*  MAIN                                                      */
+/* ========================================================= */
+
 export function SoftreeComposioSection() {
+  const [active, setActive] = useState(0)
+  const agent = AGENTS[active]
+  const accentHex = agent.accent === "orange" ? "#FF6B00" : "#A1C4FF"
+  const Icon = agent.icon
+
+  // auto-cycle every 7s unless user interacts
+  const [userPaused, setUserPaused] = useState(false)
+  useEffect(() => {
+    if (userPaused) return
+    const id = setInterval(() => {
+      setActive((a) => (a + 1) % AGENTS.length)
+    }, 8000)
+    return () => clearInterval(id)
+  }, [userPaused])
+
   return (
-    <section className="flex w-full justify-center bg-[#F6F6F6] pt-16 pb-0 lg:pb-16 font-sans">
-      <div className="w-full max-w-[1240px] lg:px-0">
-        
-        {/* Header Elements */}
-        <div className="flex flex-col gap-8 px-4 lg:px-0">
-          <div className="flex h-6 items-center gap-2 px-2 py-1.5">
-            <div className="size-[5.82px] bg-black"></div>
-            <span className="font-mono text-black text-sm leading-normal tracking-[-0.28px] uppercase">
-              Proven Results
-            </span>
+    <section className="relative w-full overflow-hidden bg-[#050505] py-20 md:py-28">
+      {/* ambient glow */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-70"
+        style={{
+          background:
+            "radial-gradient(1200px circle at 20% 10%, rgba(255,107,0,0.10), transparent 45%), radial-gradient(900px circle at 85% 90%, rgba(161,196,255,0.08), transparent 45%)",
+        }}
+      />
+
+      <div className="relative mx-auto w-full max-w-[1440px] px-4 md:px-8">
+        {/* Header */}
+        <div className="mb-14 flex flex-col gap-5 md:mb-20 md:flex-row md:items-end md:justify-between">
+          <div className="flex max-w-[640px] flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-10 bg-gradient-to-r from-[#FF6B00] to-transparent opacity-60" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#FF6B00] opacity-80">
+                Agentic AI
+              </span>
+            </div>
+            <h2
+              className="text-3xl font-black leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[56px]"
+              style={{ fontFamily: "Outfit, sans-serif" }}
+            >
+              AI agents doing the{" "}
+              <span className="text-white/40">actual work.</span>
+            </h2>
+            <p className="max-w-[520px] text-[15px] leading-relaxed text-white/55">
+              Production-grade AI agents built on your data and tools — not demos. Running
+              in the background, doing real work, reporting measurable outcomes.
+            </p>
           </div>
-          <h2 className="max-w-[474px] text-3xl text-black leading-[0.9] md:text-4xl lg:text-[48px]">
-            Our AI Agent Portfolio
-          </h2>
+
+          <div className="flex items-center gap-2 font-mono text-[11px] text-white/40">
+            <Sparkles className="h-3.5 w-3.5 text-[#FF6B00]" />
+            <span>{AGENTS.length} agents deployed in production</span>
+          </div>
         </div>
 
-        <div className="relative mt-16">
-          
-          {/* Light Theme: Softree FOR YOU */}
-          <div className="flex h-auto w-full flex-col overflow-hidden bg-white p-6 md:p-8 lg:h-[450px] lg:flex-row lg:p-12 mb-0">
-            <div className="flex w-full flex-col justify-between gap-6 pr-0 lg:w-[340px] lg:shrink-0 lg:gap-0 lg:pr-10 z-10">
-              <div className="flex flex-col gap-[18px]">
-                <div className="flex items-center gap-2.5">
-                  <span className="font-medium text-2xl text-black leading-[1.2]">Softree</span>
-                  <span className="rounded-sm border border-blue-600 px-1.5 py-0.5 font-mono text-blue-600 text-xs leading-normal uppercase">
-                    Custom Agents
-                  </span>
-                </div>
-                <p className="text-[15px] text-black leading-[1.4] opacity-80 max-w-[280px]">
-                  Turn your standard operations into intelligent, autonomous workflows. We build bespoke agents that integrate perfectly across all your enterprise apps.
-                </p>
-                <p className="text-[15px] text-black leading-[1.4] opacity-80 max-w-[280px]">
-                  Every agent comes production-ready — authenticated, optimized, and reliable. See how we've transformed businesses.
-                </p>
-              </div>
-              <a 
-                className="inline-flex w-fit items-center justify-center rounded-sm bg-black px-4 py-2.5 font-mono text-xs text-white leading-normal tracking-[-0.28px] hover:bg-neutral-800 transition-colors uppercase" 
-                href="/case-studies"
-              >
-                View All Case Studies
-              </a>
-            </div>
-
-            <div className="relative mt-6 lg:mt-0 h-[400px] lg:h-auto lg:flex-1 w-full right-0">
-              
-              {/* Background Faux Terminal Window */}
-              <div className="absolute top-0 right-0 h-[90%] w-[60%] z-0 rounded-sm overflow-hidden border border-[#e0e0e0] opacity-80 translate-y-[5%]">
-                <div className="flex items-center gap-2 bg-[#E8E8E8] px-3 py-2 border-b border-[#ddd]">
-                  <div className="flex items-center gap-1.5">
-                    <div className="h-[10px] w-[10px] rounded-sm bg-[#ff5f57]"></div>
-                    <div className="h-[10px] w-[10px] rounded-sm bg-[#febc2e]"></div>
-                    <div className="h-[10px] w-[10px] rounded-sm bg-[#28c840]"></div>
-                  </div>
-                  <span className="flex-1 text-left font-mono text-[#999] text-[9px] tracking-tight ml-2">
-                    user — ✻ Claude Code — claude
-                  </span>
-                </div>
-                <div className="h-full bg-[#F6F6F6] p-4 font-mono text-[9px] leading-[1.7]">
-                  <div 
-                    className="select-none overflow-hidden text-[#D87756]" 
-                    style={{ fontSize: "5px", lineHeight: "1.2", fontFamily: "monospace", whiteSpace: "pre" }}
+        {/* Body: left agent list / right live terminal */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[360px_1fr] lg:gap-8">
+          {/* Agent list */}
+          <div className="flex flex-col gap-3">
+            {AGENTS.map((a, i) => {
+              const isActive = i === active
+              const aHex = a.accent === "orange" ? "#FF6B00" : "#A1C4FF"
+              const AIcon = a.icon
+              return (
+                <button
+                  key={a.id}
+                  onClick={() => {
+                    setActive(i)
+                    setUserPaused(true)
+                  }}
+                  className={`group relative flex items-start gap-4 overflow-hidden rounded-2xl border p-4 text-left transition-all duration-300 ${isActive
+                    ? "border-white/20"
+                    : "border-white/5 hover:border-white/10"
+                    }`}
+                  style={{
+                    background: isActive
+                      ? `radial-gradient(500px circle at 0% 0%, ${aHex}16, transparent 50%), rgba(10,10,12,0.7)`
+                      : "rgba(10,10,12,0.4)",
+                  }}
+                >
+                  <div
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-[#0A0A0C]/70 backdrop-blur-xl"
+                    style={{ color: aHex }}
                   >
-{`  ██████╗██╗      █████╗ ██╗   ██╗██████╗ ███████╗
- ██╔════╝██║     ██╔══██╗██║   ██║██╔══██╗██╔════╝
- ██║     ██║     ███████║██║   ██║██║  ██║█████╗
- ██║     ██║     ██╔══██║██║   ██║██║  ██║██╔══╝
- ╚██████╗███████╗██║  ██║╚██████╔╝██████╔╝███████╗
-  ╚═════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝`}
+                    <AIcon className="h-4 w-4" />
                   </div>
-                  <div className="mt-4 flex flex-col gap-0.5">
-                    <div className="text-[#999]">v2.1.50</div>
-                    <div className="text-[#999]">Opus 4.6 · Claude Max</div>
-                    <div className="text-[#999]">/Users/dev/projects/app</div>
-                  </div>
-                  <div className="mt-8 flex items-center gap-1.5 border-[#ddd] border-t pt-4">
-                    <span className="text-[#333]">❯</span>
-                    <span className="text-[#bbb]">try &quot;fix lint errors&quot;</span>
-                  </div>
-                  <div className="mt-2 flex justify-between text-[#bbb] text-[8px]">
-                    <span>? for shortcuts</span>
-                    <span>/ide for <span className="text-[#8B5CF6]">Cursor</span></span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Scattered Integration Cards overlaying the terminal */}
-              <div className="absolute inset-0 z-10 pointer-events-none">
-                {FLOATING_CARDS.map((card, idx) => (
-                  <motion.div
-                    key={card.id}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 + 0.3, duration: 0.5, ease: "easeOut" }}
-                    animate={{ y: [0, -3, 0] }}
-                    className="absolute border border-[#e0e0e0] bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.06)] hover:shadow-[4px_6px_0px_0px_rgba(0,0,0,0.1)] transition-shadow duration-300 pointer-events-auto cursor-default flex items-center rounded-sm"
-                    style={{ 
-                      top: card.top, 
-                      left: card.left, 
-                      padding: "6px 12px"
-                    }}
-                  >
-                    <div className="flex shrink-0 items-center justify-center -space-x-1 mr-2 opacity-90">
-                      {card.icons.map((icon) => (
-                        <img 
-                          key={icon} 
-                          alt={icon} 
-                          className="h-4 w-4 object-cover z-10 rounded-sm" 
-                          src={`https://logos.composio.dev/api/${icon}`} 
-                          draggable="false"
+                  <div className="flex flex-1 flex-col gap-0.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-sm font-black tracking-tight text-white">
+                        {a.name}
+                      </span>
+                      {isActive && (
+                        <motion.span
+                          layoutId="agentActiveDot"
+                          className="h-1.5 w-1.5 rounded-full"
+                          style={{ background: aHex }}
                         />
+                      )}
+                    </div>
+                    <span className="text-xs leading-snug text-white/55">{a.role}</span>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Live panel */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={agent.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="relative overflow-hidden rounded-3xl border border-white/10 backdrop-blur-xl"
+              style={{
+                background: `radial-gradient(900px circle at 100% 0%, ${accentHex}18, transparent 45%), rgba(10,10,12,0.92)`,
+              }}
+            >
+              {/* corner glow */}
+              <div
+                className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full opacity-30 blur-[100px]"
+                style={{ background: accentHex }}
+              />
+
+              <div className="relative grid grid-cols-1 gap-6 p-6 md:p-8 lg:grid-cols-2 lg:p-10">
+                {/* Left: agent details */}
+                <div className="flex flex-col justify-between gap-6">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-[#0A0A0C]/70 backdrop-blur-xl"
+                        style={{ color: accentHex }}
+                      >
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div
+                        className="rounded-full border border-white/10 bg-[#0A0A0C]/70 px-3 py-1 font-mono text-[10px] font-black uppercase tracking-[0.3em] backdrop-blur-xl"
+                        style={{ color: accentHex }}
+                      >
+                        Live agent
+                      </div>
+                    </div>
+
+                    <h3
+                      className="text-2xl font-black leading-tight tracking-tight text-white md:text-3xl lg:text-[32px]"
+                      style={{ fontFamily: "Outfit, sans-serif" }}
+                    >
+                      {agent.name}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-white/65">{agent.role}</p>
+
+                    {/* stack chips */}
+                    <div className="flex flex-wrap gap-2">
+                      {agent.stack.map((s) => (
+                        <span
+                          key={s}
+                          className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[11px] text-white/70"
+                        >
+                          {s}
+                        </span>
                       ))}
                     </div>
-                    <span className="whitespace-nowrap font-medium text-[#444] text-[11px] tracking-tight">
-                      {card.label}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
 
-          {/* Dark Theme: Softree PLATFORM */}
-          <div className="flex h-auto w-full flex-col overflow-hidden bg-[#151515] px-6 py-10 md:p-10 lg:h-[450px] lg:flex-row lg:p-12 rounded-b-sm">
-            
-            <div className="flex w-full flex-col justify-between gap-6 pr-0 lg:w-[340px] lg:shrink-0 lg:gap-0 lg:pr-10">
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-2.5">
-                  <span className="font-medium text-2xl text-white leading-[1.2]">Softree</span>
-                  <span className="rounded-sm border border-[rgba(63,255,221,0.5)] px-1.5 py-0.5 font-mono text-emerald-400 text-xs leading-normal uppercase">
-                    Case Studies
+                    {/* metric */}
+                    <div className="mt-2 flex items-center gap-6">
+                      <div className="flex flex-col">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+                          {agent.metric.label}
+                        </span>
+                        <span
+                          className="text-2xl font-black tracking-tight"
+                          style={{
+                            color: accentHex,
+                            fontFamily: "Outfit, sans-serif",
+                          }}
+                        >
+                          {agent.metric.value}
+                        </span>
+                      </div>
+                      <div className="h-8 w-px bg-white/10" />
+                      <div className="flex flex-col">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+                          Uptime
+                        </span>
+                        <span
+                          className="text-2xl font-black tracking-tight text-white"
+                          style={{ fontFamily: "Outfit, sans-serif" }}
+                        >
+                          99.98%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <Link
+                    href={agent.href}
+                    className="group/btn inline-flex w-max items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-2.5 text-[11px] font-black uppercase tracking-[0.25em] text-white backdrop-blur-xl transition-all hover:border-white/30 hover:bg-white/[0.08]"
+                  >
+                    See case study
+                    <ArrowUpRight
+                      className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                      style={{ color: accentHex }}
+                    />
+                  </Link>
+                </div>
+
+                {/* Right: terminal */}
+                <div className="h-[340px] lg:h-full">
+                  <AgentTerminal key={agent.id} agent={agent} />
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Bottom stats strip */}
+        <div className="mt-14 grid grid-cols-2 gap-4 md:mt-20 md:grid-cols-4 md:gap-6">
+          {[
+            { icon: Bot, label: "Agents in production", value: "42+" },
+            { icon: Zap, label: "Actions per day", value: "1.2M" },
+            { icon: Cpu, label: "Models fine-tuned", value: "18" },
+            { icon: Sparkles, label: "Human-hours saved / mo", value: "9,400" },
+          ].map((s) => {
+            const SIcon = s.icon
+            return (
+              <div
+                key={s.label}
+                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 backdrop-blur-xl"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-[#0A0A0C]/60 text-[#FF6B00]">
+                  <SIcon className="h-4 w-4" />
+                </div>
+                <div className="flex flex-col">
+                  <span
+                    className="text-xl font-black tracking-tight text-white md:text-2xl"
+                    style={{ fontFamily: "Outfit, sans-serif" }}
+                  >
+                    {s.value}
+                  </span>
+                  <span className="text-[11px] font-medium text-white/50">
+                    {s.label}
                   </span>
                 </div>
-                <p className="text-[15px] text-white leading-[1.4] opacity-80 max-w-[280px]">
-                  Explore how our custom-built AI agents solve complex problems, reduce manual overhead, and scale operations for our enterprise partners.
-                </p>
               </div>
-              <pre className="rounded-sm border border-white/10 bg-white/5 p-4 font-mono text-[10px] text-white/70 leading-[1.7] mt-4 lg:mt-0 max-w-[300px]">
-                <code>
-tools = session.tools()
-agent = Agent(
-  name=&quot;Assistant&quot;,
-  tools=tools,
-)
-                </code>
-              </pre>
-              <a 
-                className="inline-flex w-fit items-center justify-center bg-white rounded-sm px-4 py-2.5 font-mono text-black text-xs leading-normal tracking-[-0.28px] hover:bg-neutral-200 transition-colors uppercase mt-4 lg:mt-0" 
-                href="/services/ai-agents"
-              >
-                Hire Us
-              </a>
-            </div>
-
-            {/* Agent Grid */}
-            <div className="mt-8 grid flex-1 grid-cols-2 gap-3 lg:mt-0 lg:grid-cols-3 content-start">
-              {AGENTS.map((agent) => (
-                <HoverableAgentCard key={agent.title} agent={agent} />
-              ))}
-            </div>
-          </div>
-
+            )
+          })}
         </div>
       </div>
     </section>
   )
 }
+
+export default SoftreeComposioSection

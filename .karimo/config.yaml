@@ -1,0 +1,68 @@
+config_version: "2.0"
+
+# Execution Mode: full | fast-track
+mode: full
+
+project:
+  name: "SOFTREE"
+  runtime: "node"
+  framework: "next"
+  package_manager: "npm"
+
+commands:
+  build: "npm run build"
+  dev: "npm run dev"
+  lint: "npm run lint"
+  typecheck: "npx tsc --noEmit"
+
+boundaries:
+  never_touch:
+    - "node_modules/**"
+    - ".next/**"
+    - "package-lock.json"
+    - ".env*"
+    - "out/**"
+
+  require_review:
+    - "package.json"
+    - "next.config.*"
+    - "tsconfig.json"
+    - "middleware.ts"
+    - "src/app/layout.tsx"
+
+github:
+  owner_type: "user"
+  owner: "dev-babli"
+  repository: "Softree_Final"
+  merge_strategy: "squash"
+
+execution:
+  default_model: "sonnet"
+  max_parallel_tasks: 3
+  pre_pr_checks:
+    - "build"
+    - "typecheck"
+    - "lint"
+
+review:
+  enabled: false
+  provider: null
+  threshold: 5
+  max_revision_loops: 3
+  none_behavior: manual
+  allow_below_threshold_on:
+    - future-work-overlap
+    - false-positive-factual
+  final_merge_gate:
+    enabled: true
+    verify_deferred_findings: true
+  pre_execution_prompt: true
+
+cost_controls:
+  enable_escalation: true
+  max_attempts: 3
+  retry_delay_seconds: 10
+
+cd:
+  provider: none
+  status: pending

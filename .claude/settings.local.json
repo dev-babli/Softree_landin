@@ -6,7 +6,38 @@
       "Bash(netstat -ano)",
       "mcp__plugin_playwright_playwright__browser_navigate",
       "mcp__plugin_playwright_playwright__browser_take_screenshot",
-      "mcp__plugin_playwright_playwright__browser_evaluate"
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/homepage_final)",
+      "Bash(ffmpeg -version)",
+      "Read(//c/Users/Soumeet Kumar Barik/Downloads/**)",
+      "PowerShell(Get-Command ffmpeg -ErrorAction SilentlyContinue; Get-Command ffprobe -ErrorAction SilentlyContinue; if \\(-not \\(Get-Command ffmpeg -ErrorAction SilentlyContinue\\)\\) { Write-Host \"ffmpeg not on PATH\"; $paths=@\\(\"$env:LOCALAPPDATA\\\\Microsoft\\\\WinGet\\\\Packages\",\"$env:ProgramFiles\\\\ffmpeg\",\"$env:ProgramFiles\\\\FFmpeg\",\"C:\\\\ffmpeg\"\\); foreach\\($p in $paths\\){ if\\(Test-Path $p\\){ Write-Host \"checking $p\"; Get-ChildItem -Path $p -Filter \"ffmpeg.exe\" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 3 -ExpandProperty FullName } } })",
+      "PowerShell(winget install --id=Gyan.FFmpeg --accept-source-agreements --accept-package-agreements --silent 2>&1)",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"PATH\",\"User\"\\); Get-Command ffmpeg -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source)",
+      "Bash(/d/tmp/ffmpeg-extract/node_modules/ffmpeg-static/ffmpeg.exe -i '/c/Users/Soumeet Kumar Barik/Downloads/Recording 2026-04-27 004305.mp4')",
+      "Bash(curl -sS -o /tmp/bb-page.html -w \"HTTP %{http_code}\\\\nSize: %{size_download} bytes\\\\n\" \"http://localhost:3000/banking-beyond\")",
+      "Read(//tmp/**)",
+      "mcp__plugin_playwright_playwright__browser_resize",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "Bash(curl -sS -o /d/tmp/woman.png \"https://assets.revolut.com/published-assets-v3/1b17207f-8c44-4e67-9637-2ed365bfb5a1/8fb2616d-e499-4546-8288-9db34a2e881f.png\")",
+      "Bash(curl -sS -o /d/tmp/sky1.png \"https://assets.revolut.com/published-assets-v3/4bcf4f81-c0b1-4bde-82f5-0b4cd2ddd2ef/2f242895-e89a-44d3-9f8a-fb78b32d80c5.png\")",
+      "Bash(curl -sS -o /d/tmp/sky2.png \"https://assets.revolut.com/published-assets-v3/c1d9d317-7303-4f79-8756-937632237bb5/2442a1d3-8d03-44b9-a046-db33242f100a.png\")",
+      "Bash(curl -sS -o /d/tmp/leftcard.png \"https://assets.revolut.com/published-assets-v3/d6d0bfe6-bc41-44db-8dde-dd3665b3c359/00544e46-b5db-4906-b0ed-87b558057f3f.png\")",
+      "Bash(curl -sS -o /d/tmp/rightcard.png \"https://assets.revolut.com/published-assets-v3/af2fd3c8-cfef-40f0-a673-4a2c9fa85d69/aab65826-2d49-49f9-803b-061c5c68b842.png\")",
+      "mcp__plugin_playwright_playwright__browser_close",
+      "Bash(git clone *)",
+      "PowerShell(winget install *)",
+      "PowerShell(gh *)",
+      "PowerShell(gh auth *)",
+      "PowerShell($env:PATH = [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"Machine\"\\) + \";\" + [System.Environment]::GetEnvironmentVariable\\(\"Path\",\"User\"\\); cd D:\\\\Softree_Projects\\\\SOFTREE; gh repo view --json owner,name,url 2>&1)",
+      "PowerShell(Get-Item *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); const deps={...p.dependencies,...p.devDependencies}; ['lenis','@studio-freight/lenis','gsap','framer-motion','@types/lenis'].forEach\\(k=>console.log\\(k+':', deps[k]||'NOT INSTALLED'\\)\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git commit *)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "github"
+  ]
 }

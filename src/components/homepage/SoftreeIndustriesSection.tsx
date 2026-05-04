@@ -2,228 +2,288 @@
 
 import { useRef, useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import {
+  ArrowUpRight,
+  Building2,
+  Landmark,
+  GraduationCap,
+  HeartPulse,
+  ShoppingBag,
+  Factory,
+  Plane,
+  Banknote,
+} from "lucide-react"
+import type { LucideIcon } from "lucide-react"
 
-const INDUSTRIES = [
+type Industry = {
+  label: string
+  tag: string
+  desc: string
+  image: string
+  icon: LucideIcon
+  accent: "orange" | "blue"
+  href: string
+}
+
+const INDUSTRIES: Industry[] = [
   {
-    label: "AI & Machine Learning",
-    link: "/services/ai",
-    image: "/whysoftree/ai.webp",
-    textLight: true
+    label: "Financial Services",
+    tag: "FINTECH",
+    desc: "Risk engines, fraud AI, core-banking integrations.",
+    image: "/images/business.png",
+    icon: Banknote,
+    accent: "orange",
+    href: "/industries/finance",
   },
   {
-    label: "Data Engineering",
-    link: "/services/data",
-    image: "/whysoftree/data.webp",
-    textLight: true
+    label: "Healthcare",
+    tag: "HEALTH",
+    desc: "HIPAA-grade portals, clinical data, patient AI copilots.",
+    image: "/images/clinic.png",
+    icon: HeartPulse,
+    accent: "blue",
+    href: "/industries/healthcare",
   },
   {
-    label: "Web Development",
-    link: "/services/web-development",
-    image: "/whysoftree/web dev.webp",
-    textLight: true
+    label: "Education",
+    tag: "EDTECH",
+    desc: "Adaptive learning, student platforms, research portals.",
+    image: "/images/school.png",
+    icon: GraduationCap,
+    accent: "orange",
+    href: "/industries/education",
   },
   {
-    label: "Web Platforms",
-    link: "/services/web-platforms",
-    image: "/whysoftree/web.webp",
-    textLight: true
+    label: "Retail & E-commerce",
+    tag: "COMMERCE",
+    desc: "Headless storefronts, recommendation AI, unified CRM.",
+    image: "/images/food.png",
+    icon: ShoppingBag,
+    accent: "blue",
+    href: "/industries/retail",
   },
   {
-    label: "Microsoft Ecosystem",
-    link: "/services/microsoft",
-    image: "/whysoftree/microsoft.webp",
-    textLight: true
+    label: "Manufacturing",
+    tag: "INDUSTRY 4.0",
+    desc: "IoT dashboards, predictive maintenance, MES systems.",
+    image: "/images/custom.png",
+    icon: Factory,
+    accent: "orange",
+    href: "/industries/manufacturing",
   },
   {
-    label: "Enterprise Architecture",
-    link: "/services/enterprise",
-    image: "/whysoftree/image.png",
-    textLight: true
-  }
+    label: "Government",
+    tag: "PUBLIC SECTOR",
+    desc: "Citizen portals, secure enclaves, compliance-first delivery.",
+    image: "/images/global.png",
+    icon: Landmark,
+    accent: "blue",
+    href: "/industries/government",
+  },
+  {
+    label: "Logistics & Travel",
+    tag: "MOBILITY",
+    desc: "Route optimisation, fleet AI, real-time tracking.",
+    image: "/images/map.png",
+    icon: Plane,
+    accent: "orange",
+    href: "/industries/logistics",
+  },
+  {
+    label: "Real Estate",
+    tag: "PROPTECH",
+    desc: "Listing platforms, virtual tours, AI valuation models.",
+    image: "/images/project.png",
+    icon: Building2,
+    accent: "blue",
+    href: "/industries/real-estate",
+  },
 ]
 
 export function SoftreeIndustriesSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [isHovered, setIsHovered] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
-
-  const handleScroll = () => {
-    if (!containerRef.current) return
-    const { scrollLeft, scrollWidth, clientWidth } = containerRef.current
-    const maxScroll = scrollWidth - clientWidth
-    if (maxScroll <= 0) {
-      setScrollProgress(0)
-    } else {
-      setScrollProgress(scrollLeft / maxScroll)
-    }
-  }
+  const ref = useRef<HTMLDivElement>(null)
+  const [hovered, setHovered] = useState<number | null>(null)
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    const container = containerRef.current
-    if (container) {
-      container.addEventListener('scroll', handleScroll, { passive: true })
-      handleScroll() // initial calculation
-      window.addEventListener('resize', handleScroll)
-      return () => {
-        container.removeEventListener('scroll', handleScroll)
-        window.removeEventListener('resize', handleScroll)
-      }
+    const el = ref.current
+    if (!el) return
+    const onScroll = () => {
+      const max = el.scrollWidth - el.clientWidth
+      setProgress(max > 0 ? el.scrollLeft / max : 0)
+    }
+    el.addEventListener("scroll", onScroll, { passive: true })
+    onScroll()
+    window.addEventListener("resize", onScroll)
+    return () => {
+      el.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
     }
   }, [])
 
-  // Auto-sliding logic
-  useEffect(() => {
-    if (isHovered) return // Pause auto-scroll on hover
-
-    const autoSlide = setInterval(() => {
-      if (containerRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current
-        const maxScroll = scrollWidth - clientWidth
-        
-        if (maxScroll <= 0) return
-
-        // If at the end, snap back to start
-        if (scrollLeft >= maxScroll - 10) {
-          containerRef.current.scrollTo({ left: 0, behavior: "smooth" })
-        } else {
-          // Scroll by one actual card width + gap (20px)
-          const firstChild = containerRef.current.children[0] as HTMLElement
-          const cardWidth = firstChild ? firstChild.offsetWidth + 20 : 560
-          containerRef.current.scrollBy({ left: cardWidth, behavior: "smooth" })
-        }
-      }
-    }, 3500)
-
-    return () => clearInterval(autoSlide)
-  }, [isHovered])
-
-  const scrollLeftNav = () => {
-    if (containerRef.current) {
-      const firstChild = containerRef.current.children[0] as HTMLElement
-      const cardWidth = firstChild ? firstChild.offsetWidth + 20 : 560
-      containerRef.current.scrollBy({ left: -cardWidth, behavior: "smooth" })
-    }
-  }
-
-  const scrollRightNav = () => {
-    if (containerRef.current) {
-      const firstChild = containerRef.current.children[0] as HTMLElement
-      const cardWidth = firstChild ? firstChild.offsetWidth + 20 : 560
-      containerRef.current.scrollBy({ left: cardWidth, behavior: "smooth" })
-    }
+  const scrollBy = (dir: 1 | -1) => {
+    if (!ref.current) return
+    const first = ref.current.children[0] as HTMLElement
+    const step = first ? first.offsetWidth + 20 : 420
+    ref.current.scrollBy({ left: dir * step, behavior: "smooth" })
   }
 
   return (
-    <section className="relative w-full bg-white text-black pt-16 md:pt-36 pb-12 md:pb-20 z-10 font-sans">
-      <div className="relative z-10 mx-auto w-full max-w-[1920px] overflow-hidden">
+    <section className="relative w-full overflow-hidden bg-[#050505] py-20 md:py-28">
+      {/* ambient glow */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(1200px circle at 80% 0%, rgba(255,107,0,0.08), transparent 45%), radial-gradient(900px circle at 10% 100%, rgba(161,196,255,0.06), transparent 45%)",
+        }}
+      />
 
-        {/* Header container */}
-        <div className="flex w-full items-end justify-between pb-10 px-4 xl:px-10 max-w-[1240px] mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl lg:text-[40px] font-medium max-w-[280px] sm:max-w-[550px] text-neutral-900 tracking-tight leading-tight"
-          >
-            Powering progress across industries
-          </motion.h2>
-
-          {/* Navigation Arrows */}
-          <div className="hidden md:flex items-center gap-2">
-            <button
-              onClick={scrollLeftNav}
-              className="p-2 text-neutral-400 hover:text-neutral-900 transition-colors"
-              aria-label="Scroll left"
+      <div className="relative mx-auto w-full max-w-[1440px]">
+        {/* Header */}
+        <div className="mb-12 flex flex-col gap-6 px-4 md:mb-16 md:flex-row md:items-end md:justify-between md:px-8">
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-10 bg-gradient-to-r from-[#FF6B00] to-transparent opacity-60" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#FF6B00] opacity-80">
+                Industries
+              </span>
+            </div>
+            <h2
+              className="max-w-[560px] text-3xl font-black leading-[1.02] tracking-tight text-white md:text-5xl lg:text-[52px]"
+              style={{ fontFamily: "Outfit, sans-serif" }}
             >
-              <ArrowLeft className="w-5 h-5" strokeWidth={1.5} />
+              Powering progress{" "}
+              <span className="text-white/40">across industries.</span>
+            </h2>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => scrollBy(-1)}
+              aria-label="Previous"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/70 backdrop-blur-xl transition-all hover:border-white/25 hover:text-white"
+            >
+              <ArrowUpRight className="h-4 w-4 -rotate-[135deg]" />
             </button>
             <button
-              onClick={scrollRightNav}
-              className="p-2 text-neutral-400 hover:text-neutral-900 transition-colors"
-              aria-label="Scroll right"
+              onClick={() => scrollBy(1)}
+              aria-label="Next"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/70 backdrop-blur-xl transition-all hover:border-white/25 hover:text-white"
             >
-              <ArrowRight className="w-5 h-5" strokeWidth={1.5} />
+              <ArrowUpRight className="h-4 w-4 rotate-45" />
             </button>
           </div>
         </div>
 
-        {/* Horizontal Scrolling Carousel Area */}
-        <div className="mb-10 flex flex-grow justify-center lg:mb-12 w-full relative max-w-[1240px] mx-auto px-4 xl:px-10">
-          <div 
-            className="w-full relative"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onTouchStart={() => setIsHovered(true)}
-            onTouchEnd={() => {
-              // slight delay before resuming auto-scroll on mobile
-              setTimeout(() => setIsHovered(false), 2000)
-            }}
-          >
-            <div
-              ref={containerRef}
-              className="flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] w-full"
-            >
-
-              {INDUSTRIES.map((industry, index) => (
-                <motion.a
-                  key={industry.label}
-                  aria-label={industry.label}
-                  href={industry.link}
-                  className="inline-block focus:outline-none flex-none snap-center md:snap-start"
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                >
-                  {/* Increased sizes significantly for a more squarish, impactful presence */}
-                  <div className="group/card relative inline-flex h-[320px] w-[320px] rounded-lg md:h-[480px] md:w-[480px] lg:h-[540px] lg:w-[540px] cursor-pointer transition-transform duration-500 ease-in-out">
-                    <div className="relative h-full w-full overflow-hidden rounded-lg bg-neutral-100">
-
-                      <img
-                        alt={industry.label}
-                        className="h-full w-full rounded-lg object-cover p-0 transition-transform duration-500 ease-in-out group-hover/card:scale-110"
-                        src={industry.image}
-                        draggable={false}
-                      />
-
-                      {/* Gradient overlay for cards that use white text, applied at the TOP to improve text legibility */}
-                      {industry.textLight && (
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-lg bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
-                      )}
-
+        {/* Carousel */}
+        <div
+          ref={ref}
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden scroll-smooth px-4 pb-8 md:px-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        >
+          {INDUSTRIES.map((ind, i) => {
+            const Icon = ind.icon
+            const accentHex = ind.accent === "orange" ? "#FF6B00" : "#A1C4FF"
+            const active = hovered === i
+            return (
+              <motion.a
+                key={ind.label}
+                href={ind.href}
+                aria-label={ind.label}
+                className="group relative flex h-[440px] w-[320px] shrink-0 snap-start flex-col overflow-hidden rounded-[24px] border border-white/10 md:h-[500px] md:w-[400px] lg:h-[540px] lg:w-[440px]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                style={{
+                  background: `radial-gradient(700px circle at 50% 0%, ${accentHex}22, transparent 50%), rgba(10,10,12,0.94)`,
+                }}
+              >
+                {/* Image */}
+                <div className="relative h-[60%] w-full overflow-hidden">
+                  <motion.img
+                    src={ind.image}
+                    alt={ind.label}
+                    draggable={false}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    animate={{ scale: active ? 1.08 : 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/30 to-transparent" />
+                  {/* corner glow */}
+                  <div
+                    className="pointer-events-none absolute -left-20 -top-20 h-60 w-60 rounded-full opacity-30 blur-[80px]"
+                    style={{ background: accentHex }}
+                  />
+                  {/* tag pill */}
+                  <div className="absolute left-5 top-5 flex items-center gap-2">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-black/50 backdrop-blur-xl" style={{ color: accentHex }}>
+                      <Icon className="h-4 w-4" />
                     </div>
-
-                    <div className="absolute inset-0 flex flex-col justify-between p-8 pointer-events-none">
-                      <div className="pt-0">
-                        <p className={`text-[22px] lg:text-2xl font-medium ${industry.textLight ? 'text-white' : 'text-neutral-900'} drop-shadow-sm`}>
-                          {industry.label}
-                        </p>
-                      </div>
+                    <div
+                      className="rounded-full border border-white/10 bg-black/60 px-3 py-1 font-mono text-[10px] font-black uppercase tracking-[0.3em] backdrop-blur-xl"
+                      style={{ color: accentHex }}
+                    >
+                      {ind.tag}
                     </div>
                   </div>
-                </motion.a>
-              ))}
+                </div>
 
-            </div>
-          </div>
+                {/* Content */}
+                <div className="flex flex-1 flex-col justify-between p-6">
+                  <div className="flex flex-col gap-2">
+                    <h3
+                      className="text-xl font-black tracking-tight text-white md:text-2xl"
+                      style={{ fontFamily: "Outfit, sans-serif" }}
+                    >
+                      {ind.label}
+                    </h3>
+                    <p className="text-[13px] leading-relaxed text-white/60 md:text-sm">
+                      {ind.desc}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.25em] text-white/80">
+                    <span>Explore</span>
+                    <motion.span
+                      animate={{ x: active ? 4 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ArrowUpRight className="h-4 w-4" style={{ color: accentHex }} />
+                    </motion.span>
+                  </div>
+                </div>
+
+                {/* Border highlight on hover */}
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-[24px] border transition-colors duration-500"
+                  style={{
+                    borderColor: active ? `${accentHex}66` : "transparent",
+                  }}
+                />
+              </motion.a>
+            )
+          })}
         </div>
 
-        {/* Bottom Interactive Tracker */}
-        <div className="flex justify-center w-full px-4">
-          <div className="w-full max-w-[320px] h-1 bg-neutral-200 rounded-full relative overflow-hidden">
+        {/* Progress tracker */}
+        <div className="mt-8 flex justify-center px-4">
+          <div className="relative h-[3px] w-full max-w-[280px] overflow-hidden rounded-full bg-white/10">
             <motion.div
-              className="absolute top-0 bottom-0 w-[60px] bg-gradient-to-r from-[#ff715b] to-[#5a6bfd] rounded-full"
+              className="absolute inset-y-0 w-[60px] rounded-full"
               style={{
-                left: `calc(${scrollProgress * 100}% - ${scrollProgress * 60}px)`
+                left: `calc(${progress * 100}% - ${progress * 60}px)`,
+                background: "linear-gradient(90deg, #FF6B00, #A1C4FF)",
               }}
               transition={{ ease: "easeOut", duration: 0.1 }}
             />
           </div>
         </div>
-
       </div>
     </section>
   )
 }
+
+export default SoftreeIndustriesSection

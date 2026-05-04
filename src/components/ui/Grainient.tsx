@@ -1,5 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useSyncExternalStore } from 'react';
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
+import {
+  enableWebGLSafeMode,
+  installWebGLSafeModeGuard,
+  isWebGLSafeModeEnabled,
+  subscribeWebGLSafeMode,
+} from '@/lib/webgl-safe-mode';
 
 interface GrainientProps {
   timeSpeed?: number;
@@ -150,16 +156,32 @@ const Grainient: React.FC<GrainientProps> = ({
   className = ''
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const safeModeEnabled = useSyncExternalStore(
+    (onStoreChange) => subscribeWebGLSafeMode(() => onStoreChange()),
+    isWebGLSafeModeEnabled,
+    () => false
+  );
 
   useEffect(() => {
     if (!containerRef.current) return;
+    installWebGLSafeModeGuard();
 
-    const renderer = new Renderer({
-      webgl: 2,
-      alpha: true,
-      antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2)
-    });
+    if (safeModeEnabled) {
+      return;
+    }
+
+    let renderer: Renderer;
+    try {
+      renderer = new Renderer({
+        webgl: 2,
+        alpha: true,
+        antialias: false,
+        dpr: Math.min(window.devicePixelRatio || 1, 2)
+      });
+    } catch {
+      enableWebGLSafeMode('grainient-renderer-create-failed');
+      return;
+    }
 
     const gl = renderer.gl;
     const canvas = gl.canvas as HTMLCanvasElement;
@@ -170,38 +192,62 @@ const Grainient: React.FC<GrainientProps> = ({
     const container = containerRef.current;
     container.appendChild(canvas);
 
-    const geometry = new Triangle(gl);
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms: {
-        iTime: { value: 0 },
-        iResolution: { value: new Float32Array([1, 1]) },
-        uTimeSpeed: { value: timeSpeed },
-        uColorBalance: { value: colorBalance },
-        uWarpStrength: { value: warpStrength },
-        uWarpFrequency: { value: warpFrequency },
-        uWarpSpeed: { value: warpSpeed },
-        uWarpAmplitude: { value: warpAmplitude },
-        uBlendAngle: { value: blendAngle },
-        uBlendSoftness: { value: blendSoftness },
-        uRotationAmount: { value: rotationAmount },
-        uNoiseScale: { value: noiseScale },
-        uGrainAmount: { value: grainAmount },
-        uGrainScale: { value: grainScale },
-        uGrainAnimated: { value: grainAnimated ? 1.0 : 0.0 },
-        uContrast: { value: contrast },
-        uGamma: { value: gamma },
-        uSaturation: { value: saturation },
-        uCenterOffset: { value: new Float32Array([centerX, centerY]) },
-        uZoom: { value: zoom },
-        uColor1: { value: new Float32Array(hexToRgb(color1)) },
-        uColor2: { value: new Float32Array(hexToRgb(color2)) },
-        uColor3: { value: new Float32Array(hexToRgb(color3)) }
-      }
-    });
+    const handleContextLost = (event: Event) => {
+      event.preventDefault();
+      enableWebGLSafeMode('grainient-context-lost');
+    };
+    const handleContextCreationError = () => {
+      enableWebGLSafeMode('grainient-context-creation-error');
+    };
+    canvas.addEventListener('webglcontextlost', handleContextLost, false);
+    canvas.addEventListener('webglcontextcreationerror', handleContextCreationError, false);
 
-    const mesh = new Mesh(gl, { geometry, program });
+    const geometry = new Triangle(gl);
+    let program: Program;
+    let mesh: Mesh;
+    try {
+      program = new Program(gl, {
+        vertex,
+        fragment,
+        uniforms: {
+          iTime: { value: 0 },
+          iResolution: { value: new Float32Array([1, 1]) },
+          uTimeSpeed: { value: timeSpeed },
+          uColorBalance: { value: colorBalance },
+          uWarpStrength: { value: warpStrength },
+          uWarpFrequency: { value: warpFrequency },
+          uWarpSpeed: { value: warpSpeed },
+          uWarpAmplitude: { value: warpAmplitude },
+          uBlendAngle: { value: blendAngle },
+          uBlendSoftness: { value: blendSoftness },
+          uRotationAmount: { value: rotationAmount },
+          uNoiseScale: { value: noiseScale },
+          uGrainAmount: { value: grainAmount },
+          uGrainScale: { value: grainScale },
+          uGrainAnimated: { value: grainAnimated ? 1.0 : 0.0 },
+          uContrast: { value: contrast },
+          uGamma: { value: gamma },
+          uSaturation: { value: saturation },
+          uCenterOffset: { value: new Float32Array([centerX, centerY]) },
+          uZoom: { value: zoom },
+          uColor1: { value: new Float32Array(hexToRgb(color1)) },
+          uColor2: { value: new Float32Array(hexToRgb(color2)) },
+          uColor3: { value: new Float32Array(hexToRgb(color3)) }
+        }
+      });
+
+      mesh = new Mesh(gl, { geometry, program });
+    } catch {
+      enableWebGLSafeMode('grainient-program-create-failed');
+      canvas.removeEventListener('webglcontextlost', handleContextLost);
+      canvas.removeEventListener('webglcontextcreationerror', handleContextCreationError);
+      try {
+        container.removeChild(canvas);
+      } catch {
+        // Ignore
+      }
+      return;
+    }
 
     const setSize = () => {
       const rect = container.getBoundingClientRect();
@@ -230,6 +276,8 @@ const Grainient: React.FC<GrainientProps> = ({
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      canvas.removeEventListener('webglcontextlost', handleContextLost);
+      canvas.removeEventListener('webglcontextcreationerror', handleContextCreationError);
       try {
         container.removeChild(canvas);
       } catch {
@@ -258,10 +306,20 @@ const Grainient: React.FC<GrainientProps> = ({
     zoom,
     color1,
     color2,
-    color3
+    color3,
+    safeModeEnabled
   ]);
 
-  return <div ref={containerRef} className={`relative h-full w-full overflow-hidden ${className}`.trim()} />;
+  return (
+    <div ref={containerRef} className={`relative h-full w-full overflow-hidden ${className}`.trim()}>
+      {safeModeEnabled && (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_35%_25%,rgba(200,238,255,0.72),transparent_26%),radial-gradient(circle_at_70%_60%,rgba(90,184,245,0.5),transparent_34%),linear-gradient(135deg,rgba(26,39,212,0.68),rgba(10,10,12,0.92))]"
+        />
+      )}
+    </div>
+  );
 };
 
 export default Grainient;

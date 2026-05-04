@@ -1,0 +1,168 @@
+# Task Brief: 2a
+
+**Title:** Hero section
+**PRD:** fizens-clone
+**Priority:** must
+**Complexity:** 4/10
+**Model:** sonnet
+**Wave:** 2
+
+---
+
+## Objective
+
+Build the fizens hero section: a pill badge, large headline, subtext, two CTA buttons, and a dashboard preview image below — matching the fizens.framer.ai reference layout and typography exactly.
+
+---
+
+## Context
+
+**Parent Feature:** Fizens Clone — pixel-perfect standalone clone of https://fizens.framer.ai/
+
+This task is part of **Wave 2** — runs in parallel with 1b (Navbar) and 2b (Bento). Depends on task 1a.
+
+---
+
+## Research Context
+
+### Patterns to Follow
+
+- **Pill badge pattern from fizens:** `border: 1px solid var(--fizens-blue-light-border); border-radius: 1000px; background: var(--fizens-blue-faint); padding: 6px 14px` with a small blue icon + label text.
+- **Heading font:** Poppins bold, large (clamp ~52px–80px desktop). Subtext in Geist, ~18–20px, `color: var(--fizens-text-gray)`.
+- Reference `src/app/about-us/hero.tsx` for the general Next.js section structure pattern.
+
+### Recommended Approach
+
+- Use `next/image` for the dashboard preview image (or a placeholder `<div>` with gradient if no image available).
+- The hero background is a subtle gradient from white to `--fizens-blue-faint`.
+- Two CTA buttons: primary ("Get Started") = pill, `--fizens-blue-primary` bg, white text; secondary ("Learn More") = pill, transparent bg, border `--fizens-blue-primary`, `--fizens-blue-primary` text.
+
+---
+
+## Requirements
+
+1. Section id: `id="hero"`.
+2. Pill badge: icon + "Finance Management" text, blue-tinted background.
+3. H1 headline: "Start Managing Your Finance With Our Tool" — Poppins bold, large, dark text.
+4. Subtext paragraph: 1–2 sentences describing the product — Geist, gray text.
+5. Two CTA buttons: "Get Started" (primary) + "Learn More" (ghost/outline).
+6. Dashboard preview: a mockup image below the text content. Use a placeholder `<div>` with aspect ratio 16/9, `background: linear-gradient(135deg, #eff4ff, #d1e0ff)` + centered text "Dashboard Preview" if no image asset exists.
+7. Background: `background: linear-gradient(180deg, #ffffff 0%, #f5faff 100%)`.
+8. Full-width section, content max-width ~1200px, centered.
+
+---
+
+## Success Criteria
+
+- [ ] Pill badge renders with icon + "Finance Management"
+- [ ] H1 headline in Poppins bold, large size
+- [ ] Subtext in Geist, gray color
+- [ ] Two CTA buttons: primary (blue pill) + ghost (outline pill)
+- [ ] Dashboard preview image/placeholder below content
+- [ ] Background gradient from white to faint blue
+- [ ] Section is responsive: stacks vertically at mobile (375px)
+- [ ] No TypeScript errors
+
+---
+
+## Files to Modify
+
+| File | Action | Purpose |
+|------|--------|---------|
+| `src/app/fizens/FizensHero.tsx` | create | Hero section component |
+| `src/app/fizens/page.tsx` | modify | Import and render `<FizensHero />` after navbar |
+
+---
+
+## Implementation Guidance
+
+### Structure
+
+```tsx
+<section id="hero" className="fizens-hero">
+  <div className="fizens-container"> {/* max-width: 1200px, margin: auto, padding: 0 24px */}
+    <div className="fizens-pill-badge">...</div>
+    <h1>Start Managing Your Finance With Our Tool</h1>
+    <p>...</p>
+    <div className="fizens-hero-ctas">
+      <button className="fizens-btn-primary">Get Started</button>
+      <button className="fizens-btn-ghost">Learn More</button>
+    </div>
+    <div className="fizens-hero-image">...</div>
+  </div>
+</section>
+```
+
+### Button styles
+
+```css
+.fizens-btn-primary {
+  border-radius: 1000px;
+  background: var(--fizens-blue-primary);
+  color: white;
+  padding: 14px 28px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+.fizens-btn-ghost {
+  border-radius: 1000px;
+  background: transparent;
+  color: var(--fizens-blue-primary);
+  padding: 13px 28px;
+  border: 1.5px solid var(--fizens-blue-primary);
+  cursor: pointer;
+}
+```
+
+### Edge Cases
+
+- On mobile: headline font size reduces to ~32–36px; CTA buttons stack or reduce padding.
+- The dashboard image placeholder should maintain 16/9 aspect ratio on all viewports.
+
+---
+
+## Boundaries
+
+### Files You MUST NOT Touch
+
+- `src/app/layout.tsx`, `src/app/globals.css`, `node_modules/**`, `.next/**`
+
+---
+
+## Dependencies
+
+### Upstream Tasks
+
+| Task | What It Provides | Verify Before Starting |
+|------|------------------|------------------------|
+| 1a | Route scaffold, `fizens.css` with CSS variables | `src/app/fizens/fizens.css` exists |
+
+### Downstream Impact
+
+Task 5a adds scroll entrance animation to this section. Ensure the section has a class or ref that 5a can target.
+
+---
+
+## Commit Guidelines
+
+```
+feat(fizens): add hero section with headline, CTAs, and dashboard preview
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+
+---
+
+## Validation Checklist
+
+- [ ] All success criteria met
+- [ ] `npm run build` passes
+- [ ] `npx tsc --noEmit` passes
+- [ ] Hero section visible at `/fizens` in browser
+- [ ] Responsive at 375px
+
+---
+
+*Generated by KARIMO Brief Writer*
+*PRD: fizens-clone | Task: 2a | Wave: 2*

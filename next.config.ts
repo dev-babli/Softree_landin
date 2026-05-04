@@ -18,6 +18,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "framerusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "fonts.gstatic.com",
+      },
     ],
     unoptimized: process.env.VERCEL ? false : true,
     formats: ["image/webp", "image/avif"],
