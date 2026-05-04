@@ -105,14 +105,6 @@ const IntegrationsSectionLazy = dynamic(
   { loading: () => <div className="min-h-[90vh] w-full bg-neutral-950" aria-hidden /> }
 )
 
-const ForDevelopersSectionLazy = dynamic(
-  () =>
-    import("@/components/homepage/ForDevelopersSection").then((m) => ({
-      default: m.ForDevelopersSection,
-    })),
-  { loading: () => <div className="min-h-[90vh] w-full bg-[#070707]" aria-hidden /> }
-)
-
 const HorizontalCodePathSectionLazy = dynamic(
   () =>
     import("@/components/homepage/HorizontalCodePathSection").then((m) => ({
@@ -215,21 +207,6 @@ const PerformanceSectionLazy = dynamic(
   { loading: () => <div className="min-h-[150vh] w-full bg-[#112817]" aria-hidden /> }
 )
 
-const FAQSectionLazy = dynamic(() => import("@/components/brilliance/faq-section"), {
-  loading: () => <div className="min-h-[60vh] w-full bg-black" aria-hidden />,
-})
-
-const SoftreeCTASectionLazy = dynamic(
-  async () => {
-    const { SoftreeCTASection } = await import("@/components/shared/softree-cta-section")
-    function OptimusCTADynamic() {
-      return <SoftreeCTASection variant="optimus" appearance="dark" />
-    }
-    return { default: OptimusCTADynamic }
-  },
-  { loading: () => <div className="min-h-[50vh] w-full bg-neutral-950" aria-hidden /> }
-)
-
 const SoftreeFooterLazy = dynamic(
   () =>
     import("@/components/homepage/TogetherFooter").then((m) => ({
@@ -300,11 +277,6 @@ function HomepageContent() {
           <SecuritySectionLazy />
         </DeferUntilInView>
 
-        {/* 13 — FOR ENTERPRISE TEAMS */}
-        <DeferUntilInView placeholderClassName="min-h-[90vh] bg-[#070707]">
-          <ForDevelopersSectionLazy />
-        </DeferUntilInView>
-
         {/* 13a — HORIZONTAL CODE PATH (scroll-driven pinned horizontal scroll) */}
         <DeferUntilInView placeholderClassName="min-h-[100dvh] bg-[#080a0d]">
           <HorizontalCodePathSectionLazy />
@@ -323,16 +295,6 @@ function HomepageContent() {
         {/* 16a — FAQ EXACT (from /light) */}
         <DeferUntilInView placeholderClassName="min-h-[60vh] bg-[#050505]">
           <LightFAQExactLazy />
-        </DeferUntilInView>
-
-        {/* 16 — FAQ */}
-        <DeferUntilInView placeholderClassName="min-h-[60vh] bg-black">
-          <FAQSectionLazy />
-        </DeferUntilInView>
-
-        {/* 17 — FINAL CTA */}
-        <DeferUntilInView placeholderClassName="min-h-[50vh] bg-neutral-950">
-          <SoftreeCTASectionLazy />
         </DeferUntilInView>
 
         {/* 18 — FOOTER */}

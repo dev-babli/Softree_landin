@@ -24,68 +24,65 @@ type CodeCard = {
 const CARDS: CodeCard[] = [
   {
     id: "intro",
-    label: "Softree.Engine",
-    title: "The best place to build, test, and ship front-end systems.",
+    label: "Softree.Delivery",
+    title: "From ambiguous problem to shipped software in four clean moves.",
     accent: "#c792ea",
     glow: "rgba(199,146,234,0.18)",
     lines: [],
     offsetY: -140,
   },
   {
-    id: "html",
-    label: "Structure.svg",
-    title: "Semantic markup that scales.",
+    id: "discover",
+    label: "01 · Discover",
+    title: "Map the real problem before writing a single line of code.",
     accent: "#82aaff",
     glow: "rgba(130,170,255,0.18)",
     lines: [
-      '<svg id="svgPaths" width="740"',
-      '  height="2000" xmlns="',
-      '  http://www.w3.org/2000/svg">',
-      '  <use href="#linePath01" />',
-      '  <use href="#linePath02" />',
-      '  <use href="#linePath03" />',
-      '  <use href="#linePath04" />',
-      '</svg>',
+      "→ Outcome workshop with stakeholders",
+      "→ Technical + data audit",
+      "→ User journey + friction map",
+      "→ Success metrics agreed upfront",
+      "→ Fixed-scope pilot proposal",
+      "",
+      "deliverable: outcome roadmap",
+      "timebox: 5 business days",
     ],
     offsetY: 160,
   },
   {
-    id: "css",
-    label: "Styles.css",
-    title: "Responsive constraints that never break layout.",
+    id: "design",
+    label: "02 · Design",
+    title: "Prototype the experience until the team can feel it.",
     accent: "#c3e88d",
     glow: "rgba(195,232,141,0.18)",
     lines: [
-      "* { box-sizing: border-box; }",
-      "html, body {",
-      "  width: 100%; margin: 0;",
-      "  padding: 0; overflow-x: clip;",
-      "}",
-      "body {",
-      "  --strokeDashoffset: 0;",
-      "}",
+      "→ Interactive prototype in Figma",
+      "→ System architecture + data model",
+      "→ Security + compliance review",
+      "→ Stakeholder sign-off session",
+      "→ Cut scope, not quality",
+      "",
+      "deliverable: clickable prototype",
+      "timebox: 7 business days",
     ],
     offsetY: -120,
   },
   {
-    id: "js",
-    label: "Motion.js",
-    title: "Scroll-linked animation with GSAP ScrollTrigger.",
+    id: "build",
+    label: "03 · Build & Scale",
+    title: "Ship a working pilot in three weeks. Then scale it.",
     accent: "#ffcb6b",
     glow: "rgba(255,203,107,0.18)",
     lines: [
-      "scrollTrigger: {",
-      "  trigger: \"body\",",
-      "  start: \"top top\",",
-      "  end: \"bottom bottom\",",
-      "  scrub: true,",
-      "  onUpdate: (self) => {",
-      "    let progress = -self.progress;",
-      "    gsap.set(\"body\", {",
-      '      "--strokeDashoffset": progress',
-      "    });",
-      "  }",
-      "}",
+      "→ Weekly demo + retro with client",
+      "→ Working software, not slide decks",
+      "→ Senior engineers, never juniors",
+      "→ CI/CD + monitoring from day one",
+      "→ Handover playbook on delivery",
+      "→ Scale plan for quarters 2-4",
+      "",
+      "deliverable: live pilot in prod",
+      "timebox: 3 weeks to first ship",
     ],
     offsetY: 180,
   },
@@ -104,60 +101,63 @@ const TypingLines = memo(function TypingLines({
   active: boolean
   accent: string
 }) {
-  if (lines.length === 0) {
-    return (
-      <div className="flex h-full items-center">
-        <p className="text-[20px] font-medium leading-snug tracking-tight text-white/90 sm:text-[22px]">
-          The best place to build, test, and discover front-end code.
-        </p>
-      </div>
-    )
-  }
+  if (lines.length === 0) return null
 
   return (
-    <div className="font-mono text-[12px] leading-[1.65] sm:text-[13px]">
-      {lines.map((line, li) => (
-        <div key={li} className="whitespace-pre">
-          {line.split("").map((char, ci) => {
-            const trimmed = line.trimStart()
-            const color =
-              trimmed.startsWith("<") || trimmed.startsWith("</")
-                ? "#ff5370"
-                : trimmed.startsWith("*") ||
-                  trimmed.startsWith("html") ||
-                  trimmed.startsWith("body")
-                  ? "#c792ea"
-                  : trimmed.startsWith("width") ||
-                    trimmed.startsWith("margin") ||
-                    trimmed.startsWith("padding") ||
-                    trimmed.startsWith("overflow")
-                    ? "#82aaff"
-                    : trimmed.startsWith("scrollTrigger") ||
-                      trimmed.startsWith("trigger") ||
-                      trimmed.startsWith("start") ||
-                      trimmed.startsWith("end") ||
-                      trimmed.startsWith("scrub")
-                      ? accent
-                      : "#abb2bf"
-            return (
+    <div className="flex flex-col gap-2.5">
+      {lines.map((line, li) => {
+        const trimmed = line.trim()
+        if (trimmed === "") return <div key={li} className="h-1.5" />
+
+        const isBullet = trimmed.startsWith("→")
+        const isMeta = trimmed.includes(":") && !isBullet
+        const body = isBullet ? trimmed.replace(/^→\s*/, "") : trimmed
+
+        return (
+          <div
+            key={li}
+            className="flex items-start gap-3"
+            style={{
+              opacity: active ? 1 : 0,
+              transform: active ? "translateY(0)" : "translateY(8px)",
+              transition: "opacity 600ms ease-out, transform 600ms cubic-bezier(0.22,1,0.36,1)",
+              transitionDelay: active ? `${li * 90}ms` : "0ms",
+            }}
+          >
+            {isBullet ? (
               <span
-                key={`${li}-${ci}`}
-                className="inline-block transition-[opacity,transform] duration-[400ms] ease-out"
-                style={{
-                  transitionDelay: active
-                    ? `${li * 100 + ci * 8}ms`
-                    : "0ms",
-                  opacity: active ? 1 : 0,
-                  transform: active ? "translateY(0)" : "translateY(5px)",
-                  color,
-                }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </span>
-            )
-          })}
-        </div>
-      ))}
+                className="mt-[7px] inline-block size-1.5 shrink-0 rounded-full"
+                style={{ background: accent, boxShadow: `0 0 12px ${accent}` }}
+              />
+            ) : null}
+            <p
+              className={
+                isMeta
+                  ? "font-mono text-[11px] uppercase tracking-[0.16em] text-white/45"
+                  : "text-[13.5px] font-medium leading-[1.5] text-white/88 sm:text-[14px]"
+              }
+              style={{
+                fontFamily: isMeta ? undefined : "Outfit, sans-serif",
+              }}
+            >
+              {body.split("").map((char, ci) => (
+                <span
+                  key={`${li}-${ci}`}
+                  className="inline-block"
+                  style={{
+                    opacity: active ? 1 : 0,
+                    transform: active ? "translateY(0)" : "translateY(4px)",
+                    transition: "opacity 240ms ease-out, transform 240ms ease-out",
+                    transitionDelay: active ? `${li * 90 + ci * 6}ms` : "0ms",
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </p>
+          </div>
+        )
+      })}
     </div>
   )
 })
@@ -175,85 +175,164 @@ const PathCard = memo(function PathCard({
   index: number
   active: boolean
 }) {
+  const isIntro = card.lines.length === 0
+  const stepNumber = index === 0 ? "" : String(index).padStart(2, "0")
+
   return (
     <div
       className="path-card relative flex-shrink-0"
       style={{
-        width: "clamp(300px, 30vw, 400px)",
+        width: "clamp(320px, 32vw, 440px)",
         transform: `translateY(${card.offsetY}px) translateZ(0)`,
       }}
       data-card-index={index}
     >
-      {/* Glow backdrop */}
+      {/* Outer glow backdrop (stronger when active) */}
       <div
-        className="pointer-events-none absolute -inset-4 rounded-[28px] transition-opacity duration-700"
+        className="pointer-events-none absolute -inset-6 rounded-[36px] transition-opacity duration-700"
         style={{
-          background: `radial-gradient(380px circle at 50% 50%, ${card.glow}, transparent 70%)`,
-          opacity: active ? 0.55 : 0,
+          background: `radial-gradient(460px circle at 50% 50%, ${card.glow}, transparent 70%)`,
+          opacity: active ? 0.75 : 0,
         }}
       />
 
       {/* Card shell */}
-      <div className="relative overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#0b0d12]/90 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] backdrop-blur-md">
-        {/* Top gradient edge */}
+      <div
+        className="relative overflow-hidden rounded-[26px] border border-white/[0.08] shadow-[0_40px_100px_-30px_rgba(0,0,0,0.95)] backdrop-blur-xl"
+        style={{
+          // Layered grainient: directional color wash → diagonal accent sweep → deep base
+          background: `
+            radial-gradient(120% 80% at 0% 0%, ${card.accent}22, transparent 55%),
+            radial-gradient(100% 70% at 100% 100%, ${card.accent}18, transparent 50%),
+            linear-gradient(155deg, #14161f 0%, #0b0d14 55%, #06070b 100%)
+          `,
+        }}
+      >
+        {/* GRAINIENT NOISE OVERLAY — subtle film grain for "grainient" feel */}
         <div
-          className="absolute inset-x-0 top-0 h-[1px]"
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.18] mix-blend-overlay"
           style={{
-            background: `linear-gradient(90deg, transparent 0%, ${card.accent}45 50%, transparent 100%)`,
+            backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")`,
+            backgroundSize: "160px 160px",
           }}
         />
 
+        {/* Conic accent aura top-right */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-20 -top-20 size-56 rounded-full blur-3xl transition-opacity duration-700"
+          style={{ background: card.accent + "33", opacity: active ? 0.9 : 0.5 }}
+        />
+
+        {/* Top rim highlight */}
+        <div
+          className="absolute inset-x-0 top-0 h-px"
+          style={{
+            background: `linear-gradient(90deg, transparent 0%, ${card.accent}66 50%, transparent 100%)`,
+          }}
+        />
+
+        {/* Huge step-number watermark */}
+        {stepNumber ? (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-4 -right-3 select-none font-black leading-none tracking-[-0.08em]"
+            style={{
+              fontFamily: "Outfit, sans-serif",
+              fontSize: "clamp(160px, 18vw, 220px)",
+              background: `linear-gradient(145deg, ${card.accent}28 0%, transparent 80%)`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            {stepNumber}
+          </div>
+        ) : null}
+
         {/* Inner content */}
-        <div className="relative p-6 sm:p-7">
+        <div className="relative flex min-h-[420px] flex-col p-7 sm:p-8">
           {/* Header row */}
-          <div className="mb-5 flex items-center justify-between">
+          <div className="mb-6 flex items-center justify-between">
             <span
-              className="rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.22em]"
-              style={{ color: card.accent }}
+              className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.22em]"
+              style={{
+                color: card.accent,
+                borderColor: card.accent + "40",
+                background: card.accent + "12",
+              }}
             >
+              <span
+                className="inline-block size-1.5 rounded-full"
+                style={{ background: card.accent, boxShadow: `0 0 10px ${card.accent}` }}
+              />
               {card.label}
             </span>
-            <span className="font-mono text-[10px] text-white/25">
-              {String(index + 1).padStart(2, "0")}/04
+            <span className="font-mono text-[10px] tracking-[0.2em] text-white/30">
+              {String(index + 1).padStart(2, "0")} / 04
             </span>
           </div>
 
           {/* Title */}
           <h3
-            className="mb-4 text-base font-bold leading-tight tracking-tight text-white/95 sm:text-lg"
+            className={
+              isIntro
+                ? "mb-2 text-[26px] font-semibold leading-[1.08] tracking-[-0.035em] text-white sm:text-[30px]"
+                : "mb-6 text-[20px] font-semibold leading-[1.18] tracking-[-0.03em] text-white sm:text-[22px]"
+            }
             style={{ fontFamily: "Outfit, sans-serif" }}
           >
             {card.title}
           </h3>
 
-          {/* Code block */}
-          <div className="overflow-hidden rounded-[12px] border border-white/[0.06] bg-[#07080a]/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-            {/* Fake window chrome */}
-            <div className="mb-3 flex items-center gap-1.5 border-b border-white/[0.06] pb-3">
-              <span className="h-2 w-2 rounded-full bg-[#ff5f56]" />
-              <span className="h-2 w-2 rounded-full bg-[#ffbd2e]" />
-              <span className="h-2 w-2 rounded-full bg-[#27c93f]" />
-              <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.18em] text-white/25">
-                {card.id}.motion
-              </span>
-            </div>
-
-            <TypingLines
-              lines={card.lines}
-              active={active}
-              accent={card.accent}
-            />
-          </div>
+          {/* Body: intro vs step */}
+          {isIntro ? (
+            <>
+              <div
+                className="mt-5 h-px w-full"
+                style={{
+                  background: `linear-gradient(90deg, ${card.accent}55 0%, transparent 100%)`,
+                }}
+              />
+              <p className="mt-5 text-[14px] leading-[1.55] text-white/60">
+                Scroll to see how we move from an ambiguous problem to a live pilot in three sharp phases.
+              </p>
+              <div className="mt-auto flex items-center gap-2 pt-10">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
+                  Scroll
+                </span>
+                <span
+                  className="inline-block h-px flex-1"
+                  style={{
+                    background: `linear-gradient(90deg, ${card.accent}66 0%, transparent 100%)`,
+                  }}
+                />
+                <span className="text-white/50">→</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                className="mb-5 h-px w-full"
+                style={{
+                  background: `linear-gradient(90deg, ${card.accent}55 0%, transparent 100%)`,
+                }}
+              />
+              <TypingLines
+                lines={card.lines}
+                active={active}
+                accent={card.accent}
+              />
+            </>
+          )}
         </div>
 
-        {/* Bottom subtle glow */}
+        {/* Bottom glow */}
         <div
-          className="absolute inset-x-0 bottom-0 h-[60px]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-20"
           style={{
-            background: `linear-gradient(to top, ${card.glow.replace(
-              "0.18",
-              "0.07"
-            )}, transparent)`,
+            background: `linear-gradient(to top, ${card.accent}12, transparent)`,
           }}
         />
       </div>
@@ -361,7 +440,7 @@ export function HorizontalCodePathSection() {
       {/* Section label */}
       <div className="pointer-events-none absolute left-6 top-6 z-20 sm:left-10 sm:top-10">
         <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.24em] text-white/50">
-          Build Pipeline
+          How We Ship
         </span>
       </div>
 
