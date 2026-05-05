@@ -52,6 +52,11 @@ const RigLandingSectionsLazy = dynamic(
   { loading: () => <div className="min-h-[300vh] w-full bg-[#0a0a0a]" aria-hidden /> }
 )
 
+const DevToolkitSectionLazy = dynamic(
+  () => import("@/components/homepage/DevToolkitSection"),
+  { loading: () => <div className="min-h-[120vh] w-full bg-[#0a0a0a]" aria-hidden /> }
+)
+
 
 const ServicesStackedSlidesLazy = dynamic(
   () =>
@@ -234,6 +239,11 @@ function HomepageContent() {
 
         {/* 01a — HERO (video) */}
         <TransferredSoftreeHero />
+
+        {/* 01a.5 — DEV TOOLKIT (Osmo-style: staggered title + radial card carousel + curved marquee) */}
+        <DeferUntilInView placeholderClassName="min-h-[120vh] bg-[#0a0a0a]">
+          <DevToolkitSectionLazy />
+        </DeferUntilInView>
 
         {/* 01b — SERVICES HERO (exact from /light) */}
         <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#F8F9FC]">

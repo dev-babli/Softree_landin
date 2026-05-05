@@ -29,7 +29,7 @@ import LightGlobalShowcase from "@/components/homepage-light/LightGlobalShowcase
 import LightBlog from "@/components/homepage-light/LightBlog"
 import { SoftreeBlogSection } from "@/components/homepage/SoftreeBlogSection"
 import LightBlogSection from "@/components/homepage-light/LightBlogSection"
-import LightProductSlider from "@/components/homepage-light/LightProductSlider"
+import FeaturesShowcase from "@/components/features/FeaturesShowcase"
 import LightFeaturesV1 from "@/components/homepage-light/LightFeaturesV1"
 import CoreFeatures from "@/components/homepage-light/CoreFeatures"
 import LightBenefitSection from "@/components/homepage-light/LightBenefitSection"
@@ -43,6 +43,7 @@ import LightFAQAccordion from "@/components/homepage-light/LightFAQAccordion"
 import LightFAQExact from "@/components/homepage-light/LightFAQExact"
 import LightAwardsGrid from "@/components/homepage-light/LightAwardsGrid"
 import { color } from "@/components/homepage-light/tokens"
+import LightToolkitHero from "@/components/homepage-light/LightToolkitHero"
 
 function Divider() {
   return (
@@ -61,6 +62,7 @@ export default function LightHomepage() {
   return (
     <main className="relative w-full">
       <LightNavPro />
+      <LightToolkitHero />
       <TransferredSoftreeHero />
       <SoftreeServicesHero />
       <LightAboutMerged />
@@ -78,7 +80,7 @@ export default function LightHomepage() {
       <LightFeaturesBento />
       <LightHeroEngine />
       <LightProductShowcase />
-      <LightProductSlider />
+      <FeaturesShowcase />
       <Divider />
       <LightServicesTabs />
       <Divider />

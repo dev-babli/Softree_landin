@@ -50,9 +50,8 @@ function VisionNavbar() {
           <li key={item.label}>
             <Link
               href={item.href}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                item.active ? "bg-white text-[#1852FF] shadow-sm" : "text-[#1a1a1a] hover:text-[#1852FF]"
-              }`}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${item.active ? "bg-white text-[#1852FF] shadow-sm" : "text-[#1a1a1a] hover:text-[#1852FF]"
+                }`}
             >
               {item.label}
             </Link>
@@ -77,7 +76,7 @@ function VisionHero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const stickyRef = useRef<HTMLDivElement>(null)
   const pillRef = useRef<HTMLDivElement>(null)
-  const pillImgRef = useRef<HTMLImageElement>(null)
+  const pillBgRef = useRef<HTMLDivElement>(null)
   const vRef = useRef<HTMLDivElement>(null)
   const i1Ref = useRef<HTMLDivElement>(null)
   const sRef = useRef<HTMLDivElement>(null)
@@ -108,7 +107,11 @@ function VisionHero() {
       duration: 0.7,
     }, 0)
 
-    tl.fromTo(pillImgRef.current, { scale: 1.15 }, { scale: 1, duration: 0.7 }, 0)
+    tl.fromTo(pillBgRef.current,
+      { backgroundPosition: "50% center" },
+      { backgroundPosition: "55% center", duration: 0.7, ease: "none" },
+      0
+    )
 
     // Letters parallax out
     tl.to(vRef.current, { xPercent: -180, opacity: 0, duration: 0.5 }, 0)
@@ -120,7 +123,7 @@ function VisionHero() {
     tl.to(bottomBarRef.current, { opacity: 0, y: 30, duration: 0.4 }, 0)
 
     // Phase 2: content reveal
-    tl.fromTo(revealRef.current, 
+    tl.fromTo(revealRef.current,
       { opacity: 0, y: 60, filter: "blur(8px)" },
       { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3 },
       0.7
@@ -172,10 +175,21 @@ function VisionHero() {
               className="relative shrink-0 overflow-hidden"
               style={{ width: "28%", height: "27vh", borderRadius: "9999px", borderWidth: "8px", borderStyle: "solid", borderColor: "#1852FF" }}
             >
-              <div className="absolute inset-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img ref={pillImgRef} src={bannerBg} alt="" className="h-full w-full object-cover" />
-              </div>
+              <div
+                ref={pillBgRef}
+                className="absolute"
+                style={{
+                  width: "100vw",
+                  height: "100vh",
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                  backgroundImage: `url(${bannerBg})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "50% center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              />
             </div>
 
             <div ref={nRef} className="relative shrink-0 h-[120px] md:h-[180px] lg:h-60" style={{ width: "clamp(75px, 13vw, 197px)" }}>
@@ -200,18 +214,17 @@ function VisionHero() {
         </div>
 
         {/* Content reveal */}
-        <div ref={revealRef} className="absolute inset-0 z-30 flex flex-col items-center justify-center px-6 text-center" style={{ opacity: 0 }}>
-          <div className="absolute inset-0 bg-black/45" />
-          <div className="relative z-10 max-w-3xl">
-            <h2 className="text-balance text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-7xl">
-              Crafting Modern <span className="italic text-[#FFB088]">Vision</span> For the Ambitious Brands
+        <div ref={revealRef} className="absolute inset-0 z-30 flex flex-col items-center justify-center px-6 text-center md:items-end md:justify-center md:pr-16 lg:pr-24 md:text-left" style={{ opacity: 0 }}>
+          <div className="relative z-10 max-w-2xl">
+            <h2 className="text-balance text-4xl font-bold leading-[1.05] tracking-tight text-[#0a0a0a] md:text-5xl lg:text-6xl">
+              Crafting Modern <span className="italic text-[#1852FF]">Vision</span> For the Ambitious Brands
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-base text-white/80 md:text-lg">
+            <p className="mx-auto mt-6 max-w-lg text-base text-[#0a0a0a]/70 md:text-lg md:mx-0">
               We blend creativity with strategy to build digital experiences that move brands forward. From crafting standout websites to delivering performance-driven campaigns.
             </p>
-            <Link href="/contact" className="group mt-8 inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 font-medium text-[#0a0a0a] transition-colors hover:bg-[#FF5812] hover:text-white">
+            <Link href="/contact" className="group mt-8 inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 font-medium text-[#0a0a0a] transition-colors hover:bg-[#1852FF] hover:text-white shadow-[0_4px_20px_rgba(24,82,255,0.15)]">
               <span>Get Started Now</span>
-              <span className="grid h-5 w-5 place-items-center rounded-full bg-[#1852FF] text-white">
+              <span className="grid h-5 w-5 place-items-center rounded-full bg-[#1852FF] text-white transition-colors group-hover:bg-white group-hover:text-[#1852FF]">
                 <ArrowUpRight className="h-3 w-3" strokeWidth={2.5} />
               </span>
             </Link>
