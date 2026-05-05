@@ -1,5 +1,7 @@
 import LightNavPro from "@/components/homepage-light/LightNavPro"
 import TransferredSoftreeHero from "@/components/homepage/TransferredSoftreeHero"
+import TransferredSoftreeHeroToolkit from "@/components/homepage/TransferredSoftreeHeroToolkit"
+import LogoLoop from "@/components/brilliance/LogoLoop/LogoLoop"
 import LightFeaturesBento from "@/components/homepage-light/LightFeaturesBento"
 import LightEnterpriseCards from "@/components/homepage-light/LightEnterpriseCards"
 import LightTrustedPartner from "@/components/homepage-light/LightTrustedPartner"
@@ -42,6 +44,7 @@ import LightIndustriesCarousel from "@/components/homepage-light/LightIndustries
 import LightFAQAccordion from "@/components/homepage-light/LightFAQAccordion"
 import LightFAQExact from "@/components/homepage-light/LightFAQExact"
 import LightAwardsGrid from "@/components/homepage-light/LightAwardsGrid"
+import VisionHero from "@/components/vision/VisionHero"
 import { color } from "@/components/homepage-light/tokens"
 import LightToolkitHero from "@/components/homepage-light/LightToolkitHero"
 
@@ -62,11 +65,41 @@ export default function LightHomepage() {
   return (
     <main className="relative w-full">
       <LightNavPro />
+      <TransferredSoftreeHeroToolkit />
+
+      {/* Partner / client logo marquee */}
+      <section className="w-full border-y border-black/5 bg-[#f6f6f6] py-10">
+        <p className="mb-6 text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-[#111111]/50">
+          Trusted by teams worldwide
+        </p>
+        <LogoLoop
+          logos={[
+            { src: "/images/google-logo-1.svg", alt: "Google", href: "#" },
+            { src: "/images/kpmg-logo-1.svg", alt: "KPMG", href: "#" },
+            { src: "/images/bcg-logo-1.svg", alt: "BCG", href: "#" },
+            { src: "/images/logo/bayer.svg", alt: "Bayer", href: "#" },
+            { src: "/images/americana-logo1.svg", alt: "Americana", href: "#" },
+            { src: "/images/kfc-logo1.svg", alt: "KFC", href: "#" },
+            { src: "/images/dominose-logo.svg", alt: "Domino's", href: "#" },
+            { src: "/images/appi-blue-wht-logo.svg", alt: "APPI", href: "#" },
+          ]}
+          speed={60}
+          logoHeight={36}
+          gap={72}
+          pauseOnHover
+          scaleOnHover
+          fadeOut
+          fadeOutColor="#f6f6f6"
+          ariaLabel="Softree partners and clients"
+        />
+      </section>
+
       <LightToolkitHero />
       <TransferredSoftreeHero />
       <SoftreeServicesHero />
       <LightAboutMerged />
       <LightAwardsGrid />
+      <VisionHero />
       <LightFeaturesV1 />
       <LightBenefitSection />
       <LightCoreFeatures />
