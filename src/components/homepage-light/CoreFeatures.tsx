@@ -1,324 +1,379 @@
 ﻿"use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import {
-  Brain,
-  Globe,
-  Layers,
-  BarChart3,
-  ArrowUpRight,
-  Sparkles,
-} from "lucide-react"
+import { motion } from "framer-motion"
+import Image from "next/image"
 
 /* ====================================================================
- *  SOFTREE CORE FEATURES — Premium Ethereal Glass Showcase
- *  Vibe: Deep OLED black + subtle glowing orbs + machined glass cards
+ *  CORE FEATURES — Globe + 3D Card Carousel
+ *  Exact visual match to Corex reference (globe.html)
+ *  Pitch-black bg, blue glowing globe, floating glass cards with icons
  * ==================================================================== */
 
 const EASE = [0.32, 0.72, 0, 1] as const
 
-interface Feature {
+interface Slide {
   id: string
-  number: string
-  eyebrow: string
+  num: string
   title: string
-  description: string
-  metric: string
-  metricLabel: string
-  Icon: React.ElementType
+  desc: string
   accent: string
-  glow: string
 }
 
-const features: Feature[] = [
+const slides: Slide[] = [
   {
     id: "ai",
-    number: "01",
-    eyebrow: "Agentic Intelligence",
-    title: "AI that runs inside your operations.",
-    description:
-      "We build domain-trained agents that parse documents, route decisions, and trigger actions across your stack. Not chatbots — operational systems that reduce manual work and accelerate throughput.",
-    metric: "40%",
-    metricLabel: "avg. manual effort reduced",
-    Icon: Brain,
-    accent: "#FF6B00",
-    glow: "rgba(255,107,0,0.18)",
+    num: "/01",
+    title: "Agentic Intelligence",
+    desc: "Domain-trained agents that parse documents, route decisions, and trigger actions across your stack — not chatbots, operational systems.",
+    accent: "#2B7FFF",
   },
   {
     id: "web",
-    number: "02",
-    eyebrow: "Product Engineering",
-    title: "Engineering that ships and scales.",
-    description:
-      "Cloud-native apps built with Next.js and React Native. From public-facing landing pages to internal SaaS platforms — we ship clean architecture that performs under real traffic, not synthetic benchmarks.",
-    metric: "99+",
-    metricLabel: "Lighthouse score maintained",
-    Icon: Globe,
-    accent: "#A1C4FF",
-    glow: "rgba(161,196,255,0.18)",
+    num: "/02",
+    title: "Product Engineering",
+    desc: "Cloud-native apps built with Next.js & React Native. Clean architecture that performs under real traffic.",
+    accent: "#2B7FFF",
   },
   {
-    id: "microsoft",
-    number: "03",
-    eyebrow: "Enterprise Productivity",
-    title: "Microsoft 365, connected end-to-end.",
-    description:
-      "SharePoint intranets, Power Platform workflows, Teams apps, and Azure governance — unified into a coherent operating system. We map business processes to platform capabilities.",
-    metric: "200+",
-    metricLabel: "M365 solutions shipped",
-    Icon: Layers,
-    accent: "#FF8C42",
-    glow: "rgba(255,140,66,0.18)",
-  },
-  {
-    id: "data",
-    number: "04",
-    eyebrow: "Decision Infrastructure",
-    title: "Data infrastructure that drives decisions.",
-    description:
-      "Power BI dashboards, Azure Synapse pipelines, and real-time analytics. Clean governance, executive-grade reporting, and KPI-linked outcomes — not charts for charts' sake.",
-    metric: "99.9%",
-    metricLabel: "pipeline uptime SLA",
-    Icon: BarChart3,
-    accent: "#5C9DFF",
-    glow: "rgba(92,157,255,0.18)",
+    id: "m365",
+    num: "/03",
+    title: "Enterprise Productivity",
+    desc: "SharePoint, Power Platform, Teams apps & Azure governance unified into a coherent operating system.",
+    accent: "#2B7FFF",
   },
 ]
 
-/* ── Staggered scroll-reveal wrapper ── */
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-}) {
+/* ── Globe background — rotating dotted earth + orbiting mask-lights ── */
+function Globe() {
   return (
-    <motion.div
-      initial={{ y: 40, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, delay, ease: EASE }}
-      className={className}
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-x-0 bottom-0 z-1 flex justify-center overflow-visible"
+      style={{ height: "75%" }}
     >
-      {children}
-    </motion.div>
+      <div
+        className="relative flex items-end justify-center"
+        style={{
+          width: "min(140vw, 1400px)",
+          aspectRatio: "1 / 1",
+          transform: "translateY(35%)",
+        }}
+      >
+        <motion.div
+          className="absolute inset-[-15%] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(43,127,255,0.35) 0%, rgba(43,127,255,0.12) 35%, transparent 65%)",
+            filter: "blur(60px)",
+          }}
+          animate={{ opacity: [0.7, 1, 0.7], scale: [1, 1.04, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div
+          className="absolute inset-[5%] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle at 35% 30%, rgba(60,140,255,0.55) 0%, rgba(20,60,140,0.4) 35%, rgba(5,15,40,0.2) 65%, transparent 80%)",
+          }}
+        />
+        <motion.div
+          className="relative z-10 h-full w-full"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "50% 50%" }}
+        >
+          <Image
+            src="/labels/earth-dotted.png"
+            alt=""
+            width={1400}
+            height={1400}
+            priority={false}
+            className="h-full w-full object-contain"
+            style={{
+              filter:
+                "brightness(1.4) saturate(0) sepia(1) hue-rotate(180deg) saturate(6) brightness(1.1)",
+              mixBlendMode: "screen",
+            }}
+          />
+        </motion.div>
+      </div>
+    </div>
   )
 }
 
-/* ── Double-Bezel Feature Card ── */
-function FeatureCard({
-  feature,
-  index,
-  isActive,
-  onHover,
-}: {
-  feature: Feature
-  index: number
-  isActive: boolean
-  onHover: (i: number | null) => void
-}) {
-  const { Icon, accent, glow } = feature
+/* ── Stacked-card icon w/ glow underneath (matches chart-image + chart-light) ── */
+function CardIcon({ color }: { color: string }) {
   return (
-    <motion.div
-      className="group relative"
-      initial={{ y: 60, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.9, delay: index * 0.12, ease: EASE }}
-      onMouseEnter={() => onHover(index)}
-      onMouseLeave={() => onHover(null)}
-    >
-      {/* Outer shell (Doppelrand) */}
+    <div className="relative flex h-20 w-20 shrink-0 items-center justify-center">
+      {/* chart-light — soft blue glow underneath */}
       <div
-        className="relative overflow-hidden rounded-[2rem] p-[1.5px] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5 rounded-full"
         style={{
-          background:
-            isActive
-              ? `linear-gradient(135deg, ${accent}40, transparent 60%)`
-              : "linear-gradient(135deg, rgba(255,255,255,0.06), transparent 60%)",
+          background: `radial-gradient(ellipse at center, ${color}55 0%, ${color}22 35%, transparent 70%)`,
+          filter: "blur(8px)",
         }}
+      />
+      {/* chart-image */}
+      <svg
+        width="68"
+        height="68"
+        viewBox="0 0 68 68"
+        fill="none"
+        className="relative z-10"
       >
-        {/* Inner core */}
+        {/* Top stacked card (smallest, most faded) */}
+        <rect
+          x="22"
+          y="6"
+          width="24"
+          height="14"
+          rx="3"
+          stroke={color}
+          strokeWidth="1.2"
+          fill="rgba(43,127,255,0.04)"
+          opacity="0.4"
+        />
+        {/* Middle stacked card */}
+        <rect
+          x="16"
+          y="18"
+          width="36"
+          height="16"
+          rx="3"
+          stroke={color}
+          strokeWidth="1.2"
+          fill="rgba(43,127,255,0.06)"
+          opacity="0.7"
+        />
+        {/* Bottom card (main, brightest) */}
+        <rect
+          x="8"
+          y="32"
+          width="52"
+          height="28"
+          rx="4"
+          stroke={color}
+          strokeWidth="1.5"
+          fill="rgba(43,127,255,0.08)"
+        />
+        {/* Inner bar chart lines on bottom card */}
+        <rect x="14" y="48" width="3" height="8" rx="1" fill={color} opacity="0.6" />
+        <rect x="20" y="44" width="3" height="12" rx="1" fill={color} opacity="0.8" />
+        <rect x="26" y="40" width="3" height="16" rx="1" fill={color} />
+        <rect x="32" y="46" width="3" height="10" rx="1" fill={color} opacity="0.7" />
+        {/* Dollar sign */}
+        <text
+          x="46"
+          y="54"
+          textAnchor="middle"
+          fill={color}
+          fontSize="13"
+          fontWeight="700"
+          fontFamily="system-ui, -apple-system, sans-serif"
+        >
+          $
+        </text>
+      </svg>
+    </div>
+  )
+}
+
+/* ── 3D Carousel Card (matches chart-bar-crad structure) ── */
+function CarouselCard({
+  slide,
+  position,
+}: {
+  slide: Slide
+  position: "left" | "center" | "right"
+}) {
+  const isCenter = position === "center"
+  const isLeft = position === "left"
+
+  // Position offsets from center (in px, matching HTML reference ~325px at desktop)
+  const xOffset = isCenter ? 0 : isLeft ? -280 : 280
+
+  return (
+    <div
+      className="absolute left-1/2 top-0 w-full"
+      style={{
+        maxWidth: 420,
+        transform: "translateX(-50%)",
+        zIndex: isCenter ? 20 : 10,
+        pointerEvents: isCenter ? "auto" : "none",
+      }}
+    >
+      <motion.div
+        style={{
+          transformStyle: "preserve-3d",
+          willChange: "transform, filter, opacity",
+        }}
+        initial={false}
+        animate={{
+          x: xOffset,
+          scale: isCenter ? 1 : 0.8,
+          rotateZ: isLeft ? -8 : isCenter ? 0 : 8,
+          filter: isCenter ? "blur(0px)" : "blur(5px)",
+          opacity: isCenter ? 1 : 0.55,
+        }}
+        transition={{ duration: 0.7, ease: EASE }}
+      >
+        {/* chart-bar-crad */}
         <div
-          className="relative flex h-full flex-col justify-between overflow-hidden rounded-[calc(2rem-1.5px)] bg-[#08090c]/80 px-8 py-10 backdrop-blur-xl md:px-10 md:py-12"
+          className="relative overflow-hidden rounded-xl backdrop-blur-md"
           style={{
-            boxShadow: isActive
-              ? `inset 0 1px 0 rgba(255,255,255,0.12), 0 24px 60px -20px ${glow}`
-              : "inset 0 1px 0 rgba(255,255,255,0.06), 0 16px 48px -20px rgba(0,0,0,0.6)",
+            background: "rgba(8, 10, 18, 0.85)",
+            border: "1px solid rgba(255,255,255,0.06)",
+            boxShadow:
+              "inset 0 1px 0 rgba(255,255,255,0.04), 0 32px 80px -24px rgba(0,0,0,0.9)",
           }}
         >
-          {/* Ambient radial glow */}
+          {/* chart-background layer */}
           <div
-            aria-hidden
-            className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+            className="absolute inset-0 rounded-xl"
             style={{
-              background: `radial-gradient(circle, ${glow}, transparent 70%)`,
-              filter: "blur(50px)",
+              background:
+                "linear-gradient(135deg, rgba(43,127,255,0.08) 0%, transparent 50%)",
             }}
           />
 
-          {/* Top row: number + icon plate */}
-          <div className="relative z-10 flex items-start justify-between">
-            <span
-              className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]"
-              style={{ color: accent }}
-            >
-              {feature.number}
-            </span>
-            <div
-              className="relative grid size-12 place-items-center rounded-xl border transition-all duration-500 group-hover:scale-105"
-              style={{
-                borderColor: `${accent}25`,
-                background: `linear-gradient(135deg, ${accent}15, transparent)`,
-                boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 24px -8px ${glow}`,
-              }}
-            >
-              <Icon className="size-5" style={{ color: accent }} strokeWidth={1.5} />
+          {/* chart-title-wrapper */}
+          <div className="relative z-10 flex items-start justify-between gap-4 p-6 sm:p-7 md:p-8 pb-0">
+            {/* chart-title */}
+            <div className="flex-1 min-w-0">
+              <div className="sub-heading text-[13px] font-medium tracking-tight text-white/50">
+                {slide.num}
+              </div>
+              <h4 className="mt-1 text-[18px] sm:text-[20px] md:text-[22px] font-semibold leading-[1.2] tracking-[-0.02em] text-white">
+                {slide.title}
+              </h4>
+            </div>
+
+            {/* chart-image-wrapper */}
+            <div className="shrink-0 mt-1">
+              <CardIcon color={slide.accent} />
             </div>
           </div>
 
-          {/* Content */}
-          <div className="relative z-10 mt-8">
+          {/* chart-content */}
+          <div className="relative z-10 px-6 sm:px-7 md:px-8 pt-4 pb-6 sm:pb-7 md:pb-8">
+            {/* line divider */}
             <div
-              className="mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em]"
+              className="line h-px w-full mb-4"
               style={{
-                borderColor: `${accent}20`,
-                color: accent,
-                background: `${accent}08`,
+                background:
+                  "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)",
               }}
-            >
-              <Sparkles className="size-3" strokeWidth={2} />
-              {feature.eyebrow}
-            </div>
-            <h3 className="text-[22px] font-semibold leading-[1.08] tracking-[-0.025em] text-white md:text-[26px]">
-              {feature.title}
-            </h3>
-            <p className="mt-4 text-[13.5px] leading-[1.65] text-white/45">
-              {feature.description}
+            />
+            {/* body-2 gray-60 */}
+            <p className="text-[13px] sm:text-[13.5px] leading-[1.65] text-white/40">
+              {slide.desc}
             </p>
           </div>
-
-          {/* Bottom metric strip */}
-          <div className="relative z-10 mt-8 flex items-end justify-between border-t border-white/6 pt-5">
-            <div>
-              <div
-                className="text-3xl font-bold tracking-tight"
-                style={{ color: accent }}
-              >
-                {feature.metric}
-              </div>
-              <div className="mt-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-white/35">
-                {feature.metricLabel}
-              </div>
-            </div>
-            <div
-              className="grid size-8 place-items-center rounded-full border opacity-0 transition-all duration-500 group-hover:opacity-100"
-              style={{
-                borderColor: `${accent}30`,
-                background: `${accent}10`,
-              }}
-            >
-              <ArrowUpRight className="size-3.5" style={{ color: accent }} />
-            </div>
-          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
+  )
+}
+
+/* ── Dot navigation ── */
+function Dots({
+  count,
+  active,
+  onChange,
+}: {
+  count: number
+  active: number
+  onChange: (i: number) => void
+}) {
+  return (
+    <div className="relative z-30 flex items-center justify-center gap-3 pt-8">
+      {Array.from({ length: count }).map((_, i) => (
+        <button
+          key={i}
+          onClick={() => onChange(i)}
+          className="relative h-2 w-2 rounded-full transition-all duration-500 cursor-pointer"
+          style={{
+            background: i === active ? "#2B7FFF" : "rgba(255,255,255,0.2)",
+            transform: i === active ? "scale(1.35)" : "scale(1)",
+            boxShadow:
+              i === active ? "0 0 8px rgba(43,127,255,0.5)" : "none",
+          }}
+          aria-label={`Go to slide ${i + 1}`}
+        />
+      ))}
+    </div>
   )
 }
 
 /* ── Main Section ── */
 export default function CoreFeatures() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [active, setActive] = useState(0)
 
   const autoCycle = useCallback(() => {
-    setActiveIndex((prev) =>
-      prev === null ? 0 : prev === features.length - 1 ? null : prev + 1
-    )
+    setActive((prev) => (prev + 1) % slides.length)
   }, [])
 
   useEffect(() => {
-    const id = setInterval(autoCycle, 3500)
+    const id = setInterval(autoCycle, 4000)
     return () => clearInterval(id)
   }, [autoCycle])
 
+  const getPosition = (index: number): "left" | "center" | "right" => {
+    const diff = index - active
+    if (diff === 0) return "center"
+    if (diff === -1 || diff === slides.length - 1) return "left"
+    return "right"
+  }
+
   return (
-    <section className="relative isolate w-full overflow-hidden bg-[#050505] py-32 md:py-40 lg:py-52">
-      {/* ── Background orbs ── */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+    <section className="relative isolate w-full overflow-hidden bg-black py-24 sm:py-32 md:py-40">
+      {/* Globe background */}
+      <Globe />
+
+      {/* Content layer */}
+      <div className="relative z-10 mx-auto flex flex-col items-center px-6 md:px-10">
+        {/* Header text */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.8, ease: EASE }}
+          className="mb-12 flex flex-col items-center text-center"
+        >
+          <span className="mb-4 inline-block rounded-full border border-white/8 bg-white/[0.03] px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 backdrop-blur-sm">
+            Core Features
+          </span>
+          <h2 className="max-w-[600px] text-[clamp(28px,4.5vw,52px)] font-semibold leading-[1.05] tracking-[-0.03em] text-white">
+            Master the Market with{" "}
+            <span className="text-white/40">Softree</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-[14px] leading-[1.6] text-white/35 sm:text-[15px]">
+            Empowering enterprises across the globe with data-driven insights and
+            institutional-grade AI technology.
+          </p>
+        </motion.div>
+
+        {/* 3D Card Stage */}
         <div
-          className="absolute -left-[15%] -top-[10%] h-[600px] w-[600px] rounded-full opacity-[0.08]"
+          className="relative w-full"
           style={{
-            background:
-              "radial-gradient(circle, rgba(255,107,0,0.45), transparent 70%)",
-            filter: "blur(90px)",
+            height: "clamp(280px, 40vw, 360px)",
+            perspective: 1200,
           }}
-        />
-        <div
-          className="absolute -bottom-[15%] -right-[10%] h-[500px] w-[500px] rounded-full opacity-[0.07]"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(161,196,255,0.4), transparent 70%)",
-            filter: "blur(80px)",
-          }}
-        />
-      </div>
-
-      {/* ── Content ── */}
-      <div className="relative z-20 mx-auto max-w-[1280px] px-6 md:px-10">
-        {/* Header */}
-        <div className="mx-auto mb-24 flex max-w-3xl flex-col items-center text-center md:mb-32">
-          <Reveal>
-            <div className="relative inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#FF6B00]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/70">
-                Core Capabilities
-              </span>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <h2 className="mt-6 text-balance text-[clamp(36px,5vw,64px)] font-semibold leading-[0.98] tracking-[-0.03em] text-white">
-              Four practices.
-              <br />
-              <span className="text-white/30">One delivery system.</span>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.2}>
-            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/40 md:text-lg">
-              AI agents, product engineering, Microsoft 365, and data analytics — each team works as one unit so nothing falls through the gaps.
-            </p>
-          </Reveal>
-        </div>
-
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={feature.id}
-              feature={feature}
-              index={index}
-              isActive={activeIndex === index}
-              onHover={setActiveIndex}
+        >
+          {slides.map((slide, i) => (
+            <CarouselCard
+              key={slide.id}
+              slide={slide}
+              position={getPosition(i)}
             />
           ))}
         </div>
 
-        {/* Bottom accent strip */}
-        <Reveal delay={0.5}>
-          <div className="mx-auto mt-20 flex h-[10px] w-full max-w-[600px] overflow-hidden rounded-full opacity-40">
-            <div className="h-full flex-1 bg-[#FF6B00]" />
-            <div className="h-full flex-1 bg-[#FF8C42]" />
-            <div className="h-full flex-1 bg-[#A1C4FF]" />
-            <div className="h-full flex-1 bg-[#5C9DFF]" />
-            <div className="h-full flex-1 bg-white/20" />
-          </div>
-        </Reveal>
+        {/* Dots */}
+        <Dots count={slides.length} active={active} onChange={setActive} />
       </div>
     </section>
   )

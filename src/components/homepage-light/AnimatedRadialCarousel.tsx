@@ -3,49 +3,57 @@
 import { useEffect, useState } from "react"
 import { motion, useAnimation } from "framer-motion"
 
-const baseCards = [
+type Card = {
+  title: string
+  img: string
+  href: string
+  textColor: string
+  isHero?: boolean
+  vid?: string
+}
+
+const baseCards: Card[] = [
   {
     title: "Microsoft Solutions",
-    img: "/Hero/reference.png",
-    href: "/services/business-applications",
+    img: "/whysoftree/Micorosft.webp",
+    href: "/services/business-applications/power-apps",
     textColor: "text-white",
     isHero: true,
   },
   {
-    title: "The Vault",
+    title: "AI Intelligence",
+    img: "/whysoftree/ai.webp",
+    href: "/services/ai-intelligence/agentic-ai",
+    textColor: "text-white",
+  },
+  {
+    title: "Data & Analytics",
+    img: "/whysoftree/data.webp",
+    href: "/services/data-analytics/power-bi",
+    textColor: "text-white",
+  },
+  {
+    title: "Web Development",
+    img: "/whysoftree/web dev.webp",
+    href: "/services/digital-workspace/web-app-development",
+    textColor: "text-white",
+  },
+  {
+    title: "SharePoint",
+    img: "/whysoftree/web.webp",
+    href: "/services/digital-workspace/sharepoint",
+    textColor: "text-white",
+  },
+  {
+    title: "Mobile Apps",
     img: "https://osmo.b-cdn.net/website/bandwidth/product-card-vault.avif",
-    href: "/services/ai-agents",
+    href: "/services/digital-workspace/mobile-app-development",
     textColor: "text-white",
   },
   {
-    title: "Page Transition Course",
-    img: "https://osmo.b-cdn.net/website/bandwidth/page-transition-course-thumb-1440x900.avif",
-    vid: "https://osmo.b-cdn.net/website/page-transition-course/page-transition-course-thumb-720x450.mp4",
-    href: "/services/enterprise-dashboards",
-    textColor: "text-white",
-  },
-  {
-    title: "Buttons",
-    img: "https://osmo.b-cdn.net/website/bandwidth/button-pack-product-card-2160x2808.avif",
-    href: "/services/ux-ui",
-    textColor: "text-white",
-  },
-  {
-    title: "Easings",
-    img: "https://osmo.b-cdn.net/website/bandwidth/product-card-easings.avif",
-    href: "/services/collaboration",
-    textColor: "text-neutral-300",
-  },
-  {
-    title: "Icons",
-    img: "https://osmo.b-cdn.net/website/bandwidth/product-card-icons.avif",
-    href: "/services/infrastructure",
-    textColor: "text-white",
-  },
-  {
-    title: "Community",
+    title: "Startups & MVP",
     img: "https://osmo.b-cdn.net/website/bandwidth/product-card-community.avif",
-    href: "/services/architecture",
+    href: "/services/business-applications/mvp",
     textColor: "text-white",
   },
 ]
@@ -64,11 +72,31 @@ interface Props {
  * 3. Cards light up in stagger sequence (angle-sorted, 40ms each)
  * 4. After all cards are lit, ring begins slow 360° rotation
  */
+/* Responsive dimension presets — scales ring + cards across breakpoints */
+const DIMS = {
+  sm: { radius: 900, cardWidth: 240, cardHeight: 168, containerH: 400, top: 110, imgH: 126 },
+  md: { radius: 1200, cardWidth: 320, cardHeight: 224, containerH: 520, top: 145, imgH: 168 },
+  lg: { radius: 1500, cardWidth: 400, cardHeight: 280, containerH: 640, top: 180, imgH: 210 },
+} as const
+type Bp = keyof typeof DIMS
+
 export function AnimatedRadialCarousel({ active }: Props) {
-  const radius = 1500
+  const [bp, setBp] = useState<Bp>("lg")
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth
+      if (w < 640) setBp("sm")
+      else if (w < 1024) setBp("md")
+      else setBp("lg")
+    }
+    update()
+    window.addEventListener("resize", update)
+    return () => window.removeEventListener("resize", update)
+  }, [])
+
+  const { radius, cardWidth, cardHeight, containerH, top, imgH } = DIMS[bp]
   const diameter = radius * 2
-  const cardWidth = 400
-  const cardHeight = 280
 
   const rotateControls = useAnimation()
   const [rotationStarted, setRotationStarted] = useState(false)
@@ -110,13 +138,16 @@ export function AnimatedRadialCarousel({ active }: Props) {
   }, [active, rotateControls, ROTATION_START_DELAY])
 
   return (
-    <div className="relative mt-4 flex h-[640px] w-full justify-center overflow-hidden pointer-events-none">
+    <div
+      className="relative mt-4 flex w-full justify-center overflow-hidden pointer-events-none"
+      style={{ height: `${containerH}px` }}
+    >
       <motion.div
         className="pointer-events-auto absolute flex items-center justify-center rounded-full"
         animate={rotateControls}
         initial={{ rotate: 0 }}
         style={{
-          top: "180px",
+          top: `${top}px`,
           width: `${diameter}px`,
           height: `${diameter}px`,
           border: rotationStarted
@@ -160,15 +191,15 @@ export function AnimatedRadialCarousel({ active }: Props) {
                 animate={
                   active
                     ? {
-                        opacity: 1,
-                        scale: 1,
-                        filter: "blur(0px)",
-                      }
+                      opacity: 1,
+                      scale: 1,
+                      filter: "blur(0px)",
+                    }
                     : {
-                        opacity: 0,
-                        scale: 0.92,
-                        filter: "blur(8px)",
-                      }
+                      opacity: 0,
+                      scale: 0.92,
+                      filter: "blur(8px)",
+                    }
                 }
                 transition={{
                   duration: CARD_DURATION,
@@ -177,7 +208,10 @@ export function AnimatedRadialCarousel({ active }: Props) {
                 }}
                 whileHover={{ scale: 1.04, transition: { duration: 0.3, ease: [0.23, 1, 0.32, 1] } }}
               >
-                <div className="relative h-[210px] w-full overflow-hidden rounded-xl bg-[#222]">
+                <div
+                  className="relative w-full overflow-hidden rounded-xl bg-[#222]"
+                  style={{ height: `${imgH}px` }}
+                >
                   <img
                     src={card.img}
                     alt={card.title}

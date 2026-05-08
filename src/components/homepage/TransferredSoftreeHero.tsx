@@ -173,7 +173,7 @@ export function TransferredSoftreeHero() {
 
             {/* Headline */}
             <h1
-              className="hero-title whitespace-nowrap text-white text-[clamp(44px,5.8vw,104px)] font-semibold leading-[0.95] tracking-[-0.04em]"
+              className="hero-title text-white text-[clamp(36px,5.8vw,104px)] font-semibold leading-[0.95] tracking-[-0.04em] sm:whitespace-nowrap"
               style={{ willChange: "transform, opacity" }}
             >
               Build. Ship. Scale.
@@ -218,7 +218,7 @@ export function TransferredSoftreeHero() {
               <div className="flex flex-col">
                 <span className="text-white text-[26px] font-semibold tracking-[-0.02em] leading-none">2.3M+</span>
                 <span className="mt-1 text-white/60 text-[11px] leading-[1.4]">
-                  Trusted to use by millions users over 140 countries
+                  Trusted by 140+ enterprises worldwide
                 </span>
               </div>
             </div>

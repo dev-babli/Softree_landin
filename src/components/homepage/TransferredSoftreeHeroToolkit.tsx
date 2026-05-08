@@ -6,8 +6,6 @@ import Image from "next/image"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { motion } from "framer-motion"
-import StaggeredReveal from "@/components/homepage-light/StaggeredReveal"
 import AnimatedRadialCarousel from "@/components/homepage-light/AnimatedRadialCarousel"
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
@@ -174,17 +172,12 @@ export function TransferredSoftreeHeroToolkit() {
         onReverseComplete: () => setCarouselActive(false),
       }, "burst+=1.85")
 
-      /* ── ACT 8: Headline + description reveal (1.9s → 3.0s) ──
+      /* ── ACT 8: Description reveal (1.9s → 2.9s) ──
        * Starts WHILE carousel is still manifesting — overlapping storytelling. */
-      tl.fromTo(q(".toolkit-headline"),
-        { opacity: 0, y: 50, filter: "blur(12px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.95, ease: EASE_EXPO_OUT },
-        "burst+=1.9"
-      )
       tl.fromTo(q(".toolkit-description"),
-        { opacity: 0, y: 30, filter: "blur(6px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: EASE_EXPO_OUT },
-        "burst+=2.15"
+        { opacity: 0, y: 40, filter: "blur(10px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.0, ease: EASE_EXPO_OUT },
+        "burst+=1.9"
       )
     },
     { scope: containerRef }
@@ -343,68 +336,30 @@ export function TransferredSoftreeHeroToolkit() {
         </div>
 
         {/* ═══════════════ 6. TOOLKIT CONTENT (reveals after burst) ═══════════════ */}
-        <div className="pointer-events-none absolute inset-0 z-40 flex flex-col items-center justify-start px-4 pt-[5vh]">
+        {/* Osmo-layout: carousel arc at top, description anchored to bottom */}
+        <div className="pointer-events-none absolute inset-0 z-40">
 
-          {/* Headline — AI Scale ✦ Built to Last */}
+          {/* ── Cards arc — flows from the top naturally ── */}
           <div
-            className="toolkit-headline z-10 mb-3 flex w-full flex-wrap items-center justify-center gap-3 opacity-0 sm:gap-5 md:gap-7"
+            className="toolkit-carousel pointer-events-auto w-full opacity-0"
             style={{ willChange: "transform, opacity, filter" }}
           >
-            <StaggeredReveal
-              text="Move Fast"
-              className="text-[44px] sm:text-[70px] md:text-[90px] lg:text-[110px] font-medium tracking-[-0.04em] text-[#111111] leading-none"
-            />
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
-              className="shrink-0 text-[#6C42F5]"
-            >
-              <svg width="90" height="90" viewBox="0 0 24 24" fill="none" className="h-[40px] w-[40px] sm:h-[58px] sm:w-[58px] md:h-[76px] md:w-[76px]">
-                <path d="M12 0L14.2 9.8L24 12L14.2 14.2L12 24L9.8 14.2L0 12L9.8 9.8L12 0Z" fill="currentColor" />
-              </svg>
-            </motion.div>
-            <StaggeredReveal
-              text="Stay Enterprise"
-              className="text-[44px] sm:text-[70px] md:text-[90px] lg:text-[110px] font-medium tracking-[-0.04em] text-[#111111] leading-none"
-            />
+            <AnimatedRadialCarousel active={carouselActive} />
           </div>
 
-          {/* Description with pills */}
+          {/* ── Osmo-style description — absolutely anchored below the arc ── */}
           <div
-            className="toolkit-description pointer-events-auto z-10 mx-auto mb-4 max-w-3xl text-center opacity-0"
+            className="toolkit-description pointer-events-auto absolute inset-x-0 bottom-[8vh] px-4 text-center opacity-0 md:px-8"
             style={{ willChange: "transform, opacity" }}
           >
-            <p className="text-[14px] font-normal leading-[1.9] tracking-tight text-[#111111] sm:text-[16px] md:text-[18px]">
-              An engineering team powered by{" "}
-              <span className="mx-1 inline-flex -translate-y-[2px] items-center justify-center rounded-md bg-[#eaeaea] px-3 py-0.5 text-[#111111]">
-                <span className="text-[14px] font-medium tracking-tight">AI Agents</span>
-              </span>
-              {" "}&{" "}
-              <span className="mx-1 inline-flex -translate-y-[2px] items-center justify-center rounded-md bg-[#eaeaea] px-3 py-0.5 text-[#111111]">
-                <span className="text-[14px] font-medium tracking-tight">Microsoft</span>
-              </span>
-              {" "}specialists, shipping{" "}
-              <span className="mx-1 inline-flex -translate-y-[2px] items-center justify-center rounded-md bg-[#eaeaea] px-3 py-0.5 text-[#111111]">
-                <span className="text-[14px] font-medium tracking-tight">enterprise</span>
-              </span>
-              {" "}solutions with{" "}
-              <span className="mx-1 inline-flex -translate-y-[2px] items-center justify-center rounded-md bg-[#eaeaea] px-3 py-0.5 text-[#111111]">
-                <span className="text-[14px] font-medium tracking-tight">production-grade</span>
-              </span>
-              {" "}UX.
+            <p className="mx-auto max-w-[680px] text-[clamp(18px,2.4vw,32px)] font-medium leading-[1.3] tracking-[-0.025em] text-[#111111]">
+              Softree is a growing engineering studio — shipping{" "}
+              <span className="text-[#6C42F5]">production-grade AI</span>,
+              web &amp; Microsoft solutions for enterprises
+              that need to{" "}
+              <span className="text-[#1852FF]">move fast</span>{" "}
+              without sacrificing quality.
             </p>
-          </div>
-
-          {/* Carousel */}
-          <div
-            className="toolkit-carousel pointer-events-auto flex w-full items-center justify-center opacity-0"
-            style={{
-              willChange: "transform, opacity, filter",
-              transform: "scale(0.75)",
-              transformOrigin: "top center",
-            }}
-          >
-            <AnimatedRadialCarousel active={carouselActive} />
           </div>
 
         </div>

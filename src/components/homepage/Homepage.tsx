@@ -1,8 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { HeroEnterpriseCards } from "@/components/brilliance/HeroEnterpriseCards"
-import TransferredSoftreeHero from "@/components/homepage/TransferredSoftreeHero"
+import { TransferredSoftreeHeroToolkit } from "@/components/homepage/TransferredSoftreeHeroToolkit"
 import { useEffect, useRef, useState, type ReactNode } from "react"
 
 
@@ -52,18 +51,30 @@ const RigLandingSectionsLazy = dynamic(
   { loading: () => <div className="min-h-[300vh] w-full bg-[#0a0a0a]" aria-hidden /> }
 )
 
-const DevToolkitSectionLazy = dynamic(
-  () => import("@/components/homepage/DevToolkitSection"),
-  { loading: () => <div className="min-h-[120vh] w-full bg-[#0a0a0a]" aria-hidden /> }
+
+const FeaturesShowcaseLazy = dynamic(
+  () => import("@/components/features/FeaturesShowcase"),
+  { loading: () => <div className="min-h-[100vh] w-full bg-[#f6f6f6]" aria-hidden /> }
 )
 
+const LightStackedSlidesLazy = dynamic(
+  () => import("@/components/homepage-light/LightStackedSlides"),
+  { loading: () => <div className="min-h-[200vh] w-full bg-[#f6f6f6]" aria-hidden /> }
+)
 
-const ServicesStackedSlidesLazy = dynamic(
-  () =>
-    import("@/components/homepage/ServicesStackedSlides").then((m) => ({
-      default: m.ServicesStackedSlides,
-    })),
-  { loading: () => <div className="min-h-[420vh] w-full bg-black" aria-hidden /> }
+const LightTestimonialGridLazy = dynamic(
+  () => import("@/components/homepage-light/LightTestimonialGrid"),
+  { loading: () => <div className="min-h-[70vh] w-full bg-[#f6f6f6]" aria-hidden /> }
+)
+
+const LightIndustriesCarouselLazy = dynamic(
+  () => import("@/components/homepage-light/LightIndustriesCarousel"),
+  { loading: () => <div className="min-h-[60vh] w-full bg-white" aria-hidden /> }
+)
+
+const LightHorizontalCodePathLazy = dynamic(
+  () => import("@/components/homepage-light/LightHorizontalCodePath"),
+  { loading: () => <div className="min-h-[100dvh] w-full bg-[#f6f6f6]" aria-hidden /> }
 )
 
 const ProductPreviewLazy = dynamic(
@@ -110,14 +121,6 @@ const IntegrationsSectionLazy = dynamic(
   { loading: () => <div className="min-h-[90vh] w-full bg-neutral-950" aria-hidden /> }
 )
 
-const HorizontalCodePathSectionLazy = dynamic(
-  () =>
-    import("@/components/homepage/HorizontalCodePathSection").then((m) => ({
-      default: m.HorizontalCodePathSection,
-    })),
-  { loading: () => <div className="min-h-[100dvh] w-full bg-[#080a0d]" aria-hidden /> }
-)
-
 const SoftreeBlogSectionLazy = dynamic(
   () =>
     import("@/components/homepage/SoftreeBlogSection").then((m) => ({
@@ -151,21 +154,14 @@ const LightFAQExactLazy = dynamic(
   { loading: () => <div className="min-h-[60vh] w-full bg-[#050505]" aria-hidden /> }
 )
 
-
-const SoftreeIndustriesSectionLazy = dynamic(
-  () =>
-    import("@/components/homepage/SoftreeIndustriesSection").then((m) => ({
-      default: m.SoftreeIndustriesSection,
-    })),
-  { loading: () => <div className="min-h-[60vh] w-full bg-white" aria-hidden /> }
+const LightExpertiseAccordionLazy = dynamic(
+  () => import("@/components/homepage-light/LightExpertiseAccordion"),
+  { loading: () => <div className="min-h-[80vh] w-full bg-[#F8F9FC]" aria-hidden /> }
 )
 
-const SecuritySectionLazy = dynamic(
-  () =>
-    import("@/components/optimus/landing/security-section").then((m) => ({
-      default: m.SecuritySection,
-    })),
-  { loading: () => <div className="min-h-[90vh] w-full bg-neutral-950" aria-hidden /> }
+const LightHowWeWorkLazy = dynamic(
+  () => import("@/components/homepage-light/LightHowWeWork"),
+  { loading: () => <div className="min-h-[80vh] w-full bg-[#F8F9FC]" aria-hidden /> }
 )
 
 const DevelopersSectionLazy = dynamic(
@@ -192,11 +188,6 @@ const FeatureProgressSectionLazy = dynamic(
   { loading: () => <div className="min-h-[100vh] w-full bg-[#0a0a0a]" aria-hidden /> }
 )
 
-const TestimonialsSectionLazy = dynamic(
-  () => import("@/components/brilliance/testimonials-section"),
-  { loading: () => <div className="min-h-[70vh] w-full bg-black" aria-hidden /> }
-)
-
 const GlobalTestimonialsSectionLazy = dynamic(
   () => import("@/components/homepage/GlobalTestimonialsSection"),
   { loading: () => <div className="min-h-[80vh] w-full bg-[#f2f2f2]" aria-hidden /> }
@@ -220,30 +211,13 @@ const SoftreeFooterLazy = dynamic(
   { loading: () => <div className="min-h-[40vh] w-full bg-[#fbfbfb]" aria-hidden /> }
 )
 
-function EnterpriseCardsBand() {
-  return (
-    <section className="w-full bg-[#050505] px-4 py-20 md:px-8 md:py-28">
-      <div className="mx-auto w-full max-w-[1440px] rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(255,107,0,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(161,196,255,0.12),transparent_32%),rgba(10,10,12,0.94)] backdrop-blur-xl">
-        <div className="px-2 py-4 md:px-6 md:py-8">
-          <HeroEnterpriseCards />
-        </div>
-      </div>
-    </section>
-  )
-}
-
 function HomepageContent() {
   return (
-    <div className="w-full min-h-screen relative bg-[#000000] flex flex-col justify-start items-stretch" style={{ overflowX: "clip" }}>
+    <div className="w-full min-h-screen relative bg-[#f6f6f6] flex flex-col justify-start items-stretch" style={{ overflowX: "clip" }}>
       <div className="relative flex flex-col justify-start items-stretch w-full mt-0">
 
-        {/* 01a — HERO (video) */}
-        <TransferredSoftreeHero />
-
-        {/* 01a.5 — DEV TOOLKIT (Osmo-style: staggered title + radial card carousel + curved marquee) */}
-        <DeferUntilInView placeholderClassName="min-h-[120vh] bg-[#0a0a0a]">
-          <DevToolkitSectionLazy />
-        </DeferUntilInView>
+        {/* 01a — HERO (Toolkit hero from /light) */}
+        <TransferredSoftreeHeroToolkit />
 
         {/* 01b — SERVICES HERO (exact from /light) */}
         <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#F8F9FC]">
@@ -255,41 +229,48 @@ function HomepageContent() {
           <LightAboutMergedLazy />
         </DeferUntilInView>
 
-        {/* 01c — ENTERPRISE CARDS (moved up to sit below hero) */}
-        <EnterpriseCardsBand />
+        {/* 01d — FEATURES SHOWCASE (ProductArcSlider + Why Softree + LogoLoop) */}
+        <DeferUntilInView placeholderClassName="min-h-[100vh] bg-[#f6f6f6]">
+          <FeaturesShowcaseLazy />
+        </DeferUntilInView>
 
-        {/* 04b — SERVICES STACKED SLIDES */}
-        <DeferUntilInView placeholderClassName="min-h-[420vh] bg-black">
-          <ServicesStackedSlidesLazy />
+        {/* 04b — SERVICES STACKED SLIDES (light variant from /light) */}
+        <DeferUntilInView placeholderClassName="min-h-[200vh] bg-[#f6f6f6]">
+          <LightStackedSlidesLazy />
         </DeferUntilInView>
 
         {/* 06b — CORE FEATURES (from /light) */}
-        <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#050505]">
+        <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#f6f6f6]">
           <CoreFeaturesLazy />
         </DeferUntilInView>
 
-        {/* 07 — SOCIAL PROOF: TESTIMONIALS (moved up from position 17) */}
-        <DeferUntilInView placeholderClassName="min-h-[70vh] bg-black">
-          <TestimonialsSectionLazy />
+        {/* 06c — EXPERTISE ACCORDION (from /light) */}
+        <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#F8F9FC]">
+          <LightExpertiseAccordionLazy />
+        </DeferUntilInView>
+
+        {/* 06d — HOW WE WORK (from /light) */}
+        <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#F8F9FC]">
+          <LightHowWeWorkLazy />
+        </DeferUntilInView>
+
+        {/* 07 — SOCIAL PROOF: TESTIMONIALS (light grid variant) */}
+        <DeferUntilInView placeholderClassName="min-h-[70vh] bg-[#f6f6f6]">
+          <LightTestimonialGridLazy />
         </DeferUntilInView>
 
         <DeferUntilInView placeholderClassName="min-h-[80vh] bg-[#f2f2f2]">
           <GlobalTestimonialsSectionLazy />
         </DeferUntilInView>
 
-        {/* 08 — INDUSTRIES WE SERVE */}
-        <DeferUntilInView placeholderClassName="min-h-[60vh] bg-[#050505]">
-          <SoftreeIndustriesSectionLazy />
+        {/* 08 — INDUSTRIES WE SERVE (light carousel variant) */}
+        <DeferUntilInView placeholderClassName="min-h-[60vh] bg-white">
+          <LightIndustriesCarouselLazy />
         </DeferUntilInView>
 
-        {/* 11 — SECURITY & COMPLIANCE */}
-        <DeferUntilInView placeholderClassName="min-h-[90vh] bg-neutral-950">
-          <SecuritySectionLazy />
-        </DeferUntilInView>
-
-        {/* 13a — HORIZONTAL CODE PATH (scroll-driven pinned horizontal scroll) */}
-        <DeferUntilInView placeholderClassName="min-h-[100dvh] bg-[#080a0d]">
-          <HorizontalCodePathSectionLazy />
+        {/* 13a — HORIZONTAL CODE PATH (light variant) */}
+        <DeferUntilInView placeholderClassName="min-h-[100dvh] bg-[#f6f6f6]">
+          <LightHorizontalCodePathLazy />
         </DeferUntilInView>
 
         {/* 14 — AI AGENTS SHOWCASE */}
@@ -303,7 +284,7 @@ function HomepageContent() {
         </DeferUntilInView>
 
         {/* 16a — FAQ EXACT (from /light) */}
-        <DeferUntilInView placeholderClassName="min-h-[60vh] bg-[#050505]">
+        <DeferUntilInView placeholderClassName="min-h-[60vh] bg-[#f6f6f6]">
           <LightFAQExactLazy />
         </DeferUntilInView>
 

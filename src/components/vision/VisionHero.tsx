@@ -31,21 +31,27 @@ export default function VisionHero() {
   const nRef = useRef<HTMLDivElement>(null)
   const bottomBarRef = useRef<HTMLDivElement>(null)
   const revealRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+  const linesRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
+    // Set the initial background position explicitly so GSAP can animate from a known state
+    gsap.set(pillBgRef.current, { backgroundPosition: "50% center" })
+
     const tl = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=200%",
+        end: "+=260%",
         pin: stickyRef.current,
         scrub: 1,
         anticipatePin: 1,
+        invalidateOnRefresh: true,
       },
     })
 
-    // Phase 1: pill expands
+    // ── Phase 1 (0 → 0.7): pill expands to viewport ──
     tl.to(pillRef.current, {
       width: "100vw",
       height: "100vh",
@@ -54,27 +60,34 @@ export default function VisionHero() {
       duration: 0.7,
     }, 0)
 
-    tl.fromTo(pillBgRef.current,
-      { backgroundPosition: "50% center" },
-      { backgroundPosition: "55% center", duration: 0.7, ease: "none" },
-      0
-    )
-
-    // Letters parallax out
+    // Letters parallax out alongside expansion
     tl.to(vRef.current, { xPercent: -180, opacity: 0, duration: 0.5 }, 0)
     tl.to(i1Ref.current, { xPercent: -300, opacity: 0, duration: 0.5 }, 0.05)
     tl.to(sRef.current, { xPercent: -200, opacity: 0, duration: 0.5 }, 0.1)
     tl.to(i2Ref.current, { xPercent: -150, opacity: 0, duration: 0.5 }, 0.15)
     tl.to(nRef.current, { xPercent: 200, opacity: 0, duration: 0.5 }, 0)
-
     tl.to(bottomBarRef.current, { opacity: 0, y: 30, duration: 0.4 }, 0)
 
-    // Phase 2: content reveal
+    // Fade out grid + vertical lines as the banner image takes over the viewport
+    tl.to(gridRef.current, { opacity: 0, duration: 0.5 }, 0.3)
+    tl.to(linesRef.current, { opacity: 0, duration: 0.5 }, 0.3)
+
+    // ── Phase 2 (0.7 → 1.0): content reveals ──
     tl.fromTo(revealRef.current,
       { opacity: 0, y: 60, filter: "blur(8px)" },
-      { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3 },
+      { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.3, ease: "power2.out" },
       0.7
     )
+
+    // ── Phase 3 (0.9 → 1.7): banner image SHIFTS LEFT after expansion ──
+    // Runs after the pill is fully open. 50% → 15% on backgroundPosition X
+    // anchors the helmet subject toward the LEFT of the viewport (matching
+    // the reference layout — helmet on left, headline + CTA on right).
+    tl.to(pillBgRef.current, {
+      backgroundPosition: "15% center",
+      duration: 0.8,
+      ease: "power2.inOut",
+    }, 0.9)
   }, { scope: containerRef })
 
   return (
@@ -84,20 +97,21 @@ export default function VisionHero() {
         className="sticky top-0 h-screen w-full overflow-hidden"
         style={{ background: "linear-gradient(180deg, #eef4ff 0%, #d4e2fa 35%, #b4cdf5 70%, #9cc0f2 100%)" }}
       >
-        {/* Grid pattern */}
+        {/* Grid pattern — subtle, only visible during letter phase, fades when image takes over */}
         <div
-          className="absolute inset-0 opacity-30 pointer-events-none"
+          ref={gridRef}
+          className="absolute inset-0 opacity-20 pointer-events-none"
           style={{
-            backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.3) 1px, transparent 1px)",
+            backgroundImage: "linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.25) 1px, transparent 1px)",
             backgroundSize: "120px 120px",
           }}
         />
 
-        {/* Vertical lines */}
-        <div className="pointer-events-none absolute inset-y-0 left-1/2 h-full w-[88%] -translate-x-1/2">
-          <div className="absolute inset-y-0 left-1/4 w-px bg-white/40" />
-          <div className="absolute inset-y-0 left-1/2 w-px bg-white/40" />
-          <div className="absolute inset-y-0 left-3/4 w-px bg-white/40" />
+        {/* Vertical lines — fade out as the banner image reveals */}
+        <div ref={linesRef} className="pointer-events-none absolute inset-y-0 left-1/2 h-full w-[88%] -translate-x-1/2">
+          <div className="absolute inset-y-0 left-1/4 w-px bg-white/30" />
+          <div className="absolute inset-y-0 left-1/2 w-px bg-white/30" />
+          <div className="absolute inset-y-0 left-3/4 w-px bg-white/30" />
         </div>
 
         {/* Letters row */}
