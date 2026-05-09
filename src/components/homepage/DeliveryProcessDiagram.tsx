@@ -76,9 +76,7 @@ export function DeliveryProcessDiagram() {
     <div
       className="relative w-full h-full overflow-hidden"
       style={{
-        // Phase 02 dawn cream: sky→cream→warm-sand gradient (Image 3 reference)
-        background:
-          "linear-gradient(180deg, #d8e2e6 0%, #ece4d2 55%, #f0dfc2 100%)",
+        background: "transparent",
         fontFamily: '"Outfit", sans-serif',
       }}
     >
@@ -86,8 +84,7 @@ export function DeliveryProcessDiagram() {
       <div
         className="absolute inset-0 pointer-events-none z-0"
         style={{
-          background:
-            "radial-gradient(ellipse 80% 60% at 50% 110%, rgba(255,160,90,0.16) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 50% -10%, rgba(170,200,210,0.4) 0%, transparent 65%)",
+          background: "radial-gradient(ellipse 80% 60% at 50% 110%, rgba(255,255,255,0.1) 0%, transparent 70%)",
         }}
       />
 
@@ -108,7 +105,7 @@ export function DeliveryProcessDiagram() {
             {/* Top horizontal bus */}
             <motion.path
               d={D_BUS}
-              fill="none" stroke="#F97316" strokeOpacity="0.55" strokeWidth="0.7"
+              fill="none" stroke="#FFFFFF" strokeOpacity="0.4" strokeWidth="0.7"
               vectorEffect="non-scaling-stroke"
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
@@ -119,7 +116,7 @@ export function DeliveryProcessDiagram() {
             {/* Drop to card 2 */}
             <motion.path
               d={D_DROP2}
-              fill="none" stroke="#F97316" strokeOpacity="0.55" strokeWidth="0.7"
+              fill="none" stroke="#FFFFFF" strokeOpacity="0.4" strokeWidth="0.7"
               vectorEffect="non-scaling-stroke"
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
@@ -130,7 +127,7 @@ export function DeliveryProcessDiagram() {
             {/* Drop to card 3 */}
             <motion.path
               d={D_DROP3}
-              fill="none" stroke="#F97316" strokeOpacity="0.55" strokeWidth="0.7"
+              fill="none" stroke="#FFFFFF" strokeOpacity="0.4" strokeWidth="0.7"
               vectorEffect="non-scaling-stroke"
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
@@ -141,7 +138,7 @@ export function DeliveryProcessDiagram() {
             {/* Bottom U curve */}
             <motion.path
               d={D_U}
-              fill="none" stroke="#F97316" strokeOpacity="0.48" strokeWidth="0.7"
+              fill="none" stroke="#FFFFFF" strokeOpacity="0.3" strokeWidth="0.7"
               vectorEffect="non-scaling-stroke"
               initial={{ pathLength: 0, opacity: 0 }}
               whileInView={{ pathLength: 1, opacity: 1 }}
@@ -154,7 +151,7 @@ export function DeliveryProcessDiagram() {
               <motion.path
                 key={`mid-${i}`}
                 d={d}
-                fill="none" stroke="#F97316" strokeOpacity="0.38" strokeWidth="0.6"
+                fill="none" stroke="#FFFFFF" strokeOpacity="0.25" strokeWidth="0.6"
                 strokeDasharray="2 1.8"
                 vectorEffect="non-scaling-stroke"
                 initial={{ opacity: 0 }}
@@ -171,7 +168,7 @@ export function DeliveryProcessDiagram() {
               <motion.circle
                 key={`te-${i}`}
                 cx={cx} cy={BY} r="1.05"
-                fill="#F97316" fillOpacity="0.55"
+                fill="#FFFFFF" fillOpacity="0.55"
                 style={{ transformBox: "fill-box", transformOrigin: "center" }}
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -185,7 +182,7 @@ export function DeliveryProcessDiagram() {
               <motion.circle
                 key={`tj-${i}`}
                 cx={cx} cy={BY} r="1.45"
-                fill="#F97316" fillOpacity="0.9"
+                fill="#FFFFFF" fillOpacity="0.9"
                 style={{ transformBox: "fill-box", transformOrigin: "center" }}
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -199,7 +196,7 @@ export function DeliveryProcessDiagram() {
               <motion.circle
                 key={`pulse-${i}`}
                 cx={cx} cy={BY} r="2.6"
-                fill="none" stroke="#F97316" strokeWidth="0.55" strokeOpacity="0.28"
+                fill="none" stroke="#FFFFFF" strokeWidth="0.55" strokeOpacity="0.28"
                 vectorEffect="non-scaling-stroke"
                 animate={{ scale: [1, 1.65, 1], opacity: [0.45, 0, 0.45] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.65 }}
@@ -212,7 +209,7 @@ export function DeliveryProcessDiagram() {
               <motion.circle
                 key={`bu-${i}`}
                 cx={cx} cy={UY} r="1.2"
-                fill="none" stroke="#F97316" strokeWidth="0.8" strokeOpacity="0.58"
+                fill="none" stroke="#FFFFFF" strokeWidth="0.8" strokeOpacity="0.58"
                 vectorEffect="non-scaling-stroke"
                 style={{ transformBox: "fill-box", transformOrigin: "center" }}
                 initial={{ scale: 0, opacity: 0 }}
@@ -228,7 +225,7 @@ export function DeliveryProcessDiagram() {
                 key={`md-${i}`}
                 cx={(CX[i] + CX[i + 1]) / 2}
                 cy={CM} r="0.88"
-                fill="#F97316" fillOpacity="0.42"
+                fill="#FFFFFF" fillOpacity="0.42"
                 style={{ transformBox: "fill-box", transformOrigin: "center" }}
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -251,43 +248,42 @@ export function DeliveryProcessDiagram() {
                 key={step.num}
                 className="flex flex-col gap-2 rounded-xl p-3 cursor-default select-none"
                 style={{
-                  background: "#ffffff",
-                  border: "1px solid rgba(60, 40, 20, 0.08)",
-                  boxShadow:
-                    "0 8px 24px rgba(80,60,30,0.10), inset 0 1px 0 rgba(255,255,255,0.9)",
+                  background: "rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.2)",
+                  backdropFilter: "blur(10px)",
                 }}
                 variants={cardItem}
                 whileHover={{
                   y: -4,
-                  borderColor: "rgba(249,115,22,0.32)",
-                  boxShadow:
-                    "0 14px 36px rgba(80,60,30,0.18), 0 0 0 1px rgba(249,115,22,0.16), inset 0 1px 0 rgba(255,255,255,0.9)",
+                  borderColor: "rgba(255,255,255,0.5)",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.4)",
                   transition: { duration: 0.2, ease: "easeOut" },
                 }}
               >
-                <span className="text-[#F97316] font-black text-[0.6rem] tracking-wider">
+                <span className="text-white font-black text-[0.6rem] tracking-wider opacity-60">
                   {step.num}
                 </span>
 
                 <div
                   className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{
-                    background: "rgba(249,115,22,0.08)",
-                    border: "1px solid rgba(249,115,22,0.22)",
+                    background: "rgba(255,255,255,0.15)",
+                    border: "1px solid rgba(255,255,255,0.2)",
                   }}
                 >
                   <step.Icon
-                    className="w-3.5 h-3.5 text-[#1a1612]"
+                    className="w-3.5 h-3.5 text-white"
                     aria-hidden
                     strokeWidth={1.75}
                   />
                 </div>
 
-                <strong className="text-[#1a1612] font-bold text-[0.7rem] leading-tight">
+                <strong className="text-white font-bold text-[0.7rem] leading-tight">
                   {step.title}
                 </strong>
 
-                <p className="text-[0.6rem] leading-relaxed m-0" style={{ color: "rgba(26,22,18,0.62)" }}>
+                <p className="text-[0.6rem] leading-relaxed m-0 text-white/70">
                   {step.desc}
                 </p>
               </motion.div>
@@ -297,10 +293,10 @@ export function DeliveryProcessDiagram() {
 
         {/* Caption row */}
         <div className="flex items-center justify-between flex-shrink-0 mt-1">
-          <span className="text-[#F97316] font-black text-base leading-none">02</span>
+          <span className="text-white font-black text-base leading-none opacity-80">02</span>
           <span
-            className="font-bold uppercase"
-            style={{ fontSize: "0.52rem", letterSpacing: "0.26em", color: "rgba(26,22,18,0.5)" }}
+            className="font-bold uppercase text-white/50"
+            style={{ fontSize: "0.52rem", letterSpacing: "0.26em" }}
           >
             Structured Delivery Approach
           </span>

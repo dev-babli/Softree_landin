@@ -15,32 +15,37 @@ const faqs = [
   {
     id: 1,
     serial: "question 01",
-    question: "What services does Arooth offer?",
-    answer: "Arooth provides end-to-end digital solutions, including web design, development, branding, digital marketing, UI/UX strategy, and SEO optimization — all tailored to help your business grow online.",
+    question: "What does Softree actually build?",
+    answer:
+      "Softree builds production-grade software for enterprise teams: AI agents, web apps, Microsoft Power Platform automations, SharePoint intranets, and Power BI dashboards. We are Microsoft Gold Partners. Median project ship time is 47 days.",
   },
   {
     id: 2,
-    serial: "Question 02",
-    question: "How long does a typical project take?",
-    answer: "Project timelines vary based on scope and complexity. A simple website might take 2-4 weeks, while comprehensive branding and development projects can span 8-12 weeks. We provide detailed timelines during our initial consultation.",
+    serial: "question 02",
+    question: "How long does a typical Softree project take?",
+    answer:
+      "Most Softree projects ship in 6 to 12 weeks. Power Apps MVPs take 6 weeks. Web app MVPs take 12 weeks. SharePoint migrations take 4 to 8 weeks. We provide a fixed scope and fixed timeline during discovery, before any contract is signed.",
   },
   {
     id: 3,
     serial: "question 03",
-    question: "Do you work with clients worldwide?",
-    answer: "Absolutely! We collaborate with clients globally. Our remote-first approach and flexible communication tools ensure seamless project management regardless of timezone differences.",
+    question: "What if the project takes longer than estimated?",
+    answer:
+      "Softree contracts are fixed-scope and fixed-price. If we miss the timeline, we absorb the cost — not the client. We mitigate risk through weekly demos, fortnightly milestone reviews, and direct Slack access to the engineering squad working on your project.",
   },
   {
     id: 4,
     serial: "question 04",
-    question: "How can we get started with Arooth?",
-    answer: "Getting started is simple. Reach out through our contact form or schedule a discovery call. We'll discuss your goals, assess your needs, and propose a tailored strategy to bring your vision to life.",
+    question: "How do you handle code ownership and IP?",
+    answer:
+      "You own the code, designs, and IP from day one. Softree commits directly to your GitHub or Azure DevOps repository. Source code, infrastructure, and credentials transfer to your team at project handoff. No vendor lock-in.",
   },
   {
     id: 5,
     serial: "question 05",
-    question: "How much do your services cost?",
-    answer: "We offer flexible pricing based on project requirements. After understanding your needs, we provide transparent, detailed quotes with no hidden fees. Our packages are designed to deliver exceptional value for businesses of all sizes.",
+    question: "What is Softree's security and compliance posture?",
+    answer:
+      "Softree follows Microsoft Gold Partner security standards: SOC 2 controls, GDPR compliance, NDAs, data isolation per client, and signed BAAs for healthcare. Engineers work from secured devices. We can provide a security questionnaire response within 5 business days.",
   },
 ]
 
@@ -99,6 +104,27 @@ export default function LightFAQExact() {
 
   return (
     <section ref={sectionRef} className="relative w-full bg-white py-20 md:py-32">
+      {/* FAQPage JSON-LD — enables AI Overview, ChatGPT/Claude/Gemini citation,
+         and Google rich results. Each answer is 30-50 words for optimal
+         AEO extraction (the LLM sweet spot). */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            dateModified: "2026-05-09",
+            mainEntity: faqs.map((f) => ({
+              "@type": "Question",
+              name: f.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: f.answer,
+              },
+            })),
+          }),
+        }}
+      />
       {/* SVG Grain Filter Definition */}
       <svg className="pointer-events-none fixed h-0 w-0" aria-hidden="true">
         <defs>

@@ -1,0 +1,58 @@
+# Softree Technology — robots.txt
+# Updated 2026-05
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Dev/preview routes — exclude from index
+Disallow: /fizens
+Disallow: /fizens-clone
+Disallow: /housemood
+Disallow: /landin
+Disallow: /odyssey
+Disallow: /banking-beyond
+Disallow: /conversion-engine
+Disallow: /scalora-hero
+Disallow: /ultimate-flow
+Disallow: /homepage-clone
+Disallow: /homepage-light
+Disallow: /homepage_final
+Disallow: /homepage-carousel-preview
+Disallow: /all-components
+Disallow: /showcase
+Disallow: /together
+Disallow: /revolut-v2
+Disallow: /vision
+
+# AI search crawlers — explicit allow (some default to blocked)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://softree.in/sitemap.xml

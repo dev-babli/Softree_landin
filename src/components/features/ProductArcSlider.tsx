@@ -1,35 +1,44 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const BASE_CARDS = [
   {
-    id: "community",
-    title: "AI Agents",
-    description: "Deploy sophisticated multi-agent architectures that automate your most complex workflows.",
-    tag: "CORE CAPABILITY",
-    bgColor: "#6b38fb",
-    textColor: "#ffffff",
-    image: "https://osmo.b-cdn.net/website/bandwidth/product-card-community.avif"
+    id: "engineering",
+    title: "Dedicated Pods",
+    description: "Elite engineering teams integrated directly into your agile workflows for maximum velocity.",
+    tag: "DELIVERY MODEL",
+    bgColor: "#FFFFFF",
+    textColor: "#141413",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: "vault",
-    title: "Enterprise Dashboards",
-    description: "High-performance data visualization and analytics tools built for scale.",
-    tag: "CORE CAPABILITY",
-    bgColor: "#111111",
+    id: "ai-systems",
+    title: "AI Integration",
+    description: "Production-ready AI workflows, agentic automation, and LLM implementation.",
+    tag: "CAPABILITY",
+    bgColor: "#141413",
     textColor: "#ffffff",
-    image: "https://osmo.b-cdn.net/website/bandwidth/product-card-vault.avif"
+    image: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: "page-transition",
-    title: "High-End UX/UI",
-    description: "Cinematic, pixel-perfect visual design that separates you from the competition.",
-    tag: "CORE CAPABILITY",
-    bgColor: "#9dfa5f",
-    textColor: "#111111",
-    image: "https://osmo.b-cdn.net/website/bandwidth/page-transition-course-thumb-1440x900.avif"
+    id: "cloud-scale",
+    title: "Cloud Native",
+    description: "Scalable, resilient architecture built on Azure, AWS, and modern cloud primitives.",
+    tag: "CAPABILITY",
+    bgColor: "#F3F0EE",
+    textColor: "#141413",
+    image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: "ux-ui",
+    title: "Premium Design",
+    description: "High-fidelity interfaces engineered to convert, engage, and dominate your market.",
+    tag: "CAPABILITY",
+    bgColor: "#FF5812",
+    textColor: "#ffffff",
+    image: "https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&q=80&w=800"
   }
 ];
 
@@ -45,9 +54,7 @@ const CARDS = Array.from({ length: TOTAL_CARDS }).map((_, i) => {
   };
 });
 
-const PILLS = [
-  "AI Agents", "Enterprise Dashboards", "Next.js Architecture", "High-End UX/UI", "Global Infrastructure", "Team Collaboration"
-];
+const PILLS = BASE_CARDS.map(c => c.title);
 
 export default function ProductArcSlider() {
   const radius = 2000; 
@@ -57,6 +64,36 @@ export default function ProductArcSlider() {
 
   const rotationMV = useMotionValue(0);
   const smoothRotation = useSpring(rotationMV, { damping: 50, stiffness: 200 });
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const unsubscribe = rotationMV.onChange((val) => {
+      const targetAngle = -val;
+      let idx = Math.round(targetAngle / DEG_PER_CARD) % TOTAL_CARDS;
+      if (idx < 0) idx += TOTAL_CARDS;
+      setActiveIndex(idx % BASE_CARDS.length);
+    });
+    return unsubscribe;
+  }, [rotationMV]);
+
+  const handlePillClick = (idx: number) => {
+    const currentRot = rotationMV.get();
+    const targetBase = -idx * DEG_PER_CARD;
+    const diff = ((targetBase - currentRot) % 360 + 360) % 360;
+    const shortestDiff = diff > 180 ? diff - 360 : diff;
+    rotationMV.set(currentRot + shortestDiff);
+  };
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      rotationMV.set(rotationMV.get() - DEG_PER_CARD);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isHovered, rotationMV]);
 
   const handlePan = (e: any, info: any) => {
     // Unbounded rotation for infinite looping
@@ -66,10 +103,10 @@ export default function ProductArcSlider() {
 
   return (
     <section 
-      className="relative w-full bg-[#f6f6f6] pt-24 md:pt-32 pb-0 overflow-visible touch-none z-30"
-      style={{ height: "1250px" }}
+      className="relative w-full bg-[#F3F0EE] pt-16 md:pt-24 pb-0 overflow-visible touch-none z-30"
+      style={{ height: "950px" }}
     >
-      <div className="absolute top-[250px] left-1/2 -translate-x-1/2 w-[1600px] pointer-events-none opacity-30 z-0">
+      <div className="absolute top-[180px] left-1/2 -translate-x-1/2 w-[1600px] pointer-events-none opacity-30 z-0">
         <img 
           src="https://osmo.b-cdn.net/website/svg/product-slider-circle-deco.svg" 
           alt="" 
@@ -77,22 +114,23 @@ export default function ProductArcSlider() {
         />
       </div>
 
-      <div className="relative z-30 mx-auto max-w-[1400px] px-6 md:px-12 text-center pointer-events-none flex flex-col items-center">
-        <h2 className="text-[3.5rem] md:text-[6rem] lg:text-[7.5rem] font-medium tracking-tight leading-[0.95] text-[#111] mb-8 max-w-[1200px]">
-          A growing ecosystem for<br/>enterprise scale
+      <div className="relative z-30 mx-auto max-w-[1400px] px-6 md:px-12 pointer-events-none flex flex-col items-start text-left">
+        <h2 className="text-[clamp(28px,4.4vw,58px)] font-semibold leading-[1.06] tracking-[-0.02em] text-[#141413] mb-6 max-w-[800px]">
+          A growing ecosystem for enterprise scale
         </h2>
-        <p className="text-xl md:text-[22px] font-medium tracking-tight text-[#111] mb-12">
+        <p className="text-[18px] md:text-[22px] text-[#141413]/70 leading-relaxed mb-10 max-w-[600px]">
           Accelerate development with our core services:
         </p>
 
-        <div className="flex items-center gap-2 overflow-x-auto max-w-full px-4 mb-8 pointer-events-auto hide-scrollbar">
+        <div className="flex flex-wrap items-center gap-2 max-w-[800px] pointer-events-auto">
           {PILLS.map((pill, idx) => (
             <button 
               key={pill} 
-              className={`whitespace-nowrap px-6 py-3 rounded-md text-[15px] font-medium transition-colors ${
-                idx === 0 
-                  ? "bg-[#111] text-white" 
-                  : "bg-[#eaeaea] text-[#111] hover:bg-[#d4d4d4]"
+              onClick={() => handlePillClick(idx)}
+              className={`whitespace-nowrap px-6 py-3 rounded-full text-[15px] font-medium transition-all duration-300 ${
+                idx === activeIndex 
+                  ? "bg-[#141413] text-white shadow-md" 
+                  : "bg-black/5 text-[#141413] hover:bg-black/10"
               }`}
             >
               {pill}
@@ -103,7 +141,9 @@ export default function ProductArcSlider() {
 
       <motion.div 
         onPan={handlePan}
-        className="absolute inset-0 top-[400px] z-20 cursor-grab active:cursor-grabbing"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="absolute inset-0 top-[260px] z-20 cursor-grab active:cursor-grabbing"
         style={{ overflow: 'visible' }} 
       >
         <motion.div
@@ -113,7 +153,7 @@ export default function ProductArcSlider() {
             rotate: smoothRotation,
             position: "absolute",
             left: "50%",
-            top: "550px", 
+            top: "400px", 
             x: "-50%",
           }}
           className="pointer-events-none"
@@ -146,10 +186,10 @@ export default function ProductArcSlider() {
                 </div>
                 
                 <div className="mb-4 text-4xl">✳</div>
-                <h3 className="text-4xl md:text-5xl font-medium tracking-tight leading-none mb-6">
+                <h3 className="text-[28px] md:text-[32px] font-semibold tracking-[-0.02em] leading-none mb-6">
                   {card.title}
                 </h3>
-                <p className="text-[17px] leading-relaxed mb-8 max-w-[280px] opacity-80">
+                <p className="text-[15px] leading-relaxed mb-8 max-w-[280px] opacity-80">
                   {card.description}
                 </p>
                 

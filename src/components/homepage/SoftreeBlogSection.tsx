@@ -146,7 +146,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
     const v = videoRef.current
     if (!v) return
     if (inView) {
-      v.play().catch(() => {})
+      v.play().catch(() => { })
     } else {
       v.pause()
     }
@@ -303,7 +303,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 /* ────────────────────── MAIN ────────────────────── */
 export function SoftreeBlogSection() {
   return (
-    <section className="relative z-10 w-full overflow-hidden bg-white py-24 text-black">
+    <section className="relative z-10 w-full overflow-hidden bg-white py-20 md:py-24 lg:py-28 text-black">
       <div className="relative z-10 mx-auto w-full max-w-[1240px] px-4 lg:px-6">
         {/* Header */}
         <div className="mb-12 lg:mb-14 lg:flex lg:items-end lg:justify-between">

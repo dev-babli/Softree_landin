@@ -41,6 +41,7 @@ type Slide = {
   headline: string
   description: string
   outcomes: string[]
+  output: string
   tone: SlideTone
   visual: "map" | "flow" | "agent" | "pulse"
 }
@@ -55,6 +56,7 @@ const SLIDES: Slide[] = [
     description:
       "We start by turning scattered product, funnel and customer data into a single sharp build decision — not a 60-page deck.",
     outcomes: ["Funnel audit", "User signal map", "Priority roadmap"],
+    output: "Output: signed scope + fixed price · within 5 business days",
     tone: "cream",
     visual: "map",
   },
@@ -67,6 +69,7 @@ const SLIDES: Slide[] = [
     description:
       "Positioning, experience design and the product story your buyers understand in six seconds — pressure-tested on real users, not whiteboards.",
     outcomes: ["Offer clarity", "Interface direction", "Brand-ready flows"],
+    output: "Output: clickable prototype + design tokens · within 2 weeks",
     tone: "amber",
     visual: "flow",
   },
@@ -79,7 +82,8 @@ const SLIDES: Slide[] = [
     description:
       "AI workflows, app screens, integrations and the product logic behind them — shipped weekly, reviewed weekly, owned by a small senior team.",
     outcomes: ["AI workflows", "App interfaces", "Production code"],
-    tone: "ink",
+    output: "Output: production-grade code · weekly demos · typical 6–8 weeks",
+    tone: "cream",
     visual: "agent",
   },
   {
@@ -91,6 +95,7 @@ const SLIDES: Slide[] = [
     description:
       "Conversion copy, launch assets, analytics and the warm handoff to the team that keeps it growing after we step back.",
     outcomes: ["Conversion page", "Tracking live", "Launch handoff"],
+    output: "Output: live launch + 30-day support window · then handoff",
     tone: "gold",
     visual: "pulse",
   },
@@ -449,7 +454,7 @@ function Panel({ slide }: { slide: Slide }) {
 
   return (
     <section
-      className="ssx-section relative h-[100vh] w-full overflow-hidden"
+      className="ssx-section relative h-screen w-full overflow-hidden"
       style={{ background: bg, color: text }}
       data-tone={slide.tone}
     >
@@ -614,6 +619,37 @@ function Panel({ slide }: { slide: Slide }) {
           <p style={{ fontSize: 16, fontWeight: 450, lineHeight: 1.55, color: muted, margin: 0 }}>
             {slide.description}
           </p>
+
+          {/* Output line — specific deliverable + timing (sells outcome, not process) */}
+          <div
+            className="inline-flex items-center gap-2.5 self-start rounded-full border px-4 py-2"
+            style={{
+              background: isInk ? "rgba(255,250,235,0.04)" : "rgba(255,255,255,0.6)",
+              borderColor: isInk ? "rgba(255,250,235,0.18)" : `${color.ink}15`,
+              backdropFilter: "blur(6px)",
+            }}
+          >
+            <span
+              aria-hidden
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: 999,
+                background: isInk ? color.sunshine : color.mistral,
+              }}
+            />
+            <span
+              style={{
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "-0.18px",
+                color: text,
+                fontVariantNumeric: "tabular-nums",
+              }}
+            >
+              {slide.output}
+            </span>
+          </div>
 
           {/* Outcomes pills */}
           <ul className="flex flex-wrap gap-2.5 p-0" style={{ listStyle: "none", margin: 0 }}>

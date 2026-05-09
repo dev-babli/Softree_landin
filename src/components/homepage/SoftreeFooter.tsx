@@ -173,12 +173,12 @@ export function SoftreeFooter() {
                       Services
                     </p>
                     <div className="flex flex-col">
-                      <FooterLink href="/services">Full Stack Development</FooterLink>
-                      <FooterLink href="/services">Mobile App Dev</FooterLink>
-                      <FooterLink href="/services">SharePoint Solutions</FooterLink>
-                      <FooterLink href="/services">Power Platform</FooterLink>
-                      <FooterLink href="/services">Cloud & DevOps</FooterLink>
-                      <FooterLink href="/services">AI & ML Solutions</FooterLink>
+                      <FooterLink href="/services/digital-workspace/web-app-development">Web App Development</FooterLink>
+                      <FooterLink href="/services/digital-workspace/mobile-app-development">Mobile App Dev</FooterLink>
+                      <FooterLink href="/services/digital-workspace/sharepoint">SharePoint Solutions</FooterLink>
+                      <FooterLink href="/services/business-applications/power-apps">Power Platform</FooterLink>
+                      <FooterLink href="/services/data-analytics/microsoft-fabric">Data &amp; Analytics</FooterLink>
+                      <FooterLink href="/services/ai-intelligence/agentic-ai">AI &amp; ML Solutions</FooterLink>
                     </div>
                   </div>
 
@@ -228,7 +228,7 @@ export function SoftreeFooter() {
                       <FooterLink href="https://www.softreetechnology.com/blog" external>Blog</FooterLink>
                       <FooterLink href="/about-us">About us</FooterLink>
                       <FooterLink href="https://www.softreetechnology.com/careers/" external>Careers</FooterLink>
-                      <FooterLink href="/case-studies">Customer Stories</FooterLink>
+                      <FooterLink href="/services">Customer Stories</FooterLink>
                       <FooterLink href="/contact">Support</FooterLink>
                     </div>
                   </div>

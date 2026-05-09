@@ -1,0 +1,35 @@
+# Softree Technology
+
+> Softree builds production-grade software for ambitious enterprise teams. AI agents, web apps, Microsoft 365 ecosystems, and data products. Microsoft Gold Partner. Based in India, shipping globally.
+
+## What we do
+
+- **AI & Automation** — agentic AI systems, generative AI fine-tuned on enterprise data, retrieval-augmented workflows
+- **Web Development** — production web apps with Next.js, React, TypeScript, scalable to enterprise loads
+- **Microsoft Power Platform** — Power Apps, Power BI, Power Automate, custom MVPs, Power Platform governance
+- **Data & Analytics** — Microsoft Fabric, Power BI dashboards, data engineering, real-time business intelligence
+- **Digital Workspace** — SharePoint intranets, SPFx web parts, Microsoft 365 ecosystems, mobile apps
+
+## Engagement model
+
+- Fixed-scope, fixed-price contracts
+- Senior engineering squads (no junior ladders)
+- Direct Slack with engineers — not account managers
+- Median project ship time: ~47 days
+- Available for 2 new projects · Q2 2026
+
+## Pages
+
+- [Home](https://softree.in/) — Overview of all services
+- [Services](https://softree.in/services) — Detailed service breakdown
+- [About](https://softree.in/about-us) — Company, team, philosophy
+- [Contact](https://softree.in/contact) — Project intake form
+
+## Contact
+
+- Email: hello@softree.com
+- Hours: Mon–Fri · 9 AM – 6 PM IST
+
+## Last updated
+
+2026-05-09

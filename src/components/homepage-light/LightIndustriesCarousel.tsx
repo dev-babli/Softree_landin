@@ -72,7 +72,7 @@ export default function LightIndustriesCarousel() {
   }
 
   return (
-    <section className="relative w-full py-16 md:py-28" style={{ background: color.canvas }}>
+    <section className="relative w-full py-20 md:py-24 lg:py-28" style={{ background: color.canvas }}>
       <div className="relative mx-auto w-full max-w-[1920px]">
         {/* Header */}
         <div className="mx-auto mb-10 flex w-full max-w-[1320px] items-end justify-between px-4 lg:px-10">

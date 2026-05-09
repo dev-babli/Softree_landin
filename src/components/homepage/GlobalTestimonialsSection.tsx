@@ -153,7 +153,9 @@ export function GlobalTestimonialsSection() {
   const [isPaused, setIsPaused] = useState(false)
   const [progress, setProgress] = useState(0) // 0 → 1
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const sectionRef = useRef<HTMLElement | null>(null)
   const touchStartX = useRef<number | null>(null)
+  const isVisibleRef = useRef(false)
 
   const active = testimonials[activeIndex]
 
@@ -161,22 +163,55 @@ export function GlobalTestimonialsSection() {
     setActiveIndex((i) => (i + delta + testimonials.length) % testimonials.length)
   }, [])
 
-  /* Auto-cycle with rAF-driven progress; pauses on hover and reduced motion */
+  /* Track section visibility — only run rAF when on-screen.
+   * This is the #1 INP fix: was calling setProgress 60x/sec even
+   * when the section was thousands of pixels away from the viewport,
+   * blocking the main thread with unnecessary React reconciliation. */
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting },
+      { rootMargin: "200px 0px" }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  /* Auto-cycle with rAF-driven progress; pauses on hover, reduced
+   * motion, and when section is off-screen. Progress ring updates
+   * throttled to every 3rd frame (~20fps) which is smooth enough
+   * for a thin SVG ring but cuts React reconciliation by 3×. */
   useEffect(() => {
     if (isPaused) return
     let raf = 0
     let start = performance.now()
+    let frameCount = 0
 
     const tick = (now: number) => {
+      raf = requestAnimationFrame(tick)
+
+      // Skip all work when section is off-screen
+      if (!isVisibleRef.current) {
+        start = now // reset so it doesn't jump when re-entering
+        return
+      }
+
       const elapsed = now - start
       const p = Math.min(1, elapsed / CYCLE_MS)
-      setProgress(p)
+
       if (p >= 1) {
         setActiveIndex((i) => (i + 1) % testimonials.length)
         start = now
         setProgress(0)
+        frameCount = 0
+      } else {
+        // Throttle progress updates to every 3rd frame (~20fps)
+        frameCount++
+        if (frameCount % 3 === 0) {
+          setProgress(p)
+        }
       }
-      raf = requestAnimationFrame(tick)
     }
 
     raf = requestAnimationFrame(tick)
@@ -218,7 +253,8 @@ export function GlobalTestimonialsSection() {
 
   return (
     <section
-      className="relative overflow-hidden bg-[#f2f2f2] px-4 py-16 text-[#191717] sm:px-6 lg:px-8 lg:py-24"
+      ref={sectionRef}
+      className="relative overflow-hidden bg-[#f2f2f2] px-4 py-20 text-[#191717] sm:px-6 md:py-24 lg:px-8 lg:py-28"
       data-theme-section="light"
       aria-roledescription="carousel"
       aria-label="Customer testimonials from around the world"
@@ -265,9 +301,8 @@ export function GlobalTestimonialsSection() {
                       src={src}
                       alt=""
                       data-testimonial-map={map}
-                      className={`absolute inset-0 h-full w-full rounded-full object-contain brightness-[1.25] saturate-150 transition-opacity duration-700 ease-out ${
-                        active.map === map ? "opacity-100" : "opacity-0"
-                      }`}
+                      className={`absolute inset-0 h-full w-full rounded-full object-contain brightness-[1.25] saturate-150 transition-opacity duration-700 ease-out ${active.map === map ? "opacity-100" : "opacity-0"
+                        }`}
                       aria-hidden
                     />
                   ))}
@@ -465,9 +500,8 @@ export function GlobalTestimonialsSection() {
                   className="grid h-3 w-3 place-items-center"
                 >
                   <span
-                    className={`block rounded-full transition-all duration-300 ${
-                      isActive ? "h-2.5 w-2.5 bg-[#FF5812]" : "h-1.5 w-1.5 bg-[#bdbdbd]"
-                    }`}
+                    className={`block rounded-full transition-all duration-300 ${isActive ? "h-2.5 w-2.5 bg-[#FF5812]" : "h-1.5 w-1.5 bg-[#bdbdbd]"
+                      }`}
                   />
                 </button>
               )

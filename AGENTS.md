@@ -1,78 +1,76 @@
 <claude-mem-context>
 # Memory Context
 
-# [SOFTREE] recent context, 2026-05-05 2:03am GMT+5:30
+# [SOFTREE] recent context, 2026-05-09 9:49pm GMT+5:30
 
 Legend: 🎯session 🔴bugfix 🟣feature 🔄refactor ✅change 🔵discovery ⚖️decision 🚨security_alert 🔐security_note
 Format: ID TIME TYPE TITLE
 Fetch details: get_observations([IDs]) | Search: mem-search skill
 
-Stats: 50 obs (18,882t read) | 938,272t work | 98% savings
+Stats: 50 obs (20,548t read) | 621,487t work | 97% savings
 
-### May 1, 2026
-70 9:49p 🔵 gh CLI Already at v2.92.0 — Newer Than Winget-Installed Version
-71 9:51p ✅ gh CLI Authenticated as dev-babli — Missing 'project' Scope
-72 9:52p ✅ gh CLI Now Has All Required Scopes for Karimo Full Mode
-73 " 🔵 SOFTREE GitHub Repository Identified: dev-babli/Softree_Final
-74 9:53p 🔐 GitHub OAuth Token Exposed in Plain Text via gh auth token
-75 " 🔐 settings.local.json Not in .gitignore — GitHub Token at Risk of Commit
-76 " 🔵 Global Claude Settings Reveal Full Plugin Ecosystem and Hook Configuration
-77 9:54p ✅ GitHub OAuth Token Added to Global Claude Settings env Block
-78 9:55p ✅ GitHub MCP Server Configured Globally via ~/.claude/mcp.json
-79 " ✅ Project-Level .mcp.json Created for SOFTREE GitHub MCP Server
-80 " ✅ .mcp.json Added to .gitignore to Prevent Credential Reference Commit
-81 9:56p ✅ Karimo config.yaml Written — SOFTREE Project Fully Configured for Full Mode
-82 " 🔵 SOFTREE CLAUDE.md Has Karimo Section with Pending GitHub Values
-83 9:57p 🔵 KARIMO Doctor Command — Full Diagnostic Specification
-84 9:58p 🔵 KARIMO Version 9.9.1 Installed in SOFTREE Project
-85 " 🔵 GitHub CLI (gh) Not Found in PATH on SOFTREE Windows Machine
-86 " 🔵 gh CLI Found at Non-Standard Path; GitHub Auth Confirmed with Full Scopes
-87 " 🔵 KARIMO 9.9.1 Is Current; GitHub Project Access Confirmed for dev-babli
-88 9:59p 🔵 MANIFEST.json Manifest Counts Show PowerShell Regex Parsing Bug During Doctor Check
-89 " 🔵 SOFTREE KARIMO Config: Next.js/npm Project, Full Mode, No Review Provider
-90 " 🔵 SOFTREE Has No PRDs Yet; package.json Missing typecheck Script Configured in KARIMO
-91 " 🔵 SOFTREE Templates: 20 on Disk vs 22 in MANIFEST — 2 Templates Missing
-92 10:00p 🔵 All 22 KARIMO Templates Confirmed Present in SOFTREE
-93 " 🔵 CLAUDE.md Uses Marker-Based KARIMO Section Format (New Format)
-94 " 🔵 SOFTREE Contains Framer-Exported HTML Template (Fizens Finance SaaS)
-### May 2, 2026
-95 1:18p 🔵 Fizens HTML Template Page Structure and Design Tokens Mapped
-96 1:19p 🔵 Complete Fizens Template Section Inventory with Headings and Content Structure
-97 " 🔵 Fizens Template Full Design Spec Extracted via Subagent Analysis
-S22 KARIMO /karimo:plan completed for fizens-clone — PRD generated, finalized, committed, and ready to run (May 2, 2:28 PM)
-98 2:31p ⚖️ Fizens PRD Scope Finalized: All 12 Sections, Lenis Scroll, /fizens Route
-99 " 🔵 SOFTREE Project Dependency Stack and App Structure Mapped
-100 2:32p 🟣 fizens-clone PRD Directory Created at .karimo/prds/fizens-clone/
-S23 /karimo:run --prd fizens-clone — Phase 1 brief generation started, briefs directory created (May 2, 2:32 PM)
-S24 Create homepage-light-clone — a light-themed version of the dark homepage, using the existing /light page design system, removing CubeScrollGallery, and routing it as a new page (May 2, 2:34 PM)
-### May 3, 2026
-101 11:19a ⚖️ Homepage Light Theme Revamp — New Dedicated Page and Component Directory
-102 11:20a 🔵 Softree Homepage and Light Page Structure Mapped
-103 " 🔵 Full Dark Homepage Architecture and Existing Light Component Library Mapped
-104 11:21a 🔵 Light Theme Design System Internals Fully Documented
-S25 Homepage light-clone design approach decision — Claude presented 3 options (Convert dark sections / Start fresh best-of-both / Clone light and boost) and recommended Option B (May 3, 11:21 AM)
-S26 Homepage light-clone re-theming approach decision — user chose Option A (convert dark sections), Claude now presenting 3 sub-approaches for how to re-theme each component (May 3, 11:22 AM)
-S27 Full homepage-light-clone implementation plan presented — file structure, color mapping table, and 22-section conversion funnel architecture awaiting user approval (May 3, 11:23 AM)
-105 11:27a ⚖️ Light Clone Re-Theming Approach Confirmed: Per-Component Light Redesign
-106 " 🔵 TransferredSoftreeHero Architecture: Pinned Scroll + GSAP Entrance Animations
-108 " ⚖️ Scope Correction: Only Convert Components Currently Live on Homepage
-S28 Scope correction applied — VerticalCodePathSection reinstated, only live homepage components to be converted; full implementation plan re-presented for approval (May 3, 11:27 AM)
-107 11:28a 🔵 ServicesStackedSlides: 4-Phase Stacked Scroll with Tone Variants and Sub-Visuals
-S29 Revised component list confirmed — 23 LC-prefixed components covering all live Homepage.tsx imports, with VerticalCodePathSection reinstated and only CubeScrollGallery dropped (May 3, 11:31 AM)
-S31 User commanded "GO AND START DOING NOT PLANNING" — implementation to begin immediately; spec re-written and re-committed to git (same commit hash d69b289) (May 3, 11:32 AM)
-109 11:34a ✅ Homepage Light Clone Design Spec Written to docs/superpowers/specs/
-S30 Design spec written, committed to git, and awaiting user review before implementation plan is written (May 3, 11:34 AM)
-110 " 🟣 Implementation Started: Source Components Being Read for Light Clone Creation
-111 1:24p 🟣 homepage-light-clone Directory Structure Created and tokens.ts Written
-112 " 🔵 Critical Path Bug: homepage-light-clone ls Shows homepage/ Contents Including tokens.ts
-113 " 🟣 LCHero.tsx Created — First Light Clone Component Shipped
-114 1:26p 🟣 Sub-Agent Pattern Used for LC Component Implementation
-### May 5, 2026
-115 1:21a ✅ Deleted "revisit-plan" scheduled heartbeat automation
-116 1:38a ⚖️ About Us Page Redesign: Corexa Webflow Template Clone in Next.js
-117 " ⚖️ About Us Page Redesign: Corexa Webflow Template Clone Plan
-118 " ⚖️ About Us Page Redesign: Corexa Webflow-to-Next.js Migration Plan
-119 " 🟣 About Us Page Redesign - Corexa Webflow Template Clone
+### May 8, 2026
+176 11:09a 🟣 Homepage Hero Replaced: TransferredSoftreeHeroToolkit Now Renders at Position 01a
+S49 SoftreeServicesHero carousel upgraded with accessibility, rAF timer, touch/keyboard support, and React hook correctness fixes (May 8, 11:10 AM)
+177 11:12a 🔵 SoftreeServicesHero Component Structure Examined
+178 11:14a 🔄 SoftreeServicesHero Significantly Upgraded: Accessibility, rAF Timer, Touch, and Keyboard Support
+179 " 🔄 useSyncExternalStore Imported in SoftreeServicesHero for Reduced-Motion Detection
+180 11:15a 🔄 usePrefersReducedMotion Migrated to useSyncExternalStore Pattern
+181 " 🔄 rAF Timer Simplified: activeIdx Added to Deps, Separate Progress-Reset Effect Removed
+S50 Creative enhancement of SoftreeServicesHero carousel component — user asked for more creativity in the services hero section (May 8, 11:15 AM)
+182 11:33a 🟣 SoftreeServicesHero enhanced with split-flap animation and 3D parallax tilt
+S51 Create and integrate an interactive curved marquee component (CurvedLoop) into the homepage as a visual bridge between light process sections and dark social-proof sections. (May 8, 11:34 AM)
+S52 Fix carousel slider in SoftreeServicesHero — it looked bad and didn't fit the page (May 8, 11:39 AM)
+187 11:46a 🔴 SoftreeServicesHero carousel simplified — heavy 3D effects removed
+S53 Create LightCreativeImpact component — port Webflow "Home-1-About" section to Next.js/React with Framer Motion animations (May 8, 11:46 AM)
+188 5:23p 🟣 About Us Section Component Created from Webflow HTML
+189 5:26p 🟣 LightCreativeImpact.tsx Component Created
+S54 Add LightCreativeImpact section to the main homepage (May 8, 5:26 PM)
+190 6:03p 🔵 Homepage.tsx Uses Dynamic Lazy Loading for All Sections
+191 6:04p 🟣 LightCreativeImpact Section Added to Homepage
+S55 Homepage component listing + LightContactSection background overhaul (8-layer animated canvas) (May 8, 6:04 PM)
+192 10:41p 🔵 Homepage Light Components Directory Structure
+193 " 🔵 LightContactSection Component — Full Implementation
+194 10:44p 🟣 LightContactSection Background Completely Revamped with 8 Animated Layers
+S56 Replace LightContactSection background with creative WebGL Grainient shader background (May 8, 10:44 PM)
+195 10:50p 🔵 Grainient Component Found in Two Locations
+196 " 🔵 Grainient Component: WebGL Animated Grainy Gradient via OGL
+197 10:52p 🟣 LightContactSection Background Replaced with WebGL Grainient
+S57 Softree Homepage: Full cinematic fine-tune and production deployment prep — all components styled, accessibility fixed, SEO upgraded, FOUC eliminated (May 8, 10:52 PM)
+### May 9, 2026
+198 4:32p 🔵 Softree Homepage Architecture: 20+ Lazy-Loaded Sections with IntersectionObserver
+199 " 🔵 Project Has ui-ux-pro-max Skill Available in Both .claude and .windsurf
+200 4:33p 🔵 LightFAQExact Placeholder Color Mismatch: bg-white vs bg-[#f6f6f6]
+201 4:34p 🟣 Homepage.tsx Upgraded: Cinematic Chrome Layer (ScrollBar, BackToTop, Accessibility)
+202 4:35p 🔵 Nested &lt;main&gt; Accessibility Violation: page.tsx and Homepage.tsx Both Render &lt;main&gt;
+203 " 🔵 Softree Root Layout: GTM, Lenis Smooth Scroll, Orchids Analytics, and Visual Editor Bridge
+204 " 🔴 Fixed Nested &lt;main&gt; Landmark: page.tsx Outer Wrapper Changed to &lt;div&gt;
+205 " 🟣 Production-Grade SEO Metadata + Viewport Config Added to layout.tsx
+206 4:36p 🔵 globals.css: Tailwind v4 + OKLCH Color System + Multi-Font Design Foundation (1734 lines)
+207 7:02p ⚖️ Comprehensive Full-Site Audit Requested: Performance, Design, SEO, and Conversion
+208 7:04p 🔵 Component Audit Script Failed: Bash Variable Expansion Conflict
+209 " 🔵 Critical SEO Gap: All Core SEO Files Are Missing
+210 " 🔵 Next.js Config: Images Unoptimized Locally, TypeScript Errors Ignored in Build
+211 " 🔵 SOFTREE Tech Stack: Heavy Dependency Footprint with 3D, Animation, and Auth Libraries
+212 7:05p 🔵 Component Audit: Size, Heading Structure, and Animation Library Usage Across All Sections
+213 " 🔵 Raw img Tag Audit: Only SoftreeCohereNav Uses Unoptimized img — All Have alt Attributes
+S58 Comprehensive full-site audit of SOFTREE project covering performance, design, SEO, accessibility, and conversion optimization — every component analyzed without exception (May 9, 7:07 PM)
+214 8:21p ⚖️ Full-Stack Audit Requested for Conversion Optimization
+215 9:33p 🔵 Homepage.tsx: 16-Section Composition with DeferUntilInView Pattern
+216 " 🔵 LightContactSection: WebGL Grainient Background with Cursor-Tracked Spotlight
+217 " 🔵 Git Dubious Ownership Error in Codex Sandbox
+218 " 🟣 LightContactSection Redesigned: WebGL Dark Section → Light "Let's Talk" Card Layout
+219 9:36p 🟣 New SoftreeProjectShowcase Component: Sticky Hero + Scroll-Stacked Project Cards
+220 " 🟣 SoftreeProjectShowcase Integrated into Homepage as Section 11
+221 " 🔴 SoftreeProjectShowcase Sticky Layer Z-Index and First Card Visibility Fixed
+222 " 🔴 LightContactSection: Tailwind h-13 Fixed to h-[3.25rem] and Heading aria-label Added
+223 " 🔵 apply_patch Fails When Matching Lines Contain UTF-8 Encoded Em-Dashes in Comments
+224 " 🔵 Homepage.tsx Section Comments Have Duplicate Numbers After Failed Renumbering
+225 9:44p 🟣 New Testimonials Component Request — Mixed Design from Two Sources
+226 9:47p 🔴 SoftreeProjectShowcase `.home-project-area` changed from `relative` to `sticky` positioning
+227 " 🔄 SoftreeProjectShowcase project card overlay: glassmorphism removed, text-shadow added
+228 " ✅ Homepage placeholder and DeferUntilInView height for SoftreeProjectShowcase reduced from 600vh to 500vh
+229 " 🔵 SOFTREE Homepage section composition — 16 lazy-loaded sections with DeferUntilInView pattern
 
-Access 938k tokens of past work via get_observations([IDs]) or mem-search skill.
+Access 621k tokens of past work via get_observations([IDs]) or mem-search skill.
 </claude-mem-context>

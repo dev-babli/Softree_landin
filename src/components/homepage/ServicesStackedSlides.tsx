@@ -238,17 +238,16 @@ export function ServicesStackedSlides({ className = "" }: { className?: string }
       <style jsx>{`
         .ssx-root {
           width: 100%;
-          background: #000;
-          color: #fff;
+          background: #F3F0EE;
+          color: #141413;
           overflow-x: clip;
           font-family: "Outfit", sans-serif;
-          color-scheme: dark;
         }
 
         .ssx-intro {
           width: min(100% - 2rem, 1320px);
           margin: 0 auto;
-          padding: clamp(2.25rem, 5vw, 5rem) clamp(0.25rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.75rem);
+          padding: clamp(1rem, 3vw, 2.5rem) clamp(0.25rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.75rem);
           display: flex;
           align-items: flex-end;
           justify-content: space-between;
@@ -282,11 +281,12 @@ export function ServicesStackedSlides({ className = "" }: { className?: string }
         .ssx-intro h2 {
           max-width: 780px;
           margin: 0;
-          font-size: clamp(2.1rem, 5vw, 5.75rem);
-          font-weight: 900;
-          line-height: 0.94;
-          letter-spacing: 0;
+          font-size: clamp(28px, 4.4vw, 58px);
+          font-weight: 600;
+          line-height: 1.06;
+          letter-spacing: -0.02em;
           text-wrap: balance;
+          color: #141413;
         }
 
         .ssx-intro-action {
@@ -298,62 +298,12 @@ export function ServicesStackedSlides({ className = "" }: { className?: string }
           gap: 0.5rem;
           padding: 0.9rem 1.75rem;
           border-radius: 9999px;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-top-color: rgba(255, 87, 34, 0.5);
-          border-left-color: rgba(255, 255, 255, 0.3);
-          background: linear-gradient(135deg, rgba(255, 87, 34, 0.35) 0%, rgba(255, 255, 255, 0.05) 100%);
-          box-shadow:
-            0 14px 40px rgba(0, 0, 0, 0.5),
-            inset 0 1px 4px rgba(255, 255, 255, 0.4),
-            inset 0 -1px 3px rgba(0, 0, 0, 0.1);
-          color: #ffffff;
+          border: 1px solid rgba(0,0,0,0.1);
+          background: #fdfdfd;
+          color: #141413;
           font-size: 0.95rem;
           font-weight: 700;
-          letter-spacing: 0;
-          overflow: hidden;
-          position: relative;
           text-decoration: none;
-          touch-action: manipulation;
-          transition:
-            transform 300ms ease,
-            box-shadow 300ms ease,
-            border-color 300ms ease;
-        }
-
-        .ssx-intro-action::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: inherit;
-          background: linear-gradient(135deg, rgba(255, 87, 34, 0.7) 0%, transparent 40%, transparent 60%, rgba(255, 255, 255, 0.3) 100%);
-          mix-blend-mode: color-dodge;
-          pointer-events: none;
-        }
-
-        .ssx-intro-action::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 50%;
-          height: 100%;
-          background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
-          transform: skewX(-20deg);
-          animation: ssx-hyper-glare 5s infinite ease-in-out;
-          pointer-events: none;
-        }
-
-        .ssx-intro-action:hover {
-          transform: scale(1.05);
-          box-shadow:
-            0 18px 48px rgba(0, 0, 0, 0.52),
-            0 0 40px rgba(255, 107, 0, 0.18),
-            inset 0 1px 4px rgba(255, 255, 255, 0.42);
-        }
-
-        .ssx-intro-action:focus-visible {
-          outline: 2px solid #ff6b00;
-          outline-offset: 3px;
         }
 
         .ssx-slides-wrapper {
@@ -370,66 +320,78 @@ export function ServicesStackedSlides({ className = "" }: { className?: string }
           justify-content: center;
           box-sizing: border-box;
           overflow: hidden;
-          border-radius: 10px;
+          border-radius: 24px;
           isolation: isolate;
           transform-origin: center top;
           will-change: transform, opacity;
+          backdrop-filter: blur(40px) saturate(150%);
+          -webkit-backdrop-filter: blur(40px) saturate(150%);
         }
 
         .ssx-section + .ssx-section {
           margin-top: 0.75rem;
         }
 
-        .ssx-section::before {
+        .ssx-section::before,
+        .ssx-section::after {
           content: "";
           position: absolute;
           inset: 0;
-          z-index: 0;
           pointer-events: none;
         }
 
+        .ssx-section::after {
+          z-index: 2;
+          background: linear-gradient(110deg, transparent 15%, rgba(255,255,255,0.12) 30%, transparent 45%);
+          mix-blend-mode: color-dodge;
+        }
+
         .ssx-tone-light {
-          background: #f7f4ee;
-          color: #101010;
+          background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 100%);
+          color: #141413;
+          border: 1px solid rgba(255,255,255,0.8);
+          box-shadow: 0 30px 60px rgba(0,0,0,0.05), inset 0 2px 4px rgba(255,255,255,0.8), inset 0 -2px 10px rgba(200, 220, 255, 0.2);
         }
 
         .ssx-tone-light::before {
-          background:
-            radial-gradient(900px 520px at 18% 86%, rgba(255, 107, 0, 0.16), transparent 68%),
-            radial-gradient(700px 420px at 82% 12%, rgba(0, 0, 0, 0.08), transparent 62%);
+          background: radial-gradient(circle at 0% 0%, rgba(200, 220, 255, 0.4) 0%, transparent 50%), radial-gradient(circle at 100% 100%, rgba(255, 200, 220, 0.3) 0%, transparent 50%);
+          z-index: -1;
         }
 
         .ssx-tone-ember {
-          background: #11100e;
-          color: #fff;
+          background: linear-gradient(135deg, rgba(255, 88, 18, 0.8) 0%, rgba(200, 40, 0, 0.65) 100%);
+          color: #FFFFFF;
+          border: 1px solid rgba(255, 180, 100, 0.5);
+          box-shadow: 0 30px 60px rgba(255, 88, 18, 0.2), inset 0 2px 4px rgba(255, 200, 150, 0.8), inset 0 -4px 10px rgba(100, 20, 0, 0.4);
         }
 
         .ssx-tone-ember::before {
-          background:
-            radial-gradient(900px 560px at 22% 80%, rgba(255, 107, 0, 0.16), transparent 68%),
-            radial-gradient(800px 540px at 82% 18%, rgba(255, 255, 255, 0.05), transparent 65%);
+          background: radial-gradient(ellipse at top left, rgba(255, 180, 100, 0.6) 0%, transparent 60%), radial-gradient(ellipse at bottom right, rgba(255, 50, 0, 0.4) 0%, transparent 60%);
+          z-index: -1;
         }
 
         .ssx-tone-dark {
-          background: #050506;
-          color: #fff;
+          background: linear-gradient(135deg, rgba(20, 20, 22, 0.85) 0%, rgba(10, 10, 12, 0.95) 100%);
+          color: #FFFFFF;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.2), inset 0 -4px 20px rgba(50, 100, 255, 0.2);
         }
 
         .ssx-tone-dark::before {
-          background:
-            radial-gradient(760px 520px at 15% 85%, rgba(10, 228, 72, 0.09), transparent 70%),
-            radial-gradient(980px 540px at 80% 12%, rgba(255, 255, 255, 0.06), transparent 70%);
+          background: radial-gradient(circle at 20% 0%, rgba(100, 150, 255, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 100%, rgba(150, 50, 255, 0.15) 0%, transparent 50%);
+          z-index: -1;
         }
 
         .ssx-tone-violet {
-          background: #16121e;
-          color: #fff;
+          background: linear-gradient(135deg, rgba(0, 100, 255, 0.75) 0%, rgba(0, 40, 150, 0.85) 100%);
+          color: #FFFFFF;
+          border: 1px solid rgba(150, 220, 255, 0.4);
+          box-shadow: 0 30px 60px rgba(0, 85, 255, 0.3), inset 0 2px 4px rgba(200, 240, 255, 0.6), inset 0 -4px 15px rgba(0, 30, 100, 0.5);
         }
 
         .ssx-tone-violet::before {
-          background:
-            radial-gradient(860px 540px at 22% 82%, rgba(255, 107, 0, 0.13), transparent 68%),
-            radial-gradient(760px 460px at 82% 20%, rgba(170, 136, 255, 0.18), transparent 68%);
+          background: radial-gradient(circle at 10% 10%, rgba(150, 220, 255, 0.6) 0%, transparent 60%), radial-gradient(circle at 90% 90%, rgba(0, 50, 200, 0.5) 0%, transparent 60%);
+          z-index: -1;
         }
 
         .ssx-section-content {
@@ -460,39 +422,34 @@ export function ServicesStackedSlides({ className = "" }: { className?: string }
 
         .ssx-phase {
           display: inline-flex;
-          align-items: baseline;
-          gap: 0.8rem;
-          color: color-mix(in srgb, currentColor 42%, transparent);
-          font-size: 0.7rem;
-          font-weight: 900;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.4rem 1rem;
+          border-radius: 9999px;
+          border: 1px solid currentColor;
+          opacity: 0.8;
+          font-size: 11px;
+          font-weight: 600;
           letter-spacing: 0.22em;
           text-transform: uppercase;
         }
 
-        .ssx-index {
-          color: #ff6b00;
-          font-size: clamp(1.25rem, 2vw, 1.85rem);
-          letter-spacing: -0.02em;
-        }
-
         .ssx-copy h3 {
-          max-width: 100%;
           margin: 0;
-          font-size: clamp(3.4rem, 8vw, 8.75rem);
-          font-weight: 900;
-          line-height: 0.88;
-          letter-spacing: 0;
-          overflow-wrap: normal;
-          text-wrap: balance;
+          font-size: clamp(28px, 4.4vw, 58px);
+          font-weight: 600;
+          line-height: 1.06;
+          letter-spacing: -0.02em;
         }
 
         .ssx-headline {
           max-width: 24ch;
           margin: 0;
-          font-size: clamp(1.35rem, 2vw, 2.35rem);
-          font-weight: 800;
-          line-height: 1.08;
-          letter-spacing: 0;
+          font-size: clamp(1.25rem, 2vw, 1.5rem);
+          font-weight: 500;
+          line-height: 1.35;
+          letter-spacing: -0.01em;
+          opacity: 0.85;
           text-wrap: balance;
         }
 
@@ -531,7 +488,6 @@ export function ServicesStackedSlides({ className = "" }: { className?: string }
           text-transform: uppercase;
           text-align: left;
           overflow-wrap: anywhere;
-          backdrop-filter: blur(18px);
         }
 
         .ssx-actions {
@@ -543,117 +499,33 @@ export function ServicesStackedSlides({ className = "" }: { className?: string }
 
         .ssx-action-primary,
         .ssx-action-secondary {
-          min-height: 3.5rem;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          padding: 0.9rem 1.75rem;
-          border-radius: 9999px;
-          font-size: 0.95rem;
-          font-weight: 700;
-          letter-spacing: 0;
-          text-decoration: none;
-          touch-action: manipulation;
-          position: relative;
-          overflow: hidden;
-          transition:
-            transform 300ms ease,
-            box-shadow 300ms ease,
-            border-color 300ms ease,
-            color 300ms ease;
+          transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .ssx-action-primary {
-          background: linear-gradient(135deg, rgba(255, 87, 34, 0.35) 0%, rgba(255, 255, 255, 0.05) 100%);
-          backdrop-filter: blur(28px) saturate(180%);
-          -webkit-backdrop-filter: blur(28px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-top-color: rgba(255, 87, 34, 0.5);
-          border-left-color: rgba(255, 255, 255, 0.3);
-          box-shadow:
-            0 14px 40px rgba(0, 0, 0, 0.5),
-            inset 0 1px 4px rgba(255, 255, 255, 0.4),
-            inset 0 -1px 3px rgba(0, 0, 0, 0.1);
+          background: #141413;
           color: #ffffff;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+          border: 1px solid #141413;
         }
 
         .ssx-action-secondary {
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-          backdrop-filter: blur(40px) saturate(200%);
-          -webkit-backdrop-filter: blur(40px) saturate(200%);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow:
-            inset 0 1px 2px rgba(255, 255, 255, 0.4),
-            inset 0 -1px 3px rgba(0, 0, 0, 0.3),
-            0 8px 32px rgba(0, 0, 0, 0.3);
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .ssx-action-primary::before,
-        .ssx-action-secondary::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: inherit;
-          mix-blend-mode: color-dodge;
-          pointer-events: none;
-        }
-
-        .ssx-action-primary::before {
-          background: linear-gradient(135deg, rgba(255, 87, 34, 0.7) 0%, transparent 40%, transparent 60%, rgba(255, 255, 255, 0.3) 100%);
-        }
-
-        .ssx-action-secondary::before {
-          background: linear-gradient(135deg, rgba(132, 152, 230, 0.5) 0%, transparent 50%, rgba(56, 189, 248, 0.3) 100%);
-        }
-
-        .ssx-action-primary::after,
-        .ssx-action-secondary::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 50%;
-          height: 100%;
-          background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.28) 50%, transparent 100%);
-          transform: skewX(-20deg);
-          animation: ssx-hyper-glare 5s infinite ease-in-out;
-          pointer-events: none;
-        }
-
-        .ssx-action-primary:hover,
-        .ssx-action-secondary:hover {
-          transform: scale(1.05);
+          background: transparent;
+          color: currentColor;
+          border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
         }
 
         .ssx-action-primary:hover {
-          box-shadow:
-            0 18px 48px rgba(0, 0, 0, 0.52),
-            0 0 40px rgba(255, 107, 0, 0.18),
-            inset 0 1px 4px rgba(255, 255, 255, 0.42);
+          background: #FF5812;
+          border-color: #FF5812;
+          transform: translateY(-1px);
+          box-shadow: 0 6px 20px rgba(255,88,18,0.2);
         }
 
         .ssx-action-secondary:hover {
-          color: #ffffff;
-          box-shadow:
-            inset 0 1px 2px rgba(255, 255, 255, 0.45),
-            inset 0 -1px 3px rgba(0, 0, 0, 0.3),
-            0 12px 36px rgba(56, 189, 248, 0.16);
-        }
-
-        .ssx-tone-light .ssx-action-secondary {
-          color: #141414;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0.2) 100%);
-          border-color: rgba(10, 10, 10, 0.08);
-          box-shadow:
-            inset 0 1px 2px rgba(255, 255, 255, 0.72),
-            inset 0 -1px 3px rgba(0, 0, 0, 0.1),
-            0 10px 28px rgba(0, 0, 0, 0.12);
-        }
-
-        .ssx-tone-light .ssx-action-secondary:hover {
-          color: #000000;
+          background: color-mix(in srgb, currentColor 5%, transparent);
+          border-color: color-mix(in srgb, currentColor 40%, transparent);
+          transform: translateY(-1px);
         }
 
         .ssx-action-icon {

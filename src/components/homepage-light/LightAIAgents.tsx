@@ -5,8 +5,44 @@ import { motion, AnimatePresence } from "framer-motion"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
-import { color, shadow, radius, BLOCK_GRADIENT } from "./tokens"
+import { color as lightColor, radius } from "./tokens"
 import { Eyebrow, InkPill, ArrowRight, GrainOverlay } from "./primitives"
+
+/* Dark mode tokens */
+const dk = {
+  bg: "#0a0a1a",
+  card: "rgba(255,255,255,0.04)",
+  cardBorder: "rgba(255,255,255,0.08)",
+  ink: "#ffffff",
+  body: "rgba(255,255,255,0.65)",
+  muted: "rgba(255,255,255,0.40)",
+  gridLine: "rgba(255,255,255,0.04)",
+  ivory: "rgba(255,255,255,0.03)",
+  lifted: "rgba(255,255,255,0.05)",
+  ghostCream: "rgba(255,255,255,0.08)",
+  dustTaupe: "rgba(255,255,255,0.12)",
+  slate: "rgba(255,255,255,0.45)",
+  charcoal: "rgba(255,255,255,0.70)",
+} as const
+
+const color = {
+  ...lightColor,
+  // Override light tokens for dark mode
+  ink: dk.ink,
+  charcoal: dk.charcoal,
+  slate: dk.slate,
+  canvas: dk.bg,
+  lifted: dk.lifted,
+  ivory: dk.ivory,
+  ghostCream: dk.ghostCream,
+  dustTaupe: dk.dustTaupe,
+} as const
+
+const shadow = {
+  golden: "0 30px 80px -20px rgba(0,0,0,0.5)",
+} as const
+
+const BLOCK_GRADIENT = "linear-gradient(90deg, #1852FF 0%, #6C42F5 50%, #38BDF8 100%)"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -364,9 +400,9 @@ export default function LightAIAgents() {
     <section
       ref={sectionRef}
       className="relative w-full overflow-hidden"
-      style={{ background: color.canvas }}
+      style={{ background: dk.bg }}
     >
-      <GrainOverlay opacity={0.05} blendMode="multiply" />
+      <GrainOverlay opacity={0.035} blendMode="overlay" />
 
       <div className="relative mx-auto w-full max-w-[1280px] px-5 pt-24 pb-24 md:px-8 md:pt-32 md:pb-32">
         {/* Header */}
@@ -487,16 +523,16 @@ export default function LightAIAgents() {
             <div
               className="absolute right-0 top-[5%] h-[88%] w-[60%] z-0 overflow-hidden"
               style={{
-                border: `1px solid ${color.ghostCream}`,
+                border: `1px solid ${dk.ghostCream}`,
                 borderRadius: 6,
-                background: color.ivory,
+                background: "rgba(255,255,255,0.02)",
               }}
             >
               <div
                 className="flex items-center gap-2 px-3 py-2"
                 style={{
-                  background: color.ghostCream,
-                  borderBottom: `1px solid ${color.dustTaupe}`,
+                  background: dk.ghostCream,
+                  borderBottom: `1px solid ${dk.dustTaupe}`,
                 }}
               >
                 <div className="flex items-center gap-1.5">
@@ -541,8 +577,8 @@ export default function LightAIAgents() {
                 style={{
                   fontSize: 10,
                   lineHeight: 1.7,
-                  background: color.ivory,
-                  color: color.charcoal,
+                  background: "rgba(255,255,255,0.02)",
+                  color: dk.charcoal,
                 }}
               >
                 <div
@@ -552,7 +588,7 @@ export default function LightAIAgents() {
                     lineHeight: 1.2,
                     fontFamily: "monospace",
                     whiteSpace: "pre",
-                    color: color.flame,
+                    color: "#1852FF",
                   }}
                 >
                   {`  ███████╗ ██████╗ ███████╗████████╗██████╗ ███████╗███████╗
@@ -569,7 +605,7 @@ export default function LightAIAgents() {
                 </div>
                 <div
                   className="mt-6 flex items-center gap-1.5 pt-3"
-                  style={{ borderTop: `1px solid ${color.dustTaupe}` }}
+                  style={{ borderTop: `1px solid ${dk.dustTaupe}` }}
                 >
                   <span style={{ color: color.ink }}>❯</span>
                   <span style={{ color: color.slate }}>build &quot;onboarding agent&quot;</span>

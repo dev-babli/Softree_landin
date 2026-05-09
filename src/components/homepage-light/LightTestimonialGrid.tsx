@@ -24,12 +24,12 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 function GradientClient() {
   // C(white) l(#E2E2CF) i(#91D991) e(#5ADDB4) n(#2FCFE4) t(#1498EB)
   const letters = [
-    { ch: "C", color: "#FFFFFF" },
-    { ch: "l", color: "#E2E2CF" },
-    { ch: "i", color: "#91D991" },
-    { ch: "e", color: "#5ADDB4" },
-    { ch: "n", color: "#2FCFE4" },
-    { ch: "t", color: "#1498EB" },
+    { ch: "C", color: "#111111" },
+    { ch: "l", color: "#1F1F2E" },
+    { ch: "i", color: "#1A8F3D" },
+    { ch: "e", color: "#0E9C7E" },
+    { ch: "n", color: "#0C7EA8" },
+    { ch: "t", color: "#1852FF" },
   ]
   return (
     <>
@@ -45,14 +45,14 @@ function GradientClient() {
 function GradientSuccess() {
   // Deep blue cascade through "Success."
   const letters = [
-    { ch: "S", color: "#0F70E6" },
-    { ch: "u", color: "#0C5BE4" },
-    { ch: "c", color: "#0B52E0" },
-    { ch: "c", color: "#0B4EE0" },
-    { ch: "e", color: "#0B4EE0" },
-    { ch: "s", color: "#0B4EE0" },
-    { ch: "s", color: "#0B4EE0" },
-    { ch: ".", color: "#0A4CE0" },
+    { ch: "S", color: "#1852FF" },
+    { ch: "u", color: "#1547EE" },
+    { ch: "c", color: "#1342DE" },
+    { ch: "c", color: "#1342DE" },
+    { ch: "e", color: "#1342DE" },
+    { ch: "s", color: "#1342DE" },
+    { ch: "s", color: "#1342DE" },
+    { ch: ".", color: "#103CCE" },
   ]
   return (
     <>
@@ -68,9 +68,9 @@ function GradientSuccess() {
 /* ── Card shells ───────────────────────────────────────────────────── */
 
 const cardShell =
-  "relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.02] backdrop-blur-sm"
+  "relative overflow-hidden rounded-2xl border border-[#111]/[0.08] bg-white"
 const cardShadow =
-  "inset 0 1px 0 rgba(255,255,255,0.04), 0 20px 50px -25px rgba(0,0,0,0.7)"
+  "inset 0 1px 0 rgba(255,255,255,1), 0 1px 0 rgba(17,17,17,0.04), 0 20px 50px -28px rgba(17,17,17,0.18)"
 
 /* ── Client row (avatar + name + rating) ───────────────────────────── */
 
@@ -94,25 +94,25 @@ function ClientRow({
           className="flex h-10 w-10 items-center justify-center rounded-full text-[13px] font-bold text-white"
           style={{
             background: `linear-gradient(145deg, ${gradientFrom}, ${gradientTo})`,
-            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25)",
+            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.35)",
           }}
         >
           {initial}
         </div>
         <div>
-          <div className="text-[13.5px] font-semibold tracking-tight text-white">
+          <div className="text-[13.5px] font-semibold tracking-tight text-[#111]">
             {name}
           </div>
-          <div className="text-[11.5px] text-white/45">{role}</div>
+          <div className="text-[11.5px] text-[#111]/55">{role}</div>
         </div>
       </div>
       <div className="flex items-center gap-1.5">
-        <span className="text-[10.5px] font-medium text-white/70">4.9</span>
+        <span className="text-[10.5px] font-medium text-[#111]/65">4.9</span>
         <Star
-          className="h-3 w-3 fill-[#2B7FFF] text-[#2B7FFF]"
+          className="h-3 w-3 fill-[#1852FF] text-[#1852FF]"
           strokeWidth={0}
         />
-        <span className="text-[10.5px] font-medium text-white/70">Rating</span>
+        <span className="text-[10.5px] font-medium text-[#111]/65">Rating</span>
       </div>
     </div>
   )
@@ -136,7 +136,7 @@ function BigStatCard() {
         className="pointer-events-none absolute -left-16 -top-16 h-48 w-48 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(43,127,255,0.25) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(24,82,255,0.10) 0%, transparent 70%)",
           filter: "blur(30px)",
         }}
       />
@@ -144,7 +144,7 @@ function BigStatCard() {
         <div
           className="text-[clamp(56px,7vw,88px)] font-semibold leading-[0.95] tracking-[-0.04em]"
           style={{
-            background: "linear-gradient(135deg, #FFFFFF 0%, #2B7FFF 100%)",
+            background: "linear-gradient(135deg, #111111 0%, #1852FF 100%)",
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             color: "transparent",
@@ -152,7 +152,7 @@ function BigStatCard() {
         >
           100K+
         </div>
-        <p className="mt-3 max-w-[280px] text-[15px] leading-[1.5] text-white/65">
+        <p className="mt-3 max-w-[280px] text-[15px] leading-[1.5] text-[#111]/65">
           Helping Businesses Automate and Streamline with AI
         </p>
       </div>
@@ -165,8 +165,8 @@ function BigStatCard() {
           gradientFrom="#ff8a5b"
           gradientTo="#c73d1a"
         />
-        <div className="mt-4 rounded-lg border border-white/5 bg-white/[0.015] p-4">
-          <p className="text-[13px] leading-[1.55] text-white/55">
+        <div className="mt-4 rounded-lg border border-[#111]/[0.06] bg-[#f6f6f6] p-4">
+          <p className="text-[13px] leading-[1.55] text-[#111]/65">
             Easy to use, incredibly powerful, and made to scale — helping teams
             move quicker and perform at their best.
           </p>
@@ -203,7 +203,7 @@ function StatCard({
         className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(43,127,255,0.22) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(24,82,255,0.10) 0%, transparent 70%)",
           filter: "blur(24px)",
         }}
       />
@@ -212,8 +212,8 @@ function StatCard({
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg"
           style={{
             background:
-              "linear-gradient(145deg, rgba(43,127,255,0.25), rgba(43,127,255,0.05))",
-            border: "1px solid rgba(43,127,255,0.3)",
+              "linear-gradient(145deg, rgba(24,82,255,0.12), rgba(24,82,255,0.04))",
+            border: "1px solid rgba(24,82,255,0.22)",
           }}
         >
           {icon}
@@ -223,7 +223,7 @@ function StatCard({
             className="text-[34px] font-semibold leading-[0.95] tracking-[-0.03em]"
             style={{
               background:
-                "linear-gradient(135deg, #FFFFFF 0%, #2B7FFF 100%)",
+                "linear-gradient(135deg, #111111 0%, #1852FF 100%)",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
               color: "transparent",
@@ -231,12 +231,12 @@ function StatCard({
           >
             {value}
           </div>
-          <div className="mt-1 text-[13px] font-medium text-white/70">
+          <div className="mt-1 text-[13px] font-medium text-[#111]/70">
             {label}
           </div>
         </div>
       </div>
-      <p className="relative mt-5 text-[12.5px] text-white/50">{sub}</p>
+      <p className="relative mt-5 text-[12.5px] text-[#111]/55">{sub}</p>
     </motion.div>
   )
 }
@@ -274,7 +274,7 @@ function QuoteCard({
         gradientFrom={gradientFrom}
         gradientTo={gradientTo}
       />
-      <p className="mt-5 text-[13px] leading-[1.55] text-white/55">{quote}</p>
+      <p className="mt-5 text-[13px] leading-[1.55] text-[#111]/65">{quote}</p>
     </motion.div>
   )
 }
@@ -283,14 +283,14 @@ function QuoteCard({
 
 export default function LightTestimonialGrid() {
   return (
-    <section className="relative isolate w-full overflow-hidden bg-[#050812] py-24 sm:py-32 md:py-36">
+    <section className="relative isolate w-full overflow-hidden bg-[#f6f6f6] py-24 sm:py-32 md:py-36">
       {/* Ambient glow */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(70% 60% at 50% 0%, rgba(43,127,255,0.06) 0%, transparent 60%)",
+            "radial-gradient(70% 60% at 50% 0%, rgba(24,82,255,0.05) 0%, transparent 60%)",
         }}
       />
 
@@ -304,18 +304,18 @@ export default function LightTestimonialGrid() {
           className="mb-14 flex flex-col items-center text-center"
         >
           <span
-            className="mb-5 inline-block rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-tight text-white"
+            className="mb-5 inline-block rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-tight text-[#1852FF]"
             style={{
-              background: "rgba(43,127,255,0.15)",
-              border: "1px solid rgba(43,127,255,0.35)",
+              background: "rgba(24,82,255,0.08)",
+              border: "1px solid rgba(24,82,255,0.22)",
             }}
           >
             Testimonial
           </span>
-          <h2 className="max-w-[820px] text-[clamp(32px,5vw,54px)] font-semibold leading-[1.1] tracking-[-0.02em] text-white">
+          <h2 className="max-w-[820px] text-[clamp(32px,5vw,54px)] font-semibold leading-[1.1] tracking-[-0.02em] text-[#111]">
             Real Results. Real <GradientClient /> <GradientSuccess />
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[14.5px] leading-[1.6] text-white/55">
+          <p className="mx-auto mt-4 max-w-lg text-[14.5px] leading-[1.6] text-[#111]/55">
             Authentic experiences from the people we serve.
           </p>
         </motion.div>
@@ -333,7 +333,7 @@ export default function LightTestimonialGrid() {
             label="Revenue Increase"
             sub="Automated Inventory Updates"
             icon={
-              <TrendingUp className="h-5 w-5 text-[#2B7FFF]" strokeWidth={2} />
+              <TrendingUp className="h-5 w-5 text-[#1852FF]" strokeWidth={2} />
             }
             delay={0.1}
           />
@@ -366,15 +366,15 @@ export default function LightTestimonialGrid() {
             label="Weekly Saved"
             sub="Automated Data Entry"
             icon={
-              <Clock className="h-5 w-5 text-[#2B7FFF]" strokeWidth={2} />
+              <Clock className="h-5 w-5 text-[#1852FF]" strokeWidth={2} />
             }
             delay={0.4}
           />
         </div>
 
         {/* Subtle sparkle accent */}
-        <div className="pointer-events-none absolute right-10 top-16 opacity-30">
-          <Sparkles className="h-5 w-5 text-[#2B7FFF]" />
+        <div className="pointer-events-none absolute right-10 top-16 opacity-50">
+          <Sparkles className="h-5 w-5 text-[#1852FF]" />
         </div>
       </div>
     </section>

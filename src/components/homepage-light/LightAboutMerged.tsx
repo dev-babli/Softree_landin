@@ -6,6 +6,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import Grainient from "./Grainient"
+import { EASE_T } from "@/lib/motion"
+import { SpotlightCard } from "@/components/shared/SpotlightCard"
+
+const EASE_OUT = EASE_T.silk
 
 function AnimatedNumber({
   value,
@@ -22,7 +26,9 @@ function AnimatedNumber({
   const isInView = useInView(ref, { once: true, margin: "-50px" })
   const [hasAnimated, setHasAnimated] = useState(false)
 
-  const spring = useSpring(0, {
+  /* Start at 60% of target so the counter never visibly shows "0" —
+   * subliminally registers as "0 clients". 60% feels like real momentum. */
+  const spring = useSpring(Math.round(value * 0.6), {
     stiffness: 50,
     damping: 20,
     restDelta: 0.001,
@@ -75,7 +81,7 @@ function TextReveal({
         transition={{
           duration: 0.8,
           delay,
-          ease: [0.22, 1, 0.36, 1],
+          ease: EASE_OUT,
         }}
       >
         {children}
@@ -108,7 +114,7 @@ function WordReveal({
             transition={{
               duration: 0.6,
               delay: delay + i * 0.05,
-              ease: [0.22, 1, 0.36, 1],
+              ease: EASE_OUT,
             }}
           >
             {word}
@@ -125,7 +131,7 @@ function AnimatedButton({ href = "/about-us" }: { href?: string }) {
   return (
     <Link
       href={href}
-      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-[#1a1a1a] px-5 py-2.5"
+      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-[#1a1a1a] px-5 py-2.5 shadow-[0_8px_24px_-8px_rgba(26,26,26,0.4)] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-px hover:shadow-[0_14px_30px_-10px_rgba(26,26,26,0.55)] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1852FF]/40"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -133,22 +139,22 @@ function AnimatedButton({ href = "/about-us" }: { href?: string }) {
         <motion.span
           className="block text-sm font-medium text-white"
           animate={{ y: isHovered ? "-100%" : "0%" }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: EASE_OUT }}
         >
-          READ MORE
+          See our case studies
         </motion.span>
         <motion.span
-          className="absolute left-0 top-full block text-sm font-medium text-white"
+          className="absolute left-0 top-full block whitespace-nowrap text-sm font-medium text-white"
           animate={{ y: isHovered ? "-100%" : "0%" }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: EASE_OUT }}
         >
-          READ MORE
+          See our case studies
         </motion.span>
       </div>
       <motion.div
         className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20"
-        animate={{ x: isHovered ? 4 : 0 }}
-        transition={{ duration: 0.3 }}
+        animate={{ x: isHovered ? 4 : 0, rotate: isHovered ? 45 : 0 }}
+        transition={{ duration: 0.3, ease: EASE_OUT }}
       >
         <ArrowUpRight className="h-3 w-3 text-white" />
       </motion.div>
@@ -169,7 +175,7 @@ export default function LightAboutMerged() {
   ]
 
   return (
-    <section ref={containerRef} id="about-us" className="w-full bg-[#F8F9FC] py-20 lg:py-28">
+    <section ref={containerRef} id="about-us" className="w-full bg-[#F8F9FC] py-20 md:py-24 lg:py-28">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         {/* Top Section - Award Count & Content */}
         <div className="mb-20 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
@@ -178,7 +184,7 @@ export default function LightAboutMerged() {
             className="relative"
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, ease: EASE_OUT }}
           >
             {/* Badge */}
             <motion.div
@@ -194,10 +200,10 @@ export default function LightAboutMerged() {
             {/* Award Count */}
             <div className="relative">
               <motion.span
-                className="text-[120px] font-bold leading-none tracking-tighter text-[#0a0a1a] md:text-[160px] lg:text-[180px]"
-                initial={{ opacity: 0, scale: 0.8 }}
+                className="text-[120px] font-bold leading-none tracking-tighter tabular-nums text-[#0a0a1a] md:text-[160px] lg:text-[180px]"
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.8, delay: 0.3, ease: EASE_OUT }}
               >
                 <AnimatedNumber value={40} delay={0.5} />
                 <span className="text-[#1852FF]">+</span>
@@ -241,7 +247,7 @@ export default function LightAboutMerged() {
             className="flex flex-col justify-center lg:border-l lg:border-[#0a0a1a]/10 lg:pl-16"
             initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 0.2, ease: EASE_OUT }}
           >
             <TextReveal delay={0.3}>
               <h3 className="mb-6 text-2xl font-bold leading-tight tracking-tight text-[#0a0a1a] md:text-3xl lg:text-4xl">
@@ -279,12 +285,12 @@ export default function LightAboutMerged() {
         >
           {/* Mission */}
           <motion.div
-            className="relative cursor-pointer overflow-hidden rounded-2xl"
+            className="group/card relative cursor-pointer overflow-hidden rounded-2xl shadow-[0_12px_40px_-16px_rgba(10,10,26,0.18)] transition-shadow duration-500 hover:shadow-[0_24px_60px_-16px_rgba(10,10,26,0.28)]"
             initial={false}
             animate={{
               flex: hoveredImage === 0 ? 1.5 : hoveredImage === 1 ? 0.67 : 0.67,
             }}
-            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.5, ease: EASE_OUT }}
             onMouseEnter={() => setHoveredImage(0)}
             onMouseLeave={() => setHoveredImage(null)}
           >
@@ -329,12 +335,12 @@ export default function LightAboutMerged() {
 
           {/* Vision */}
           <motion.div
-            className="relative cursor-pointer overflow-hidden rounded-2xl"
+            className="group/card relative cursor-pointer overflow-hidden rounded-2xl shadow-[0_12px_40px_-16px_rgba(10,10,26,0.18)] transition-shadow duration-500 hover:shadow-[0_24px_60px_-16px_rgba(10,10,26,0.28)]"
             initial={false}
             animate={{
               flex: hoveredImage === 1 ? 1.5 : hoveredImage === 0 ? 0.67 : 1,
             }}
-            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 0.5, ease: EASE_OUT }}
             onMouseEnter={() => setHoveredImage(1)}
             onMouseLeave={() => setHoveredImage(null)}
           >
@@ -400,7 +406,7 @@ export default function LightAboutMerged() {
               >
                 <div className="p-4 first:pl-0 lg:px-8 lg:p-0">
                   {/* Animated Number */}
-                  <div className="mb-2 text-4xl font-bold text-[#0a0a1a] lg:text-5xl">
+                  <div className="mb-2 text-4xl font-bold tabular-nums text-[#0a0a1a] lg:text-5xl">
                     <AnimatedNumber
                       value={stat.value}
                       prefix={stat.prefix || ""}
@@ -444,7 +450,7 @@ export default function LightAboutMerged() {
         >
           {/* Our Approach */}
           <motion.div
-            className="relative aspect-[4/3] overflow-hidden rounded-2xl lg:col-span-1"
+            className="relative aspect-4/3 overflow-hidden rounded-2xl lg:col-span-1"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -494,36 +500,48 @@ export default function LightAboutMerged() {
           <div className="grid grid-cols-2 gap-4 lg:col-span-2">
             {/* 95% */}
             <motion.div
-              className="rounded-2xl bg-white p-6 shadow-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: EASE_OUT }}
             >
-              <div className="mb-2 flex items-baseline">
-                <span className="text-5xl font-bold text-[#1852FF] md:text-6xl">
-                  <AnimatedNumber value={95} delay={0.5} />
-                </span>
-                <span className="text-5xl font-bold text-[#1852FF] md:text-6xl">%</span>
-              </div>
-              <p className="text-sm text-[#0a0a1a]/70">Clients Satisfied and Repeating</p>
+              <SpotlightCard
+                color="rgba(24, 82, 255, 0.55)"
+                intensity={0.6}
+                radius={280}
+                className="rounded-2xl border border-[#0a0a1a]/5 bg-white p-6 shadow-[0_8px_28px_-12px_rgba(10,10,26,0.12)] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:shadow-[0_24px_50px_-14px_rgba(24,82,255,0.25)]"
+              >
+                <div className="mb-2 flex items-baseline tabular-nums">
+                  <span className="text-5xl font-bold text-[#1852FF] md:text-6xl">
+                    <AnimatedNumber value={95} delay={0.5} />
+                  </span>
+                  <span className="text-5xl font-bold text-[#1852FF] md:text-6xl">%</span>
+                </div>
+                <p className="text-sm text-[#0a0a1a]/70">Clients Satisfied and Repeating</p>
+              </SpotlightCard>
             </motion.div>
 
             {/* 125+ */}
             <motion.div
-              className="rounded-2xl bg-white p-6 shadow-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: EASE_OUT }}
             >
-              <div className="mb-2 flex items-baseline">
-                <span className="text-5xl font-bold text-[#0a0a1a] md:text-6xl">
-                  <AnimatedNumber value={125} delay={0.6} />
-                </span>
-                <span className="text-5xl font-bold text-[#1852FF] md:text-6xl">+</span>
-              </div>
-              <p className="text-sm text-[#0a0a1a]/70">Projects Completed In 24 Countries</p>
+              <SpotlightCard
+                color="rgba(24, 82, 255, 0.55)"
+                intensity={0.6}
+                radius={280}
+                className="rounded-2xl border border-[#0a0a1a]/5 bg-white p-6 shadow-[0_8px_28px_-12px_rgba(10,10,26,0.12)] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:shadow-[0_24px_50px_-14px_rgba(24,82,255,0.25)]"
+              >
+                <div className="mb-2 flex items-baseline tabular-nums">
+                  <span className="text-5xl font-bold text-[#0a0a1a] md:text-6xl">
+                    <AnimatedNumber value={125} delay={0.6} />
+                  </span>
+                  <span className="text-5xl font-bold text-[#1852FF] md:text-6xl">+</span>
+                </div>
+                <p className="text-sm text-[#0a0a1a]/70">Projects Completed In 24 Countries</p>
+              </SpotlightCard>
             </motion.div>
           </div>
         </motion.div>

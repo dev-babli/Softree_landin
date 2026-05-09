@@ -6,7 +6,7 @@ import InfoSection from "./InfoSection";
 
 export default function FeaturesShowcase() {
   return (
-    <div className="relative w-full bg-[#f6f6f6] flex flex-col overflow-hidden">
+    <div className="relative w-full bg-[#F3F0EE] flex flex-col overflow-hidden">
       <div className="relative z-30">
         <ProductArcSlider />
       </div>

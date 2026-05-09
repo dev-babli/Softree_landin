@@ -316,11 +316,11 @@ function IndustriesPanel() {
         <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-wider relative mb-4 text-[#787878]">Selected Work</p>
           <ul className="flex list-none flex-col gap-y-1">
-            <LinkItem href="/case-studies/web" label="Web Platforms" />
-            <LinkItem href="/case-studies/mobile" label="Mobile Products" />
-            <LinkItem href="/case-studies/ai" label="AI Systems" />
-            <LinkItem href="/case-studies/power-apps" label="Power Apps" />
-            <LinkItem href="/case-studies/sharepoint" label="SharePoint" />
+            <LinkItem href="/services/digital-workspace/web-app-development" label="Web Platforms" />
+            <LinkItem href="/services/digital-workspace/mobile-app-development" label="Mobile Products" />
+            <LinkItem href="/services/ai-intelligence/agentic-ai" label="AI Systems" />
+            <LinkItem href="/services/business-applications/power-apps" label="Power Apps" />
+            <LinkItem href="/services/digital-workspace/sharepoint" label="SharePoint" />
           </ul>
         </div>
         <div className="min-w-0">
@@ -332,7 +332,7 @@ function IndustriesPanel() {
             <LinkItem href="/contact" label="Scope a similar project" />
           </ul>
         </div>
-        <FullImageCard href="/case-studies/web" imgSrc={SRCSET.modelVault.src} imgSrcSet={SRCSET.modelVault.srcSet} title="Case Studies" desc="See how Softree turns complex business needs into shipped digital products." />
+        <FullImageCard href="/services" imgSrc={SRCSET.modelVault.src} imgSrcSet={SRCSET.modelVault.srcSet} title="Services" desc="See how Softree turns complex business needs into shipped digital products." />
       </div>
       <div className="mt-5 flex w-full justify-end gap-x-10 border-t border-[#e0e0e0] py-4 pr-1">
         <BottomLink href="/services" label="Explore Services" />
@@ -378,8 +378,8 @@ function ResourcesPanel() {
           <p className="text-xs font-semibold uppercase tracking-wider relative mb-4 text-[#787878]">Start Here</p>
           <ul className="flex list-none flex-col gap-y-1">
             <LinkItem href="/services" label="Services Overview" />
-            <LinkItem href="/case-studies/web" label="Web Case Study" />
-            <LinkItem href="/case-studies/ai" label="AI Case Study" />
+            <LinkItem href="/services/digital-workspace/web-app-development" label="Web Apps" />
+            <LinkItem href="/services/ai-intelligence/agentic-ai" label="AI Solutions" />
             <LinkItem href="/about-us" label="About Softree" />
           </ul>
         </div>
@@ -415,7 +415,7 @@ function CompanyPanel() {
           <ul className="flex list-none flex-col gap-y-1">
             <LinkItem href="/contact" label="Start a Project" />
             <LinkItem href="/services" label="Explore Services" />
-            <LinkItem href="/case-studies/web" label="View Work" />
+            <LinkItem href="/services" label="View Services" />
           </ul>
         </div>
       </div>
@@ -887,8 +887,9 @@ export function SoftreeCohereNav() {
             {/* Request a demo */}
             <div className="group relative z-10 inline-block">
               <div className="absolute inset-0 -z-10 -m-0.5 rounded-full bg-gradient-to-r from-[#FF7759] to-[#A855F7] opacity-0 transition-opacity duration-300 group-focus-within:opacity-100" />
-              <Link href="/contact" className="relative flex w-fit items-center justify-center whitespace-nowrap transition-all duration-300 cursor-pointer bg-white text-[#1a1a1a] rounded-full py-3 px-4 text-sm font-semibold outline-none focus:outline-none hover:bg-gray-100 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                Start a project
+              <Link href="/contact" className="relative flex w-fit items-center justify-center gap-2 whitespace-nowrap transition-[transform,background-color,color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer bg-[#FF6B00] text-white rounded-full py-3 px-5 text-sm font-semibold outline-none focus:outline-none hover:bg-[#0E0E0F] active:scale-[0.97] shadow-[0_8px_24px_-12px_rgba(255,107,0,0.55)]">
+                Book a 15-min call
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>

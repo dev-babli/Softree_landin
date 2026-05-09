@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState, useEffect, useCallback } from "react"
 import { motion } from "framer-motion"
@@ -26,21 +26,21 @@ const slides: Slide[] = [
     num: "/01",
     title: "Agentic Intelligence",
     desc: "Domain-trained agents that parse documents, route decisions, and trigger actions across your stack — not chatbots, operational systems.",
-    accent: "#2B7FFF",
+    accent: "#1852FF",
   },
   {
     id: "web",
     num: "/02",
     title: "Product Engineering",
     desc: "Cloud-native apps built with Next.js & React Native. Clean architecture that performs under real traffic.",
-    accent: "#2B7FFF",
+    accent: "#1852FF",
   },
   {
     id: "m365",
     num: "/03",
     title: "Enterprise Productivity",
     desc: "SharePoint, Power Platform, Teams apps & Azure governance unified into a coherent operating system.",
-    accent: "#2B7FFF",
+    accent: "#6C42F5",
   },
 ]
 
@@ -64,17 +64,17 @@ function Globe() {
           className="absolute inset-[-15%] rounded-full"
           style={{
             background:
-              "radial-gradient(circle, rgba(43,127,255,0.35) 0%, rgba(43,127,255,0.12) 35%, transparent 65%)",
-            filter: "blur(60px)",
+              "radial-gradient(circle, rgba(24,82,255,0.16) 0%, rgba(24,82,255,0.06) 35%, transparent 65%)",
+            filter: "blur(70px)",
           }}
-          animate={{ opacity: [0.7, 1, 0.7], scale: [1, 1.04, 1] }}
+          animate={{ opacity: [0.55, 0.85, 0.55], scale: [1, 1.04, 1] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
         <div
           className="absolute inset-[5%] rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 35% 30%, rgba(60,140,255,0.55) 0%, rgba(20,60,140,0.4) 35%, rgba(5,15,40,0.2) 65%, transparent 80%)",
+              "radial-gradient(circle at 35% 30%, rgba(108,66,245,0.18) 0%, rgba(24,82,255,0.10) 40%, rgba(246,246,246,0) 75%)",
           }}
         />
         <motion.div
@@ -92,7 +92,7 @@ function Globe() {
             className="h-full w-full object-contain"
             style={{
               filter:
-                "brightness(1.4) saturate(0) sepia(1) hue-rotate(180deg) saturate(6) brightness(1.1)",
+                "brightness(0.4) saturate(0) sepia(1) hue-rotate(195deg) saturate(5) brightness(1.2) opacity(0.5)",
               mixBlendMode: "screen",
             }}
           />
@@ -214,8 +214,8 @@ function CarouselCard({
           x: xOffset,
           scale: isCenter ? 1 : 0.8,
           rotateZ: isLeft ? -8 : isCenter ? 0 : 8,
-          filter: isCenter ? "blur(0px)" : "blur(5px)",
-          opacity: isCenter ? 1 : 0.55,
+          filter: isCenter ? "blur(0px)" : "blur(3px)",
+          opacity: isCenter ? 1 : 0.7,
         }}
         transition={{ duration: 0.7, ease: EASE }}
       >
@@ -223,10 +223,10 @@ function CarouselCard({
         <div
           className="relative overflow-hidden rounded-xl backdrop-blur-md"
           style={{
-            background: "rgba(8, 10, 18, 0.85)",
-            border: "1px solid rgba(255,255,255,0.06)",
+            background: "rgba(255, 255, 255, 0.06)",
+            border: "1px solid rgba(255,255,255,0.10)",
             boxShadow:
-              "inset 0 1px 0 rgba(255,255,255,0.04), 0 32px 80px -24px rgba(0,0,0,0.9)",
+              "inset 0 1px 0 rgba(255,255,255,0.08), 0 1px 0 rgba(0,0,0,0.2), 0 30px 70px -28px rgba(0,0,0,0.55)",
           }}
         >
           {/* chart-background layer */}
@@ -234,7 +234,7 @@ function CarouselCard({
             className="absolute inset-0 rounded-xl"
             style={{
               background:
-                "linear-gradient(135deg, rgba(43,127,255,0.08) 0%, transparent 50%)",
+                `linear-gradient(135deg, rgba(24,82,255,0.10) 0%, transparent 50%)`,
             }}
           />
 
@@ -242,7 +242,7 @@ function CarouselCard({
           <div className="relative z-10 flex items-start justify-between gap-4 p-6 sm:p-7 md:p-8 pb-0">
             {/* chart-title */}
             <div className="flex-1 min-w-0">
-              <div className="sub-heading text-[13px] font-medium tracking-tight text-white/50">
+              <div className="sub-heading text-[13px] font-medium tracking-tight text-white/45">
                 {slide.num}
               </div>
               <h4 className="mt-1 text-[18px] sm:text-[20px] md:text-[22px] font-semibold leading-[1.2] tracking-[-0.02em] text-white">
@@ -263,11 +263,11 @@ function CarouselCard({
               className="line h-px w-full mb-4"
               style={{
                 background:
-                  "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)",
+                  "linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)",
               }}
             />
-            {/* body-2 gray-60 */}
-            <p className="text-[13px] sm:text-[13.5px] leading-[1.65] text-white/40">
+            {/* body-2 */}
+            <p className="text-[13px] sm:text-[13.5px] leading-[1.65] text-white/55">
               {slide.desc}
             </p>
           </div>
@@ -295,10 +295,10 @@ function Dots({
           onClick={() => onChange(i)}
           className="relative h-2 w-2 rounded-full transition-all duration-500 cursor-pointer"
           style={{
-            background: i === active ? "#2B7FFF" : "rgba(255,255,255,0.2)",
+            background: i === active ? "#1852FF" : "rgba(255,255,255,0.20)",
             transform: i === active ? "scale(1.35)" : "scale(1)",
             boxShadow:
-              i === active ? "0 0 8px rgba(43,127,255,0.5)" : "none",
+              i === active ? "0 0 8px rgba(24,82,255,0.45)" : "none",
           }}
           aria-label={`Go to slide ${i + 1}`}
         />
@@ -328,7 +328,31 @@ export default function CoreFeatures() {
   }
 
   return (
-    <section className="relative isolate w-full overflow-hidden bg-black py-24 sm:py-32 md:py-40">
+    <section className="relative isolate w-full overflow-hidden bg-[#0B0B1E] py-20 md:py-24 lg:py-28">
+      {/* Subtle grid */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(180deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
+          maskImage:
+            "radial-gradient(ellipse at center, black 30%, transparent 80%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 30%, transparent 80%)",
+        }}
+      />
+      {/* Grain overlay */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-20"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          opacity: 0.035,
+          mixBlendMode: "overlay",
+        }}
+      />
       {/* Globe background */}
       <Globe />
 
@@ -342,14 +366,52 @@ export default function CoreFeatures() {
           transition={{ duration: 0.8, ease: EASE }}
           className="mb-12 flex flex-col items-center text-center"
         >
-          <span className="mb-4 inline-block rounded-full border border-white/8 bg-white/[0.03] px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/60 backdrop-blur-sm">
-            Core Features
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.04] px-3.5 py-1.5 backdrop-blur-md">
+            <span aria-hidden className="h-2 w-2 rounded-full bg-[#1852FF]" style={{ boxShadow: "0 0 8px rgba(24,82,255,0.9)" }} />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/65">Core Capabilities</span>
           </span>
-          <h2 className="max-w-[600px] text-[clamp(28px,4.5vw,52px)] font-semibold leading-[1.05] tracking-[-0.03em] text-white">
-            Master the Market with{" "}
-            <span className="text-white/40">Softree</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[14px] leading-[1.6] text-white/35 sm:text-[15px]">
+          <motion.h2
+            className="max-w-[600px] text-[clamp(28px,4.5vw,52px)] font-semibold leading-[1.05] tracking-[-0.03em] text-white"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
+            }}
+          >
+            {["What", "we", "ship", "to"].map((w, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                style={{ marginRight: "0.25em" }}
+                variants={{
+                  hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+                  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                }}
+                transition={{ duration: 0.7, ease: EASE }}
+              >
+                {w}
+              </motion.span>
+            ))}
+            <motion.span
+              className="inline-block"
+              style={{
+                backgroundImage: "linear-gradient(90deg, #1852FF 0%, #6C42F5 50%, #38BDF8 100%)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+              }}
+              variants={{
+                hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+                visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+              }}
+              transition={{ duration: 0.7, ease: EASE }}
+            >
+              production
+            </motion.span>
+          </motion.h2>
+          <p className="mx-auto mt-4 max-w-lg text-[14px] leading-[1.6] text-white/45 sm:text-[15px]">
             Empowering enterprises across the globe with data-driven insights and
             institutional-grade AI technology.
           </p>

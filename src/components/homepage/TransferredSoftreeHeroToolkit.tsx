@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import AnimatedRadialCarousel from "@/components/homepage-light/AnimatedRadialCarousel"
+import { EASE } from "@/lib/motion"
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -30,15 +31,12 @@ const SUBJECT_WIDTH = "104vw"
 const SUBJECT_HEIGHT = "1115%"
 
 /* Cinematic easings — tuned for buttery continuous motion.
- *   SMOOTH   : sine-like, for continuous movement (no start/stop feel)
- *   EXPO_OUT : luxurious decelerated arrival
- *   IMPLODE  : sharp gravity-like pull-in for collapse
- *   GENTLE   : material-style for BG/opacity crossfades
- */
-const EASE_SMOOTH = "cubic-bezier(0.65, 0, 0.35, 1)"
-const EASE_EXPO_OUT = "cubic-bezier(0.16, 1, 0.3, 1)"
-const EASE_IMPLODE = "cubic-bezier(0.7, 0, 0.84, 0)"
-const EASE_GENTLE = "cubic-bezier(0.4, 0, 0.2, 1)"
+ * Aliased from the shared @/lib/motion system so the whole site
+ * speaks the same motion language. */
+const EASE_SMOOTH = EASE.smooth     // sine-like, continuous (no start/stop feel)
+const EASE_EXPO_OUT = EASE.silk      // luxurious decelerated arrival
+const EASE_IMPLODE = EASE.implode    // sharp gravity-like pull-in
+const EASE_GENTLE = "cubic-bezier(0.4, 0, 0.2, 1)" // material crossfade
 
 /**
  * TransferredSoftreeHeroToolkit — CINEMATIC VERSION
@@ -64,29 +62,43 @@ export function TransferredSoftreeHeroToolkit() {
       const q = gsap.utils.selector(containerRef)
 
       /* ── Entrance (on mount) ── */
+      /* Visible-immediately entrance — refines into focus instead of
+       * materializing from nothing. Better LCP, no "empty hero" perceived gap. */
       gsap.fromTo(
         q(".hero-title"),
-        { opacity: 0, y: 60, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 1.4, ease: "expo.out" }
+        { opacity: 0.3, y: 12, scale: 0.99 },
+        { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "expo.out" }
+      )
+      gsap.fromTo(
+        q(".hero-scarcity"),
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "expo.out", delay: 0.1 }
       )
       gsap.fromTo(
         q(".hero-p"),
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 1.2, ease: "expo.out", delay: 0.15 }
+        { opacity: 0.4, y: 10 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "expo.out", delay: 0.15 }
       )
       gsap.fromTo(
         q(".hero-btn"),
-        { opacity: 0, y: 30, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 1.0, ease: "expo.out", delay: 0.3 }
+        { opacity: 0, y: 12, scale: 0.97 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "expo.out", delay: 0.3 }
       )
 
-      /* ── Scroll-driven scene (paused timeline played/reversed by scroll dir) ── */
+      /* ── Scroll-driven scene — auto-play with velocity-aware completion.
+       *    Goal: preserve the cinematic auto-play rhythm (timeline plays at
+       *    its own ~3.3s pace), but guarantee the animation always completes
+       *    before the pin releases — even on rapid scrolls.
+       *
+       *    Strategy: monitor scroll progress through the pin range. If the
+       *    user has scrolled further than the timeline has played, pull the
+       *    timeline forward to keep up (never backward — slow scrollers
+       *    still see normal pacing). On reverse, mirror it. ── */
       const tl = gsap.timeline({ paused: true })
 
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top+=1 top",
-        /* Longer pin window — gives the buttery timeline (~3.3s) room to breathe */
         end: "+=130%",
         pin: true,
         pinSpacing: true,
@@ -95,8 +107,22 @@ export function TransferredSoftreeHeroToolkit() {
         onEnter: () => tl.play(),
         onEnterBack: () => tl.reverse(),
         onUpdate: (self) => {
-          if (self.direction === 1 && tl.progress() < 0.01 && !tl.isActive()) tl.play()
-          else if (self.direction === -1 && tl.progress() > 0.99 && !tl.isActive()) tl.reverse()
+          /* Keep timeline progress at least as far along as scroll progress
+           * when scrolling forward (forces completion on fast scrolls), and
+           * at most as far back as scroll progress when scrolling back. */
+          const scrollP = self.progress
+          const tlP = tl.progress()
+          if (self.direction === 1 && scrollP > tlP) {
+            tl.progress(scrollP)
+          } else if (self.direction === -1 && scrollP < tlP) {
+            tl.progress(scrollP)
+          }
+        },
+        onLeave: () => {
+          if (tl.progress() < 1) tl.progress(1)
+        },
+        onLeaveBack: () => {
+          if (tl.progress() > 0) tl.progress(0)
         },
       })
 
@@ -184,8 +210,8 @@ export function TransferredSoftreeHeroToolkit() {
   )
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full shrink-0 overflow-hidden bg-[#f6f6f6]">
-      <div className="sticky top-0 flex h-screen w-full flex-col items-center overflow-hidden">
+    <section ref={containerRef} className="relative min-h-dvh w-full shrink-0 overflow-hidden bg-[#f6f6f6]">
+      <div className="sticky top-0 flex min-h-dvh w-full flex-col items-center overflow-hidden">
 
         {/* ═══════════════ 1. GLOBAL BG + SUBJECT ═══════════════ */}
         <div className="global-bg absolute inset-0 z-0 bg-[#1a2a3a]">
@@ -220,7 +246,7 @@ export function TransferredSoftreeHeroToolkit() {
         {/* Subtle dot grid on light bg — adds premium texture after mask burst */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 z-[1] opacity-60"
+          className="pointer-events-none absolute inset-0 z-1 opacity-60"
           style={{
             backgroundImage:
               "radial-gradient(circle at 1px 1px, rgba(17,17,17,0.08) 1px, transparent 0)",
@@ -231,7 +257,7 @@ export function TransferredSoftreeHeroToolkit() {
         {/* ═══════════════ 2. MASK EXPANDER (light burst) ═══════════════ */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-center">
           <div
-            className={`mask-wrapper absolute ${CARD_SIZE} origin-bottom z-[1]`}
+            className={`mask-wrapper absolute ${CARD_SIZE} origin-bottom z-1`}
             style={{ willChange: "transform" }}
           >
             <div className="mask-expander pointer-events-none absolute inset-0 rounded-2xl" />
@@ -254,7 +280,7 @@ export function TransferredSoftreeHeroToolkit() {
         </div>
 
         {/* ═══════════════ 4. CENTER CARD (hero frame — collapses into pulse) ═══════════════ */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[35] flex items-end justify-center">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-35 flex items-end justify-center">
           <div
             className={`center-card relative ${CARD_SIZE} origin-bottom`}
             style={{ willChange: "transform, opacity, filter" }}
@@ -271,7 +297,7 @@ export function TransferredSoftreeHeroToolkit() {
                 className="object-cover"
               />
               {/* Subtle gradient on card for depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
             </div>
             {/* Frame border */}
             <div
@@ -284,7 +310,7 @@ export function TransferredSoftreeHeroToolkit() {
             />
             {/* Label — fades in with the inner image so the card reads as empty frame first */}
             <div
-              className="card-inner-bg absolute inset-x-0 bottom-0 z-[2] rounded-b-xl bg-gradient-to-t from-black/80 via-black/20 to-transparent p-5 opacity-0"
+              className="card-inner-bg absolute inset-x-0 bottom-0 z-2 rounded-b-xl bg-linear-to-t from-black/80 via-black/20 to-transparent p-5 opacity-0"
               style={{ willChange: "opacity" }}
             >
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60">
@@ -298,35 +324,69 @@ export function TransferredSoftreeHeroToolkit() {
         </div>
 
         {/* ═══════════════ 5. HERO TEXT (unchanged) ═══════════════ */}
-        <div className="hero-text-cluster pointer-events-none absolute inset-0 z-30 flex flex-col justify-center pb-[20vh] pl-[8vw] pr-[4vw] pt-[12vh]">
+        <div className="hero-text-cluster pointer-events-none absolute inset-0 z-30 flex flex-col justify-center pb-[20vh] pl-[6vw] pr-[4vw] pt-[12vh] sm:pl-[8vw]">
           <div className="pointer-events-auto max-w-[640px] text-left">
             <h1
-              className="hero-title whitespace-nowrap text-[clamp(44px,5.8vw,104px)] font-semibold leading-[0.95] tracking-[-0.04em] text-white"
+              className="hero-title text-[clamp(44px,5.8vw,104px)] font-semibold leading-[0.95] tracking-[-0.04em] text-white sm:whitespace-nowrap"
               style={{ willChange: "transform, opacity" }}
             >
               Build. Ship. Scale.
             </h1>
+            <div
+              className="hero-scarcity mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3 py-1 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-white/85 backdrop-blur-md"
+              style={{ willChange: "transform, opacity" }}
+            >
+              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#FF6B00]" />
+              Available for 2 new projects · Q2 2026
+            </div>
             <p
-              className="hero-p mt-6 max-w-[380px] text-[15px] font-normal leading-[1.55] text-white/80"
+              className="hero-p mt-5 max-w-[380px] text-[15px] font-normal leading-[1.55] text-white/80"
               style={{ willChange: "transform, opacity" }}
             >
               Simplify your enterprise tech. Our senior engineers ship production-grade AI, web, and Microsoft solutions — fast.
             </p>
             <Link
-              href="/services"
-              className="hero-btn mt-8 inline-flex items-center gap-2 rounded-full bg-zinc-950 px-7 py-3.5 text-[14px] font-semibold text-white shadow-xl transition-colors hover:bg-zinc-800"
+              href="/contact"
+              className="hero-btn group/cta mt-8 inline-flex items-center gap-3 rounded-full bg-zinc-950 pl-7 pr-2 py-2 text-[14px] font-semibold text-white shadow-[0_18px_50px_-12px_rgba(0,0,0,0.55)] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-px hover:bg-zinc-800 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.65)] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
               style={{ willChange: "transform, opacity" }}
             >
-              Get Started Free
+              <span className="relative block h-[18px] overflow-hidden">
+                <span className="block transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover/cta:-translate-y-full">
+                  Book a 15-min call
+                </span>
+                <span className="absolute inset-x-0 top-full block transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover/cta:-translate-y-full">
+                  Book a 15-min call
+                </span>
+              </span>
+              <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-white">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  className="absolute inset-0 m-auto text-zinc-950 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover/cta:translate-x-[200%]"
+                >
+                  <path d="M2 6H10M10 6L6 2M10 6L6 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  className="absolute inset-0 m-auto -translate-x-[200%] text-zinc-950 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover/cta:translate-x-0"
+                >
+                  <path d="M2 6H10M10 6L6 2M10 6L6 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
             </Link>
             <div className="mt-10 flex items-center gap-3">
               <div className="flex -space-x-2">
-                <span className="h-8 w-8 rounded-full border-2 border-white bg-cover bg-center" style={{ backgroundImage: "url(https://i.pravatar.cc/64?img=14)" }} aria-hidden />
-                <span className="h-8 w-8 rounded-full border-2 border-white bg-cover bg-center" style={{ backgroundImage: "url(https://i.pravatar.cc/64?img=32)" }} aria-hidden />
-                <span className="h-8 w-8 rounded-full border-2 border-white bg-cover bg-center" style={{ backgroundImage: "url(https://i.pravatar.cc/64?img=47)" }} aria-hidden />
+                <span className="h-8 w-8 rounded-full border-2 border-white bg-cover bg-center transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:scale-110" style={{ backgroundImage: "url(https://i.pravatar.cc/64?img=14)" }} aria-hidden />
+                <span className="h-8 w-8 rounded-full border-2 border-white bg-cover bg-center transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:scale-110" style={{ backgroundImage: "url(https://i.pravatar.cc/64?img=32)" }} aria-hidden />
+                <span className="h-8 w-8 rounded-full border-2 border-white bg-cover bg-center transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:scale-110" style={{ backgroundImage: "url(https://i.pravatar.cc/64?img=47)" }} aria-hidden />
               </div>
               <div className="flex flex-col">
-                <span className="text-[26px] font-semibold leading-none tracking-[-0.02em] text-white">2.3M+</span>
+                <span className="text-[26px] font-semibold leading-none tracking-[-0.02em] tabular-nums text-white">2.3M+</span>
                 <span className="mt-1 text-[11px] leading-[1.4] text-white/60">
                   Trusted by millions across 140 countries
                 </span>
@@ -353,12 +413,11 @@ export function TransferredSoftreeHeroToolkit() {
             style={{ willChange: "transform, opacity" }}
           >
             <p className="mx-auto max-w-[680px] text-[clamp(18px,2.4vw,32px)] font-medium leading-[1.3] tracking-[-0.025em] text-[#111111]">
-              Softree is a growing engineering studio — shipping{" "}
-              <span className="text-[#6C42F5]">production-grade AI</span>,
-              web &amp; Microsoft solutions for enterprises
-              that need to{" "}
-              <span className="text-[#1852FF]">move fast</span>{" "}
-              without sacrificing quality.
+              Softree is a global delivery partner delivering{" "}
+              <span className="text-[#6C42F5]">AI solutions</span>,{" "}
+              Microsoft platforms, SaaS products, and scalable{" "}
+              <span className="text-[#1852FF]">web applications</span>{" "}
+              for growing businesses and enterprises.
             </p>
           </div>
 

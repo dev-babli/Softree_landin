@@ -10,10 +10,12 @@ import {
   type TouchEvent as ReactTouchEvent,
 } from "react"
 import Link from "next/link"
+import Image from "next/image"
+import { EASE_T } from "@/lib/motion"
 
 const CYCLE_WORDS = ["Innovation", "Growth", "Scale", "Impact", "Results"]
 const CYCLE_MS = 4000
-const EASE_OUT = [0.22, 1, 0.36, 1] as const
+const EASE_OUT = EASE_T.silk
 
 /* ─── Headline cycle ───────────────────────────────────────────────── */
 function TextCycle() {
@@ -28,9 +30,9 @@ function TextCycle() {
         setIdx((p) => (p + 1) % words.length)
         setLeaving(false)
       }, 320)
-    }, 2600)
+    }, 3400)
     return () => clearInterval(t)
-  }, [])
+  }, [words.length])
 
   return (
     <span className="relative inline-block min-w-[120px] text-[#1852FF] sm:min-w-[160px]">
@@ -47,7 +49,7 @@ function TextCycle() {
         </motion.span>
       </AnimatePresence>
       <motion.span
-        className="absolute -bottom-1 left-0 h-[2px] w-full rounded-full bg-current"
+        className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-current"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -59,11 +61,11 @@ function TextCycle() {
 
 /* ─── Service data ─────────────────────────────────────────────────── */
 const SERVICES = [
-  { number: "01", title: "AI & Automation",     image: "/whysoftree/ai.webp",        href: "/services/ai-intelligence",                              tagline: "Intelligent systems that think for you" },
-  { number: "02", title: "Web Development",     image: "/whysoftree/web dev.webp",   href: "/services/digital-workspace/web-app-development",        tagline: "Fast, beautiful digital products" },
-  { number: "03", title: "Microsoft Solutions", image: "/whysoftree/Micorosft.webp", href: "/services/business-applications/power-apps",              tagline: "Your M365 stack, fully unlocked" },
-  { number: "04", title: "Data & Analytics",    image: "/whysoftree/data.webp",      href: "/services/data-analytics/power-bi",                       tagline: "Signal out of noise" },
-  { number: "05", title: "Digital Workspace",   image: "/whysoftree/web.webp",       href: "/services/digital-workspace/sharepoint",                  tagline: "Your whole company in sync" },
+  { number: "01", title: "AI & Automation", image: "/whysoftree/ai.webp", href: "/services/ai-intelligence", tagline: "Intelligent systems that think for you" },
+  { number: "02", title: "Web Development", image: "/whysoftree/web dev.webp", href: "/services/digital-workspace/web-app-development", tagline: "Fast, beautiful digital products" },
+  { number: "03", title: "Microsoft Solutions", image: "/whysoftree/Micorosft.webp", href: "/services/business-applications/power-apps", tagline: "Your M365 stack, fully unlocked" },
+  { number: "04", title: "Data & Analytics", image: "/whysoftree/data.webp", href: "/services/data-analytics/power-bi", tagline: "Signal out of noise" },
+  { number: "05", title: "Digital Workspace", image: "/whysoftree/web.webp", href: "/services/digital-workspace/sharepoint", tagline: "Your whole company in sync" },
 ]
 
 /* ─── Animated CTA button ──────────────────────────────────────────── */
@@ -72,19 +74,19 @@ function AnimatedButton({ href = "/contact" }: { href?: string }) {
   return (
     <Link
       href={href}
-      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg border border-[#0a0a1a]/10 bg-[#0a0a1a] px-5 py-2.5"
+      className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg border border-[#0a0a1a]/10 bg-[#0a0a1a] px-5 py-2.5 shadow-[0_8px_24px_-8px_rgba(10,10,26,0.35)] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-px hover:shadow-[0_14px_30px_-10px_rgba(10,10,26,0.5)] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1852FF]/40"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div className="relative h-5 overflow-hidden">
-        <motion.span className="block text-sm font-medium text-white" animate={{ y: hovered ? "-100%" : "0%" }} transition={{ duration: 0.28, ease: "easeOut" }}>
-          LET&apos;S TALK
+        <motion.span className="block text-sm font-medium text-white" animate={{ y: hovered ? "-100%" : "0%" }} transition={{ duration: 0.28, ease: EASE_OUT }}>
+          LET’S TALK
         </motion.span>
-        <motion.span className="absolute left-0 top-full block text-sm font-medium text-white" animate={{ y: hovered ? "-100%" : "0%" }} transition={{ duration: 0.28, ease: "easeOut" }}>
-          LET&apos;S TALK
+        <motion.span className="absolute left-0 top-full block text-sm font-medium text-white" animate={{ y: hovered ? "-100%" : "0%" }} transition={{ duration: 0.28, ease: EASE_OUT }}>
+          LET’S TALK
         </motion.span>
       </div>
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="text-[#1852FF]">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="text-[#1852FF] transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
         <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </Link>
@@ -178,7 +180,7 @@ export default function SoftreeServicesHero() {
   const active = SERVICES[activeIdx]
 
   return (
-    <section ref={containerRef} className="relative w-full overflow-hidden bg-white">
+    <section ref={containerRef} className="relative w-full overflow-hidden bg-white pb-16 md:pb-20 lg:pb-24">
       {/* ── Header row ─────────────────────────────────────────────── */}
       <motion.div
         className="flex w-full items-start justify-between px-6 py-6 lg:px-12"
@@ -193,10 +195,12 @@ export default function SoftreeServicesHero() {
           <h1 className="text-2xl font-bold tracking-tight text-[#0a0a1a] lg:text-4xl">_Studio</h1>
         </div>
         <div className="hidden items-center gap-4 lg:flex">
-          <div className="flex items-center gap-3 rounded-xl border border-[#0a0a1a]/10 bg-[#f8f9fc] p-2 pr-4">
-            <img
+          <div className="flex items-center gap-3 rounded-xl border border-[#0a0a1a]/10 bg-[#f8f9fc] p-2 pr-4 transition-shadow duration-300 hover:shadow-sm">
+            <Image
               src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba/69c2c8febe5ed42eae483183_Hero%201%20Profile.webp"
               alt="Team"
+              width={40}
+              height={40}
               className="h-10 w-10 rounded-lg object-cover"
             />
             <div>
@@ -215,7 +219,7 @@ export default function SoftreeServicesHero() {
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ duration: 0.6, delay: 0.15 }}
       >
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#0a0a1a]/18 to-transparent" />
+        <div className="h-px w-full bg-linear-to-r from-transparent via-[#0a0a1a]/18 to-transparent" />
       </motion.div>
 
       {/* ── Main hero card ──────────────────────────────────────── */}
@@ -235,8 +239,8 @@ export default function SoftreeServicesHero() {
             >
               <source src="https://cdn.prod.website-files.com/69a0a45220c8336fe957ccba%2F69d2095642a31660d0b048ee_Video%202_mp4.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-100/80 via-white/60 to-orange-50/70" />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-br from-blue-100/80 via-white/60 to-orange-50/70" />
+            <div className="absolute inset-0 bg-linear-to-t from-white/95 via-transparent to-transparent" />
           </div>
 
           {/* Content */}
@@ -251,23 +255,52 @@ export default function SoftreeServicesHero() {
                   {AVATARS.map((a, i) => (
                     <motion.div
                       key={i}
-                      className="h-9 w-9 overflow-hidden rounded-full border-2 border-white"
+                      className="h-9 w-9 overflow-hidden rounded-full border-2 border-white shadow-[0_4px_12px_-4px_rgba(0,0,0,0.15)] transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:scale-110"
                       initial={{ opacity: 0, x: -16 }}
                       animate={isInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.4, delay: 0.4 + i * 0.08 }}
+                      transition={{ duration: 0.4, delay: 0.4 + i * 0.08, ease: EASE_OUT }}
                     >
-                      <img src={a} alt="" className="h-full w-full object-cover" />
+                      <Image src={a} alt="" width={36} height={36} className="h-full w-full object-cover" />
                     </motion.div>
                   ))}
                 </div>
 
                 <motion.h2
                   className="text-[clamp(20px,3vw,38px)] font-semibold leading-tight tracking-tight text-[#0a0a1a]"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.5 }}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
+                  variants={{
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.06, delayChildren: 0.5 } },
+                  }}
                 >
-                  We Build Digital Solutions<br className="hidden sm:block" /> with <TextCycle />
+                  {"From idea to live product in 12 weeks".split(" ").map((word, i) => (
+                    <motion.span
+                      key={i}
+                      className="inline-block"
+                      variants={{
+                        hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
+                        visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                      }}
+                      transition={{ duration: 0.65, ease: EASE_OUT }}
+                      style={{ marginRight: "0.25em" }}
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
+                  <br className="hidden sm:block" />
+                  <motion.span
+                    className="inline-block"
+                    variants={{
+                      hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+                      visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+                    }}
+                    transition={{ duration: 0.65, ease: EASE_OUT }}
+                    style={{ marginRight: "0.25em" }}
+                  >
+                    with
+                  </motion.span>{" "}
+                  <TextCycle />
                 </motion.h2>
               </div>
 
@@ -281,7 +314,7 @@ export default function SoftreeServicesHero() {
                 <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#0a0a1a]/35">
                   Services
                 </span>
-                <span className="flex items-baseline text-[clamp(28px,4vw,52px)] font-semibold leading-none tracking-[-0.04em] text-[#0a0a1a]/12 select-none">
+                <span className="flex items-baseline text-[clamp(28px,4vw,52px)] font-semibold leading-none tracking-[-0.04em] text-[#0a0a1a]/12 select-none tabular-nums">
                   <span className="relative inline-block overflow-hidden align-bottom" style={{ width: "1.6ch", height: "1em" }}>
                     <AnimatePresence mode="wait" initial={false}>
                       <motion.span
@@ -366,18 +399,19 @@ export default function SoftreeServicesHero() {
                         className="relative overflow-hidden rounded-xl"
                         style={{ aspectRatio: isActive ? "4/5" : "3/5" }}
                       >
-                        <img
+                        <Image
                           src={s.image}
                           alt={s.title}
+                          fill
                           loading={isActive ? "eager" : "lazy"}
-                          decoding="async"
-                          fetchPriority={isActive ? "high" : "auto"}
-                          className="h-full w-full object-cover transition-transform duration-700 ease-out"
+                          priority={isActive}
+                          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
                           style={{ transform: isActive ? "scale(1.0)" : "scale(1.04)" }}
+                          sizes="(max-width: 768px) 30vw, 22vw"
                         />
 
                         {/* Bottom vignette */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/55 via-transparent to-transparent" />
 
                         {/* Active label */}
                         <AnimatePresence>
@@ -476,7 +510,7 @@ export default function SoftreeServicesHero() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={prev}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-[#0a0a1a]/12 bg-white/70 text-[#0a0a1a] backdrop-blur-sm transition-all hover:bg-white hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1852FF]/40"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-[#0a0a1a]/12 bg-white/70 text-[#0a0a1a] backdrop-blur-sm transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-x-px hover:bg-white hover:shadow-md active:scale-[0.94] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1852FF]/40"
                     aria-label="Previous service"
                   >
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -485,7 +519,7 @@ export default function SoftreeServicesHero() {
                   </button>
                   <button
                     onClick={next}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-[#0a0a1a]/12 bg-white/70 text-[#0a0a1a] backdrop-blur-sm transition-all hover:bg-white hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1852FF]/40"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-[#0a0a1a]/12 bg-white/70 text-[#0a0a1a] backdrop-blur-sm transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:translate-x-px hover:bg-white hover:shadow-md active:scale-[0.94] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1852FF]/40"
                     aria-label="Next service"
                   >
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
